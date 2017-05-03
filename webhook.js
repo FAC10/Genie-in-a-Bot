@@ -94,10 +94,10 @@ function receivedMessage(event) {
       });
 
       apiai_request.on('response', function(response) {
-        var responseText = response.fulfillment.speech;
+        // var responseText = response.fulfillment.speech;
         console.log('response is ', response);
         console.log('responseText is ', response);
-        sendTextMessage(senderID, responseText);
+        // sendTextMessage(senderID, responseText);
       });
 
       apiai_request.on('error', function(error) {
