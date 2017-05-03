@@ -97,7 +97,7 @@ function receivedMessage(event) {
         var responseText = response.result.fulfillment.speech;
         // console.log('response is ', response);
         console.log('responseText is ', responseText);
-        // sendTextMessage(senderID, responseText);
+        sendTextMessage(senderID, responseText);
       });
 
       apiai_request.on('error', function(error) {
