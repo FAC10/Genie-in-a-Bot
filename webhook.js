@@ -30,12 +30,32 @@ app.get('/webhook', function(req, res) {
   }
 });
 
+//APIAI integration
+
+let sender = event.sender.id;
+let text = event.message.text;
 var apiai_request = apiai_app.textRequest('hi friend', {
     sessionId: 'mp-bot'
 });
 
 apiai_request.on('response', function(response) {
-    console.log(response);
+  let aiText = response.result.fulfillment.speech;
+
+    request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: 'POST',
+      json: {
+        recipient: {id: sender},
+        message: {text: aiText}
+      }
+    }, (error, response) => {
+      if (error) {
+          console.log('Error sending message: ', error);
+      } else if (response.body.error) {
+          console.log('Error: ', response.body.error);
+      }
+    });
 });
 
 apiai_request.on('error', function(error) {
