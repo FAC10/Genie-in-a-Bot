@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const request = require('request');
 require('env2')('./config.env');
+const apiai = require('apiai');
+const app = apiai(process.env.APIAI_CLIENT);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -60,73 +62,109 @@ app.post('/webhook', function (req, res) {
   }
 });
 
-function receivedMessage(event) {
-  var senderID = event.sender.id;
-    var recipientID = event.recipient.id;
-    var timeOfMessage = event.timestamp;
-    var message = event.message;
+function sendMessage(event) {
+  let sender = event.sender.id;
+  let text = event.message.text;
 
-    console.log("Received message for user %d and page %d at %d with message:",
-      senderID, recipientID, timeOfMessage);
-    console.log(JSON.stringify(message));
+  let apiai = apiaiApp.textRequest(text, {
+    sessionId: 'MP_Bot' // use any arbitrary id
+  });
 
-    var messageId = message.mid;
+  apiai.on('response', (response) => {
+    // Got a response from api.ai. Let's POST to Facebook Messenger
+    let aiText = response.result.fulfillment.speech;
 
-    var messageText = message.text;
-    var messageAttachments = message.attachments;
-
-    if (messageText) {
-
-      // If we receive a text message, check to see if it matches a keyword
-      // and send back the example. Otherwise, just echo the text we received.
-      switch (messageText) {
-        case 'generic':
-          sendGenericMessage(senderID);
-          break;
-
-        default:
-          sendTextMessage(senderID, messageText);
-      }
-    } else if (messageAttachments) {
-      sendTextMessage(senderID, "Message with attachment received");
-    }
-}
-
-function sendGenericMessage(recipientId, messageText) {
-console.log('sending generic message');
-}
-
-function sendTextMessage(recipientId, messageText) {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      text: messageText
-    }
-  };
-
-  callSendAPI(messageData);
-}
-
-function callSendAPI(messageData) {
   request({
-    uri: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
     method: 'POST',
-    json: messageData
-
-  }, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var recipientId = body.recipient_id;
-      var messageId = body.message_id;
-
-      console.log("Successfully sent generic message with id %s to recipient %s",
-        messageId, recipientId);
-    } else {
-      console.error("Unable to send message.");
-      console.error(response);
-      console.error(error);
+    json: {
+      recipient: {id: sender},
+      message: {text: aiText}
+    }
+  }, (error, response) => {
+    if (error) {
+        console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+        console.log('Error: ', response.body.error);
     }
   });
+  });
+
+  apiai.on('error', (error) => {
+    console.log(error);
+  });
+
+  apiai.end();
 }
+
+// function receivedMessage(event) {
+//   var senderID = event.sender.id;
+//     var recipientID = event.recipient.id;
+//     var timeOfMessage = event.timestamp;
+//     var message = event.message;
+//
+//     console.log("Received message for user %d and page %d at %d with message:",
+//       senderID, recipientID, timeOfMessage);
+//     console.log(JSON.stringify(message));
+//
+//     var messageId = message.mid;
+//
+//     var messageText = message.text;
+//     var messageAttachments = message.attachments;
+//
+//     if (messageText) {
+//
+//       // If we receive a text message, check to see if it matches a keyword
+//       // and send back the example. Otherwise, just echo the text we received.
+//       switch (messageText) {
+//         case 'generic':
+//           sendGenericMessage(senderID);
+//           break;
+//
+//         default:
+//           sendTextMessage(senderID, messageText);
+//       }
+//     } else if (messageAttachments) {
+//       sendTextMessage(senderID, "Message with attachment received");
+//     }
+// }
+//
+// function sendGenericMessage(recipientId, messageText) {
+// console.log('sending generic message');
+// }
+//
+// function sendTextMessage(recipientId, messageText) {
+//   // var messageData = {
+//   //   recipient: {
+//   //     id: recipientId
+//   //   },
+//   //   message: {
+//   //     text: messageText
+//   //   }
+//   // };
+//
+//   callSendAPI(messageData);
+// }
+//
+// function callSendAPI(messageData) {
+//   request({
+//     uri: 'https://graph.facebook.com/v2.6/me/messages',
+//     qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
+//     method: 'POST',
+//     json: messageData
+//
+//   }, function (error, response, body) {
+//     if (!error && response.statusCode == 200) {
+//       var recipientId = body.recipient_id;
+//       var messageId = body.message_id;
+//
+//       console.log("Successfully sent generic message with id %s to recipient %s",
+//         messageId, recipientId);
+//     } else {
+//       console.error("Unable to send message.");
+//       console.error(response);
+//       console.error(error);
+//     }
+//   });
+// }
