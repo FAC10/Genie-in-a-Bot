@@ -66,11 +66,19 @@ app.get('/webhook', function(req, res) {
 //APIAI integration
 
 
-var apiai_request = apiai_app.textRequest('hi friend', {
+var apiai_request = apiai_app.textRequest('get started', {
     sessionId: 'mp-bot'
 });
 
 apiai_request.on('response', function(response) {
+  // var messageData = {
+  //   recipient: {
+  //     id: recipientId
+  //   },
+  //   message: {
+  //     text: messageText
+  //   }
+  // };
   console.log('response is ', response);
 });
 
@@ -121,14 +129,7 @@ apiai_request.end();
 // }
 //
 // function sendTextMessage(recipientId, messageText) {
-  // var messageData = {
-  //   recipient: {
-  //     id: recipientId
-  //   },
-  //   message: {
-  //     text: messageText
-  //   }
-  // };
+
 //
 //   callSendAPI(messageData);
 // }
