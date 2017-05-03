@@ -63,15 +63,6 @@ app.post('/webhook', function (req, res) {
   }
 });
 
-//APIAI integration
-
-
-
-
-
-
-//
-//
 function receivedMessage(event) {
   var senderID = event.sender.id;
     var recipientID = event.recipient.id;
