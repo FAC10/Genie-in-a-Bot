@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/FAC10/MPBots#readme",
   "dependencies": {
+    "apiai": "^4.0.2",
     "body-parser": "^1.17.1",
     "env2": "^2.1.1",
     "express": "^4.15.2",

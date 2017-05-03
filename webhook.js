@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const request = require('request');
 require('env2')('./config.env');
+const apiai = require('apiai');
+const apiai_app = apiai(process.env.APIAI_CLIENT);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,7 +15,7 @@ const server = app.listen(process.env.PORT || 4000, () => {
 
 /* Home */
 app.get('/', function(req, res) {
-res.send('hello world');
+res.send('I should be working');
 });
 
 /* For Facebook Validation */
@@ -27,6 +29,7 @@ app.get('/webhook', function(req, res) {
     res.sendStatus(403);
   }
 });
+
 
 //Listen for messages from user
 
@@ -68,7 +71,7 @@ function receivedMessage(event) {
 
     console.log("Received message for user %d and page %d at %d with message:",
       senderID, recipientID, timeOfMessage);
-    console.log(JSON.stringify(message));
+    // console.log(JSON.stringify(message));
 
     var messageId = message.mid;
 
@@ -77,35 +80,36 @@ function receivedMessage(event) {
 
     if (messageText) {
 
-      // If we receive a text message, check to see if it matches a keyword
-      // and send back the example. Otherwise, just echo the text we received.
-      switch (messageText) {
-        case 'generic':
-          sendGenericMessage(senderID);
-          break;
+      var apiai_request = apiai_app.textRequest(messageText, {
+          sessionId: 'mp-bot'
+      });
 
-        default:
-          sendTextMessage(senderID, messageText);
-      }
-    } else if (messageAttachments) {
-      sendTextMessage(senderID, "Message with attachment received");
+      apiai_request.on('response', function(response) {
+        var responseText = response.result.fulfillment.speech;
+        // console.log('response is ', response);
+        console.log('responseText is ', responseText);
+        sendTextMessage(senderID, responseText);
+      });
+
+      apiai_request.on('error', function(error) {
+          console.log(error);
+      });
+
+      apiai_request.end();
+
     }
 }
 
-function sendGenericMessage(recipientId, messageText) {
-console.log('sending generic message');
-}
 
 function sendTextMessage(recipientId, messageText) {
   var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      text: messageText
-    }
-  };
-
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        text: messageText
+      }
+    };
   callSendAPI(messageData);
 }
 
