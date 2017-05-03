@@ -1,0 +1,30 @@
+{
+  "name": "mpbots",
+  "version": "1.0.0",
+  "description": "An app to help people learn about the UK General Elections",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon webhook.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FAC10/MPBots.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FAC10/MPBots/issues"
+  },
+  "homepage": "https://github.com/FAC10/MPBots#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "env2": "^2.1.1",
+    "express": "^4.15.2",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "nodemon": "^1.11.0"
+  }
+}
