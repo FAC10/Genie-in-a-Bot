@@ -111,8 +111,14 @@ function receivedMessage(event) {
 
 
 function sendTextMessage(recipientId, messageText) {
-
-
+  var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        text: messageText
+      }
+    };
   callSendAPI(messageData);
 }
 
