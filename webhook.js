@@ -11,6 +11,11 @@ const server = app.listen(process.env.PORT || 4000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
 
+/* Home */
+app.get('/', function(req, res) {
+res.send('hello world');
+});
+
 /* For Facebook Validation */
 app.get('/webhook', function(req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
