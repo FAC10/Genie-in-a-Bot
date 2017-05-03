@@ -94,9 +94,9 @@ function receivedMessage(event) {
       });
 
       apiai_request.on('response', function(response) {
-        // var responseText = response.fulfillment.speech;
-        console.log('response is ', response);
-        console.log('responseText is ', response);
+        var responseText = response.result.fulfillment.speech;
+        // console.log('response is ', response);
+        console.log('responseText is ', responseText);
         // sendTextMessage(senderID, responseText);
       });
 
