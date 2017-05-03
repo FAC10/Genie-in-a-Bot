@@ -66,92 +66,74 @@ app.get('/webhook', function(req, res) {
 //APIAI integration
 
 
-var apiai_request = apiai_app.textRequest('get started', {
-    sessionId: 'mp-bot'
-});
 
-apiai_request.on('response', function(response) {
-  // var messageData = {
-  //   recipient: {
-  //     id: recipientId
-  //   },
-  //   message: {
-  //     text: messageText
-  //   }
-  // };
-  console.log('response is ', response);
-});
-
-apiai_request.on('error', function(error) {
-    console.log(error);
-});
-
-apiai_request.end();
 
 
 
 //
 //
-// function receivedMessage(event) {
-//   var senderID = event.sender.id;
-//     var recipientID = event.recipient.id;
-//     var timeOfMessage = event.timestamp;
-//     var message = event.message;
-//
-//     console.log("Received message for user %d and page %d at %d with message:",
-//       senderID, recipientID, timeOfMessage);
-//     console.log(JSON.stringify(message));
-//
-//     var messageId = message.mid;
-//
-//     var messageText = message.text;
-//     var messageAttachments = message.attachments;
-//
-//     if (messageText) {
-//
-//       // If we receive a text message, check to see if it matches a keyword
-//       // and send back the example. Otherwise, just echo the text we received.
-//       switch (messageText) {
-//         case 'generic':
-//           sendGenericMessage(senderID);
-//           break;
-//
-//         default:
-//           sendTextMessage(senderID, messageText);
-//       }
-//     } else if (messageAttachments) {
-//       sendTextMessage(senderID, "Message with attachment received");
-//     }
-// }
-//
-// function sendGenericMessage(recipientId, messageText) {
-// console.log('sending generic message');
-// }
-//
-// function sendTextMessage(recipientId, messageText) {
+function receivedMessage(event) {
+  var senderID = event.sender.id;
+    var recipientID = event.recipient.id;
+    var timeOfMessage = event.timestamp;
+    var message = event.message;
 
-//
-//   callSendAPI(messageData);
-// }
-//
-// function callSendAPI(messageData) {
-//   request({
-//     uri: 'https://graph.facebook.com/v2.6/me/messages',
-//     qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
-//     method: 'POST',
-//     json: messageData
-//
-//   }, function (error, response, body) {
-//     if (!error && response.statusCode == 200) {
-//       var recipientId = body.recipient_id;
-//       var messageId = body.message_id;
-//
-//       console.log("Successfully sent generic message with id %s to recipient %s",
-//         messageId, recipientId);
-//     } else {
-//       console.error("Unable to send message.");
-//       console.error(response);
-//       console.error(error);
-//     }
-//   });
-// }
+    console.log("Received message for user %d and page %d at %d with message:",
+      senderID, recipientID, timeOfMessage);
+    // console.log(JSON.stringify(message));
+
+    var messageId = message.mid;
+
+    var messageText = message.text;
+    var messageAttachments = message.attachments;
+
+    if (messageText) {
+
+      var apiai_request = apiai_app.textRequest(messageText, {
+          sessionId: 'mp-bot'
+      });
+
+      apiai_request.on('response', function(response) {
+        var responseText = response.fulfillment.speech;
+        console.log('response is ', response);
+        console.log('responseText is ', response);
+        sendTextMessage(senderID, responseText);
+      });
+
+      apiai_request.on('error', function(error) {
+          console.log(error);
+      });
+
+      apiai_request.end();
+
+    }
+}
+
+
+function sendTextMessage(recipientId, messageText) {
+
+
+  callSendAPI(messageData);
+}
+
+function callSendAPI(messageData) {
+  request({
+    uri: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
+    method: 'POST',
+    json: messageData
+
+  }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var recipientId = body.recipient_id;
+      var messageId = body.message_id;
+
+      console.log("Successfully sent generic message with id %s to recipient %s",
+        messageId, recipientId);
+    } else {
+      console.error("Unable to send message.");
+      console.error(response);
+      console.error(error);
+    }
+  });
+}
