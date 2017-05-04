@@ -132,5 +132,3 @@ function callSendAPI(messageData) {
     }
   });
 }
-
-module.exports = server;
