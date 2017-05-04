@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node webhook.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon webhook.js"
+    "dev": "nodemon webhook.js",
+    "test": "node tests/tests.js | tap-spec",
+    "coverage": "istanbul cover tests/tests.js"
   },
   "repository": {
     "type": "git",
@@ -23,12 +24,17 @@
     "body-parser": "^1.17.1",
     "env2": "^2.1.1",
     "express": "^4.15.2",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "tape": "^4.6.3"
   },
   "devDependencies": {
+    "codecov": "^2.1.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.1.3",
     "eslint-plugin-import": "^2.2.0",
-    "nodemon": "^1.11.0"
+    "istanbul": "^0.4.5",
+    "nodemon": "^1.11.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
   }
 }
