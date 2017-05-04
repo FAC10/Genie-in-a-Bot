@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node webhook.js",
-    "test": "istanbul cover tests/tests.js | tap-spec",
-    "dev": "nodemon webhook.js"
+    "dev": "nodemon webhook.js",
+    "test": "node tests/tests.js | tap-spec",
+    "coverage": "istanbul cover tests/tests.js"
   },
   "repository": {
     "type": "git",
