@@ -45,7 +45,7 @@ app.post('/webhook', (req, res) => {
 
       // Iterate over each messaging event
       entry.messaging.forEach((event) => {
-        if (event.postback.payload) {
+        if (event.postback.payload === 'FACEBOOK_WELCOME') {
 
 
         var messageData = {
