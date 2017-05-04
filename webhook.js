@@ -53,15 +53,15 @@ app.post('/webhook', (req, res) => {
         if (event.postback.payload && event.postback.payload === 'FACEBOOK_WELCOME') {
 
 
-        var messageData = {
-          recipient: {
-            id: event.recipient.id,
-          },
-          message: {
-            text: 'Is this working??',
-          },
-          }
-          callSendAPI(messageData);
+        // var messageData = {
+        //   recipient: {
+        //     id: event.recipient.id,
+        //   },
+        //   message: {
+        //     text: 'Is this working??',
+        //   },
+        //   }
+          // callSendAPI(messageData);
 
 
           // var responseText= 'Is this working?';
