@@ -83,9 +83,9 @@ function receivedMessage(event) {
   const timeOfMessage = event.timestamp;
   const message = event.message;
 
-  console.log('Received message for user %d and page %d at %d with message: %d',
-      senderID, recipientID, timeOfMessage, message.quick_reply);
-    // console.log(JSON.stringify(message));
+  console.log('Received message for user %d and page %d at %d with message:',
+      senderID, recipientID, timeOfMessage);
+  console.log(JSON.stringify(message));
 
   const messageId = message.mid;
 
