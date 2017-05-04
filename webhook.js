@@ -57,9 +57,10 @@ app.post('/webhook', (req, res) => {
           recipient: {
             id: event.sender.id,
           },
-          message: {
-            text: 'Is this working??',
-          },
+          message: [{ text:
+'Hey [name], I\'m your personal assistant in the run up to the General Elections!
+Type your postcode or send me your location to get started .' , quick_replies: [{ content_type: 'location', }
+] }],
           }
           callSendAPI(messageData);
 
