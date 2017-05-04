@@ -45,7 +45,7 @@ app.post('/webhook', (req, res) => {
 
       // Iterate over each messaging event
       entry.messaging.forEach((event) => {
-        if (event.postback.payload === 'FACEBOOK_WELCOME') {
+        if (event.postback && event.postback.payload === 'FACEBOOK_WELCOME') {
 
 
         var messageData = {
@@ -57,7 +57,6 @@ app.post('/webhook', (req, res) => {
           },
           }
           callSendAPI(messageData);
-              res.sendStatus(200);
 
         }
         else if (event.message) {
