@@ -45,12 +45,25 @@ app.post('/webhook', (req, res) => {
 
       // Iterate over each messaging event
       entry.messaging.forEach((event) => {
-        if (event.message) {
+        if (event.postback && event.postback.payload === 'FACEBOOK_WELCOME') {
+
+
+        var messageData = {
+          recipient: {
+            id: event.sender.id,
+          },
+          message: {
+            text: 'Hey [name], I\'m your personal assistant in the run up to the General Elections! Type your postcode or send me your location to get started .',
+          },
+          }
+          callSendAPI(messageData);
+
+        }
+        else if (event.message) {
+          console.log('inside event.message if statement')
           receivedMessage(event);
         }
-        if (event.postback.payload === 'FACEBOOK_WELCOME') {
-          console.log('you clicked get started');
-        } else {
+         else {
           console.log('Webhook received unknown event: ', event);
         }
       });
@@ -86,7 +99,7 @@ function receivedMessage(event) {
     });
 
     apiai_request.on('response', (response) => {
-      const responseText = response.result.fulfillment.speech;
+      let responseText = response.result.fulfillment.speech;
         // console.log('response is ', response);
       console.log('responseText is ', responseText);
       sendTextMessage(senderID, responseText);
