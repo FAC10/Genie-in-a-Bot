@@ -4,8 +4,8 @@
   "description": "An app to help people learn about the UK General Elections",
   "main": "index.js",
   "scripts": {
-    "start": "node webhook.js",
-    "dev": "nodemon webhook.js",
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js",
     "test": "node tests/tests.js | tap-spec",
     "coverage": "istanbul cover tests/tests.js"
   },

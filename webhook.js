@@ -37,7 +37,6 @@ app.get('/webhook', (req, res) => {
 app.post('/webhook', (req, res) => {
   const data = req.body;
 
-  // Make sure this is a page subscription
   if (data.object === 'page') {
     // Iterate over each entry - there may be multiple if batched
     data.entry.forEach((entry) => {
@@ -72,6 +71,7 @@ function receivedMessage(event) {
   const recipientID = event.recipient.id;
   const timeOfMessage = event.timestamp;
   const message = event.message;
+
   console.log('Received message for user %d and page %d at %d with message:',
       senderID, recipientID, timeOfMessage);
     // console.log(JSON.stringify(message));
@@ -88,7 +88,8 @@ function receivedMessage(event) {
 
     apiai_request.on('response', (response) => {
       const responseText = response.result.fulfillment.speech;
-      // console.log('responseText is ', responseText);
+        // console.log('response is ', response);
+      console.log('responseText is ', responseText);
       sendTextMessage(senderID, responseText);
     });
 
