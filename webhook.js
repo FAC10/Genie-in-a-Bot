@@ -52,7 +52,6 @@ app.post('/webhook', (req, res) => {
           console.log('you clicked get started');
         } else {
           console.log('Webhook received unknown event: ', event);
-          console.log('payload is ', event.postback.payload);
         }
       });
     });
