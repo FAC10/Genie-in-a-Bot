@@ -63,9 +63,6 @@ app.post('/webhook', (req, res) => {
           }
           callSendAPI(messageData);
 
-
-          var responseText= 'Is this working?';
-          receivedMessage(event);
         } else {
           console.log('Webhook received unknown event: ', event);
         }
