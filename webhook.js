@@ -47,12 +47,12 @@ app.post('/webhook', (req, res) => {
       entry.messaging.forEach((event) => {
 
         if (event.message) {
-
+          console.log('inside event.message if statement')
           receivedMessage(event);
         }
         if (event.postback.payload) {
 
-      console.log(event);
+      
         var messageData = {
           recipient: {
             id: event.sender.id,
