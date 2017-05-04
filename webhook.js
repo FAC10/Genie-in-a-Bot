@@ -57,6 +57,7 @@ app.post('/webhook', (req, res) => {
           },
           }
           callSendAPI(messageData);
+              res.sendStatus(200);
 
         }
         else if (event.message) {
