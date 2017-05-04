@@ -48,8 +48,12 @@ app.post('/webhook', (req, res) => {
       entry.messaging.forEach((event) => {
         if (event.message) {
           receivedMessage(event);
+        }
+        if (event.postback.payload === 'FACEBOOK_WELCOME') {
+          console.log('you clicked get started');
         } else {
           console.log('Webhook received unknown event: ', event);
+          console.log('payload is ', event.postback.payload);
         }
       });
     });
@@ -68,7 +72,6 @@ function receivedMessage(event) {
   const recipientID = event.recipient.id;
   const timeOfMessage = event.timestamp;
   const message = event.message;
-  console.log('whole message object is ', message);
   console.log('Received message for user %d and page %d at %d with message:',
       senderID, recipientID, timeOfMessage);
     // console.log(JSON.stringify(message));
@@ -85,8 +88,7 @@ function receivedMessage(event) {
 
     apiai_request.on('response', (response) => {
       const responseText = response.result.fulfillment.speech;
-        // console.log('response is ', response);
-      console.log('responseText is ', responseText);
+      // console.log('responseText is ', responseText);
       sendTextMessage(senderID, responseText);
     });
 
