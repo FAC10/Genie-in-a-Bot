@@ -2,6 +2,7 @@ const checkAPIAI = require('../helper_functions/checkAPIAI');
 const sendToFB = require('../helper_functions/sendToFB');
 const welcome_message = require('../helper_functions/answer_objects.js');
 const express = require('express');
+const getFacebookName = require('./../helper_functions/getFacebookName');
 
 const app = express.Router();
 
@@ -29,6 +30,7 @@ module.exports = [
               },
               message: welcome_message,
             };
+            getFacebookName(event.sender.id);
             sendToFB(messageData);
           } else {
             console.log('Webhook received unknown event: ', event);
