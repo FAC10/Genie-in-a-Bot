@@ -1,13 +1,14 @@
 const sendToFB = require('./sendToFB');
+const welcome_message = require('./answer_objects.js');
 
 module.exports = (senderID, intent, contexts) => {
-  const messageData = {
-    recipient: {
-      id: senderID,
-    },
-    message: {
-      text: 'YAY IT IS WORKING',
-    },
-  };
-  sendToFB(messageData);
+  if (intent === 'welcome_message') {
+    const messageData = {
+      recipient: {
+        id: senderID,
+      },
+      message: welcome_message,
+    };
+    sendToFB(messageData);
+  }
 };
