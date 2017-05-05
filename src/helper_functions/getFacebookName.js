@@ -8,7 +8,13 @@ function getFacebookName(facebookId) {
       return err;
     }
     JSON.parse(body);
-    console.log(body);
+    // note, this also returns location and gender, in case we need these in the future
+    console.log(body.first_name);
+    const userDetails = {};
+    userDetails.firstname = body.first_name;
+    userDetails.lastname = body.last_name;
+    userDetails.facebook_id = facebookId;
+    console.log(userDetails);
   });
 }
 
