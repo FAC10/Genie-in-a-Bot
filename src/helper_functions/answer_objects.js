@@ -38,48 +38,43 @@ const answer_objects= {
           {
             content_type:'text',
             title:'Conservative',
-            payload:'Conservative'
+            payload:'party_votes'
           },
           {
             content_type: 'text',
             title:'Labour',
-            payload:'Labour'
+            payload:'party_votes'
           },
           {
             content_type: 'text',
             title:'Lib Dem',
-            payload:'Lib Dem'
+            payload:'party_votes'
           },
           {
             content_type: 'text',
             title:'UKIP',
-            payload:'UKIP'
+            payload:'party_votes'
           }
         ]
 
 
   },
 
-  votes_message: {
-    attachment:{
-      type:'template',
-      payload: {
-        template_type:'button',
+  party_votes: {
+
         text:'Let\'s see how they voted on:',
-        buttons:[
+        quick_replies:[
           {
-            type:'postback',
+            context_type:'text',
             title:'Brexit',
             payload:'Brexit'
           },
           {
-            type:'postback',
+            context_type:'text',
             title:'Tuition fees',
             payload:'Tuition fees'
           }
         ]
-      }
-    }
   }
 }
 
