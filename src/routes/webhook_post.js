@@ -27,7 +27,7 @@ module.exports = [
               recipient: {
                 id: event.sender.id,
               },
-              message: answer_objects[welcome_message],
+              message: answer_objects.welcome_message,
             };
             sendToFB(messageData);
           } else {
