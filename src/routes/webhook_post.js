@@ -28,7 +28,6 @@ module.exports = [
             console.log('payload is ', event.postback.payload);
             getFacebookName(event.sender.id);
             findLocalReply(event.sender.id, event.postback.payload);
-
           } else {
             console.log('Webhook received unknown event: ', event);
           }
