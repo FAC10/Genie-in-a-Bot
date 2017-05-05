@@ -21,15 +21,10 @@ module.exports = [
         // Iterate over each messaging event
         entry.messaging.forEach((event) => {
           if (event.message) {
-            console.log('inside event.message if statement');
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
-            // const messageData = {
-            //   recipient: {
-            //     id: event.sender.id,
-            //   },
-            //   message: answer_objects.welcome_message,
-            // };
+            console.log('payload is ', payload);
+
             findLocalReply(event.sender.id, event.postback.payload);
           } else {
             console.log('Webhook received unknown event: ', event);
