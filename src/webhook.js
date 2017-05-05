@@ -5,7 +5,7 @@ const app = express();
 require('env2')('./config.env');
 
 const checkAPIAI = require('./helper_functions/checkAPIAI');
-const callSendAPI = require('./helper_functions/callSendAPI');
+const sendToFB = require('./helper_functions/sendToFB');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -61,7 +61,7 @@ app.post('/webhook', (req, res) => {
               ],
             },
           };
-          callSendAPI(messageData);
+          sendToFB(messageData);
         } else {
           console.log('Webhook received unknown event: ', event);
         }
