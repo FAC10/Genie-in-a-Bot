@@ -28,14 +28,14 @@ module.exports = (event) => {
       const responseText = response.result.fulfillment.speech;
       const intent = response.result.metadata.intentName;
       const context = response.result.contexts;
-      console.log('intent is ', intent);
-      console.log('context is ', context);
-        // console.log('response is ', response);
+
+      console.log('response is ', response);
       console.log('responseText is ', responseText);
       if (responseText) {
-        console.log('responseText exists');
+        sendTextMessage(senderID, responseText);
+      } else {
+        console.log('our logic will go here');
       }
-      sendTextMessage(senderID, responseText);
     });
 
     apiai_request.on('error', (error) => {
