@@ -15,7 +15,7 @@ function getFacebookName(facebookId) {
     userDetails.firstname = parsedBody.first_name;
     userDetails.lastname = parsedBody.last_name;
     userDetails.facebook_id = Number(facebookId);
-
+    console.log('userDetails are ', userDetails);
     // pushes to the database
     post.userDetails(userDetails, (error) => {
       if (error) {

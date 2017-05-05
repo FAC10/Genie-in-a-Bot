@@ -26,6 +26,7 @@ module.exports = [
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
             console.log('payload is ', event.postback.payload);
+            console.log('sender id in webhook_post is', event.sender.id);
             getFacebookName(event.sender.id);
             findLocalReply(event.sender.id, event.postback.payload);
           } else {
