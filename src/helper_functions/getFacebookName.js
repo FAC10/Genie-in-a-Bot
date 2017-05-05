@@ -2,7 +2,7 @@ const request = require('request');
 require('env2')('./config.env');
 const post = require('./../database/db_post');
 
-function getFacebookName(facebookId) {
+function getFacebookName(facebookId, cb) {
   const url = `https://graph.facebook.com/v2.6/${facebookId}?access_token=${process.env.PAGE_ACCESS_TOKEN}`;
   console.log(url);
   request(url, (err, res, body) => {
@@ -23,6 +23,7 @@ function getFacebookName(facebookId) {
       if (error) {
         console.log(error);
       }
+      return userDetails;
     });
   });
   console.log('after the request module');
