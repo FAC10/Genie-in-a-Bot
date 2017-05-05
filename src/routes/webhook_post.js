@@ -23,7 +23,7 @@ module.exports = [
           if (event.message) {
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
-            console.log('payload is ', payload);
+            console.log('payload is ', event.postback.payload);
 
             findLocalReply(event.sender.id, event.postback.payload);
           } else {
