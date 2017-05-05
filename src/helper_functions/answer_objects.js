@@ -65,12 +65,12 @@ const answer_objects= {
         text:'Let\'s see how they voted on:',
         quick_replies:[
           {
-            context_type:'text',
+            content_type:'text',
             title:'Brexit',
             payload:'Brexit'
           },
           {
-            context_type:'text',
+            content_type:'text',
             title:'Tuition fees',
             payload:'Tuition fees'
           }
