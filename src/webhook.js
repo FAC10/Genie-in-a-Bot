@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 require('env2')('./config.env');
 
-const receivedMessage = require('./helper_functions/recievedMessage');
+const receivedMessage = require('./helper_functions/checkAPIAI');
 const callSendAPI = require('./helper_functions/callSendAPI');
 
 app.use(bodyParser.json());

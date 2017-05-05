@@ -1,7 +1,7 @@
 const apiai = require('apiai');
 
 const apiai_app = apiai(process.env.APIAI_CLIENT);
-const sendTextMessage = require('./checkAPIAI');
+const sendTextMessage = require('./sendTextMessage');
 
 module.exports = (event) => {
   const senderID = event.sender.id;
