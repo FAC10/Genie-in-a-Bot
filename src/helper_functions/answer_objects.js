@@ -31,7 +31,7 @@ const answer_objects= {
   },
 
 
-  party_select_message: {
+  parties: {
     attachment:{
       type:'template',
       payload: {
