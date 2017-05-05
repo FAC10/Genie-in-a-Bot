@@ -1,7 +1,8 @@
 const apiai = require('apiai');
 
 const apiai_app = apiai(process.env.APIAI_CLIENT);
-const sendTextMessage = require('./sendTextMessage');
+const constructRemoteReply = require('./constructRemoteReply');
+const findLocalReply = require('./findLocalReply');
 
 module.exports = (event) => {
   const senderID = event.sender.id;
@@ -11,7 +12,8 @@ module.exports = (event) => {
 
   console.log('Received message for user %d and page %d at %d with message:',
       senderID, recipientID, timeOfMessage);
-  console.log(JSON.stringify(message));
+
+  // console.log(JSON.stringify(message));
 
   const messageId = message.mid;
 
@@ -25,9 +27,15 @@ module.exports = (event) => {
 
     apiai_request.on('response', (response) => {
       const responseText = response.result.fulfillment.speech;
-        // console.log('response is ', response);
+      const intent = response.result.metadata.intentName;
+      const contexts = response.result.contexts;
       console.log('responseText is ', responseText);
-      sendTextMessage(senderID, responseText);
+      if (responseText) {
+        constructRemoteReply(senderID, responseText);
+      } else {
+        console.log('sending to local reply logic');
+        findLocalReply(senderID, intent, contexts);
+      }
     });
 
     apiai_request.on('error', (error) => {
