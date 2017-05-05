@@ -6,7 +6,7 @@ CREATE TABLE users (
   id          SERIAL        PRIMARY KEY,
   firstname   VARCHAR(30)   NOT NULL,
   lastname    VARCHAR(50),
-  facebook_id INTEGER       UNIQUE,
+  facebook_id BIGINT       UNIQUE,
   postcode    VARCHAR(10)
 );
 
