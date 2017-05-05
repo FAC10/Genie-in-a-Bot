@@ -6,10 +6,9 @@ function getFacebookName(facebookId) {
   const url = `https://graph.facebook.com/v2.6/${facebookId}?access_token=${process.env.PAGE_ACCESS_TOKEN}`;
   request(url, (err, res, body) => {
     if (err) {
-      return err;
+      console.log(err);
     }
     const parsedBody = JSON.parse(body);
-    console.log(parsedBody);
     // note, this also returns location and gender, in case we need these in the future
 
     const userDetails = {};
