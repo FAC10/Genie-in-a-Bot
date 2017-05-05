@@ -2,7 +2,7 @@ const receivedMessage = require('./../helper_functions/recievedMessage');
 const callSendAPI = require('./../helper_functions/callSendAPI');
 const express = require('express');
 
-const app = express();
+const app = express.Router();
 
 // Listen for messages from user
 

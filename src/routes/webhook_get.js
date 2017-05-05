@@ -1,6 +1,7 @@
 const express = require('express');
+require('env2')('./config.env');
 
-const app = express();
+const app = express.Router();
 
 /* For Facebook Validation */
 module.exports = [
