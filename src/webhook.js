@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 require('env2')('./config.env');
 
-const receivedMessage = require('./helper_functions/checkAPIAI');
+const checkAPIAI = require('./helper_functions/checkAPIAI');
 const callSendAPI = require('./helper_functions/callSendAPI');
 
 app.use(bodyParser.json());
@@ -48,7 +48,7 @@ app.post('/webhook', (req, res) => {
       entry.messaging.forEach((event) => {
         if (event.message) {
           console.log('inside event.message if statement');
-          receivedMessage(event);
+          checkAPIAI(event);
         } else if (event.postback && event.postback.payload === 'FACEBOOK_WELCOME') {
           const messageData = {
             recipient: {
