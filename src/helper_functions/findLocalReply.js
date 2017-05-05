@@ -7,6 +7,7 @@ module.exports = (senderID, intent, contexts) => {
   const firstName = get.firstName(senderID, (err) => {
     if (err) return err;
   });
+  console.log('firstname is ', firstName);
   const answer_objects = constructAnswers(firstName);
   for (const key in answer_objects) {
     if (key === intent) {

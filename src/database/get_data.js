@@ -6,6 +6,7 @@ get.firstName = (facebookId, callback) => connect.query('SELECT firstname FROM u
   if (err) {
     return callback(err);
   }
+  console.log('res is ', res);
   return callback(null, res);
 });
 
