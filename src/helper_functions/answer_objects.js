@@ -1,12 +1,14 @@
 
-  const location_message = {
+const answer_objects= {
+
+  location_message:{
     text: 'Type your postcode or send me your location to get started :)',
     quick_replies: [
     { content_type: 'location' },
     ],
-  };
+  },
 
-  const welcome_message = {
+  FACEBOOK_WELCOME: {
     attachment:{
       type:'template',
       payload: {
@@ -26,67 +28,59 @@
         ]
       }
     }
-  };
+  },
 
 
-  const party_select_message = {
-    attachment:{
-      type:'template',
-      payload: {
-        template_type:'button',
+  Parties: {
+
         text:'Pick a party you\'re interested in.',
-        buttons:[
+        quick_replies:[
           {
-            type:'postback',
+            content_type:'text',
             title:'Conservative',
-            payload:'Conservative'
+            payload:'party_votes'
           },
           {
-            type:'postback',
+            content_type: 'text',
             title:'Labour',
-            payload:'Labour'
+            payload:'party_votes'
           },
           {
-            type:'postback',
+            content_type: 'text',
             title:'Lib Dem',
-            payload:'Lib Dem'
+            payload:'party_votes'
           },
           {
-            type:'postback',
+            content_type: 'text',
             title:'UKIP',
-            payload:'UKIP'
+            payload:'party_votes'
           }
         ]
-      }
-    }
-  };
 
-  const votes_message = {
-    attachment:{
-      type:'template',
-      payload: {
-        template_type:'button',
+
+  },
+
+  party_votes: {
+
         text:'Let\'s see how they voted on:',
-        buttons:[
+        quick_replies:[
           {
-            type:'postback',
+            content_type:'text',
             title:'Brexit',
             payload:'Brexit'
           },
           {
-            type:'postback',
+            content_type:'text',
             title:'Tuition fees',
             payload:'Tuition fees'
           }
         ]
-      }
-    }
-  };
-
-  
+  }
+}
 
 
 
 
 
-  module.exports = welcome_message;
+
+  module.exports = answer_objects;
