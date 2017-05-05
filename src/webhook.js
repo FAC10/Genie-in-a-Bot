@@ -55,7 +55,7 @@ app.post('/webhook', (req, res) => {
               id: event.sender.id,
             },
             message: {
-              text: `Hey ${firstName}, I\'m your personal assistant in the run up to the General Elections! I can help you find out about the candidates standing in your area, what the parties are offering you and more!`,
+              text: `Hey ${firstName}, I'm your personal assistant in the run up to the General Elections! I can help you find out about the candidates standing in your area, what the parties are offering you and more!`,
               quick_replies: [
               { content_type: 'location' },
               ],

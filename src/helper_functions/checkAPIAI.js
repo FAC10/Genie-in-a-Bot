@@ -33,7 +33,8 @@ module.exports = (event) => {
       if (responseText) {
         constructRemoteReply(senderID, responseText);
       } else {
-        findLocalReply(senderID, intent, contexts);
+        console.log('send to local reply');
+        // findLocalReply(senderID, intent, contexts);
       }
     });
 
