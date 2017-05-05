@@ -1,12 +1,14 @@
 
-  const location_message = {
+const answer_objects= {
+
+  location_message:{
     text: 'Type your postcode or send me your location to get started :)',
     quick_replies: [
     { content_type: 'location' },
     ],
-  };
+  },
 
-  const welcome_message = {
+  welcome_message:{
     attachment:{
       type:'template',
       payload: {
@@ -26,10 +28,10 @@
         ]
       }
     }
-  };
+  },
 
 
-  const party_select_message = {
+  party_select_message: {
     attachment:{
       type:'template',
       payload: {
@@ -59,9 +61,9 @@
         ]
       }
     }
-  };
+  },
 
-  const votes_message = {
+  votes_message: {
     attachment:{
       type:'template',
       payload: {
@@ -81,12 +83,12 @@
         ]
       }
     }
-  };
-
-  
-
+  }
+}
 
 
 
 
-  module.exports = welcome_message;
+
+
+  module.exports = answer_objects;
