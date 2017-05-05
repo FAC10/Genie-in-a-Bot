@@ -45,29 +45,28 @@ app.post('/webhook', (req, res) => {
 
       // Iterate over each messaging event
       entry.messaging.forEach((event) => {
-        if (event.postback && event.postback.payload === 'FACEBOOK_WELCOME') {
-
-
-        var messageData = {
-          recipient: {
-            id: event.sender.id,
-          },
-          message: {
-            text: 'Hey [name], I\'m your personal assistant in the run up to the General Elections! Type your postcode or send me your location to get started .',
-          },
-          }
-          callSendAPI(messageData);
-
-        }
-        else if (event.message) {
-          console.log('inside event.message if statement')
+        if (event.message) {
+          console.log('inside event.message if statement');
           receivedMessage(event);
-        }
-         else {
+        } else if (event.postback && event.postback.payload === 'FACEBOOK_WELCOME') {
+          const messageData = {
+            recipient: {
+              id: event.sender.id,
+            },
+            message: {
+              text: 'Hey [name], I\'m your personal assistant in the run up to the General Elections! Type your postcode or send me your location to get started .',
+              quick_replies: [
+              { content_type: 'location' },
+              ],
+            },
+          };
+          callSendAPI(messageData);
+        } else {
           console.log('Webhook received unknown event: ', event);
         }
       });
     });
+
 
     // Assume all went well.
     //
@@ -86,7 +85,7 @@ function receivedMessage(event) {
 
   console.log('Received message for user %d and page %d at %d with message:',
       senderID, recipientID, timeOfMessage);
-    // console.log(JSON.stringify(message));
+  console.log(JSON.stringify(message));
 
   const messageId = message.mid;
 
@@ -99,7 +98,7 @@ function receivedMessage(event) {
     });
 
     apiai_request.on('response', (response) => {
-      let responseText = response.result.fulfillment.speech;
+      const responseText = response.result.fulfillment.speech;
         // console.log('response is ', response);
       console.log('responseText is ', responseText);
       sendTextMessage(senderID, responseText);
