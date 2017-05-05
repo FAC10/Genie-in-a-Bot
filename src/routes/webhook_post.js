@@ -1,6 +1,6 @@
 const checkAPIAI = require('../helper_functions/checkAPIAI');
 const sendToFB = require('../helper_functions/sendToFB');
-const welcome_message = require('../helper_functions/answer_objects.js');
+const answer_objects = require('../helper_functions/answer_objects.js');
 const express = require('express');
 
 const app = express.Router();
@@ -27,7 +27,7 @@ module.exports = [
               recipient: {
                 id: event.sender.id,
               },
-              message: welcome_message,
+              message: answer_objects[welcome_message],
             };
             sendToFB(messageData);
           } else {
