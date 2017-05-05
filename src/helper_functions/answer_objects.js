@@ -32,35 +32,32 @@ const answer_objects= {
 
 
   Parties: {
-    attachment:{
-      type:'template',
-      payload: {
-        template_type:'button',
+
         text:'Pick a party you\'re interested in.',
-        buttons:[
+        quick_replies:[
           {
-            type:'postback',
+            content_type:'text',
             title:'Conservative',
             payload:'Conservative'
           },
           {
-            type:'postback',
+            content_type: 'text',
             title:'Labour',
             payload:'Labour'
           },
           {
-            type:'postback',
+            content_type: 'text',
             title:'Lib Dem',
             payload:'Lib Dem'
           },
           {
-            type:'postback',
+            content_type: 'text',
             title:'UKIP',
             payload:'UKIP'
           }
         ]
-      }
-    }
+
+
   },
 
   votes_message: {
