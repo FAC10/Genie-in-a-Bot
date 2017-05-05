@@ -11,8 +11,8 @@ module.exports = (senderID, intent, contexts) => {
   const answer_objects = constructAnswers(firstName);
   for (const key in answer_objects) {
     if (key === intent) {
-      console.log(key);
-      console.log('found intent=', intent);
+      // console.log(key);
+      // console.log('found intent=', intent);
       const messageData = {
         recipient: {
           id: senderID,
