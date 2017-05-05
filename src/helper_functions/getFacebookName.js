@@ -10,6 +10,10 @@ function getFacebookName(facebookId) {
     }
     const parsedBody = JSON.parse(body);
     // note, this also returns location and gender, in case we need these in the future
+    Number(facebookId);
+    console.log(Typeof facebookId);
+    console.log(facebookId);
+
     const userDetails = {};
     userDetails.firstname = parsedBody.first_name;
     userDetails.lastname = parsedBody.last_name;

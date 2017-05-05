@@ -3,8 +3,6 @@ const connect = require('./db_connect');
 const post = {};
 
 post.userDetails = (userDetails, callback) => {
-  console.log('reaching userDetails function');
-  console.log(userDetails);
   connect.query('INSERT INTO users (firstname, lastname, facebook_id) VALUES ($1, $2, $3)', [userDetails.firstname, userDetails.lastname, userDetails.facebook_id],
   (err, res) => {
     if (err) {
