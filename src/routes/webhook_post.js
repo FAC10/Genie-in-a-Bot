@@ -1,5 +1,5 @@
-const receivedMessage = require('./../helper_functions/recievedMessage');
-const callSendAPI = require('./../helper_functions/callSendAPI');
+const checkAPIAI = require('../helper_functions/checkAPIAI');
+const sendToFB = require('../helper_functions/sendToFB');
 const welcome_message = require('../helper_functions/answer_objects.js');
 const express = require('express');
 
@@ -21,16 +21,15 @@ module.exports = [
         entry.messaging.forEach((event) => {
           if (event.message) {
             console.log('inside event.message if statement');
-            receivedMessage(event);
+            checkAPIAI(event);
           } else if (event.postback && event.postback.payload === 'FACEBOOK_WELCOME') {
-
             const messageData = {
               recipient: {
                 id: event.sender.id,
               },
               message: welcome_message,
             };
-            callSendAPI(messageData);
+            sendToFB(messageData);
           } else {
             console.log('Webhook received unknown event: ', event);
           }
