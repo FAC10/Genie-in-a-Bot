@@ -1,22 +1,21 @@
-const old_welcome_message = {
-  // recipient: {
-  //   id: event.sender.id,
-  // },
-  message: {
-    text: 'Hey [name], I\'m your personal assistant in the run up to the General Elections! Type your postcode or send me your location to get started .',
-    quick_replies: [
-    { content_type: 'location' },
-    ],
-  },
-};
-
+// const old_welcome_message = {
+//   // recipient: {
+//   //   id: event.sender.id,
+//   // },
+//   message: {
+//     text: 'Hey [name], I\'m your personal assistant in the run up to the General Elections! I can help you find out about the candidates standing in your area, what the parties are offering and more!',
+//     quick_replies: [
+//     { content_type: 'location' },
+//     ],
+//   },
+// };
 
   const welcome_message = {
     attachment:{
       type:'template',
       payload: {
         template_type:'button',
-        text:'Hey [name], I\'m your personal assistant in the run up to the General Elections! Type your postcode or send me your location to get started .',
+        text:'Hey [name], I\'m your personal assistant in the run up to the General Elections! I can help you find out about the candidates standing in your area, what the parties are offering and more!',
         buttons:[
           {
             type:'postback',

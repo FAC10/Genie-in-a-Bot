@@ -51,7 +51,7 @@ app.post('/webhook', (req, res) => {
           console.log('inside event.message if statement');
           receivedMessage(event);
         } else if (event.postback && event.postback.payload === 'FACEBOOK_WELCOME') {
-          console.log(welcome_message);
+        
           const messageData = {
             recipient: {
               id: event.sender.id,
