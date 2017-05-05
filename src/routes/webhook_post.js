@@ -3,6 +3,8 @@ const sendToFB = require('../helper_functions/sendToFB');
 const answer_objects = require('../helper_functions/answer_objects.js');
 const express = require('express');
 const findLocalReply = require('../helper_functions/findLocalReply.js');
+const getFacebookName = require('./../helper_functions/getFacebookName');
+
 
 const app = express.Router();
 
@@ -24,8 +26,9 @@ module.exports = [
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
             console.log('payload is ', event.postback.payload);
-
+            getFacebookName(event.sender.id);
             findLocalReply(event.sender.id, event.postback.payload);
+
           } else {
             console.log('Webhook received unknown event: ', event);
           }

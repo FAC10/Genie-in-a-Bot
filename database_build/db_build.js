@@ -7,7 +7,7 @@ const buildUsers = fs.readFileSync(path.join(__dirname, 'db_build.sql'), 'utf8')
 
 connect.query(buildUsers, (err, res) => {
   if (err) throw err;
-  console.log('Users table built successfully');
+  console.log('db built successfully');
 });
 
 

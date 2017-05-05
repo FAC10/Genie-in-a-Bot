@@ -1,12 +1,14 @@
-const connect = require('./../src/database/db_connect');
+const connect = require('./db_connect');
 
 const post = {};
 
 post.userDetails = (userDetails, callback) => {
-  connect.query('INSERT INTO users (firstname, lastname, facebook_id) VALUES ($1, $2, $3) RETURNING id', [userDetails.firstname, userDetails.lastname, userDetails.facebook_id],
+  connect.query('INSERT INTO users (firstname, lastname, facebook_id) VALUES ($1, $2, $3)', [userDetails.firstname, userDetails.lastname, userDetails.facebook_id],
   (err, res) => {
-    if (err) return callback(err);
-
+    if (err) {
+      console.log(err);
+      return callback(err);
+    }
     callback(null, res);
   });
 };

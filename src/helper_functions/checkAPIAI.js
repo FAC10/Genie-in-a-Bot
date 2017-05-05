@@ -1,4 +1,5 @@
 const apiai = require('apiai');
+require('env2')('./config.env');
 
 const apiai_app = apiai(process.env.APIAI_CLIENT);
 const constructRemoteReply = require('./constructRemoteReply');
@@ -12,8 +13,6 @@ module.exports = (event) => {
 
   console.log('Received message for user %d and page %d at %d with message:',
       senderID, recipientID, timeOfMessage);
-
-  // console.log(JSON.stringify(message));
 
   const messageId = message.mid;
 
