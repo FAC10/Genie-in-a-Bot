@@ -23,7 +23,7 @@ function getFacebookName(facebookId, cb) {
       if (error) {
         console.log(error);
       }
-      return userDetails;
+      cb();
     });
   });
   console.log('after the request module');
