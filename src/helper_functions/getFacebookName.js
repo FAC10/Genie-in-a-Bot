@@ -18,7 +18,7 @@ function getFacebookName(facebookId) {
     // pushes to the database
     post.userDetails(userDetails, (error) => {
       if (error) {
-        return error;
+        console.log(error);
       }
     });
   });
