@@ -8,8 +8,8 @@ get.firstName = (facebookId, callback) => connect.query('SELECT firstname FROM u
   }
   // console.log('resname is ', res.Result.rows.firstname);
   // console.log('res.Result.rows ', res.Result.rows);
-  console.log('res.rows is ', res.rows[0].firstname);
-  return callback(null, res.rows[0].firstname);
+  console.log('res.rows is ', res.rows[1]);
+  return callback(null, res.rows[1].firstname);
 });
 
 module.exports = get;
