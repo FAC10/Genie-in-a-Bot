@@ -1,5 +1,5 @@
-const checkAPIAI = require('./helper_functions/checkAPIAI');
-const sendToFB = require('./helper_functions/sendToFB');
+const checkAPIAI = require('../helper_functions/checkAPIAI');
+const sendToFB = require('../helper_functions/sendToFB');
 const welcome_message = require('../helper_functions/answer_objects.js');
 const express = require('express');
 
