@@ -13,18 +13,18 @@ const old_welcome_message = {
 
   const welcome_message = {
     attachment:{
-      type:template,
+      type:'template',
       payload: {
-        template_type:button,
+        template_type:'button',
         text:'Hey [name], I\'m your personal assistant in the run up to the General Elections! Type your postcode or send me your location to get started .',
         buttons:[
           {
-            type:postback,
+            type:'postback',
             title:'Candidates',
             payload:'Candidates'
           },
           {
-            type:postback,
+            type:'postback',
             title:'Parties',
             payload:'Parties'
           }
