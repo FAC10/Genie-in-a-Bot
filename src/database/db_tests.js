@@ -1,4 +1,4 @@
-const connect = require('./../src/database/db_connect');
+const connect = require('./db_connect');
 
 const post = {};
 
