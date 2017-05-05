@@ -25,6 +25,7 @@ function getFacebookName(facebookId) {
       }
     });
   });
+  console.log('after the request module');
 }
 
 module.exports = getFacebookName;
