@@ -1,5 +1,6 @@
 const request = require('request');
 require('env2')('./config.env');
+const post = require('./../database/db_post');
 
 function getFacebookName(facebookId) {
   const url = `https://graph.facebook.com/v2.6/${facebookId}?access_token=${process.env.PAGE_ACCESS_TOKEN}`;
@@ -9,12 +10,17 @@ function getFacebookName(facebookId) {
     }
     const parsedBody = JSON.parse(body);
     // note, this also returns location and gender, in case we need these in the future
-    console.log(parsedBody.first_name);
     const userDetails = {};
-    userDetails.firstname = body.first_name;
-    userDetails.lastname = body.last_name;
+    userDetails.firstname = parsedBody.first_name;
+    userDetails.lastname = parsedBody.last_name;
     userDetails.facebook_id = facebookId;
-    console.log(userDetails);
+
+    // pushes to the database
+    post.userDetails(userDetails, (error) => {
+      if (error) {
+        return error;
+      }
+    });
   });
 }
 
