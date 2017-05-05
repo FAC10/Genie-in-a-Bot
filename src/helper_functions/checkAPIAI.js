@@ -12,7 +12,6 @@ module.exports = (event) => {
   console.log('Received message for user %d and page %d at %d with message:',
       senderID, recipientID, timeOfMessage);
 
-  console.log(event);
   // console.log(JSON.stringify(message));
 
   const messageId = message.mid;
@@ -27,8 +26,15 @@ module.exports = (event) => {
 
     apiai_request.on('response', (response) => {
       const responseText = response.result.fulfillment.speech;
+      const intent = response.result.metadata.intentName;
+      const context = response.result.contexts;
+      console.log('intent is ', intent);
+      console.log('context is ', context);
         // console.log('response is ', response);
       console.log('responseText is ', responseText);
+      if (responseText) {
+        console.log('responseText exists');
+      }
       sendTextMessage(senderID, responseText);
     });
 
