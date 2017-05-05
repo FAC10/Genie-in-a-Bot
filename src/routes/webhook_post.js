@@ -5,7 +5,6 @@ const express = require('express');
 const findLocalReply = require('../helper_functions/findLocalReply.js');
 const getFacebookName = require('./../helper_functions/getFacebookName');
 
-
 const app = express.Router();
 
 // Listen for messages from user
@@ -26,8 +25,11 @@ module.exports = [
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
             console.log('payload is ', event.postback.payload);
-            getFacebookName(event.sender.id);
-            findLocalReply(event.sender.id, event.postback.payload);
+
+            getFacebookName(event.sender.id, () => {
+              console.log('I am going to send findLocalReply');
+              findLocalReply(event.sender.id, event.postback.payload);
+            });
           } else {
             console.log('Webhook received unknown event: ', event);
           }
