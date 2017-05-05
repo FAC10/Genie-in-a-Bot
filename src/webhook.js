@@ -52,18 +52,13 @@ app.post('/webhook', (req, res) => {
           receivedMessage(event);
         } else if (event.postback && event.postback.payload === 'FACEBOOK_WELCOME') {
           console.log(welcome_message);
-          // const messageData = {
-          //   recipient: {
-          //     id: event.sender.id,
-          //   },
-          //   message: {
-          //     text: 'Hey [name], I\'m your personal assistant in the run up to the General Elections! Type your postcode or send me your location to get started .',
-          //     quick_replies: [
-          //     { content_type: 'location' },
-          //     ],
-          //   },
-          // };
-          callSendAPI(welcome_message);
+          const messageData = {
+            recipient: {
+              id: event.sender.id,
+            },
+            message: welcome_message,
+          };
+          callSendAPI(messageData);
         } else {
           console.log('Webhook received unknown event: ', event);
         }
