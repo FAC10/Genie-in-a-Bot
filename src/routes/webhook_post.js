@@ -22,14 +22,14 @@ module.exports = [
           if (event.message) {
             console.log('inside event.message if statement');
             checkAPIAI(event);
-          } else if (event.postback && event.postback.payload === 'FACEBOOK_WELCOME') {
-            const messageData = {
-              recipient: {
-                id: event.sender.id,
-              },
-              message: answer_objects.welcome_message,
-            };
-            sendToFB(messageData);
+          } else if (event.postback && event.postback.payload) {
+            // const messageData = {
+            //   recipient: {
+            //     id: event.sender.id,
+            //   },
+            //   message: answer_objects.welcome_message,
+            // };
+            findLocalReply(event.sender.id, event.postback.payload);
           } else {
             console.log('Webhook received unknown event: ', event);
           }

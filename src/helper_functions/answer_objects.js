@@ -8,7 +8,7 @@ const answer_objects= {
     ],
   },
 
-  welcome_message:{
+  FACEBOOK_WELCOME: {
     attachment:{
       type:'template',
       payload: {
