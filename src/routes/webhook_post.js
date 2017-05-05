@@ -2,6 +2,7 @@ const checkAPIAI = require('../helper_functions/checkAPIAI');
 const sendToFB = require('../helper_functions/sendToFB');
 const answer_objects = require('../helper_functions/answer_objects.js');
 const express = require('express');
+const findLocalReply = require('../helper_functions/findLocalReply.js');
 
 const app = express.Router();
 
