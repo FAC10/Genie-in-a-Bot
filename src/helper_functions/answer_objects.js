@@ -18,7 +18,7 @@ const old_welcome_message = {
   message:{
     attachment:{
       type:template,
-      payload:
+      payload: {
         template_type:button,
         text:'Hey [name], I\'m your personal assistant in the run up to the General Elections! Type your postcode or send me your location to get started .',
         buttons:[
@@ -36,5 +36,6 @@ const old_welcome_message = {
       }
     }
   }
+}
 
   module.exports = welcome_message;
