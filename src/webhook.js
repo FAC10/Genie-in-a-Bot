@@ -6,6 +6,7 @@ require('env2')('./config.env');
 
 const receivedMessage = require('./helper_functions/recievedMessage');
 const callSendAPI = require('./helper_functions/callSendAPI');
+const welcome_message = require('./helper_functions/answer_objects.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,18 +51,18 @@ app.post('/webhook', (req, res) => {
           console.log('inside event.message if statement');
           receivedMessage(event);
         } else if (event.postback && event.postback.payload === 'FACEBOOK_WELCOME') {
-          const messageData = {
-            recipient: {
-              id: event.sender.id,
-            },
-            message: {
-              text: 'Hey [name], I\'m your personal assistant in the run up to the General Elections! Type your postcode or send me your location to get started .',
-              quick_replies: [
-              { content_type: 'location' },
-              ],
-            },
-          };
-          callSendAPI(messageData);
+          // const messageData = {
+          //   recipient: {
+          //     id: event.sender.id,
+          //   },
+          //   message: {
+          //     text: 'Hey [name], I\'m your personal assistant in the run up to the General Elections! Type your postcode or send me your location to get started .',
+          //     quick_replies: [
+          //     { content_type: 'location' },
+          //     ],
+          //   },
+          // };
+          callSendAPI(welcome_message);
         } else {
           console.log('Webhook received unknown event: ', event);
         }
