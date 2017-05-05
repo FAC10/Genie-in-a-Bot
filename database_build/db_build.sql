@@ -12,7 +12,6 @@ CREATE TABLE users (
 
 INSERT INTO users (firstname, lastname, facebook_id, postcode)
 VALUES
-('Maja', 'Kudlicka', 517916098, 'E2 0ET'),
-('Alice', 'BC', 517916097, 'E1 4UF');
+('Maja', 'Kudlicka', 517916098, 'E2 0ET');
 
 COMMIT;
