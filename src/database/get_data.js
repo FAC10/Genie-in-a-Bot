@@ -8,9 +8,12 @@ get.firstName = (facebookId, callback) => connect.query('SELECT firstname FROM u
   }
   // console.log('resname is ', res.Result.rows.firstname);
   // console.log('res.Result.rows ', res.Result.rows);
-  console.log('res.rows is ', JSON.parse(res.rows[0]));
-  // console.log('res is ', res);
-
+  const rows = res.rows;
+  const rowsZero = rows[0] || 'Did not work';
+  const rowsName = rowsZero.firstname || 'Also did not work';
+  console.log(rows);
+  console.log(rowsZero);
+  console.log(rowsName);
   return callback(null, JSON.parse(res.rows[0]).firstname);
 });
 
