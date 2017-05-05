@@ -1,4 +1,4 @@
-const answer_objects = require('./answer_objects');
+const welcome_message = require('./answer_objects');
 const sendToFB = require('./sendToFB');
 
 module.exports = (senderID, intent, contexts) => {
@@ -6,9 +6,7 @@ module.exports = (senderID, intent, contexts) => {
     recipient: {
       id: senderID,
     },
-    message: {
-      text: 'we got into our function yay',
-    },
+    message: welcome_message,
   };
   sendToFB(messageData);
 };
