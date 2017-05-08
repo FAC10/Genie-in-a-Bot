@@ -34,6 +34,8 @@ module.exports = (event) => {
         contexts = resolvedQuery;
         console.log(contexts);
       } else if (intent === 'Conservative' || intent === 'Labour' || intent === 'Lib Dem' || intent === 'SNP' || intent === 'UKIP') {
+        console.log(resolvedQuery);
+        console.log(contexts);
         contexts += resolvedQuery;
         console.log(contexts);
       }
