@@ -45,7 +45,7 @@ module.exports = (event) => {
       if (responseText) {
         constructRemoteReply(senderID, responseText);
       } else {
-        findLocalReply(senderID, intent, contexts);
+        findLocalReply.findLocalReply(senderID, intent, contexts);
       }
     });
 
