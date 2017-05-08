@@ -9,6 +9,12 @@ post.userDetails = (userDetails, callback) => {
 
     console.log('user.rows', user.rows);
     console.log('user.rows[0]', user.rows[0]);
+    console.log('user.rows[0].facebook_id', user.rows[0].facebook_id);
+
+    const rows = user.rows;
+    const rowsZero = rows[0];
+    const rowsId = rowsZero.facebook_id;
+    console.log('rowsId is ', rowsId);
   });
 
 
