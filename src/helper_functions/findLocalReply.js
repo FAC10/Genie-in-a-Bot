@@ -13,7 +13,6 @@ module.exports = (senderID, intent, contexts) => {
       if (key === intent) {
           // console.log(key);
           // console.log('found intent=', intent);
-        console.log(answer_object);
         const messageData = {
           recipient: {
             id: senderID,
