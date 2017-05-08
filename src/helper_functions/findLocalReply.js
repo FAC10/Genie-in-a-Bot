@@ -21,6 +21,18 @@ module.exports = (senderID, intent, contexts) => {
           message: answer_objects[key],
         };
         sendToFB(messageData);
+      } else {
+        contexts.forEach((context) => {
+          if (key === context.name) {
+            const messageData = {
+              recipient: {
+                id: senderID,
+              },
+              message: answer_objects[key],
+            };
+            sendToFB(messageData);
+          }
+        });
       }
     }
   });

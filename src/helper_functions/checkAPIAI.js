@@ -27,21 +27,21 @@ module.exports = (event) => {
     apiai_request.on('response', (response) => {
       const responseText = response.result.fulfillment.speech;
       const intent = response.result.metadata.intentName;
-      let contexts = response.result.contexts;
+      const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
       console.log('intent is ', intent);
       console.log('contexts are ', contexts);
-      if (intent === 'party_votes') {
-        contexts = `${resolvedQuery}1`;
-        console.log('contexts2 are ', contexts);
-      }
-      if (contexts.name === 'Conservative') {
-        // console.log('RS is ', resolvedQuery);
-        // console.log('contexts are', contexts);
-        console.log('got in here');
-        contexts = contexts.name + resolvedQuery.name;
-        // console.log(contexts);
-      }
+      // if (intent === 'party_votes') {
+      //   contexts = `${resolvedQuery}1`;
+      //   console.log('contexts2 are ', contexts);
+      // }
+      // if (contexts.name === 'conservative') {
+      //   // console.log('RS is ', resolvedQuery);
+      //   // console.log('contexts are', contexts);
+      //   console.log('got in here');
+      //   contexts = contexts.name + resolvedQuery.name;
+      //   // console.log(contexts);
+      // }
       if (responseText) {
         constructRemoteReply(senderID, responseText);
       } else {
