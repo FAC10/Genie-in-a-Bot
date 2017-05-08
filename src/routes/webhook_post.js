@@ -21,8 +21,8 @@ module.exports = [
 
         // Iterate over each messaging event
         entry.messaging.forEach((event) => {
-          // const eventMessage = event.message;
-          console.log('Event.message.attachment ', JSON.stringify(event.message.attachments));
+          const eventMessage = event.message;
+          console.log('Event.message.attachment ', JSON.stringify(eventMessage.attachments));
           if (event.message) {
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
