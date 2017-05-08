@@ -11,7 +11,6 @@ post.userDetails = (userDetails, callback) => {
       connect.query('INSERT INTO users (firstname, lastname, facebook_id) VALUES ($1, $2, $3)', [userDetails.firstname, userDetails.lastname, userDetails.facebook_id],
       (err, res) => {
         if (err) {
-          console.log(err);
           return callback(err);
         }
         callback(null, res);
