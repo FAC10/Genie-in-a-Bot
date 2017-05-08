@@ -4,7 +4,7 @@ const constructAnswers = require('./answer_objects');
 const get = require('./../database/get_data');
 
 module.exports = (senderID, intent, contexts) => {
-  get.firstName(senderID, contexts, (err, firstName) => {
+  get.firstName(senderID, (err, firstName) => {
     if (err) {
       return err;
     }
@@ -13,6 +13,7 @@ module.exports = (senderID, intent, contexts) => {
       if (key === intent) {
           // console.log(key);
           // console.log('found intent=', intent);
+
         const messageData = {
           recipient: {
             id: senderID,

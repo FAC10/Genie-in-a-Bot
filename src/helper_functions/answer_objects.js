@@ -1,9 +1,4 @@
-// const get = require('./../database/get_data.js');
-
 function constructAnswers(firstName) {
-  // let partyVotesObj = {};
-  // get.partyVotes(contexts, ())
-
   const answer_objects = {
     location_message: {
       text: 'Type your postcode or send me your location to get started :)',
