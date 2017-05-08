@@ -3,7 +3,8 @@ const sendToFB = require('./sendToFB');
 const constructAnswers = require('./answer_objects');
 const get = require('./../database/get_data');
 
-module.exports = (senderID, intent, contexts) => {
+function findLocalReply(senderID, intent, contexts) {
+  console.log('find local reply contexts are', contexts);
   get.firstName(senderID, (err, firstName) => {
     if (err) {
       return err;
@@ -11,29 +12,32 @@ module.exports = (senderID, intent, contexts) => {
     const answer_objects = constructAnswers(firstName);
     for (const key in answer_objects) {
       if (key === intent) {
-          // console.log(key);
-          // console.log('found intent=', intent);
-          //
-        const messageData = {
-          recipient: {
-            id: senderID,
-          },
-          message: answer_objects[key],
-        };
+        const messageData = constructLocal(senderID, key, answer_objects);
         sendToFB(messageData);
       } else {
         contexts.forEach((context) => {
           if (key === context.name) {
-            const messageData = {
-              recipient: {
-                id: senderID,
-              },
-              message: answer_objects[key],
-            };
+            const messageData = constructLocal(senderID, key, answer_objects);
             sendToFB(messageData);
           }
         });
       }
     }
   });
+}
+
+function constructLocal(senderID, key, answer_objects) {
+  const messageData = {
+    recipient: {
+      id: senderID,
+    },
+    message: answer_objects[key],
+  };
+
+  return messageData;
+}
+
+module.exports = {
+  findLocalReply,
+  constructLocal,
 };
