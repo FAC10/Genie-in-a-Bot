@@ -3,8 +3,6 @@ const sendToFB = require('./sendToFB');
 const constructAnswers = require('./answer_objects');
 const get = require('./../database/get_data');
 
-// const localContext = '';
-
 module.exports = (senderID, intent, contexts) => {
   get.firstName(senderID, (err, firstName) => {
     if (err) {

@@ -30,6 +30,7 @@ module.exports = (event) => {
       const contexts = response.result.contexts;
 
       console.log('response.results is', response.result);
+      console.log('intent is ', intent);
       console.log('contexts are ', contexts);
 
       if (responseText) {
