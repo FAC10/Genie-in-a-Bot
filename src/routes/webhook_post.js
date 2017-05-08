@@ -23,7 +23,7 @@ module.exports = [
         entry.messaging.forEach((event) => {
           if (event.message) {
             if (event.message.attachments) {
-              console.log('Event.message.attachment ', JSON.stringify(event.message.attachments));
+              console.log('Event.message.attachment ', JSON.stringify(event.message.attachments[0].payload));
             }
           }
 
