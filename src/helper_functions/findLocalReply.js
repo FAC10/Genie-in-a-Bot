@@ -8,7 +8,7 @@ module.exports = (senderID, intent, contexts) => {
     if (err) {
       return err;
     }
-    const answer_objects = constructAnswers(firstName, contexts);
+    const answer_objects = constructAnswers(firstName);
     for (const key in answer_objects) {
       if (key === intent) {
           // console.log(key);

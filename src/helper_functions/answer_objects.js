@@ -1,6 +1,6 @@
-const get = require('./../database/get_data.js');
+// const get = require('./../database/get_data.js');
 
-function constructAnswers(firstName, contexts) {
+function constructAnswers(firstName) {
   // let partyVotesObj = {};
   // get.partyVotes(contexts, ())
 
