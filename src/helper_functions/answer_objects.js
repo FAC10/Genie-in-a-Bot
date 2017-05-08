@@ -79,13 +79,18 @@ function constructAnswers(firstName) {
       ],
     },
 
-    Brexit: {
+    BrexitConservative: {
 
-      text: 'Let\'s see how they voted on:',
+      text: 'Conservatives voted ......',
       quick_replies: [
         {
           content_type: 'text',
-          title: 'See another issue',
+          title: 'How do other parties compare?',
+          payload: 'partyBrexitCompare',
+        },
+        {
+          content_type: 'text',
+          title: 'Back to votes',
           payload: 'party_votes',
         },
         {
