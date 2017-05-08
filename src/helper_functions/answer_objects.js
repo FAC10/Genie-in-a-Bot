@@ -51,7 +51,12 @@ function constructAnswers(firstName) {
         },
         {
           content_type: 'text',
-          title: 'UKIP',
+          title: 'Green',
+          payload: 'party_votes',
+        },
+        {
+          content_type: 'text',
+          title: 'SNP',
           payload: 'party_votes',
         },
       ],
@@ -75,6 +80,24 @@ function constructAnswers(firstName) {
         },
       ],
     },
+
+    Brexit: {
+
+      text: 'Let\'s see how they voted on:',
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'See another issue',
+          payload: 'party_votes',
+        },
+        {
+          content_type: 'text',
+          title: 'Choose another party',
+          payload: 'Parties',
+        },
+      ],
+    },
+
   };
   return answer_objects;
 }
