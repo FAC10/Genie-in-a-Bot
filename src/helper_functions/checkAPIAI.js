@@ -27,11 +27,13 @@ module.exports = (event) => {
     apiai_request.on('response', (response) => {
       const responseText = response.result.fulfillment.speech;
       const intent = response.result.metadata.intentName;
-      const contexts = response.result.contexts;
+      let contexts = response.result.contexts;
+      const resolvedQuery = response.result.resolvedQuery;
 
-      console.log('response.results is', response.result);
-      console.log('intent is ', intent);
-      console.log('contexts are ', contexts);
+      if (intent === 'party_votes') {
+        contexts = resolvedQuery;
+        console.log(contexts);
+      }
 
       if (responseText) {
         constructRemoteReply(senderID, responseText);
