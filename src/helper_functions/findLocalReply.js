@@ -19,7 +19,6 @@ module.exports = (senderID, intent, contexts) => {
           },
           message: answer_objects[key],
         };
-        console.log(answer_objects);
         sendToFB(messageData);
       }
     }
