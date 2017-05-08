@@ -33,8 +33,11 @@ module.exports = (event) => {
       if (intent === 'party_votes') {
         contexts = resolvedQuery;
         console.log(contexts);
+      } else if (intent === 'Brexit' || intent === 'Tuition fees') {
+        contexts += intent;
+        console.log(contexts);
       }
-      console.log(intents);
+
       if (responseText) {
         constructRemoteReply(senderID, responseText);
       } else {
