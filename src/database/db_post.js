@@ -4,15 +4,14 @@ const post = {};
 
 post.userDetails = (userDetails, callback) => {
   const checkIfUserExists = 'SELECT facebook_id FROM users WHERE facebook_id = $1;';
-  connect.query(checkIfUserExists, [userDetails.facebook_id], (err, user) =>{
-    if (err) => {
+  connect.query(checkIfUserExists, [userDetails.facebook_id], (err, user) => {
+    if (err) {
       if (err) { console.log(err); }
 
       console.log('user.rows', user.rows);
       console.log('user.rows[0]', user.rows[0]);
-
     }
-  })
+  });
 
 
   // connect.query('INSERT INTO users (firstname, lastname, facebook_id) VALUES ($1, $2, $3)', [userDetails.firstname, userDetails.lastname, userDetails.facebook_id],
