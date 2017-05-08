@@ -14,8 +14,8 @@ function findLocalReply(senderID, intent, contexts){
       if (key === intent) {
           // console.log(key);
           // console.log('found intent=', intent);
-    constructLocal(senderID, key);
-        sendToFB(messageData);
+    const messageReply = constructLocal(senderID, key);
+        sendToFB(messageReply);
       }
     }
   });
