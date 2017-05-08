@@ -1,6 +1,6 @@
 function constructAnswers(firstName) {
   const answer_objects = {
-    location_message: {
+    Candidates: {
       text: 'Type your postcode or send me your location to get started :)',
       quick_replies: [
       { content_type: 'location' },
