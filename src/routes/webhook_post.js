@@ -27,7 +27,7 @@ module.exports = [
               const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
               const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
               console.log('Lat and long- hopefully?? ', lat, long);
-              getPostcode(lat, long, () => {
+              getPostcode(lat, long, (postCode) => {
                 console.log(postCode);
               });
             }

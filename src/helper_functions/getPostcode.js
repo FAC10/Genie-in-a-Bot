@@ -10,7 +10,7 @@ function getPostcode(latitude, longtitude, cb) {
     const parsedBody = JSON.parse(body);
     const postCode = parsedBody.result[0].postcode;
     const constituency = parsedBody.result[0].parliamentary_constituency;
-    cb();
+    cb(postCode);
   });
 }
 
