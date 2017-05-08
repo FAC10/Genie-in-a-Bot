@@ -23,7 +23,9 @@ module.exports = [
         entry.messaging.forEach((event) => {
           if (event.message) {
             if (event.message.attachments) {
-              console.log('Event.message.attachment ', JSON.stringify(event.message.attachments[0].payload));
+              const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
+              const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
+              console.log('Lat and long- hopefully?? ', lat, long);
             }
           }
 
@@ -60,3 +62,5 @@ module.exports = [
 //     "coordinates":{
 //       "lat":51.529487,"long":-0.0423492}
 //     }}]}
+
+ // {"coordinates":{"lat":51.5295082,"long":-0.0423689}}
