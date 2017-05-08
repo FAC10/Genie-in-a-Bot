@@ -28,6 +28,7 @@ module.exports = (event) => {
       const responseText = response.result.fulfillment.speech;
       const intent = response.result.metadata.intentName;
       const contexts = response.result.contexts;
+      console.log(contexts);
 
       if (responseText) {
         constructRemoteReply(senderID, responseText);

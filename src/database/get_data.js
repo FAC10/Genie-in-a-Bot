@@ -14,4 +14,11 @@ get.firstName = (facebookId, callback) => connect.query('SELECT firstname FROM u
   return callback(null, rowsName);
 });
 
+get.partyVotes = (partyKey, callback) =>
+connect.query('SELECT party, issue, inFavour, against, turnout FROM partyVotes WHERE partyKey = $1;', [partyKey], (err, res) => {
+  if (err) {
+    return callback(err);
+  }
+});
+
 module.exports = get;
