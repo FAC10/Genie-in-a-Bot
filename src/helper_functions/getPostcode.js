@@ -8,7 +8,7 @@ function getPostcode(latitude, longtitude) {
     }
 
     const parsedBody = JSON.parse(body);
-    console.log(parsedBody));
+    console.log(parsedBody);
     // console.log(JSON.parse(body.result[0].parliamentary_constituency));
   });
 }
