@@ -8,7 +8,7 @@ function getPostcode(latitude, longtitude) {
     }
 
     const parsedBody = JSON.parse(body);
-    console.log(parsedBody.result);
+    console.log(parsedBody.result[0]);
   });
 }
 
