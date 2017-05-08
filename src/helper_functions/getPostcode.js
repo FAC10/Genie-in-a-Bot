@@ -6,8 +6,10 @@ function getPostcode(latitude, longtitude) {
     if (err) {
       console.log(err);
     }
-    console.log(JSON.parse(body.result[0].postcode));
-    console.log(JSON.parse(body.result[0].parliamentary_constituency));
+
+    const parsedBody = JSON.parse(body);
+    console.log(parsedBody));
+    // console.log(JSON.parse(body.result[0].parliamentary_constituency));
   });
 }
 
