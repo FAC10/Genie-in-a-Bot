@@ -28,11 +28,10 @@ module.exports = (event) => {
       const responseText = response.result.fulfillment.speech;
       const intent = response.result.metadata.intentName;
       const contexts = response.result.contexts;
-      console.log('responseText is ', responseText);
+
       if (responseText) {
         constructRemoteReply(senderID, responseText);
       } else {
-        console.log('sending to local reply logic');
         findLocalReply(senderID, intent, contexts);
       }
     });

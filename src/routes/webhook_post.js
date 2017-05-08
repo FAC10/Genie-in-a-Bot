@@ -24,11 +24,11 @@ module.exports = [
           if (event.message) {
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
-            console.log('payload is ', event.postback.payload);
-
             getFacebookName(event.sender.id, () => {
+
               console.log('I am going to send findLocalReply');
               findLocalReply.findLocalReply(event.sender.id, event.postback.payload);
+
             });
           } else {
             console.log('Webhook received unknown event: ', event);
