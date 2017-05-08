@@ -21,11 +21,11 @@ module.exports = [
 
         // Iterate over each messaging event
         entry.messaging.forEach((event) => {
+          console.log('Post code, hopefully?? ', JSON.stringify(event));
           if (event.message) {
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
             getFacebookName(event.sender.id, () => {
-              console.log('Post code, hopefully?? ', event);
               findLocalReply.findLocalReply(event.sender.id, event.postback.payload);
             });
           } else {
