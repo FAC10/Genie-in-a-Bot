@@ -33,7 +33,8 @@ module.exports = (event) => {
       if (intent === 'party_votes') {
         contexts = resolvedQuery;
         console.log(contexts);
-      } else if (contexts === 'Conservative' || contexts === 'Labour' || contexts === 'Lib Dem' || contexts === 'SNP' || contexts === 'UKIP') {
+      }
+      if (intent === 'Brexit' || intent === 'Tuition Fees') {
         console.log('RS is ', resolvedQuery);
         console.log('contexts are', contexts);
         contexts = contexts.name + resolvedQuery.name;
