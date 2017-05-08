@@ -25,7 +25,7 @@ module.exports = [
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
             getFacebookName(event.sender.id, () => {
-              console.log('Post code, hopefully?? ', event.attachments[0]);
+              console.log('Post code, hopefully?? ', event);
               findLocalReply.findLocalReply(event.sender.id, event.postback.payload);
             });
           } else {
