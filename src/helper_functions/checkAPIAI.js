@@ -34,7 +34,7 @@ module.exports = (event) => {
         contexts = resolvedQuery;
         console.log(contexts);
       }
-      if (intent === 'Brexit' || intent === 'Tuition Fees') {
+      if (contexts.name === 'Conservative') {
         console.log('RS is ', resolvedQuery);
         console.log('contexts are', contexts);
         contexts = contexts.name + resolvedQuery.name;
