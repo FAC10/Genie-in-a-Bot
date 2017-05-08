@@ -31,17 +31,6 @@ module.exports = (event) => {
       const resolvedQuery = response.result.resolvedQuery;
       console.log('intent is ', intent);
       console.log('contexts are ', contexts);
-      // if (intent === 'party_votes') {
-      //   contexts = `${resolvedQuery}1`;
-      //   console.log('contexts2 are ', contexts);
-      // }
-      // if (contexts.name === 'conservative') {
-      //   // console.log('RS is ', resolvedQuery);
-      //   // console.log('contexts are', contexts);
-      //   console.log('got in here');
-      //   contexts = contexts.name + resolvedQuery.name;
-      //   // console.log(contexts);
-      // }
       if (responseText) {
         constructRemoteReply(senderID, responseText);
       } else {
