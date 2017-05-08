@@ -15,7 +15,7 @@ function findLocalReply(senderID, intent, contexts) {
       if (key === intent) {
         const messageData = constructLocal(senderID, key, answer_objects);
         sendToFB(messageData);
-        boolean === true;
+        boolean = true;
       }
     }
     cb(boolean, contexts, senderID);
@@ -23,6 +23,7 @@ function findLocalReply(senderID, intent, contexts) {
 }
 
 function cb(boolean, contexts, senderID) {
+  console.log('boolean is ', boolean);
   if (boolean === false) {
     buildByContexts(contexts, senderID);
   }
