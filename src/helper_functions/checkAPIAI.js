@@ -29,7 +29,7 @@ module.exports = (event) => {
       const intent = response.result.metadata.intentName;
       let contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
-
+      console.log('intent is ', intent);
       if (intent === 'party_votes') {
         contexts = resolvedQuery;
         console.log(contexts);
