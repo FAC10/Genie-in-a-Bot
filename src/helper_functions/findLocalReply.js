@@ -4,7 +4,7 @@ const constructAnswers = require('./answer_objects');
 const get = require('./../database/get_data');
 
 function findLocalReply(senderID, intent, contexts, cb) {
-  let boolean = false;
+  const boolean = false;
   console.log('find local reply contexts are', contexts);
   get.firstName(senderID, (err, firstName) => {
     if (err) {
@@ -23,7 +23,7 @@ function findLocalReply(senderID, intent, contexts, cb) {
 }
 
 function cb(boolean, contexts, senderID) {
-  if boolean === false {
+  if (boolean === false) {
     buildByContexts(contexts, senderID);
   }
 }
