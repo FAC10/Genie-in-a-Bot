@@ -17,7 +17,7 @@ post.userDetails = (userDetails, callback) => {
         callback(null, res);
       });
     } else {
-      console.log('user already in db');
+      callback(null, user);
     }
   });
 };
