@@ -14,14 +14,14 @@ function findLocalReply(senderID, intent, contexts){
       if (key === intent) {
           // console.log(key);
           // console.log('found intent=', intent);
-    const messageReply = constructLocal(senderID, key);
-        sendToFB(messageReply);
+  const messageData = constructLocal(senderID, key, answer_objects);
+        sendToFB(messageData);
       }
     }
   });
 };
 
-function constructLocal(senderID, key) {
+function constructLocal(senderID, key, answer_objects) {
   const messageData = {
     recipient: {
       id: senderID,
