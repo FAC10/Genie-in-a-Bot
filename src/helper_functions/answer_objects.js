@@ -38,7 +38,6 @@ function constructAnswers(firstName) {
           content_type: 'text',
           title: 'Conservative',
           payload: 'party_votes',
-          context: 'Conservative',
         },
         {
           content_type: 'text',
