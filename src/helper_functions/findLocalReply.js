@@ -4,11 +4,11 @@ const constructAnswers = require('./answer_objects');
 const get = require('./../database/get_data');
 
 module.exports = (senderID, intent, contexts) => {
-  get.firstName(senderID, (err, firstName) => {
+  get.firstName(senderID, contexts, (err, firstName) => {
     if (err) {
       return err;
     }
-    const answer_objects = constructAnswers(firstName);
+    const answer_objects = constructAnswers(firstName, contexts);
     for (const key in answer_objects) {
       if (key === intent) {
           // console.log(key);
