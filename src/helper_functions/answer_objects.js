@@ -79,7 +79,7 @@ function constructAnswers(firstName) {
       ],
     },
 
-    BrexitConservative: {
+    Brexit: {
 
       text: 'Conservatives voted ......',
       quick_replies: [
