@@ -1,6 +1,6 @@
 const request = require('request');
 
-function getPostcode(latitude, longtitude) {
+function getPostcode(latitude, longtitude, cb) {
   const url = `https://api.postcodes.io/postcodes?lon=${longtitude}&lat=${latitude}`;
   request(url, (err, res, body) => {
     if (err) {
@@ -8,8 +8,9 @@ function getPostcode(latitude, longtitude) {
     }
 
     const parsedBody = JSON.parse(body);
-    console.log(parsedBody.result[0].postcode);
-    console.log(parsedBody.result[0].parliamentary_constituency);
+    const postCode = parsedBody.result[0].postcode;
+    const constituency = parsedBody.result[0].parliamentary_constituency;
+    cb();
   });
 }
 
