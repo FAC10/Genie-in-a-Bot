@@ -3,7 +3,10 @@ const sendToFB = require('./sendToFB');
 const constructAnswers = require('./answer_objects');
 const get = require('./../database/get_data');
 
+const localContext = '';
+
 module.exports = (senderID, intent, contexts) => {
+  console.log(contexts);
   get.firstName(senderID, (err, firstName) => {
     if (err) {
       return err;
@@ -13,6 +16,8 @@ module.exports = (senderID, intent, contexts) => {
       if (key === intent) {
           // console.log(key);
           // console.log('found intent=', intent);
+        console.log(answer_objects[key].quick_replies.title);
+        localContext.push = answer_objects[key].quick_replies.title;
         const messageData = {
           recipient: {
             id: senderID,

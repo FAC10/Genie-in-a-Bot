@@ -97,7 +97,6 @@ function constructAnswers(firstName) {
     },
 
   };
-  console.log(answer_objects.Parties);
   return answer_objects;
 }
 
