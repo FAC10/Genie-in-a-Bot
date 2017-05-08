@@ -33,11 +33,10 @@ module.exports = (event) => {
       if (intent === 'party_votes') {
         contexts = resolvedQuery;
         console.log(contexts);
-      } else if (intent === 'Brexit' || intent === 'Tuition fees') {
-        contexts += intent;
+      } else if (intent === 'Conservative' || intent === 'Labour' || intent === 'Lib Dem' || intent === 'SNP' || intent === 'UKIP') {
+        contexts += resolvedQuery;
         console.log(contexts);
       }
-      console.log(intent);
       if (responseText) {
         constructRemoteReply(senderID, responseText);
       } else {
