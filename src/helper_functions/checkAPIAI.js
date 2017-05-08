@@ -37,7 +37,7 @@ module.exports = (event) => {
         contexts += intent;
         console.log(contexts);
       }
-
+      console.log(intent);
       if (responseText) {
         constructRemoteReply(senderID, responseText);
       } else {
