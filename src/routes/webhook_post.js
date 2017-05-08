@@ -4,6 +4,7 @@ const answer_objects = require('../helper_functions/answer_objects.js');
 const express = require('express');
 const findLocalReply = require('../helper_functions/findLocalReply.js');
 const getFacebookName = require('./../helper_functions/getFacebookName');
+const getPostcode = require('../helper_functions/getPostcode.js');
 
 const app = express.Router();
 
@@ -26,6 +27,7 @@ module.exports = [
               const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
               const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
               console.log('Lat and long- hopefully?? ', lat, long);
+              getPostcode(lat, long);
             }
           }
 
