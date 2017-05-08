@@ -29,6 +29,7 @@ module.exports = (event) => {
       const intent = response.result.metadata.intentName;
       const contexts = response.result.contexts;
       console.log('contexts: ', contexts);
+      console.log(response.result);
 
       if (responseText) {
         constructRemoteReply(senderID, responseText);
