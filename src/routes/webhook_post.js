@@ -21,8 +21,10 @@ module.exports = [
 
         // Iterate over each messaging event
         entry.messaging.forEach((event) => {
-          if (event.message.attachments) {
-            console.log('Event.message.attachment ', JSON.stringify(event.message.attachments));
+          if (event.message) {
+            if (event.message.attachments) {
+              console.log('Event.message.attachment ', JSON.stringify(event.message.attachments));
+            }
           }
 
           if (event.message) {
