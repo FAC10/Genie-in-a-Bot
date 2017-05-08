@@ -3,7 +3,8 @@ const sendToFB = require('./sendToFB');
 const constructAnswers = require('./answer_objects');
 const get = require('./../database/get_data');
 
-function findLocalReply(senderID, intent, contexts) {
+function findLocalReply(senderID, intent, contexts, cb) {
+  let boolean = false;
   console.log('find local reply contexts are', contexts);
   get.firstName(senderID, (err, firstName) => {
     if (err) {
@@ -14,11 +15,17 @@ function findLocalReply(senderID, intent, contexts) {
       if (key === intent) {
         const messageData = constructLocal(senderID, key, answer_objects);
         sendToFB(messageData);
-      } else {
-        buildByContexts(contexts, senderID);
+        boolean === true;
       }
     }
+    cb(boolean, contexts, senderID);
   });
+}
+
+function cb(boolean, contexts, senderID) {
+  if boolean === false {
+    buildByContexts(contexts, senderID);
+  }
 }
 
 
