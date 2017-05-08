@@ -14,14 +14,15 @@ function findLocalReply(senderID, intent, contexts) {
       if (key === intent) {
         const messageData = constructLocal(senderID, key, answer_objects);
         sendToFB(messageData);
-      } else {
-        contexts.forEach((context) => {
-          if (key === context.name) {
-            const messageData = constructLocal(senderID, key, answer_objects);
-            sendToFB(messageData);
-          }
-        });
       }
+// else {
+      //   contexts.forEach((context) => {
+      //     if (key === context.name) {
+      //       const messageData = constructLocal(senderID, key, answer_objects);
+      //       sendToFB(messageData);
+      //     }
+      //   });
+      // }
     }
   });
 }
