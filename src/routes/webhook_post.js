@@ -5,6 +5,7 @@ const express = require('express');
 const findLocalReply = require('../helper_functions/findLocalReply.js');
 const getFacebookName = require('./../helper_functions/getFacebookName');
 const getPostcode = require('../helper_functions/getPostcode.js');
+const post = require('../database/db_post.js');
 
 const app = express.Router();
 
@@ -26,9 +27,16 @@ module.exports = [
             if (event.message.attachments) {
               const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
               const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
-              console.log('Lat and long- hopefully?? ', lat, long);
-              getPostcode(lat, long, (postCode) => {
-                console.log(postCode);
+
+              getPostcode(lat, long, (postCode, constituency) => {
+                console.log(postCode, constituency);
+                const userPostcode = { postcode: postCode, facebookid: event.sender.id };
+                post.userPostcode(userPostcode, (err, result) => {
+                  if (err) {
+                    console.log(err);
+                  }
+                  console.log(result);
+                });
               });
             }
           }
