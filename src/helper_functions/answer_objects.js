@@ -207,6 +207,37 @@ function construct(partyVotesObj, firstName) {
       ],
     },
 
+    fallbackGeneral: {
+
+      text: 'Here are some of the things you can ask me about:',
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'General Election info',
+          payload: 'General Election info',
+        },
+        {
+          content_type: 'text',
+          title: 'Joke',
+          payload: 'Joke',
+        },
+        {
+          content_type: 'text',
+          title: 'Candidates',
+          payload: 'Candidates',
+        },
+        {
+          content_type: 'text',
+          title: 'Parties',
+          payload: 'Parties',
+        },
+        {
+          content_type: 'text',
+          title: 'New postcode',
+          payload: 'Candidates',
+        },
+      ],
+    },
 
   };
   return answer_objects;
