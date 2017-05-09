@@ -1,6 +1,6 @@
 const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
-let partyVotesObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
+const partyVotesObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
 
 
 function constructAnswers(firstName, contexts, intent) {
@@ -10,7 +10,7 @@ function constructAnswers(firstName, contexts, intent) {
       if (err) {
         return err;
       }
-      partyVotesObj = res.rows[0];
+      partyVotesObj.party = res.rows[0].party;
       console.log('partyVotesObj is ', partyVotesObj);
     });
   }
