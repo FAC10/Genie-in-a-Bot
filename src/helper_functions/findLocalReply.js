@@ -31,7 +31,8 @@ function findLocalReply(senderID, intent, contexts) {
       if (err) {
         return err;
       }
-      const answerObjects = construct(null, firstName);
+      const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
+      const answerObjects = construct(placeholderVotingObj, firstName);
       for (const key in answerObjects) {
         if (key === intent) {
           const messageData = constructLocal(senderID, key, answerObjects);
