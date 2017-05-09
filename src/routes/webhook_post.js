@@ -29,15 +29,15 @@ module.exports = [
               const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
 
               getPostcode(lat, long, (postCode, constituency) => {
-                console.log(postCode, constituency);
-                const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
-                console.log(userPostcode);
-                post.userPostcode(userPostcode, (err, result) => {
-                  if (err) {
-                    console.log(err);
-                  }
-                  console.log(result);
-                });
+                console.log('postcode is ', postCode, 'constituency is ', constituency);
+                // const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
+                // console.log(userPostcode);
+                // post.userPostcode(userPostcode, (err, result) => {
+                //   if (err) {
+                //     console.log(err);
+                //   }
+                //   console.log(result);
+                // });
               });
             }
           }
