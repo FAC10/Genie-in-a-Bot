@@ -119,7 +119,7 @@ function construct(partyVotesObj, firstName) {
 
     brexit: {
 
-      text: `Party is ${partyVotesObj.party}`,
+      text: `On 1st February 2017, ${partyVotesObj.inFavour} voteed in favour of leaving the EU. ${partyVotesObj.against} voted against.`,
       quick_replies: [
         {
           content_type: 'text',
