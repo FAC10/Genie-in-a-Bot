@@ -1,12 +1,20 @@
 const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
-let partyVotesObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
+const partyVotesObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
 
 
 function constructAnswers(firstName, contexts, intent) {
   if (intent === 'brexit') {
-    partyVotesObj = extractContexts(contexts, intent, get.partyVotes);
-    console.log('partyVotesObj is ', partyVotesObj);
+    const partyKey = extractContexts(contexts, intent);
+    get.partyVotes(partyKey, (err, res) => {
+      if (err) {
+        return err;
+      }
+      console.log('res.rows is ', res.rows[0]);
+      console.log('partyname is ', res.rows[0].party);
+      partyVotesObj = res.rows[0];
+      console.log('partyVotesObj is ', partyVotesObj);
+    });
   }
 
   const answer_objects = {
