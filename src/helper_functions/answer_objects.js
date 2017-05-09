@@ -1,10 +1,12 @@
 const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
+let partyVotesObj;
+
 
 function constructAnswers(firstName, contexts, intent) {
   if (contexts) {
-    console.log('in the if statment about to extract contexts');
-    extractContexts(contexts, intent, get.partyVotes);
+    partyVotesObj = extractContexts(contexts, intent, get.partyVotes);
+    console.log('partyVotesObj is ', partyVotesObj);
   }
 
   const answer_objects = {
@@ -87,9 +89,9 @@ function constructAnswers(firstName, contexts, intent) {
       ],
     },
 
-    Brexit: {
+    brexit: {
 
-      text: 'Conservatives voted ......',
+      text: `${partyVotesObj.party} voted`,
       quick_replies: [
         {
           content_type: 'text',

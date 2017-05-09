@@ -17,7 +17,6 @@ connect.query('SELECT party, issue, inFavour, against, turnout FROM partyVotes W
   if (err) {
     return callback(err);
   }
-  console.log('res from database is ', res);
   return callback(null, res);
 });
 
