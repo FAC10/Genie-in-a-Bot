@@ -1,6 +1,5 @@
 function extractContexts(contexts, intent, cb) {
   if (intent === 'brexit') {
-    let result;
     const parameter = contexts[0].parameters.Parties;
     const context = contexts[1].name;
     cb(parameter + context, (err, res) => {
@@ -8,9 +7,8 @@ function extractContexts(contexts, intent, cb) {
         return err;
       }
       console.log('res.rows is ', res.rows[0]);
-      result = res.rows[0];
+      return res.rows[0];
     });
-    return result;
   }
 }
 
