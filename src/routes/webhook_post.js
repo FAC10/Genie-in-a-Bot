@@ -24,6 +24,7 @@ module.exports = [
 
         // Iterate over each messaging event
         entry.messaging.forEach((event) => {
+          // console.log(event.message);
           if (event.message) {
             if (event.message.attachments) {
               if (event.message.attachments[0].payload.coordinates) {
@@ -39,7 +40,7 @@ module.exports = [
                     }
                     console.log(result);
                   });
-                  console.log('success?');
+                  findLocalReply.findLocalReply(event.sender.id, 'Local_MPs');
                 });
               }
             }
