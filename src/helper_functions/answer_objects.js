@@ -1,6 +1,6 @@
 const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
-const partyVotesObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
+let partyVotesObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
 
 
 function constructAnswers(firstName, contexts, intent) {
