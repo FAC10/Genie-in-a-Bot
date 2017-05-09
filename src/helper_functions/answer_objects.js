@@ -2,22 +2,29 @@
 
 const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
-
+let partyVotesObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
+let firstName = null;
 
 function constructAnswers(firstName, contexts, intent) {
-  let partyVotesObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
   if (intent === 'brexit') {
     const partyKey = extractContexts(contexts, intent);
     get.partyVotes(partyKey, (err, res) => {
       if (err) {
         return err;
       }
-      partyVotesObj.party = res.rows[0].party;
+      let partyVotesObj = res.rows[0];
       console.log('partyVotesObj is ', partyVotesObj);
+      construct(partyVotesObj, firstName);
     });
   }
+  else {
+    construct(firstName);
+  }
+}
+
   console.log('partyVotesObj outside of if statement is ', partyVotesObj);
 
+function construct(parameters) {
   const answer_objects = {
     location_message: {
       text: 'Type your postcode or send me your location to get started :)',
