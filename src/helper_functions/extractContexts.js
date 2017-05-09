@@ -2,7 +2,7 @@ function extractContexts(contexts, intent, cb) {
   if (intent === 'brexit') {
     const parameter = contexts[0].parameters.Parties;
     const context = contexts[1].name;
-    cb(parameter + context, (err, res) => {
+    return cb(parameter + context, (err, res) => {
       if (err) {
         return err;
       }
@@ -10,7 +10,6 @@ function extractContexts(contexts, intent, cb) {
       console.log('partyname is ', res.rows[0].party);
       return res.rows[0];
     });
-    return 'hello brexit face';
   }
 }
 
