@@ -91,7 +91,7 @@ function constructAnswers(firstName, contexts, intent) {
 
     brexit: {
 
-      text: `${partyVotesObj.party} voted`,
+      text: 'it worked',
       quick_replies: [
         {
           content_type: 'text',
