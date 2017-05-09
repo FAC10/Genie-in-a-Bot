@@ -32,12 +32,12 @@ module.exports = [
                 console.log('postcode is ', postCode, 'constituency is ', constituency);
                 const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
                 console.log(userPostcode);
-                // post.userPostcode(userPostcode, (err, result) => {
-                //   if (err) {
-                //     console.log(err);
-                //   }
-                //   console.log(result);
-                // });
+                post.userPostcode(userPostcode, (err, result) => {
+                  if (err) {
+                    console.log(err);
+                  }
+                  console.log(result);
+                });
               });
             }
           }
