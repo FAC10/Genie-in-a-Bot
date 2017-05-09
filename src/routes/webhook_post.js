@@ -6,6 +6,7 @@ const findLocalReply = require('../helper_functions/findLocalReply.js');
 const getFacebookName = require('./../helper_functions/getFacebookName');
 const getPostcode = require('../helper_functions/getPostcode.js');
 const post = require('../database/db_post.js');
+const connect = require('./db_connect');
 
 const app = express.Router();
 
@@ -32,12 +33,14 @@ module.exports = [
                 console.log('postcode is ', postCode, 'constituency is ', constituency);
                 const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
                 console.log(userPostcode);
-                post.userPostcode(userPostcode, (err, result) => {
-                  if (err) {
-                    console.log(err);
-                  }
-                  console.log(result);
-                });
+                connect.query(`UPDATE users SET postcode = ${userPostcode.postcode} WHERE facebook_id = ${userPostcode.facebook_id}`);
+                // post.userPostcode(userPostcode, (err, result) => {
+                //   if (err) {
+                //     console.log(err);
+                //   }
+                //   console.log(result);
+                // });
+                console.log('success?');
               });
             }
           }
