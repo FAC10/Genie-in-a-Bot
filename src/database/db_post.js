@@ -23,7 +23,6 @@ post.userDetails = (userDetails, callback) => {
 
 post.userPostcode = (userPostcode, callback) => {
   connect.query(`UPDATE users SET postcode = '${userPostcode.postcode}' WHERE facebook_id = ${userPostcode.facebook_id}`, (err, res) => {
-    console.log('inside post.userPostcode function');
     if (err) return callback(err);
 
     callback(null, res);
