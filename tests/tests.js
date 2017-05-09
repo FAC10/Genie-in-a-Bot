@@ -42,12 +42,15 @@ test('constructLocal function returns expected result for Parties intent', (t) =
       },
       {
         content_type: 'text',
-        title: 'UKIP',
+        title: 'Green',
+        payload: 'party_votes',
+      },
+      {
+        content_type: 'text',
+        title: 'SNP',
         payload: 'party_votes',
       },
     ],
-
-
   };
 
   t.equal(actualId, expectedId, 'constructLocal function returns an object with the correct sender id for Parties intent');
@@ -58,7 +61,8 @@ test('constructLocal function returns expected result for Parties intent', (t) =
 
 test('constructLocal function returns expected result for FACEBOOK_WELCOME intent', (t) => {
   t.plan(3);
-  const answer_objects = constructAnswers('Maja');
+  const dummy = {};
+  const answer_objects = constructAnswers(dummy, 'Maja');
   const testObject = constructLocal.constructLocal(2, 'FACEBOOK_WELCOME', answer_objects);
   const expectedGreeting = 'Hey Maja, I\'m your personal assistant in the run up to the General Elections! I can help you find out about the candidates standing in your area, what the parties are offering and more!';
   const actualGreeting = testObject.message.attachment.payload.text;
