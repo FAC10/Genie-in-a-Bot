@@ -14,6 +14,7 @@ function constructAnswers(firstName, contexts, intent) {
       console.log('partyVotesObj is ', partyVotesObj);
     });
   }
+  console.log('partyVotesObj outside of if statement is ', partyVotesObj);
 
   const answer_objects = {
     location_message: {
