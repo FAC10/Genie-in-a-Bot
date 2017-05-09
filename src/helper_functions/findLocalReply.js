@@ -1,24 +1,47 @@
-const answer_objects = require('./answer_objects');
 const sendToFB = require('./sendToFB');
-const constructAnswers = require('./answer_objects');
+const construct = require('./answer_objects');
 const get = require('./../database/get_data');
+const extractContexts = require('./extractContexts');
+
+function constructLocal(senderID, key, answerObjects) {
+  const messageData = {
+    recipient: {
+      id: senderID,
+    },
+    message: answerObjects[key],
+  };
+
+  return messageData;
+}
 
 function findLocalReply(senderID, intent, contexts) {
-  let boolean = false;
-  get.firstName(senderID, (err, firstName) => {
-    if (err) {
-      return err;
-    }
-    const answer_objects = constructAnswers(firstName, contexts, intent);
-    for (const key in answer_objects) {
-      if (key === intent) {
-        const messageData = constructLocal(senderID, key, answer_objects);
-        sendToFB(messageData);
-        boolean = true;
+  // let boolean = false;
+  if (intent === 'brexit') {
+    const partyKey = extractContexts(contexts, intent);
+    get.partyVotes(partyKey, (err, res) => {
+      if (err) {
+        return err;
       }
-    }
-    // cb(boolean, contexts, senderID);
-  });
+      const partyVotesObj = res.rows[0];
+      console.log('partyVotesObj is ', partyVotesObj);
+      construct(partyVotesObj, null);
+    });
+  } else {
+    get.firstName(senderID, (err, firstName) => {
+      if (err) {
+        return err;
+      }
+      const answerObjects = construct(null, firstName);
+      for (const key in answerObjects) {
+        if (key === intent) {
+          const messageData = constructLocal(senderID, key, answerObjects);
+          sendToFB(messageData);
+          // boolean = true;
+        }
+      }
+      // cb(boolean, contexts, senderID);
+    });
+  }
 }
 
 // function cb(boolean, contexts, senderID) {
@@ -40,17 +63,6 @@ function findLocalReply(senderID, intent, contexts) {
 //     });
 //   }
 // }
-
-function constructLocal(senderID, key, answer_objects) {
-  const messageData = {
-    recipient: {
-      id: senderID,
-    },
-    message: answer_objects[key],
-  };
-
-  return messageData;
-}
 
 module.exports = {
   findLocalReply,
