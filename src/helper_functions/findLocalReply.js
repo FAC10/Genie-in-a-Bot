@@ -24,7 +24,14 @@ function findLocalReply(senderID, intent, contexts) {
       }
       const partyVotesObj = res.rows[0];
       console.log('partyVotesObj is ', partyVotesObj);
-      construct(partyVotesObj, null);
+      const answerObjects = construct(partyVotesObj, null);
+      for (const key in answerObjects) {
+        if (key === intent) {
+          const messageData = constructLocal(senderID, key, answerObjects);
+          sendToFB(messageData);
+          // boolean = true;
+        }
+      }
     });
   } else {
     get.firstName(senderID, (err, firstName) => {

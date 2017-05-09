@@ -35,6 +35,8 @@ function construct(partyVotesObj, firstName) {
     partyVotesObj.turnout = 'placeholder';
   }
 
+  console.log('partyObj in answer_objects is ', partyVotesObj);
+
   const answer_objects = {
     location_message: {
       text: 'Type your postcode or send me your location to get started :)',
