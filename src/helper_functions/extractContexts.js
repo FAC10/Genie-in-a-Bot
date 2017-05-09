@@ -10,6 +10,7 @@ function extractContexts(contexts, intent, cb) {
       console.log('partyname is ', res.rows[0].party);
       return res.rows[0];
     });
+    return 'hello brexit face';
   }
 }
 

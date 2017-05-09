@@ -6,7 +6,6 @@ let partyVotesObj = { party: null, issue: null, inFavour: null, against: null, t
 function constructAnswers(firstName, contexts, intent) {
   if (intent === 'brexit') {
     partyVotesObj = extractContexts(contexts, intent, get.partyVotes);
-    console.log('console logging function ', extractContexts(contexts, intent, get.partyVotes));
     console.log('partyVotesObj is ', partyVotesObj);
   }
 
