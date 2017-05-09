@@ -31,6 +31,10 @@ module.exports = (event) => {
       const intent = response.result.metadata.intentName;
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
+
+      console.log('contexts are ', contexts);
+      console.log('responseText is ', responseText);
+
       if (contexts === 'party_votes') {
         contexts = resolvedQuery;
       }
@@ -65,6 +69,7 @@ module.exports = (event) => {
       }
 
       if (responseText) {
+        console.log('getting into responseText if statement');
         constructRemoteReply(senderID, responseText);
       } else {
         findLocalReply.findLocalReply(senderID, intent, contexts);
