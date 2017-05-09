@@ -5,7 +5,6 @@ const get = require('./../database/get_data');
 
 function findLocalReply(senderID, intent, contexts) {
   let boolean = false;
-  console.log('find local reply contexts are', contexts);
   get.firstName(senderID, (err, firstName) => {
     if (err) {
       return err;
@@ -18,29 +17,29 @@ function findLocalReply(senderID, intent, contexts) {
         boolean = true;
       }
     }
-    cb(boolean, contexts, senderID);
+    // cb(boolean, contexts, senderID);
   });
 }
 
-function cb(boolean, contexts, senderID) {
-  console.log('boolean is ', boolean);
-  if (boolean === false) {
-    buildByContexts(contexts, senderID);
-  }
-}
+// function cb(boolean, contexts, senderID) {
+//   console.log('boolean is ', boolean);
+//   if (boolean === false) {
+//     buildByContexts(contexts, senderID);
+//   }
+// }
 
 
-function buildByContexts(contexts, senderID) {
-  for (const key in answer_objects) {
-    console.log('contexts inside else statement are ', contexts);
-    contexts.forEach((context) => {
-      if (key === context.name) {
-        const messageData = constructLocal(senderID, key, answer_objects);
-        sendToFB(messageData);
-      }
-    });
-  }
-}
+// function buildByContexts(contexts, senderID) {
+//   for (const key in answer_objects) {
+//     console.log('contexts inside else statement are ', contexts);
+//     contexts.forEach((context) => {
+//       if (key === context.name) {
+//         const messageData = constructLocal(senderID, key, answer_objects);
+//         sendToFB(messageData);
+//       }
+//     });
+//   }
+// }
 
 function constructLocal(senderID, key, answer_objects) {
   const messageData = {
