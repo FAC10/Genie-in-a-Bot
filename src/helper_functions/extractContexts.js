@@ -1,5 +1,5 @@
-function extractContexts(contexts) {
-  if (contexts[0].name === 'party_votes') {
+function extractContexts(contexts, intent) {
+  if (intent === 'brexit') {
     const parameter = contexts[0].parameters.Parties;
     const context = contexts[1].name;
     console.log(parameter + context);

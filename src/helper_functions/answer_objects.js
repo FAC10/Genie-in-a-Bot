@@ -1,9 +1,9 @@
 const extractContexts = require('./extractContexts');
 
-function constructAnswers(firstName, contexts) {
+function constructAnswers(firstName, contexts, intent) {
   if (contexts) {
     console.log('in the if statment about to extract contexts');
-    extractContexts(contexts);
+    extractContexts(contexts, intent);
   }
 
   const answer_objects = {
