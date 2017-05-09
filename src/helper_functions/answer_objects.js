@@ -1,10 +1,63 @@
 function constructAnswers(firstName) {
   const answer_objects = {
-    location_message: {
+    Candidates: {
       text: 'Type your postcode or send me your location to get started :)',
       quick_replies: [
       { content_type: 'location' },
       ],
+    },
+
+    Local_MPs: {
+      attachment: {
+        type: 'template',
+        payload: {
+          template_type: 'generic',
+          elements: [
+            {
+              title: 'Flick through the cards for info on the candidates',
+              image_url: 'https://thewondrous.com/wp-content/uploads/2015/05/funny-kitten-rub-my-belly.jpg',
+              subtitle: 'MP XYZ, Party XYZ',
+              buttons: [
+                {
+                  type: 'postback',
+                  title: 'Recent tweest',
+                  payload: 'Recent tweets',
+                }, {
+                  type: 'postback',
+                  title: 'Recent mentions',
+                  payload: 'Recent mentions',
+                },
+                {
+                  type: 'postback',
+                  title: 'Another area',
+                  payload: 'Another area',
+                },
+              ],
+            },
+            {
+              title: 'Flick through the cards for info on the candidates',
+              image_url: 'https://pbs.twimg.com/profile_images/621862866845597696/_JUDMypl.jpg',
+              subtitle: 'MP XYZ, Party XYZ',
+              buttons: [
+                {
+                  type: 'postback',
+                  title: 'Recent tweest',
+                  payload: 'Recent tweets',
+                }, {
+                  type: 'postback',
+                  title: 'Recent mentions',
+                  payload: 'Recent mentions',
+                },
+                {
+                  type: 'postback',
+                  title: 'Another area',
+                  payload: 'Another area',
+                },
+              ],
+            },
+          ],
+        },
+      },
     },
 
     FACEBOOK_WELCOME: {
