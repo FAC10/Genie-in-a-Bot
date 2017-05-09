@@ -6,7 +6,7 @@ const findLocalReply = require('../helper_functions/findLocalReply.js');
 const getFacebookName = require('./../helper_functions/getFacebookName');
 const getPostcode = require('../helper_functions/getPostcode.js');
 const post = require('../database/db_post.js');
-const connect = require('./db_connect');
+const connect = require('../database/db_connect');
 
 const app = express.Router();
 
