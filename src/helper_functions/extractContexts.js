@@ -1,8 +1,8 @@
 function extractContexts(contexts, intent) {
-  if (intent === 'brexit') {
+  if (intent === 'brexit' || intent === 'tuitionFees') {
     const parameter = contexts[0].parameters.Parties;
     const context = contexts[1].name;
-    return parameter + context;
+    return parameter + intent;
   }
 }
 

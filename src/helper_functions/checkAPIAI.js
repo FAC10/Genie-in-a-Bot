@@ -31,6 +31,7 @@ module.exports = (event) => {
       const intent = response.result.metadata.intentName;
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
+
       console.log('contexts are ', contexts);
       console.log('responseText is ', responseText);
 
