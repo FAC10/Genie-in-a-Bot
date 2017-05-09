@@ -10,8 +10,6 @@ function constructAnswers(firstName, contexts, intent) {
       if (err) {
         return err;
       }
-      console.log('res.rows is ', res.rows[0]);
-      console.log('partyname is ', res.rows[0].party);
       partyVotesObj = res.rows[0];
       console.log('partyVotesObj is ', partyVotesObj);
     });
@@ -99,7 +97,7 @@ function constructAnswers(firstName, contexts, intent) {
 
     brexit: {
 
-      text: 'it worked',
+      text: `Party is ${partyVotesObj.party}`,
       quick_replies: [
         {
           content_type: 'text',
