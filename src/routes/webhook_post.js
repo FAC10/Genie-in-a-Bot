@@ -24,7 +24,7 @@ module.exports = [
 
         // Iterate over each messaging event
         entry.messaging.forEach((event) => {
-          // console.log(event.message);
+          console.log(event.message);
           if (event.message) {
             if (event.message.attachments) {
               if (event.message.attachments[0].payload.coordinates) {
