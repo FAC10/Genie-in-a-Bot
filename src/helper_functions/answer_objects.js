@@ -27,7 +27,7 @@ const get = require('../database/get_data');
 function construct(partyVotesObj, firstName) {
   if (firstName === null) {
     firstName = 'placeholder'
-  } else if (partyVotesObj === null) {
+  } else if (partyVotesObj === { party: null, issue: null, inFavour: null, against: null, turnout: null }) {
     partyVotesObj.party = 'placeholder';
     partyVotesObj.issue = 'placeholder';
     partyVotesObj.inFavour = 'placeholder';
