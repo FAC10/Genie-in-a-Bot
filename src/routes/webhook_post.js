@@ -30,8 +30,8 @@ module.exports = [
 
               getPostcode(lat, long, (postCode, constituency) => {
                 console.log('postcode is ', postCode, 'constituency is ', constituency);
-                // const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
-                // console.log(userPostcode);
+                const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
+                console.log(userPostcode);
                 // post.userPostcode(userPostcode, (err, result) => {
                 //   if (err) {
                 //     console.log(err);
