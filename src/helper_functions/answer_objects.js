@@ -190,6 +190,24 @@ function construct(partyVotesObj, firstName) {
       ],
     },
 
+    fallbackRegister: {
+
+      text: 'Register to vote?',
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'I already have!',
+          payload: 'registerDone',
+        },
+        {
+          content_type: 'text',
+          title: 'How do I register?',
+          payload: 'register',
+        },
+      ],
+    },
+
+
   };
   return answer_objects;
 }
