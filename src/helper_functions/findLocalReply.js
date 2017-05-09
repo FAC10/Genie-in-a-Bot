@@ -23,7 +23,6 @@ function findLocalReply(senderID, intent, contexts) {
         return err;
       }
       const partyVotesObj = res.rows[0];
-      console.log('partyVotesObj is ', partyVotesObj);
       const answerObjects = construct(partyVotesObj, null);
       for (const key in answerObjects) {
         if (key === intent) {

@@ -35,8 +35,6 @@ function construct(partyVotesObj, firstName) {
     partyVotesObj.turnout = 'placeholder';
   }
 
-  console.log('partyObj in answer_objects is ', partyVotesObj);
-
   const answer_objects = {
     location_message: {
       text: 'Type your postcode or send me your location to get started :)',
@@ -119,7 +117,7 @@ function construct(partyVotesObj, firstName) {
 
     brexit: {
 
-      text: `On 1st February 2017, ${partyVotesObj.inFavour} voteed in favour of leaving the EU. ${partyVotesObj.against} voted against.`,
+      text: `On 1st February 2017, ${partyVotesObj.infavour} voted in favour of leaving the EU. ${partyVotesObj.against} voted against.`,
       quick_replies: [
         {
           content_type: 'text',
