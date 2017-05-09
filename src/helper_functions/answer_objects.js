@@ -1,9 +1,10 @@
 const extractContexts = require('./extractContexts');
+const get = require('../database/get_data');
 
 function constructAnswers(firstName, contexts, intent) {
   if (contexts) {
     console.log('in the if statment about to extract contexts');
-    extractContexts(contexts, intent);
+    extractContexts(contexts, intent, get.partyVotes);
   }
 
   const answer_objects = {
