@@ -27,6 +27,9 @@ VALUES
 INSERT INTO partyVotes (partyKey, party, issue, inFavour, against, turnout)
 VALUES
 ('Conservativebrexit', 'the Conservative Party', 'Brexit', '319 Conservative MPs (99.7%)', '1 MP (0.3%)', '97.9%'),
-('Labourbrexit', 'the Labour Party', 'Brexit', '168 MPs (78%)', '47 MPs (22%)', '93.5%');
+('Labourbrexit', 'the Labour Party', 'Brexit', '168 Labour MPs (78%)', '47 MPs (22%)', '93.5%'),
+('Libdembrexit', 'the Liberal Democrats', 'Brexit', '0 Lib Dem MPs (0%)', '7 MPs (100%)', '77.8%'),
+('Greenbrexit', 'the Green Party', 'Brexit', '0 Green MPs (0%)', '1 MP (100%)', '100%'),
+('Snpbrexit', 'the SNP', 'Brexit', '50 SNP MPs (100%)', '0 MPs (0%)', '96.3%');
 
 COMMIT;
