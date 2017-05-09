@@ -169,6 +169,55 @@ function construct(partyVotesObj, firstName) {
       ],
     },
 
+    fallbackRegister: {
+
+      text: 'Register to vote?',
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'I already have!',
+          payload: 'registerDone',
+        },
+        {
+          content_type: 'text',
+          title: 'How do I register?',
+          payload: 'register',
+        },
+      ],
+    },
+
+    fallbackGeneral: {
+
+      text: 'Here are some of the things you can ask me about:',
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'General Election info',
+          payload: 'General Election info',
+        },
+        {
+          content_type: 'text',
+          title: 'Joke',
+          payload: 'Joke',
+        },
+        {
+          content_type: 'text',
+          title: 'Candidates',
+          payload: 'Candidates',
+        },
+        {
+          content_type: 'text',
+          title: 'Parties',
+          payload: 'Parties',
+        },
+        {
+          content_type: 'text',
+          title: 'New postcode',
+          payload: 'Candidates',
+        },
+        ]
+    },
+        
     tuitionFees: {
 
       text: `On 9th December 2010, ${partyVotesObj.infavour} voted in favour of raising the UK tuition fee cap to £9,000 a year. ${partyVotesObj.against} voted against.`,
