@@ -3,8 +3,10 @@ function extractContexts(contexts, intent) {
     const parameter = contexts[0].parameters.Parties;
     const context = contexts[1].name;
     console.log('contexts are ', contexts);
-    console.log('parameter is', parameter);
-    console.log('db query is ', parameter + intent);
+    console.log('contextszero is', contexts[0]);
+    const contextzero = contexts[0];
+    console.log('contextzero param', contextzero.parameters);
+    console.log(contextzero.parameters.Parties);
     return parameter + intent;
   }
 }
