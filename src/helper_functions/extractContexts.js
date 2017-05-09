@@ -7,6 +7,7 @@ function extractContexts(contexts, intent, cb) {
         return err;
       }
       console.log('res.rows is ', res.rows[0]);
+      console.log('partyname is ', res.rows[0].party);
       return res.rows[0];
     });
   }
