@@ -26,20 +26,22 @@ module.exports = [
         entry.messaging.forEach((event) => {
           if (event.message) {
             if (event.message.attachments) {
-              const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
-              const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
+              if (event.message.attachments[0].payload.coordinates) {
+                const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
+                const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
 
-              getPostcode(lat, long, (postCode, constituency) => {
-                console.log('postcode is ', postCode, 'constituency is ', constituency);
-                const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
-                post.userPostcode(userPostcode, (err, result) => {
-                  if (err) {
-                    console.log(err);
-                  }
-                  console.log(result);
+                getPostcode(lat, long, (postCode, constituency) => {
+                  console.log('postcode is ', postCode, 'constituency is ', constituency);
+                  const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
+                  post.userPostcode(userPostcode, (err, result) => {
+                    if (err) {
+                      console.log(err);
+                    }
+                    console.log(result);
+                  });
+                  console.log('success?');
                 });
-                console.log('success?');
-              });
+              }
             }
           }
 
