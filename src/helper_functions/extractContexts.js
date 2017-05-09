@@ -2,6 +2,7 @@ function extractContexts(contexts, intent) {
   if (intent === 'brexit' || intent === 'tuitionFees') {
     const parameter = contexts[0].parameters.Parties;
     const context = contexts[1].name;
+    console.log('contexts are ', contexts);
     console.log('parameter is', parameter);
     console.log('db query is ', parameter + intent);
     return parameter + intent;
