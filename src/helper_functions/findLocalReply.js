@@ -43,33 +43,12 @@ function findLocalReply(senderID, intent, contexts) {
         if (key === intent) {
           const messageData = constructLocal(senderID, key, answerObjects);
           sendToFB(messageData);
-          // boolean = true;
         }
       }
-      // cb(boolean, contexts, senderID);
     });
   }
 }
 
-// function cb(boolean, contexts, senderID) {
-//   console.log('boolean is ', boolean);
-//   if (boolean === false) {
-//     buildByContexts(contexts, senderID);
-//   }
-// }
-
-
-// function buildByContexts(contexts, senderID) {
-//   for (const key in answer_objects) {
-//     console.log('contexts inside else statement are ', contexts);
-//     contexts.forEach((context) => {
-//       if (key === context.name) {
-//         const messageData = constructLocal(senderID, key, answer_objects);
-//         sendToFB(messageData);
-//       }
-//     });
-//   }
-// }
 
 module.exports = {
   findLocalReply,
