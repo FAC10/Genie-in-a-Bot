@@ -7,7 +7,9 @@ module.exports = (senderID, responseText) => {
     recipient: {
       id: senderID,
     },
-    message: responseText,
+    message: {
+      text: responseText,
+    },
   };
   sendToFB(messageData);
 };
