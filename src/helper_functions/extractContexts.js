@@ -7,7 +7,7 @@ function extractContexts(contexts, intent, cb) {
       if (err) {
         return err;
       }
-      console.log(res.rows[0]);
+      console.log('anonymous bit is ', res.rows[0].anonymous);
       return res.rows[0];
     });
   }
