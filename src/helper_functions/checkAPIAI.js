@@ -39,7 +39,7 @@ module.exports = (event) => {
 
             getPostcode(lat, long, (postCode, constituency) => {
               console.log('postcode is ', postCode, 'constituency is ', constituency);
-              const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
+              const userPostcode = { postcode: postCode, facebook_id: senderID };
               post.userPostcode(userPostcode, (err, result) => {
                 if (err) {
                   console.log(err);
@@ -52,15 +52,12 @@ module.exports = (event) => {
       }
 
       if (intent === 'Local_MPs') {
-        getPostcode(lat, long, (postCode, constituency) => {
-          console.log('postcode is ', postCode, 'constituency is ', constituency);
-          const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
-          post.userPostcode(userPostcode, (err, result) => {
-            if (err) {
-              console.log(err);
-            }
-            console.log(result);
-          });
+        const userPostcode = { postcode: messageText, facebook_id: senderID };
+        post.userPostcode(userPostcode, (err, result) => {
+          if (err) {
+            console.log(err);
+          }
+          console.log(result);
         });
       }
 
