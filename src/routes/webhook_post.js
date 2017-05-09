@@ -33,7 +33,7 @@ module.exports = [
                 console.log('postcode is ', postCode, 'constituency is ', constituency);
                 const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
                 console.log(typeof userPostcode.postcode);
-                connect.query(`UPDATE users SET postcode = ${userPostcode.postcode} WHERE facebook_id = ${userPostcode.facebook_id}`);
+                connect.query(`UPDATE users SET postcode = '${userPostcode.postcode}' WHERE facebook_id = ${userPostcode.facebook_id}`);
                 // post.userPostcode(userPostcode, (err, result) => {
                 //   if (err) {
                 //     console.log(err);
