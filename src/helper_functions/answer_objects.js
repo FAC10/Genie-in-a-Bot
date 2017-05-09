@@ -240,6 +240,28 @@ function construct(partyVotesObj, firstName) {
       ],
     },
 
+    syria: {
+
+      text: `On 2nd December 2015, ${partyVotesObj.infavour} voted in favour of airstrikes against ISIL in Syria. ${partyVotesObj.against} voted against.`,
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'How do other parties compare?',
+          payload: 'partyBrexitCompare',
+        },
+        {
+          content_type: 'text',
+          title: 'Back to votes',
+          payload: 'party_votes',
+        },
+        {
+          content_type: 'text',
+          title: 'Choose another party',
+          payload: 'Parties',
+        },
+      ],
+    },
+
   };
   return answer_objects;
 }
