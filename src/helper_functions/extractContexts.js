@@ -7,7 +7,8 @@ function extractContexts(contexts, intent, cb) {
       if (err) {
         return err;
       }
-      console.log('res in extractContexts is ', res);
+      console.log(res.rows[0]);
+      return res.rows[0];
     });
   }
 }
