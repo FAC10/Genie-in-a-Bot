@@ -1,38 +1,56 @@
-const answer_objects = require('./answer_objects');
 const sendToFB = require('./sendToFB');
-const constructAnswers = require('./answer_objects');
+const construct = require('./answer_objects');
 const get = require('./../database/get_data');
+const extractContexts = require('./extractContexts');
 
-function findLocalReply(senderID, intent, contexts){
-  get.firstName(senderID, (err, firstName) => {
-    if (err) {
-      return err;
-    }
-    console.log('firstname is ', firstName);
-    const answer_objects = constructAnswers(firstName);
-    for (const key in answer_objects) {
-      if (key === intent) {
-          // console.log(key);
-          // console.log('found intent=', intent);
-  const messageData = constructLocal(senderID, key, answer_objects);
-        sendToFB(messageData);
-      }
-    }
-  });
-};
-
-function constructLocal(senderID, key, answer_objects) {
+function constructLocal(senderID, key, answerObjects) {
   const messageData = {
     recipient: {
       id: senderID,
     },
-    message: answer_objects[key],
+    message: answerObjects[key],
   };
 
   return messageData;
 }
 
+function findLocalReply(senderID, intent, contexts) {
+  // let boolean = false;
+  if (intent === 'brexit') {
+    const partyKey = extractContexts(contexts, intent);
+    get.partyVotes(partyKey, (err, res) => {
+      if (err) {
+        return err;
+      }
+      const partyVotesObj = res.rows[0];
+      const answerObjects = construct(partyVotesObj, null);
+      for (const key in answerObjects) {
+        if (key === intent) {
+          const messageData = constructLocal(senderID, key, answerObjects);
+          sendToFB(messageData);
+          // boolean = true;
+        }
+      }
+    });
+  } else {
+    get.firstName(senderID, (err, firstName) => {
+      if (err) {
+        return err;
+      }
+      const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
+      const answerObjects = construct(placeholderVotingObj, firstName);
+      for (const key in answerObjects) {
+        if (key === intent) {
+          const messageData = constructLocal(senderID, key, answerObjects);
+          sendToFB(messageData);
+        }
+      }
+    });
+  }
+}
+
+
 module.exports = {
   findLocalReply,
-  constructLocal
-}
+  constructLocal,
+};

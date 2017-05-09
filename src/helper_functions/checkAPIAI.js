@@ -30,7 +30,11 @@ module.exports = (event) => {
       const responseText = response.result.fulfillment.speech;
       const intent = response.result.metadata.intentName;
       const contexts = response.result.contexts;
+      const resolvedQuery = response.result.resolvedQuery;
 
+      if (contexts === 'party_votes') {
+        contexts = resolvedQuery;
+      }
       if (event.message) {
         if (event.message.attachments) {
           if (event.message.attachments[0].payload.coordinates) {
@@ -38,13 +42,13 @@ module.exports = (event) => {
             const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
 
             getPostcode(lat, long, (postCode, constituency) => {
-              console.log('postcode is ', postCode, 'constituency is ', constituency);
+              // console.log('postcode is ', postCode, 'constituency is ', constituency);
               const userPostcode = { postcode: postCode, facebook_id: senderID };
               post.userPostcode(userPostcode, (err, result) => {
                 if (err) {
                   console.log(err);
                 }
-                console.log(result);
+                // console.log(result);
               });
             });
           }
@@ -57,7 +61,7 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           }
-          console.log(result);
+          // console.log(result);
         });
       }
 

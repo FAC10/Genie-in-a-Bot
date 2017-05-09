@@ -1,4 +1,40 @@
-function constructAnswers(firstName) {
+/* eslint-disable */
+
+const extractContexts = require('./extractContexts');
+const get = require('../database/get_data');
+// let partyVotesObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
+// let firstName = null;
+
+// function constructAnswers(firstName, contexts, intent) {
+//   if (intent === 'brexit') {
+//     const partyKey = extractContexts(contexts, intent);
+//     get.partyVotes(partyKey, (err, res) => {
+//       if (err) {
+//         return err;
+//       }
+//       let partyVotesObj = res.rows[0];
+//       console.log('partyVotesObj is ', partyVotesObj);
+//       construct(partyVotesObj, firstName);
+//     });
+//   }
+//   else {
+//     construct(firstName);
+//   }
+// }
+
+  // console.log('partyVotesObj outside of if statement is ', partyVotesObj);
+
+function construct(partyVotesObj, firstName) {
+  if (firstName === null) {
+    firstName = 'placeholder'
+  } else if (partyVotesObj === { party: null, issue: null, inFavour: null, against: null, turnout: null }) {
+    partyVotesObj.party = 'placeholder';
+    partyVotesObj.issue = 'placeholder';
+    partyVotesObj.inFavour = 'placeholder';
+    partyVotesObj.against = 'placeholder';
+    partyVotesObj.turnout = 'placeholder';
+  }
+
   const answer_objects = {
     Candidates: {
       text: 'Type your postcode or send me your location to get started :)',
@@ -104,12 +140,15 @@ function constructAnswers(firstName) {
         },
         {
           content_type: 'text',
-          title: 'UKIP',
+          title: 'Green',
+          payload: 'party_votes',
+        },
+        {
+          content_type: 'text',
+          title: 'SNP',
           payload: 'party_votes',
         },
       ],
-
-
     },
 
     party_votes: {
@@ -128,9 +167,32 @@ function constructAnswers(firstName) {
         },
       ],
     },
+
+    brexit: {
+
+      text: `On 1st February 2017, ${partyVotesObj.infavour} voted in favour of leaving the EU. ${partyVotesObj.against} voted against.`,
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'How do other parties compare?',
+          payload: 'partyBrexitCompare',
+        },
+        {
+          content_type: 'text',
+          title: 'Back to votes',
+          payload: 'party_votes',
+        },
+        {
+          content_type: 'text',
+          title: 'Choose another party',
+          payload: 'Parties',
+        },
+      ],
+    },
+
   };
   return answer_objects;
 }
 
 
-module.exports = constructAnswers;
+module.exports = construct;
