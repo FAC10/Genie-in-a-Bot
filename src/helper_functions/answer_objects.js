@@ -169,7 +169,7 @@ function construct(partyVotesObj, firstName) {
       ],
     },
 
-    tuitionfees: {
+    tuitionFees: {
 
       text: `On 9th December 2010, ${partyVotesObj.infavour} voted in favour of raising the UK tuition fee cap to £9,000 a year. ${partyVotesObj.against} voted against.`,
       quick_replies: [
