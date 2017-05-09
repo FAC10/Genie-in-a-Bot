@@ -1,4 +1,11 @@
-function constructAnswers(firstName) {
+const extractContexts = require('./extractContexts');
+
+function constructAnswers(firstName, contexts) {
+  if (contexts) {
+    console.log('in the if statment about to extract contexts');
+    extractContexts(contexts);
+  }
+
   const answer_objects = {
     location_message: {
       text: 'Type your postcode or send me your location to get started :)',

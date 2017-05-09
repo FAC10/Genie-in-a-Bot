@@ -9,7 +9,7 @@ function findLocalReply(senderID, intent, contexts) {
     if (err) {
       return err;
     }
-    const answer_objects = constructAnswers(firstName);
+    const answer_objects = constructAnswers(firstName, contexts);
     for (const key in answer_objects) {
       if (key === intent) {
         const messageData = constructLocal(senderID, key, answer_objects);
