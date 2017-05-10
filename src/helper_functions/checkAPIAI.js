@@ -2,7 +2,6 @@ const apiai = require('apiai');
 require('env2')('./config.env');
 const post = require('../database/db_post.js');
 const getPostcode = require('../helper_functions/getPostcode.js');
-
 const apiai_app = apiai(process.env.APIAI_CLIENT);
 const constructRemoteReply = require('./constructRemoteReply');
 const findLocalReply = require('./findLocalReply');
@@ -31,13 +30,17 @@ module.exports = (event) => {
       const intent = response.result.metadata.intentName;
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
-
       console.log('contexts are ', contexts);
+      if (contexts) {
+        post.persistingCtxts(contexts, senderID, (err, result) => {
+          if (err) {
+            console.log(err);
+          }
+          console.log('added contexts to persistingCtxts', result);
+        });
+      }
       console.log('responseText is ', responseText);
 
-      // if (contexts === 'party_votes') {
-      //   contexts = resolvedQuery;
-      // }
       if (event.message) {
         if (event.message.attachments) {
           if (event.message.attachments[0].payload.coordinates) {

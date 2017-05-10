@@ -29,4 +29,9 @@ post.userPostcode = (userPostcode, callback) => {
   });
 };
 
+
+post.persistingCtxts = (contexts, facebook_id, callback) => {
+  connect.query(`UPDATE users SET persistingCtxts = '{$1}' WHERE facebook_id = ${facebook_id}`, [contexts]);
+};
+
 module.exports = post;

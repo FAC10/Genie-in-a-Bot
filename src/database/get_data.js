@@ -20,4 +20,24 @@ connect.query('SELECT party, issue, inFavour, against, turnout FROM partyVotes W
   return callback(null, res);
 });
 
+get.persistingCtxts = (facebookId, callback) => connect.query('SELECT persistingCtxts FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
+  if (err) {
+    return callback(err);
+  }
+  const rows = res.rows;
+  const rowsZero = rows[0];
+  const rowsContexts = rowsZero.contexts;
+  return callback(null, rowsContexts);
+});
+
+get.fleetingCtxts = (facebookId, callback) => connect.query('SELECT fleetingCtxts FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
+  if (err) {
+    return callback(err);
+  }
+  const rows = res.rows;
+  const rowsZero = rows[0];
+  const rowsContexts = rowsZero.contexts;
+  return callback(null, rowsContexts);
+});
+
 module.exports = get;
