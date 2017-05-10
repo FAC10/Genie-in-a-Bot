@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users, partyVotes CASCADE;
+DROP TABLE IF EXISTS users, partyVotes, candidates CASCADE;
 
 CREATE TABLE users (
   id          SERIAL        PRIMARY KEY,
@@ -20,6 +20,24 @@ CREATE TABLE partyVotes (
   turnout     VARCHAR(10)   NOT NULL
 );
 
+CREATE TABLE candidates (
+  id                  SERIAL        PRIMARY KEY,
+  name                VARCHAR(150)  NOT NULL,
+  gender              VARCHAR(15),
+  party_name          VARCHAR(100),
+  post_label          VARCHAR(100),
+  email               VARCHAR(100),
+  twitter_username    VARCHAR(100),
+  facebook_page_url   VARCHAR(100),
+  party_ppc_page_url  VARCHAR(100),
+  facebook_personal_url VARCHAR(100),
+  homepage_url        VARCHAR(100),
+  wikipedia_url       VARCHAR(150),
+  linkedin_url        VARCHAR(100),
+  image_url           VARCHAR(100),
+  theyworkforyou_url  VARCHAR(100)
+);
+
 INSERT INTO users (firstname, lastname, facebook_id, postcode)
 VALUES
 ('Maja', 'Kudlicka', 517916098, 'E2 0ET');
@@ -36,9 +54,8 @@ VALUES
 ('Liberal DemocratstuitionFees', 'the Liberal Democrats', 'Tution Fees', '27 Lib Dem MPs (56%)', '21 MPs (44%)', '86%'),
 ('GreentuitionFees', 'the Green Party', 'Tuition Fees', '0 Green MPs (0%)', '1 MP (100%)', '100%'),
 ('SNPtuitionFees', 'the SNP', 'Tuition Fees', '0 SNP MPs (0%)', '6 MPs (100%)', '96.3%'),
-
 ('Conservativesyria', 'the Conservative Party', 'Syrian Air Strikes', '313 Conservative MPs (98%)', '7 MPs (2%)', '97.6%'),
-('Laboursyria', 'Syrian Air Strikes', 'Tuition Fees', '66 Labour MPs (30%)', '153 MPs (70%)', '94.8%'),
+('Laboursyria', 'the Labour Party', 'Syrian Air Strikes', '66 Labour MPs (30%)', '153 MPs (70%)', '94.8%'),
 ('Liberal Democratssyria', 'the Liberal Democrats', 'Syrian Air Strikes', '6 Lib Dem MPs (75%)', '2 MPs (25%)', '100%'),
 ('Greensyria', 'the Green Party', 'Syrian Air Strikes', '0 Green MPs (0%)', '1 MP (100%)', '100%'),
 ('SNPsyria', 'the SNP', 'Syrian Air Strikes', '0 SNP MPs (0%)', '53 MPs (100%)', '100%');
