@@ -79,8 +79,12 @@ module.exports = (event) => {
         get.persistingCtxts(senderID, (err, res) => {
           if (err) {
             console.log(err);
+          } if (res === null) {
+            intent = fallbackRegister;
+            findLocalReply.findLocalReply(senderID, intent, contexts);
           } else {
-            console.log('res is', res);
+            intent = fallbackGeneral;
+            findLocalReply.findLocalReply(senderID, intent, contexts);
           }
         });
       }
