@@ -79,10 +79,11 @@ module.exports = (event) => {
         get.persistingCtxts(senderID, (err, res) => {
           if (err) {
             console.log(err);
+          } else {
+            console.log(res);
           }
-          console.log(res);
-        };
-      });
+        });
+      }
 
       if (responseText) {
         console.log('getting into responseText if statement');
