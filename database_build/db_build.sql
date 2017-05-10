@@ -6,9 +6,12 @@ CREATE TABLE users (
   id          SERIAL        PRIMARY KEY,
   firstname   VARCHAR(30)   NOT NULL,
   lastname    VARCHAR(50),
-  facebook_id BIGINT       UNIQUE,
+  facebook_id BIGINT        UNIQUE,
   postcode    VARCHAR(10),
-  constituency  VARCHAR(100)
+  constituency VARCHAR(100),
+  persistingCtxts    TEXT[],
+  party      TEXT[],
+  issue       TEXT[]
 );
 
 CREATE TABLE partyVotes (

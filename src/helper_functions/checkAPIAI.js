@@ -3,11 +3,11 @@ require('env2')('./config.env');
 const post = require('../database/db_post.js');
 const getPostcode = require('../helper_functions/getPostcode.js');
 const get = require('../database/get_data.js');
-
 const apiai_app = apiai(process.env.APIAI_CLIENT);
 const constructRemoteReply = require('./constructRemoteReply');
 const findLocalReply = require('./findLocalReply');
 const getConstituency = require('./getConstituency');
+
 
 module.exports = (event) => {
   const senderID = event.sender.id;
@@ -30,16 +30,26 @@ module.exports = (event) => {
 
     apiai_request.on('response', (response) => {
       const responseText = response.result.fulfillment.speech;
-      const intent = response.result.metadata.intentName;
+      let intent = response.result.metadata.intentName;
+      console.log('intent is ', intent);
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
-
       console.log('contexts are ', contexts);
+      if (intent === 'register' || intent === 'registerDone') {
+        console.log('about to post registerDone to ', senderID);
+        post.persistingCtxts('registerDone', senderID, (err, result) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log('added contexts to persistingCtxts', result);
+          }
+        });
+      }
+      // response.result.contexts = null;
+      console.log('contexts after are ', response.result.contexts);
+
       console.log('responseText is ', responseText);
 
-      if (contexts === 'party_votes') {
-        contexts = resolvedQuery;
-      }
       if (event.message) {
         if (event.message.attachments) {
           if (event.message.attachments[0].payload.coordinates) {
@@ -64,6 +74,26 @@ module.exports = (event) => {
         }
       }
 
+      if (intent === 'party_votes') {
+        post.party(resolvedQuery, senderID, (err, res) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(resolvedQuery, ' has been posted to db');
+          }
+        });
+      }
+
+      if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
+        post.issue(intent, senderID, (err, res) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(intent, ' has been posted to db');
+          }
+        });
+      }
+
       if (intent === 'Local_MPs') {
         const userPostcode = { postcode: messageText, facebook_id: senderID };
         const constit = getConstituency(messageText);
@@ -81,6 +111,7 @@ module.exports = (event) => {
         });
       }
 
+
       if (intent === 'Jokes') {
         get.randomJoke((err, result) => {
           if (err) {
@@ -90,11 +121,29 @@ module.exports = (event) => {
         });
       }
 
+
+      if (!intent) {
+        console.log('no intent');
+        get.persistingCtxts(senderID, (err, res) => {
+          console.log('res is ', res);
+          if (err) {
+            console.log(err);
+          } if (res === null) {
+            intent = 'fallbackRegister';
+            findLocalReply.findLocalReply(senderID, intent);
+          } else {
+            intent = 'fallbackGeneral';
+            findLocalReply.findLocalReply(senderID, intent);
+          }
+        });
+      }
+
+
       if (responseText) {
         console.log('getting into responseText if statement');
         constructRemoteReply(senderID, responseText);
       } else {
-        findLocalReply.findLocalReply(senderID, intent, contexts);
+        findLocalReply.findLocalReply(senderID, intent);
       }
     });
 

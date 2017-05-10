@@ -2,7 +2,7 @@ const test = require('tape');
 const request = require('supertest');
 const routes = require('../src/routes/home.js');
 const app = require('../src/webhook.js');
-const constructLocal = require('../src/helper_functions/findLocalReply.js');
+const constructLocal = require('../src/helper_functions/constructLocal');
 const constructAnswers = require('../src/helper_functions/answer_objects.js');
 // const server = require('../webhook.js');
 
