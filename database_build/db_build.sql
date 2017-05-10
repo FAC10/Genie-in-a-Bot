@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users, partyVotes, candidates CASCADE;
+DROP TABLE IF EXISTS users, partyVotes CASCADE;
 
 CREATE TABLE users (
   id          SERIAL        PRIMARY KEY,
@@ -18,24 +18,6 @@ CREATE TABLE partyVotes (
   inFavour    VARCHAR(30)   NOT NULL,
   against     VARCHAR(30)   NOT NULL,
   turnout     VARCHAR(10)   NOT NULL
-);
-
-CREATE TABLE candidates (
-  id                  SERIAL        PRIMARY KEY,
-  name                VARCHAR(150)  NOT NULL,
-  gender              VARCHAR(15),
-  party_name          VARCHAR(100),
-  post_label          VARCHAR(100),
-  email               VARCHAR(100),
-  twitter_username    VARCHAR(100),
-  facebook_page_url   VARCHAR(100),
-  party_ppc_page_url  VARCHAR(100),
-  facebook_personal_url VARCHAR(100),
-  homepage_url        VARCHAR(100),
-  wikipedia_url       VARCHAR(150),
-  linkedin_url        VARCHAR(100),
-  image_url           VARCHAR(100),
-  theyworkforyou_url  VARCHAR(100)
 );
 
 INSERT INTO users (firstname, lastname, facebook_id, postcode)

@@ -7,8 +7,3 @@ function extractContexts(contexts, intent) {
 }
 
 module.exports = extractContexts;
-
-// [{ name: 'party_votes',
-//   parameters: { Parties: 'Conservative', 'Parties.original': 'Conservative' },
-//   lifespan: 4 },
-// { name: 'brexit', parameters: {}, lifespan: 5 }];
