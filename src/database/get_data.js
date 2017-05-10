@@ -27,7 +27,10 @@ get.persistingCtxts = (facebookId, callback) => connect.query('SELECT persisting
   if (err) {
     return callback(err);
   }
-  return callback(null, res);
+  const rows = res.rows;
+  const rowsZero = rows[0];
+  const persistingCtxts = rowsZero.persistingctxts;
+  return callback(null, persistingCtxts);
 });
 
 get.fleetingCtxts = (facebookId, callback) => connect.query('SELECT fleetingCtxts FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
