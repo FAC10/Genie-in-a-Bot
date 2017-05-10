@@ -29,6 +29,31 @@ post.userPostcode = (userPostcode, callback) => {
   });
 };
 
+
+post.persistingCtxts = (contexts, facebook_id, callback) => {
+  console.log('in post function with contexts of ', contexts, ' and facebookid of ', facebook_id);
+  connect.query(`UPDATE users SET persistingCtxts = '{${contexts}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
+    if (err) return callback(err);
+    callback(null, res);
+  });
+};
+
+post.party = (contexts, facebook_id, callback) => {
+  console.log('in post function with contexts of ', contexts, ' and facebookid of ', facebook_id);
+  connect.query(`UPDATE users SET party = '{${contexts}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
+    if (err) return callback(err);
+    callback(null, res);
+  });
+};
+
+post.issue = (contexts, facebook_id, callback) => {
+  console.log('in post function with contexts of ', contexts, ' and facebookid of ', facebook_id);
+  connect.query(`UPDATE users SET issue = '{${contexts}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
+    if (err) return callback(err);
+    callback(null, res);
+     });
+  };
+    
 post.userConstituency = (userConstituency, callback) => {
   connect.query(`UPDATE users SET constituency = '${userConstituency.constituency}' WHERE facebook_id = ${userConstituency.facebook_id}`, (err) => {
     if (err) return callback(err);
