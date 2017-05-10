@@ -32,6 +32,7 @@ module.exports = (event) => {
       const resolvedQuery = response.result.resolvedQuery;
       console.log('contexts are ', contexts);
       if (contexts) {
+        console.log('about to post ', contexts.name, ' to ', senderID);
         post.persistingCtxts(contexts.name, senderID, (err, result) => {
           if (err) {
             console.log(err);
