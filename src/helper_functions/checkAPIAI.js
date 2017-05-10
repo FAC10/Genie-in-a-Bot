@@ -32,7 +32,7 @@ module.exports = (event) => {
       const resolvedQuery = response.result.resolvedQuery;
       console.log('contexts are ', contexts);
       if (contexts) {
-        post.persistingCtxts(contexts, senderID, (err, result) => {
+        post.persistingCtxts(contexts.name, senderID, (err, result) => {
           if (err) {
             console.log(err);
           } else {
