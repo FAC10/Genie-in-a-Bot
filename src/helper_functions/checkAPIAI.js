@@ -80,10 +80,10 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           } if (res === null) {
-            intent = fallbackRegister;
+            intent = 'fallbackRegister';
             findLocalReply.findLocalReply(senderID, intent, contexts);
           } else {
-            intent = fallbackGeneral;
+            intent = 'fallbackGeneral';
             findLocalReply.findLocalReply(senderID, intent, contexts);
           }
         });
