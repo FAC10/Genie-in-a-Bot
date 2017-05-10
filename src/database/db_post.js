@@ -31,7 +31,7 @@ post.userPostcode = (userPostcode, callback) => {
 
 
 post.persistingCtxts = (contexts, facebook_id, callback) => {
-  connect.query(`UPDATE users SET persistingCtxts = '{${contexts}}' WHERE facebook_id = ${facebook_id}`, [contexts], (err, res) => {
+  connect.query(`UPDATE users SET persistingCtxts = '{%${contexts}%}' WHERE facebook_id = %${facebook_id}%`, [contexts], (err, res) => {
     if (err) return callback(err);
     callback(null, res);
   });
