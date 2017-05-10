@@ -8,6 +8,7 @@ CREATE TABLE users (
   lastname    VARCHAR(50),
   facebook_id BIGINT        UNIQUE,
   postcode    VARCHAR(10),
+  constituency VARCHAR(100),
   persistingCtxts    TEXT[],
   fleetingCtxts      TEXT[]
 );
