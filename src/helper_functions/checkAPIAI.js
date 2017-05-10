@@ -81,7 +81,7 @@ module.exports = (event) => {
             console.log(err);
           }
           console.log(res);
-        });
+        };
       });
 
       if (responseText) {
