@@ -14,11 +14,12 @@ function constructLocal(senderID, key, answerObjects) {
   return messageData;
 }
 
-function findLocalReply(senderID, intent, contexts) {
+function findLocalReply(senderID, intent) {
   // let boolean = false;
   // console.log('intent is', intent);
+
   if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
-    const partyKey = extractContexts(contexts, intent);
+    const partyKey = extractContexts(senderID, intent);
     get.partyVotes(partyKey, (err, res) => {
       if (err) {
         return err;

@@ -106,10 +106,10 @@ module.exports = (event) => {
             console.log(err);
           } if (res === null) {
             intent = 'fallbackRegister';
-            findLocalReply.findLocalReply(senderID, intent, contexts);
+            findLocalReply.findLocalReply(senderID, intent);
           } else {
             intent = 'fallbackGeneral';
-            findLocalReply.findLocalReply(senderID, intent, contexts);
+            findLocalReply.findLocalReply(senderID, intent);
           }
         });
       }
@@ -118,7 +118,7 @@ module.exports = (event) => {
         console.log('getting into responseText if statement');
         constructRemoteReply(senderID, responseText);
       } else {
-        findLocalReply.findLocalReply(senderID, intent, contexts);
+        findLocalReply.findLocalReply(senderID, intent);
       }
     });
 
