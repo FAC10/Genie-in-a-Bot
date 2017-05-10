@@ -30,7 +30,7 @@ module.exports = (event) => {
       const responseText = response.result.fulfillment.speech;
       let intent = response.result.metadata.intentName;
       console.log('intent is ', intent);
-      let contexts = response.result.contexts;
+      const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
       console.log('contexts are ', contexts);
       if (contexts && contexts[0] && contexts[0].name === 'registerdone') {
@@ -43,7 +43,7 @@ module.exports = (event) => {
           }
         });
       }
-      contexts = null;
+      response.result.contexts = null;
 
       console.log('responseText is ', responseText);
 
