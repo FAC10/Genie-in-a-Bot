@@ -1,7 +1,7 @@
 const get = require('../database/get_data');
 const construct = require('./answer_objects');
 const sendToFB = require('./sendToFB');
-const constructLocal = require('./findLocalReply');
+const constructLocal = require('./constructLocal');
 
 function getVotingData(senderID, intent, partyKey) {
   console.log('single construct local is ', constructLocal);
@@ -17,7 +17,7 @@ function getVotingData(senderID, intent, partyKey) {
     console.log('answerObjects are ', answerObjects);
     for (const key in answerObjects) {
       if (key === intent) {
-        const messageData = constructLocal.constructLocal(senderID, key, answerObjects);
+        const messageData = constructLocal(senderID, key, answerObjects);
         sendToFB(messageData);
       // boolean = true;
       }

@@ -3,17 +3,7 @@ const construct = require('./answer_objects');
 const get = require('./../database/get_data');
 const extractContexts = require('./extractContexts');
 const getVotingData = require('./getVotingData');
-
-function constructLocal(senderID, key, answerObjects) {
-  const messageData = {
-    recipient: {
-      id: senderID,
-    },
-    message: answerObjects[key],
-  };
-
-  return messageData;
-}
+const constructLocal = require('./constructLocal');
 
 function findLocalReply(senderID, intent) {
   // let boolean = false;
@@ -41,5 +31,4 @@ function findLocalReply(senderID, intent) {
 
 module.exports = {
   findLocalReply,
-  constructLocal,
 };
