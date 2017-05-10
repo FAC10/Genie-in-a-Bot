@@ -46,7 +46,7 @@ get.party = (facebookId, callback) => connect.query('SELECT party FROM users WHE
   const rowsZero = rows[0];
   // console.log('rowsZero is ', rowsZero);
   const party = rowsZero.party;
-  console.log('persistingCtxts', party);
+  console.log('party', party);
   if (!party === null) {
     return callback(null, party[0]);
   }
@@ -63,7 +63,7 @@ get.issue = (facebookId, callback) => connect.query('SELECT issue FROM users WHE
   const rowsZero = rows[0];
   // console.log('rowsZero is ', rowsZero);
   const issue = rowsZero.issue;
-  console.log('persistingCtxts', issue);
+  console.log('issue', issue);
   if (!issue === null) {
     return callback(null, issue[0]);
   }

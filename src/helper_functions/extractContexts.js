@@ -6,7 +6,7 @@ function extractContexts(senderID, intent) {
       return err;
     }
 
-    console.log('extractContexts is ', res.rows);
+    console.log('extractContexts is ', res);
 
   // const parameter = contexts[0].parameters.Parties;
   // const context = contexts[1].name;
