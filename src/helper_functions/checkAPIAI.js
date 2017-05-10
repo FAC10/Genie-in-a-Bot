@@ -5,6 +5,7 @@ const getPostcode = require('../helper_functions/getPostcode.js');
 const apiai_app = apiai(process.env.APIAI_CLIENT);
 const constructRemoteReply = require('./constructRemoteReply');
 const findLocalReply = require('./findLocalReply');
+const get = require('../database/get_data');
 
 module.exports = (event) => {
   const senderID = event.sender.id;
@@ -31,7 +32,7 @@ module.exports = (event) => {
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
       console.log('contexts are ', contexts);
-      if (contexts) {
+      if (contexts[0].name === 'registerDone') {
         console.log('about to post ', contexts[0].name, ' to ', senderID);
         post.persistingCtxts(contexts[0].name, senderID, (err, result) => {
           if (err) {
@@ -41,6 +42,7 @@ module.exports = (event) => {
           }
         });
       }
+
       console.log('responseText is ', responseText);
 
       if (event.message) {
@@ -71,6 +73,16 @@ module.exports = (event) => {
           }
           // console.log(result);
         });
+      }
+
+      if (!intent) {
+        get.persistingCtxts(senderID (err, res) => {
+          if (err) {
+            console.log(err);
+          }
+          console.log(res);
+        });
+        })
       }
 
       if (responseText) {
