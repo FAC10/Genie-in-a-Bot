@@ -29,17 +29,15 @@ get.persistingCtxts = (facebookId, callback) => connect.query('SELECT persisting
   }
   console.log('initial res is ', res);
   const rows = res.rows;
-  if (rows) {
-    const rowsZero = rows[0];
-    console.log('rowsZero is ', rowsZero);
-    if (rowsZero.persistingctxts) {
-      const persistingCtxts = rowsZero.persistingctxts[0];
-      console.log('persistingCtxts', persistingCtxts);
-      return callback(null, persistingCtxts);
-    }
-  } else {
-    return callback(null, res);
+  const rowsZero = rows[0];
+  // console.log('rowsZero is ', rowsZero);
+  const persistingCtxts = rowsZero.persistingctxts;
+  console.log('persistingCtxts', persistingCtxts);
+  if (persistingCtxts[0]) {
+    return callback(null, persistingCtxts[0]);
   }
+
+  return callback(null, persistingCtxts);
 });
 
 get.fleetingCtxts = (facebookId, callback) => connect.query('SELECT fleetingCtxts FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
