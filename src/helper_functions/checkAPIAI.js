@@ -76,14 +76,13 @@ module.exports = (event) => {
       }
 
       if (!intent) {
-        get.persistingCtxts(senderID (err, res) => {
+        get.persistingCtxts(senderID, (err, res) => {
           if (err) {
             console.log(err);
           }
           console.log(res);
         });
-        })
-      }
+      });
 
       if (responseText) {
         console.log('getting into responseText if statement');
