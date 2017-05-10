@@ -2,6 +2,7 @@ const apiai = require('apiai');
 require('env2')('./config.env');
 const post = require('../database/db_post.js');
 const getPostcode = require('../helper_functions/getPostcode.js');
+const get = require('../database/get_data.js');
 
 const apiai_app = apiai(process.env.APIAI_CLIENT);
 const constructRemoteReply = require('./constructRemoteReply');
@@ -77,6 +78,15 @@ module.exports = (event) => {
             console.log(err);
           }
           // console.log(result);
+        });
+      }
+
+      if (intent === 'Jokes') {
+        get.randomJoke((err, result) => {
+          if (err) {
+            console.log(err);
+          }
+          console.log(result);
         });
       }
 

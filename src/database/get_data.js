@@ -20,4 +20,12 @@ connect.query('SELECT party, issue, inFavour, against, turnout FROM partyVotes W
   return callback(null, res);
 });
 
+get.randomJoke = callback =>
+connect.query('SELECT joke FROM jokes ORDER BY RANDOM() LIMIT 1 ', (err, res) => {
+  if (err) {
+    return callback(err);
+  }
+  return callback(null, res);
+});
+
 module.exports = get;

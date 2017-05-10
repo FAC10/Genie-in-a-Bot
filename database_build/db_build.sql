@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users, partyVotes CASCADE;
+DROP TABLE IF EXISTS users, partyVotes, jokes CASCADE;
 
 CREATE TABLE users (
   id          SERIAL        PRIMARY KEY,
@@ -21,9 +21,24 @@ CREATE TABLE partyVotes (
   turnout     VARCHAR(10)   NOT NULL
 );
 
+CREATE TABLE jokes (
+  id         INTEGER        PRIMARY KEY,
+  joke       VARCHAR(10000),
+  image_url  VARCHAR(500)
+);
+
 INSERT INTO users (firstname, lastname, facebook_id, postcode)
 VALUES
 ('Maja', 'Kudlicka', 517916098, 'E2 0ET');
+
+INSERT INTO jokes (id, joke, image_url)
+VALUES
+(1, 'I''m am not a big fan of political jokes. I have seen too many of them get elected...', ''),
+(2, 'Because it would be hilarious is not a good reason to elect someone.', ''),
+(3, 'Have you seen the dog?', 'https://s-media-cache-ak0.pinimg.com/736x/5e/43/55/5e4355de4f1aba37be8a9feaf1ba97c7.jpg'),
+(4, 'I asked my North Korean friend how it was there, he said he couldn''t complain.', '');
+
+
 
 INSERT INTO partyVotes (partyKey, party, issue, inFavour, against, turnout)
 VALUES
