@@ -15,7 +15,7 @@ function getVotingData(senderID, intent, partyKey) {
     console.log('answerObjects are ', answerObjects);
     for (const key in answerObjects) {
       if (key === intent) {
-        const messageData = constructLocal(senderID, key, answerObjects);
+        console.log(constructLocal.constructLocal(senderID, key, answerObjects));
         sendToFB(messageData);
       // boolean = true;
       }
