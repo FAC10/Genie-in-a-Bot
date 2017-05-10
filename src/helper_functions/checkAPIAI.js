@@ -28,7 +28,7 @@ module.exports = (event) => {
 
     apiai_request.on('response', (response) => {
       const responseText = response.result.fulfillment.speech;
-      const intent = response.result.metadata.intentName;
+      let intent = response.result.metadata.intentName;
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
       console.log('contexts are ', contexts);
