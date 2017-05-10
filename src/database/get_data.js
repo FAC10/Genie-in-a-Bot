@@ -30,6 +30,7 @@ get.persistingCtxts = (facebookId, callback) => connect.query('SELECT persisting
   const rows = res.rows;
   const rowsZero = rows[0];
   const persistingCtxts = rowsZero.persistingctxts;
+  console.log('persistingCtxts is', persistingCtxts);
   return callback(null, persistingCtxts);
 });
 

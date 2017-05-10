@@ -80,6 +80,7 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           } if (res === null) {
+            console.log('res is ', res);
             intent = 'fallbackRegister';
             findLocalReply.findLocalReply(senderID, intent, contexts);
           } else {
