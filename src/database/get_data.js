@@ -1,4 +1,5 @@
 const connect = require('./db_connect');
+const candidateConnect = require('./db_connect_candidate');
 
 const get = {};
 
@@ -14,6 +15,13 @@ get.firstName = (facebookId, callback) => connect.query('SELECT firstname FROM u
 
 get.partyVotes = (partyKey, callback) =>
 connect.query('SELECT party, issue, inFavour, against, turnout FROM partyVotes WHERE partyKey = $1;', [partyKey], (err, res) => {
+  if (err) {
+    return callback(err);
+  }
+  return callback(null, res);
+});
+
+get.candidates = (constituency, callback) => candidateConnect.query('SELECT name, party_name, twitter_username, image_url FROM candidates4 WHERE post_label = $1;', [constituency], (err, res) => {
   if (err) {
     return callback(err);
   }
