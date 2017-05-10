@@ -49,27 +49,6 @@ function construct(partyVotesObj, firstName) {
                 },
               ],
             },
-            {
-              title: 'Flick through the cards for info on the candidates',
-              image_url: 'https://pbs.twimg.com/profile_images/621862866845597696/_JUDMypl.jpg',
-              subtitle: 'MP XYZ, Party XYZ',
-              buttons: [
-                {
-                  type: 'postback',
-                  title: 'Recent tweest',
-                  payload: 'Recent tweets',
-                }, {
-                  type: 'postback',
-                  title: 'Recent mentions',
-                  payload: 'Recent mentions',
-                },
-                {
-                  type: 'postback',
-                  title: 'Another area',
-                  payload: 'Another area',
-                },
-              ],
-            },
           ],
         },
       },
@@ -217,7 +196,7 @@ function construct(partyVotesObj, firstName) {
         },
         ]
     },
-        
+
     tuitionFees: {
 
       text: `On 9th December 2010, ${partyVotesObj.infavour} voted in favour of raising the UK tuition fee cap to £9,000 a year. ${partyVotesObj.against} voted against.`,

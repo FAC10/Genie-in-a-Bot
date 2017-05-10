@@ -51,6 +51,12 @@ post.issue = (contexts, facebook_id, callback) => {
   connect.query(`UPDATE users SET issue = '{${contexts}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
     if (err) return callback(err);
     callback(null, res);
+     });
+  };
+    
+post.userConstituency = (userConstituency, callback) => {
+  connect.query(`UPDATE users SET constituency = '${userConstituency.constituency}' WHERE facebook_id = ${userConstituency.facebook_id}`, (err) => {
+    if (err) return callback(err);
   });
 };
 

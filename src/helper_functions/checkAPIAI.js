@@ -6,6 +6,8 @@ const apiai_app = apiai(process.env.APIAI_CLIENT);
 const constructRemoteReply = require('./constructRemoteReply');
 const findLocalReply = require('./findLocalReply');
 const get = require('../database/get_data');
+const getConstituency = require('./getConstituency');
+
 
 module.exports = (event) => {
   const senderID = event.sender.id;
@@ -55,13 +57,17 @@ module.exports = (event) => {
             const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
 
             getPostcode(lat, long, (postCode, constituency) => {
-              // console.log('postcode is ', postCode, 'constituency is ', constituency);
               const userPostcode = { postcode: postCode, facebook_id: senderID };
+              const userConstituency = { constituency, facebook_id: senderID };
               post.userPostcode(userPostcode, (err, result) => {
                 if (err) {
                   console.log(err);
                 }
-                // console.log(result);
+              });
+              post.userConstituency(userConstituency, (err) => {
+                if (err) {
+                  console.log(err);
+                }
               });
             });
           }
@@ -90,6 +96,13 @@ module.exports = (event) => {
 
       if (intent === 'Local_MPs') {
         const userPostcode = { postcode: messageText, facebook_id: senderID };
+        const constit = getConstituency(messageText);
+        const userConstituency = { constituency: constit, facebook_id: senderID };
+        post.userConstituency(userConstituency, (err) => {
+          if (err) {
+            console.log(err);
+          }
+        });
         post.userPostcode(userPostcode, (err, result) => {
           if (err) {
             console.log(err);
