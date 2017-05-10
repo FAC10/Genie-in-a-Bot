@@ -36,7 +36,7 @@ get.persistingCtxts = (facebookId, callback) => connect.query('SELECT persisting
       return callback(null, persistingCtxts);
     }
   } else {
-    return callback(null, null);
+    return callback(null, res);
   }
 });
 
