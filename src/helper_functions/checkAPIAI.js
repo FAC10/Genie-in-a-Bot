@@ -32,7 +32,7 @@ module.exports = (event) => {
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
       console.log('contexts are ', contexts);
-      if (contexts && contexts[0] && contexts[0].name === 'registerDone') {
+      if (contexts && contexts[0] && contexts[0].name === 'registerdone') {
         console.log('about to post ', contexts[0].name, ' to ', senderID);
         post.persistingCtxts(contexts[0].name, senderID, (err, result) => {
           if (err) {
