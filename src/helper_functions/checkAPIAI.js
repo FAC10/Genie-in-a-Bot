@@ -69,7 +69,7 @@ module.exports = (event) => {
       }
 
       if (intent === 'party_votes') {
-        post.party(resolvedQuery, (err, res) => {
+        post.party(resolvedQuery, senderID, (err, res) => {
           if (err) {
             console.log(err);
           } else {
@@ -79,7 +79,7 @@ module.exports = (event) => {
       }
 
       if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
-        post.issue(intent, (err, res) => {
+        post.issue(intent, senderID, (err, res) => {
           if (err) {
             console.log(err);
           } else {
