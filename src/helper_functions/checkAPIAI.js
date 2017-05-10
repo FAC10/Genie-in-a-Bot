@@ -35,9 +35,9 @@ module.exports = (event) => {
       console.log('contexts are ', contexts);
       console.log('responseText is ', responseText);
 
-      if (contexts === 'party_votes') {
-        contexts = resolvedQuery;
-      }
+      // if (contexts === 'party_votes') {
+      //   contexts = resolvedQuery;
+      // }
       if (event.message) {
         if (event.message.attachments) {
           if (event.message.attachments[0].payload.coordinates) {
