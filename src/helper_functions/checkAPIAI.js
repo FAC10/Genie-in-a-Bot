@@ -35,8 +35,9 @@ module.exports = (event) => {
         post.persistingCtxts(contexts, senderID, (err, result) => {
           if (err) {
             console.log(err);
+          } else {
+            console.log('added contexts to persistingCtxts', result);
           }
-          console.log('added contexts to persistingCtxts', result);
         });
       }
       console.log('responseText is ', responseText);
