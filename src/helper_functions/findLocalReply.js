@@ -15,8 +15,6 @@ function constructLocal(senderID, key, answerObjects) {
 }
 
 function findLocalReply(senderID, intent, contexts) {
-  // let boolean = false;
-  // console.log('intent is', intent);
   if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
     const partyKey = extractContexts(contexts, intent);
     get.partyVotes(partyKey, (err, res) => {
