@@ -43,7 +43,7 @@ module.exports = (event) => {
           }
         });
       }
-      response.result.contexts = null;
+      // response.result.contexts = null;
       console.log('contexts after are ', response.result.contexts);
 
       console.log('responseText is ', responseText);
@@ -66,6 +66,26 @@ module.exports = (event) => {
             });
           }
         }
+      }
+
+      if (intent === 'party_votes') {
+        post.party(resolvedQuery, (err, res) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(resolvedQuery, ' has been posted to db');
+          }
+        });
+      }
+
+      if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
+        post.issue(intent, (err, res) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(intent, ' has been posted to db');
+          }
+        });
       }
 
       if (intent === 'Local_MPs') {

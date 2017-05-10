@@ -10,7 +10,8 @@ CREATE TABLE users (
   postcode    VARCHAR(10),
   constituency VARCHAR(100),
   persistingCtxts    TEXT[],
-  fleetingCtxts      TEXT[]
+  party      TEXT[],
+  issue       TEXT[]
 );
 
 CREATE TABLE partyVotes (
