@@ -29,6 +29,7 @@ module.exports = (event) => {
     apiai_request.on('response', (response) => {
       const responseText = response.result.fulfillment.speech;
       let intent = response.result.metadata.intentName;
+      console.log('intent is ', intent);
       let contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
       console.log('contexts are ', contexts);
@@ -77,6 +78,7 @@ module.exports = (event) => {
       }
 
       if (!intent) {
+        console.log('no intent');
         get.persistingCtxts(senderID, (err, res) => {
           console.log('res is ', res);
           if (err) {
