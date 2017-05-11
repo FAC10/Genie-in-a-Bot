@@ -92,7 +92,7 @@ module.exports = (event) => {
         // const constit = 'Poplar and Limehouse';
         getConstituency(messageText, (err, result) => {
           if (err) {
-            return err;
+            console.log(err);
           }
           const userConstituency = { constituency: result, facebook_id: senderID };
           console.log(userConstituency);
