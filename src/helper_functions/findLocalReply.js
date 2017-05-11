@@ -4,6 +4,7 @@ const get = require('./../database/get_data');
 const extractContexts = require('./extractContexts');
 const getVotingData = require('./getVotingData');
 const constructLocal = require('./constructLocal');
+const constructCandidates = require('./constructCandidates');
 
 
 function findLocalReply(senderID, intent) {
@@ -13,6 +14,7 @@ function findLocalReply(senderID, intent) {
         return err;
       }
       const constituency = res;
+      console.log('constituency is', constituency);
       get.candidates(constituency, (err, res) => {
         if (err) {
           return err;
