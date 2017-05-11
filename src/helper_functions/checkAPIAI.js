@@ -86,6 +86,7 @@ module.exports = (event) => {
       }
 
       if (intent === 'runningCandidates') {
+        console.log('inside running candidates');
         const userPostcode = { postcode: messageText, facebook_id: senderID };
         // const constit = getConstituency(messageText);
         // const constit = 'Poplar and Limehouse';
@@ -96,9 +97,11 @@ module.exports = (event) => {
           return result;
         });
         const userConstituency = { constituency: constit, facebook_id: senderID };
+        console.log(userConstituency);
         post.userConstituency(userConstituency, (err) => {
+          console.log('inside userConstituency if statament');
           if (err) {
-            return err;
+            console.log(err);
           }
           findLocalReply.findLocalReply(senderID, intent);
         });
@@ -106,6 +109,7 @@ module.exports = (event) => {
           if (err) {
             return err;
           }
+          console.log('success?');
         });
       }
 
