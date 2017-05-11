@@ -51,7 +51,7 @@ module.exports = [
                 },
               };
               sendToFB(messageData);
-            } else if (event.postback.payload === 'FACEBOOK_WELCOME') {
+            } else {
               getFacebookName(event.sender.id, () => {
                 findLocalReply.findLocalReply(event.sender.id, event.postback.payload);
               });
