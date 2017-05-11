@@ -94,6 +94,7 @@ module.exports = (event) => {
           if (err) {
             return err;
           }
+          console.log('userConstituency is', userConstituency);
           findLocalReply.findLocalReply(senderID, intent);
         });
         post.userPostcode(userPostcode, (err, result) => {
