@@ -34,9 +34,7 @@ module.exports = (event) => {
       console.log('intent is ', intent);
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
-      console.log('contexts are ', contexts);
       if (intent === 'register' || intent === 'registerDone') {
-        console.log('about to post registerDone to ', senderID);
         post.persistingCtxts('registerDone', senderID, (err, result) => {
           if (err) {
             console.log(err);
@@ -45,10 +43,6 @@ module.exports = (event) => {
           }
         });
       }
-      // response.result.contexts = null;
-      console.log('contexts after are ', response.result.contexts);
-
-      console.log('responseText is ', responseText);
 
       if (event.message) {
         if (event.message.attachments) {
@@ -79,7 +73,6 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           } else {
-            console.log(resolvedQuery, ' has been posted to db');
           }
         });
       }
@@ -89,12 +82,11 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           } else {
-            console.log(intent, ' has been posted to db');
           }
         });
       }
 
-      if (intent === 'Local_MPs') {
+      if (intent === 'Candidates') {
         const userPostcode = { postcode: messageText, facebook_id: senderID };
         const constit = getConstituency(messageText);
         const userConstituency = { constituency: constit, facebook_id: senderID };
@@ -112,9 +104,7 @@ module.exports = (event) => {
       }
 
       if (!intent) {
-        console.log('no intent');
         get.persistingCtxts(senderID, (err, res) => {
-          console.log('res is ', res);
           if (err) {
             console.log(err);
           } if (res === null) {
@@ -128,7 +118,6 @@ module.exports = (event) => {
       }
 
       if (responseText) {
-        console.log('getting into responseText if statement');
         constructRemoteReply(senderID, responseText);
       } else {
         findLocalReply.findLocalReply(senderID, intent);
