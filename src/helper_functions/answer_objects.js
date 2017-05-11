@@ -23,15 +23,16 @@ function construct(partyVotesObj, firstName) {
     },
 
     runningCandidates: {
+      text: 'Flick through to see the candidates running in your area',
       attachment: {
         type: 'template',
         payload: {
           template_type: 'generic',
           elements: [
             {
-              title: 'Flick through the cards for info on the candidates',
-              image_url: 'https://thewondrous.com/wp-content/uploads/2015/05/funny-kitten-rub-my-belly.jpg',
-              subtitle: 'MP XYZ, Party XYZ',
+              title: 'Rushanara Ali',
+              image_url: 'https://candidates.democracyclub.org.uk/media/images/5535cf82367dc5383f552cef.png',
+              subtitle: 'Labour Party',
               buttons: [
                 {
                   type: 'postback',
@@ -42,10 +43,21 @@ function construct(partyVotesObj, firstName) {
                   title: 'Recent mentions',
                   payload: 'Recent mentions',
                 },
+              ],
+            },
+            {
+              title: 'Rushanara Ali',
+              image_url: 'https://candidates.democracyclub.org.uk/media/images/5535cf82367dc5383f552cef.png',
+              subtitle: 'Labour Party',
+              buttons: [
                 {
                   type: 'postback',
-                  title: 'Another area',
-                  payload: 'Candidates',
+                  title: 'Recent tweets',
+                  payload: 'Recent tweets',
+                }, {
+                  type: 'postback',
+                  title: 'Recent mentions',
+                  payload: 'Recent mentions',
                 },
               ],
             },
