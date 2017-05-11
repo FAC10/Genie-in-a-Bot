@@ -19,8 +19,9 @@ function findLocalReply(senderID, intent) {
         if (err) {
           return err;
         }
-        const candidates = res.rows[0];
+        const candidates = res.rows;
         console.log('candidates are ', candidates);
+        constructCandidates(candidates);
       });
     });
   }
