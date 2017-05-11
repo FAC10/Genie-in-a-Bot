@@ -1,4 +1,4 @@
-function constructCandidates(candidates, callback) {
+function constructCandidates(candidates, senderID, intent, callback, callback2) {
   const allCandidates = [];
   candidates.forEach((candidate) => {
     const name = candidate.name;
@@ -26,7 +26,7 @@ function constructCandidates(candidates, callback) {
   });
   const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
   // console.log(allCandidates);
-  callback(placeholderVotingObj, null, allCandidates);
+  callback(placeholderVotingObj, null, allCandidates, senderID, intent, callback2);
 }
 
 module.exports = constructCandidates;

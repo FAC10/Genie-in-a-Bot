@@ -1,10 +1,9 @@
-const sendToFB = require('./sendToFB');
 const construct = require('./answer_objects');
 const get = require('./../database/get_data');
 const extractContexts = require('./extractContexts');
 const getVotingData = require('./getVotingData');
-const constructLocal = require('./constructLocal');
 const constructCandidates = require('./constructCandidates');
+const searchAnsObjects = require('./searchAnsObjects');
 
 function findLocalReply(senderID, intent) {
   if (intent === 'runningCandidates') {
@@ -13,21 +12,13 @@ function findLocalReply(senderID, intent) {
         return err;
       }
       const constituency = res;
-      console.log('constituency is', constituency);
       get.candidates(constituency, (err, res) => {
         if (err) {
           return err;
         }
         const candidates = res.rows;
         console.log('candidates are ', candidates);
-        const answerObjects = constructCandidates(candidates, construct);
-        console.log('answer_objects in get candidates is ', answerObjects);
-        for (const key in answerObjects) {
-          if (key === intent) {
-            const messageData = constructLocal(senderID, key, answerObjects);
-            sendToFB(messageData);
-          }
-        }
+        constructCandidates(candidates, senderID, intent, construct, searchAnsObjects);
       });
     });
   }
@@ -39,13 +30,7 @@ function findLocalReply(senderID, intent) {
         return err;
       }
       const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
-      const answerObjects = construct(placeholderVotingObj, firstName, null);
-      for (const key in answerObjects) {
-        if (key === intent) {
-          const messageData = constructLocal(senderID, key, answerObjects);
-          sendToFB(messageData);
-        }
-      }
+      construct(placeholderVotingObj, firstName, null, senderID, intent, searchAnsObjects);
     });
   }
 }

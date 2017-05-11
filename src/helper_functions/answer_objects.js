@@ -3,10 +3,8 @@
 const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
 
-function construct(partyVotesObj, firstName, candidatesObj) {
-  console.log('candidates in construct are', typeof candidatesObj);
+function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, callback) {
   if (candidatesObj != null){
-      console.log('type of candidates zero', typeof candidatesObj[0]);
   }
   if (firstName === null) {
     firstName = 'placeholder'
@@ -234,7 +232,7 @@ function construct(partyVotesObj, firstName, candidatesObj) {
 
   };
   console.log('#######answer_objects are ', answer_objects.runningCandidates.attachment.payload.elements);
-  return answer_objects;
+  callback(answer_objects);
 }
 
 
