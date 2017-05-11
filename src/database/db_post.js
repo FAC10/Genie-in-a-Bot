@@ -31,7 +31,6 @@ post.userPostcode = (userPostcode, callback) => {
 
 
 post.persistingCtxts = (contexts, facebook_id, callback) => {
-  console.log('in post function with contexts of ', contexts, ' and facebookid of ', facebook_id);
   connect.query(`UPDATE users SET persistingCtxts = '{${contexts}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
     if (err) return callback(err);
     callback(null, res);
@@ -39,10 +38,12 @@ post.persistingCtxts = (contexts, facebook_id, callback) => {
 };
 
 post.party = (contexts, facebook_id, callback) => {
-  connect.query(`UPDATE users SET party = '{${contexts}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
-    if (err) return callback(err);
-    callback(null, res);
-  });
+  if (contexts !== 'Back to votes') {
+    connect.query(`UPDATE users SET party = '{${contexts}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
+      if (err) return callback(err);
+      callback(null, res);
+    });
+  }
 };
 
 post.issue = (contexts, facebook_id, callback) => {
