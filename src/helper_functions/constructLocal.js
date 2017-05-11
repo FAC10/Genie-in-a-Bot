@@ -7,7 +7,7 @@ function constructLocal(senderID, key, answerObjects) {
     },
     message: answerObjects[key],
   };
-
+  console.log('messageData in construcyLocal is ', messageData);
   return messageData;
 }
 
