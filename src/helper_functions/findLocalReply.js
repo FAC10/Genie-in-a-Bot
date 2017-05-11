@@ -12,6 +12,7 @@ function findLocalReply(senderID, intent) {
         return err;
       }
       const constituency = res;
+      console.log(constituency);
       get.candidates(constituency, (err, res) => {
         if (err) {
           return err;
