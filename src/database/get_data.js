@@ -21,6 +21,18 @@ connect.query('SELECT party, issue, inFavour, against, turnout FROM partyVotes W
   return callback(null, res);
 });
 
+get.constituency = (facebookId, callback) =>
+connect.query('SELECT constituency FROM users WHERE facebook_id = $1;', [facebookId], (err, res) => {
+  if (err) {
+    return err;
+  }
+  const rows = res.rows;
+  const rowsZero = rows[0];
+  const constituency = rowsZero.constituency;
+  return callback(null, constituency);
+});
+
+
 get.candidates = (constituency, callback) => candidateConnect.query('SELECT name, party_name, twitter_username, image_url FROM candidates4 WHERE post_label = $1;', [constituency], (err, res) => {
   if (err) {
     return callback(err);
@@ -34,7 +46,6 @@ get.persistingCtxts = (facebookId, callback) => connect.query('SELECT persisting
   }
   const rows = res.rows;
   const rowsZero = rows[0];
-  // console.log('rowsZero is ', rowsZero);
   const persistingCtxts = rowsZero.persistingctxts;
   if (!persistingCtxts === null) {
     return callback(null, persistingCtxts[0]);

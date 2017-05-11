@@ -22,7 +22,7 @@ function construct(partyVotesObj, firstName) {
       ],
     },
 
-    Local_MPs: {
+    Candidates: {
       attachment: {
         type: 'template',
         payload: {
