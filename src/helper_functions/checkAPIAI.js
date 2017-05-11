@@ -86,15 +86,26 @@ module.exports = (event) => {
       }
 
       if (intent === 'runningCandidates') {
+        console.log('inside running candidates');
         const userPostcode = { postcode: messageText, facebook_id: senderID };
-        const constit = getConstituency(messageText);
-        const userConstituency = { constituency: constit, facebook_id: senderID };
-        post.userConstituency(userConstituency, (err) => {
+        // const constit = getConstituency(messageText);
+        // const constit = 'Poplar and Limehouse';
+        getConstituency(messageText, (err, result) => {
           if (err) {
-            return err;
+            console.log(err);
           }
-          findLocalReply.findLocalReply(senderID, intent);
+          const userConstituency = { constituency: result, facebook_id: senderID };
+          console.log(userConstituency);
+          post.userConstituency(userConstituency, (err) => {
+            console.log('inside userConstituency if statament');
+            if (err) {
+              console.log(err);
+            }
+            findLocalReply.findLocalReply(senderID, intent);
+          });
         });
+
+
         post.userPostcode(userPostcode, (err, result) => {
           if (err) {
             return err;
