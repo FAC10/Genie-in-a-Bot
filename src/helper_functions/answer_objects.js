@@ -23,7 +23,6 @@ function construct(partyVotesObj, firstName) {
     },
 
     runningCandidates: {
-      text: 'Flick through to see the candidates running in your area',
       attachment: {
         type: 'template',
         payload: {
