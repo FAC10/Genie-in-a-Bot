@@ -88,11 +88,11 @@ module.exports = (event) => {
       if (intent === 'runningCandidates') {
         const userPostcode = { postcode: messageText, facebook_id: senderID };
         // const constit = getConstituency(messageText);
-        const constit = getConstituency(messageText, (err, result) => {
+        getConstituency(messageText, (err, result) => {
           if (err) {
             return err;
           }
-          return result;
+          console.log(result);
         });
         const userConstituency = { constituency: constit, facebook_id: senderID };
         post.userConstituency(userConstituency, (err) => {

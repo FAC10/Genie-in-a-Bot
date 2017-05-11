@@ -7,7 +7,7 @@ function getConstituency(postCode, cb) {
       console.log(err);
     }
     const parsedBody = JSON.parse(body);
-    console.log(parsedBody.result[0]);
+    console.log(parsedBody);
     const constituency = parsedBody.result[0].parliamentary_constituency;
     cb(constituency);
   });
