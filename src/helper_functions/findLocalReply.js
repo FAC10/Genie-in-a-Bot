@@ -22,6 +22,7 @@ function findLocalReply(senderID, intent) {
     });
   }
   if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
+    console.log('I am one of the intents we want');
     extractContexts(senderID, intent, getVotingData);
   }
   if (intent === 'partyCompare') {
@@ -41,7 +42,7 @@ function findLocalReply(senderID, intent) {
         });
       }
     });
-  } else if (intent !== 'runningCandidates') {
+  } else if (intent !== 'runningCandidates' && intent !== 'partyCompare' && intent !== 'brexit' && intent !== 'tuitionFees' && intent !== 'syria') {
     get.firstName(senderID, (err, firstName) => {
       if (err) {
         return err;

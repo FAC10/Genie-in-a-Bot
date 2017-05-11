@@ -5,8 +5,6 @@ const get = require('../database/get_data');
 
 function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID, intent, callback) {
   console.log('compareObj is ', compareObj);
-  if (candidatesObj != null){
-  }
   if (firstName === null) {
     firstName = 'placeholder';
   }
@@ -249,7 +247,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
     },
     partyCompare: {
 
-      text: `${compareObj[0].swing} of Conservative MPs voted ${compareObj[0].majority} of Brexit, ${compareObj[1].swing} of Labour MPs voted ${compareObj[1].majority}, ${compareObj[2].swing} of Liberal Democrat MPs voted ${compareObj[2].majority}, ${compareObj[3].swing} of Green Party MPs voted ${compareObj[3].majority} and ${compareObj[4].swing} of SNP MPs voted ${compareObj[4].majority}.`,
+      text: `${compareObj[0].majority} of Conservative MPs voted ${compareObj[0].swing} of Brexit, ${compareObj[1].majority} of Labour MPs voted ${compareObj[1].swing}, ${compareObj[2].majority} of Liberal Democrat MPs voted ${compareObj[2].swing}, ${compareObj[3].majority} of Green Party MPs voted ${compareObj[3].swing} and ${compareObj[4].majority} of SNP MPs voted ${compareObj[4].swing}.`,
       quick_replies: [
         {
           content_type: 'text',
