@@ -32,7 +32,7 @@ function construct(partyVotesObj, firstName, candidates) {
         type: 'template',
         payload: {
           template_type: 'generic',
-          elements: [ candidates ]
+          elements: candidates,
         },
       },
     },
