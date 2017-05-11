@@ -1,7 +1,6 @@
 const request = require('request');
 
 module.exports = (messageData) => {
-  console.log('messageData in sendtoFB is ', messageData);
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
     qs: { access_token: process.env.PAGE_ACCESS_TOKEN },

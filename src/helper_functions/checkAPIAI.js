@@ -31,7 +31,6 @@ module.exports = (event) => {
     apiai_request.on('response', (response) => {
       const responseText = response.result.fulfillment.speech;
       let intent = response.result.metadata.intentName;
-      console.log('intent is ', intent);
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
       if (intent === 'register' || intent === 'registerDone') {
@@ -39,7 +38,6 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           } else {
-            console.log('added contexts to persistingCtxts', result);
           }
         });
       }
@@ -94,7 +92,6 @@ module.exports = (event) => {
           if (err) {
             return err;
           }
-          console.log('userConstituency is', userConstituency);
           findLocalReply.findLocalReply(senderID, intent);
         });
         post.userPostcode(userPostcode, (err, result) => {
