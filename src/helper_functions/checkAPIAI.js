@@ -113,7 +113,7 @@ module.exports = (event) => {
       }
 
 
-      if (intent === 'Jokes') {
+      if (intent === 'Joke') {
         get.randomJoke((err, result) => {
           if (err) {
             console.log(err);
