@@ -7,7 +7,9 @@ function constructLocal(senderID, key, answerObjects) {
     },
     message: answerObjects[key],
   };
-  console.log('messageData in constructLocal is ', messageData.message.attachment.payload);
+  if (messageData.message.attachment) {
+    console.log('messageData in constructLocal is ', messageData.message.attachment.payload);
+  }
   return messageData;
 }
 
