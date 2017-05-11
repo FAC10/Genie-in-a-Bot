@@ -118,10 +118,15 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           }
-
+          const messageData = {
+            recipient: {
+              id: senderID,
+            },
+            message: { text: result.rows[0].joke },
+          };
           console.log(typeof result.rows[0].joke);
 
-          sendToFB({ text: result.rows[0].joke });
+          sendToFB(messageData);
         });
       }
 
