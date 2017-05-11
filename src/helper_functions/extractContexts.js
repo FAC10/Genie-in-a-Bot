@@ -5,7 +5,6 @@ function extractContexts(senderID, intent, cb) {
     if (err) {
       return err;
     }
-    console.log(res + intent);
     const partyKey = res + intent;
     cb(senderID, intent, partyKey);
   });

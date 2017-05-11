@@ -32,24 +32,16 @@ module.exports = (event) => {
     apiai_request.on('response', (response) => {
       const responseText = response.result.fulfillment.speech;
       let intent = response.result.metadata.intentName;
-      console.log('intent is ', intent);
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
-      console.log('contexts are ', contexts);
       if (intent === 'register' || intent === 'registerDone') {
-        console.log('about to post registerDone to ', senderID);
         post.persistingCtxts('registerDone', senderID, (err, result) => {
           if (err) {
             console.log(err);
           } else {
-            console.log('added contexts to persistingCtxts', result);
           }
         });
       }
-      // response.result.contexts = null;
-      console.log('contexts after are ', response.result.contexts);
-
-      console.log('responseText is ', responseText);
 
       if (event.message) {
         if (event.message.attachments) {
@@ -80,7 +72,6 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           } else {
-            console.log(resolvedQuery, ' has been posted to db');
           }
         });
       }
@@ -90,25 +81,24 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           } else {
-            console.log(intent, ' has been posted to db');
           }
         });
       }
 
-      if (intent === 'Local_MPs') {
+      if (intent === 'runningCandidates') {
         const userPostcode = { postcode: messageText, facebook_id: senderID };
         const constit = getConstituency(messageText);
         const userConstituency = { constituency: constit, facebook_id: senderID };
         post.userConstituency(userConstituency, (err) => {
           if (err) {
-            console.log(err);
+            return err;
           }
+          findLocalReply.findLocalReply(senderID, intent);
         });
         post.userPostcode(userPostcode, (err, result) => {
           if (err) {
-            console.log(err);
+            return err;
           }
-          // console.log(result);
         });
       }
 
@@ -132,9 +122,7 @@ module.exports = (event) => {
 
 
       if (!intent) {
-        console.log('no intent');
         get.persistingCtxts(senderID, (err, res) => {
-          console.log('res is ', res);
           if (err) {
             console.log(err);
           } if (res === null) {
@@ -149,9 +137,8 @@ module.exports = (event) => {
 
 
       if (responseText) {
-        console.log('getting into responseText if statement');
         constructRemoteReply(senderID, responseText);
-      } else {
+      } else if (!responseText && intent !== 'runningCandidates') {
         findLocalReply.findLocalReply(senderID, intent);
       }
     });

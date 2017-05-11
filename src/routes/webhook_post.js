@@ -26,6 +26,24 @@ module.exports = [
         entry.messaging.forEach((event) => {
           console.log(event);
 
+                getPostcode(lat, long, (postCode, constituency) => {
+                  const userConstituency = { constituency, facebook_id: event.sender.id };
+                  const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
+                  post.userPostcode(userPostcode, (err, result) => {
+                    if (err) {
+                      console.log(err);
+                    }
+                  });
+                  post.userConstituency(userConstituency, (err, result) => {
+                    if (err) {
+                      return err;
+                    }
+                  });
+                  findLocalReply.findLocalReply(event.sender.id, 'runningCandidates');
+                });
+              }
+            }
+          }
 
           if (event.message) {
             checkAPIAI(event);
@@ -72,16 +90,3 @@ module.exports = [
     }
   }),
 ];
-
-// {"mid":"mid.$cAACVbcqAv_NiBdGE4Vb1Iw7jHE0k",
-// "seq":134094,
-// "attachments":[
-//   {"title":"Philippa'sLocation",
-//   "url":"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.bing.com%2Fmaps%2Fdefault.aspx%3Fv%3D2%26pc%3DFACEBK%26mid%3D8100%26where1%3D51.529487%252C%2B-0.0423492%26FORM%3DFBKPL1%26mkt%3Den-US&h=ATPxu2eGlhkGKN7JvEQd1uCytjsk51-1aNqgfcnYK8i4YKYjQAVeZDuOoWBy_3UR4Sk5tlRFPxRIXC_b-E4ZiJtesVdkFpAhJKX3SF3Hx9Nn&s=1&enc=AZPAtqERgyPy0EE4XaJe9MV09jtmognjLxPBdLfvQo9W4_mciUnWbnkNBNDwtY-bRbgy03K5tMSkqYwyjq9LGdP2",
-//   "type":"location",
-//   "payload":{
-//     "coordinates":{
-//       "lat":51.529487,"long":-0.0423492}
-//     }}]}
-
- // {"coordinates":{"lat":51.5295082,"long":-0.0423689}}

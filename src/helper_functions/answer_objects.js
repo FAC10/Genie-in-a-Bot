@@ -3,16 +3,22 @@
 const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
 
-function construct(partyVotesObj, firstName) {
+function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, callback) {
+  if (candidatesObj != null){
+  }
   if (firstName === null) {
     firstName = 'placeholder'
-  } else if (partyVotesObj === { party: null, issue: null, inFavour: null, against: null, turnout: null }) {
+  }
+  if (partyVotesObj === { party: null, issue: null, inFavour: null, against: null, turnout: null }) {
     partyVotesObj.party = 'placeholder';
     partyVotesObj.issue = 'placeholder';
     partyVotesObj.inFavour = 'placeholder';
     partyVotesObj.against = 'placeholder';
     partyVotesObj.turnout = 'placeholder';
   }
+  // if (candidates === null)  {
+  //   candidates = 'placeholder';
+  // }
 
   const answer_objects = {
     Candidates: {
@@ -36,34 +42,12 @@ function construct(partyVotesObj, firstName) {
  In line with the Fixed-term Parliaments Act 2011, an election had not been due until 7 May 2020, but a call for a snap election by Prime Minister Theresa May received the necessary two-thirds majority in a 522 to 13 vote in the House of Commons on 19 April 2017.'
     },
 
-    Local_MPs: {
+    runningCandidates: {
       attachment: {
         type: 'template',
         payload: {
           template_type: 'generic',
-          elements: [
-            {
-              title: 'Flick through the cards for info on the candidates',
-              image_url: 'https://thewondrous.com/wp-content/uploads/2015/05/funny-kitten-rub-my-belly.jpg',
-              subtitle: 'MP XYZ, Party XYZ',
-              buttons: [
-                {
-                  type: 'postback',
-                  title: 'Recent tweest',
-                  payload: 'Recent tweets',
-                }, {
-                  type: 'postback',
-                  title: 'Recent mentions',
-                  payload: 'Recent mentions',
-                },
-                {
-                  type: 'postback',
-                  title: 'Another area',
-                  payload: 'Another area',
-                },
-              ],
-            },
-          ],
+          elements: candidatesObj,
         },
       },
     },
@@ -261,7 +245,8 @@ function construct(partyVotesObj, firstName) {
     },
 
   };
-  return answer_objects;
+
+  callback(answer_objects, intent, senderID);
 }
 
 

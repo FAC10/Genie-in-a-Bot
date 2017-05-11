@@ -1,4 +1,5 @@
 const connect = require('./db_connect');
+const candidateConnect = require('./db_connect_candidate');
 
 const get = {};
 
@@ -20,6 +21,24 @@ connect.query('SELECT party, issue, inFavour, against, turnout FROM partyVotes W
   return callback(null, res);
 });
 
+get.constituency = (facebookId, callback) =>
+connect.query('SELECT constituency FROM users WHERE facebook_id = $1;', [facebookId], (err, res) => {
+  if (err) {
+    return err;
+  }
+  const rows = res.rows;
+  const rowsZero = rows[0];
+  const constituency = rowsZero.constituency;
+  return callback(null, constituency);
+});
+
+
+get.candidates = (constituency, callback) => candidateConnect.query('SELECT name, party_name, twitter_username, image_url FROM candidates4 WHERE post_label = $1;', [constituency], (err, res) => {
+  if (err) {
+    return callback(err);
+  }
+  return callback(null, res);
+});
 
 get.randomJoke = callback =>
 connect.query('SELECT joke FROM jokes ORDER BY RANDOM() LIMIT 1 ', (err, res) => {
@@ -34,12 +53,9 @@ get.persistingCtxts = (facebookId, callback) => connect.query('SELECT persisting
   if (err) {
     return callback(err);
   }
-  console.log('initial res is ', res);
   const rows = res.rows;
   const rowsZero = rows[0];
-  // console.log('rowsZero is ', rowsZero);
   const persistingCtxts = rowsZero.persistingctxts;
-  console.log('persistingCtxts', persistingCtxts);
   if (!persistingCtxts === null) {
     return callback(null, persistingCtxts[0]);
   }
@@ -51,12 +67,10 @@ get.party = (facebookId, callback) => connect.query('SELECT party FROM users WHE
   if (err) {
     return callback(err);
   }
-  console.log('initial res is ', res);
   const rows = res.rows;
   const rowsZero = rows[0];
   // console.log('rowsZero is ', rowsZero);
   const party = rowsZero.party;
-  console.log('party', party);
   if (!party === null) {
     return callback(null, party[0]);
   }
@@ -68,12 +82,9 @@ get.issue = (facebookId, callback) => connect.query('SELECT issue FROM users WHE
   if (err) {
     return callback(err);
   }
-  console.log('initial res is ', res);
   const rows = res.rows;
   const rowsZero = rows[0];
-  // console.log('rowsZero is ', rowsZero);
   const issue = rowsZero.issue;
-  console.log('issue', issue);
   if (!issue === null) {
     return callback(null, issue[0]);
   }

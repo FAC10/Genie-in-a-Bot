@@ -7,7 +7,6 @@ function constructLocal(senderID, key, answerObjects) {
     },
     message: answerObjects[key],
   };
-
   return messageData;
 }
 
