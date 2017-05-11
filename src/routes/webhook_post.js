@@ -41,9 +41,8 @@ module.exports = [
                   });
                   findLocalReply.findLocalReply(event.sender.id, 'runningCandidates');
                 });
-              }
-            }
-          }
+              });
+          });
 
           if (event.message) {
             checkAPIAI(event);
@@ -57,7 +56,7 @@ module.exports = [
                 message: {
                   text: 'This bot has been created as a study project by students at Founders & Coders. Find us on github!: https://github.com/FAC10/MPBots',
                 },
-              };
+              }
               sendToFB(messageData);
             } else if (event.postback.payload === 'Report the problem') {
               const messageData = {
@@ -74,11 +73,6 @@ module.exports = [
                 findLocalReply.findLocalReply(event.sender.id, event.postback.payload);
               });
             }
-          } else {
-            console.log('Webhook received unknown event: ', event);
-          }
-        });
-      });
 
 
       // Assume all went well.
@@ -87,6 +81,6 @@ module.exports = [
       // you've successfully received the callback. Otherwise, the request
       // will time out and we will keep trying to resend.
       res.sendStatus(200);
-    }
-  }),
+    };
+  });
 ];
