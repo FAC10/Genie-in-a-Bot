@@ -18,17 +18,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
     partyVotesObj.turnout = 'placeholder';
   }
   if (compareObj === null) {
-    compareObj = {};
-    compareObj[0].swing = 'placeholder';
-    compareObj[1].swing = 'placeholder';
-    compareObj[2].swing = 'placeholder';
-    compareObj[3].swing = 'placeholder';
-    compareObj[4].swing = 'placeholder';
-    compareObj[0].majority = 'placeholder';
-    compareObj[1].majority = 'placeholder';
-    compareObj[2].majority = 'placeholder';
-    compareObj[3].majority = 'placeholder';
-    compareObj[4].majority = 'placeholder';
+    compareObj = [{swing: 'placeholder', majority: 'placeholder'},{swing: 'placeholder', majority: 'placeholder'},{swing: 'placeholder', majority: 'placeholder'},{swing: 'placeholder', majority: 'placeholder'},{swing: 'placeholder', majority: 'placeholder'}];
   }
   // if (candidates === null)  {
   //   candidates = 'placeholder';
