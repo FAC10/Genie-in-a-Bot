@@ -135,7 +135,7 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
       quick_replies: [
         {
           content_type: 'text',
-          title: 'Compare parties',
+          title: 'Compare',
           payload: 'partyBrexitCompare',
         },
         {
@@ -206,7 +206,7 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
       quick_replies: [
         {
           content_type: 'text',
-          title: 'Compare parties',
+          title: 'Compare',
           payload: 'partyTuitionCompare',
         },
         {
@@ -228,7 +228,7 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
       quick_replies: [
         {
           content_type: 'text',
-          title: 'Compare parties',
+          title: 'Compare',
           payload: 'partySyriaCompare',
         },
         {
