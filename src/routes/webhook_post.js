@@ -40,6 +40,16 @@ module.exports = [
                 },
               };
               sendToFB(messageData);
+            } else if (event.postback.payload = 'Report the problem') {
+              const messageData = {
+                recipient: {
+                  id: event.sender.id,
+                },
+                message: {
+                  text: 'We are sorry to hear that you have encoutered a problem! You can contact us at GenieInTheBot@outlook.com - we try to answer all queries and address all problems. We welcome your feedback! ',
+                },
+              };
+              sendToFB(messageData);
             }
 
             getFacebookName(event.sender.id, () => {
