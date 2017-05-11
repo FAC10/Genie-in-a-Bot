@@ -229,7 +229,7 @@ function construct(partyVotesObj, firstName, candidates) {
     },
 
   };
-  console.log('answer_objects are ', answer_objects.runningCandidates);
+  console.log('#######answer_objects are ', answer_objects.runningCandidates.attachment.payload.elements);
   return answer_objects;
 }
 
