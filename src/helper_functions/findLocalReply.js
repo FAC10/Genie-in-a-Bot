@@ -25,6 +25,7 @@ function findLocalReply(senderID, intent) {
   if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
     extractContexts(senderID, intent, getVotingData);
   } else if (intent !== 'runningCandidates') {
+    console.log('default thing. Getting first name');
     get.firstName(senderID, (err, firstName) => {
       if (err) {
         return err;
