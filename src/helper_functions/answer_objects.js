@@ -35,7 +35,7 @@ function construct(partyVotesObj, firstName) {
               buttons: [
                 {
                   type: 'postback',
-                  title: 'Recent tweest',
+                  title: 'Recent tweets',
                   payload: 'Recent tweets',
                 }, {
                   type: 'postback',
@@ -45,7 +45,7 @@ function construct(partyVotesObj, firstName) {
                 {
                   type: 'postback',
                   title: 'Another area',
-                  payload: 'Another area',
+                  payload: 'Candidates',
                 },
               ],
             },

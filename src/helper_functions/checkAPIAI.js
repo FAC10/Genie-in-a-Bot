@@ -100,7 +100,6 @@ module.exports = (event) => {
             console.log(err);
           }
         });
-        findLocalReply.findLocalReply(senderID, intent);
       }
 
       if (!intent) {

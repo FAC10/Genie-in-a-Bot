@@ -26,6 +26,7 @@ connect.query('SELECT constituency FROM users WHERE facebook_id = $1;', [faceboo
   if (err) {
     return err;
   }
+  console.log('get cons res is ', res);
   const rows = res.rows;
   const rowsZero = rows[0];
   const constituency = rowsZero.constituency;
