@@ -92,5 +92,18 @@ get.issue = (facebookId, callback) => connect.query('SELECT issue FROM users WHE
   return callback(null, issue);
 });
 
+get.compare = (issue, callback) => connect.query('SELECT swing, majority FROM partyVotes WHERE issue = $1', [issue], (err, res) => {
+  if (err) {
+    return callback(err);
+  }
+  const rows = res.rows;
+  console.log('res.rows is ', rows);
+  if (!issue === null) {
+    return callback(null, res);
+  }
+
+  return callback(null, res);
+});
+
 
 module.exports = get;

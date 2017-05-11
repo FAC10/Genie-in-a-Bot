@@ -23,6 +23,23 @@ function findLocalReply(senderID, intent) {
   }
   if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
     extractContexts(senderID, intent, getVotingData);
+  }
+  if (intent === 'Compare') {
+    get.issue(senderID, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('res in if intent is compare is ', res);
+        get.compare(res, (err, res) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log('compare data is ', res);
+          }
+        });
+      }
+    });
+    // extractContexts(senderID, intent, getVotingData);
   } else if (intent !== 'runningCandidates') {
     get.firstName(senderID, (err, firstName) => {
       if (err) {
