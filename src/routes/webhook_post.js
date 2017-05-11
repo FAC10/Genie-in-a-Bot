@@ -33,7 +33,7 @@ module.exports = [
             if (event.postback.payload = 'About this bot') {
               const messageData = {
                 recipient: {
-                  id: event.sender.idea,
+                  id: event.sender.id,
                 },
                 message: {
                   text: 'This bot has been created as a study project by students at Founders & Coders. Find us on github!: https://github.com/FAC10/MPBots',
