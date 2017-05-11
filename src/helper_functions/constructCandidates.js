@@ -1,4 +1,4 @@
-function constructCandidates(candidates) {
+function constructCandidates(candidates, callback) {
   const allCandidates = [];
   candidates.forEach((candidate) => {
     const name = candidate.name;
@@ -25,7 +25,7 @@ function constructCandidates(candidates) {
     allCandidates.push(candidateTemplate);
   });
   console.log(allCandidates);
-  return allCandidates;
+  callback(null, null, allCandidates);
 }
 
 module.exports = constructCandidates;

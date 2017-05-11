@@ -3,16 +3,20 @@
 const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
 
-function construct(partyVotesObj, firstName) {
+function construct(partyVotesObj, firstName, candidates) {
   if (firstName === null) {
     firstName = 'placeholder'
-  } else if (partyVotesObj === { party: null, issue: null, inFavour: null, against: null, turnout: null }) {
+  }
+  if (partyVotesObj === { party: null, issue: null, inFavour: null, against: null, turnout: null }) {
     partyVotesObj.party = 'placeholder';
     partyVotesObj.issue = 'placeholder';
     partyVotesObj.inFavour = 'placeholder';
     partyVotesObj.against = 'placeholder';
     partyVotesObj.turnout = 'placeholder';
   }
+  // if (candidates === null)  {
+  //   candidates = 'placeholder';
+  // }
 
   const answer_objects = {
     Candidates: {
@@ -27,39 +31,7 @@ function construct(partyVotesObj, firstName) {
         type: 'template',
         payload: {
           template_type: 'generic',
-          elements: [
-            {
-              title: 'Rushanara Ali',
-              image_url: 'https://candidates.democracyclub.org.uk/media/images/5535cf82367dc5383f552cef.png',
-              subtitle: 'Labour Party',
-              buttons: [
-                {
-                  type: 'postback',
-                  title: 'Recent tweets',
-                  payload: 'Recent tweets',
-                }, {
-                  type: 'postback',
-                  title: 'Recent mentions',
-                  payload: 'Recent mentions',
-                },
-              ],
-            },
-            {
-              title: 'Rushanara Ali',
-              image_url: 'https://candidates.democracyclub.org.uk/media/images/5535cf82367dc5383f552cef.png',
-              subtitle: 'Labour Party',
-              buttons: [
-                {
-                  type: 'postback',
-                  title: 'Recent tweets',
-                  payload: 'Recent tweets',
-                }, {
-                  type: 'postback',
-                  title: 'Recent mentions',
-                  payload: 'Recent mentions',
-                },
-              ],
-            },
+          elements: [ candidates
           ],
         },
       },
@@ -258,6 +230,7 @@ function construct(partyVotesObj, firstName) {
     },
 
   };
+  console.log('answer_objects are ', answer_objects.runningCandidates);
   return answer_objects;
 }
 

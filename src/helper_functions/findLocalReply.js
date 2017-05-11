@@ -21,7 +21,7 @@ function findLocalReply(senderID, intent) {
         }
         const candidates = res.rows;
         console.log('candidates are ', candidates);
-        constructCandidates(candidates);
+        constructCandidates(candidates, construct);
       });
     });
   }
@@ -33,7 +33,7 @@ function findLocalReply(senderID, intent) {
         return err;
       }
       const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
-      const answerObjects = construct(placeholderVotingObj, firstName);
+      const answerObjects = construct(placeholderVotingObj, firstName, null);
       for (const key in answerObjects) {
         if (key === intent) {
           const messageData = constructLocal(senderID, key, answerObjects);
