@@ -7,6 +7,7 @@ const apiai_app = apiai(process.env.APIAI_CLIENT);
 const constructRemoteReply = require('./constructRemoteReply');
 const findLocalReply = require('./findLocalReply');
 const getConstituency = require('./getConstituency');
+const sendToFB = require('./sendToFB.js');
 
 
 module.exports = (event) => {
@@ -117,8 +118,9 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           }
-          console.log(result.rows[0]);
+
           console.log(result.rows[0].joke);
+          sendToFB(result.rows[0].joke);
         });
       }
 
