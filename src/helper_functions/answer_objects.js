@@ -243,51 +243,9 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
         },
       ],
     },
-    partyBrexitCompare: {
+    partyCompare: {
 
       text: `99.7% of Conservative MPs voted in favour of Brexit, 78% of Labour MPs voted in favour, 100% of Liberal Democrat MPs voted against, 100% of Green Party MPs voted against and 100% of SNP MPs voted against.`,
-      quick_replies: [
-        {
-          content_type: 'text',
-          title: 'Back to votes',
-          payload: 'party_votes',
-        },
-        {
-          content_type: 'text',
-          title: 'Back to parties',
-          payload: 'Parties',
-        },
-        {
-          content_type: 'text',
-          title: 'More',
-          payload: 'fallbackGeneral',
-        },
-      ],
-    },
-    partyTuitionCompare: {
-
-      text: `98% of Conservative MPs voted in favour of raising tuition fees, 100% of Labour MPs voted against, 56% of Liberal Democrat MPs voted in favour, 100% of Green Party MPs voted against and 100% of SNP MPs voted against.`,
-      quick_replies: [
-        {
-          content_type: 'text',
-          title: 'Back to votes',
-          payload: 'party_votes',
-        },
-        {
-          content_type: 'text',
-          title: 'Back to parties',
-          payload: 'Parties',
-        },
-        {
-          content_type: 'text',
-          title: 'More',
-          payload: 'fallbackGeneral',
-        },
-      ],
-    },
-    partySyriaCompare: {
-
-      text: `98% of Conservative MPs voted in favour of raising tuition fees, 70% of Labour MPs voted against, 75% of Liberal Democrat MPs voted in favour, 100% of Green Party MPs voted against and 100% of SNP MPs voted against.`,
       quick_replies: [
         {
           content_type: 'text',
