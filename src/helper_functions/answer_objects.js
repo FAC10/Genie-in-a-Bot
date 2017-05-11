@@ -30,7 +30,7 @@ function construct(partyVotesObj, firstName) {
           not been due until 7 May 2020, but a call for a snap election by Prime Minister\
            Theresa May received the necessary two-thirds majority in a 522 to 13 vote in\
             the House of Commons on 19 April 2017.'
-    }
+    },
 
     Local_MPs: {
       attachment: {
