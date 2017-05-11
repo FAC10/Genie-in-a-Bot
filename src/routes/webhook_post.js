@@ -51,9 +51,10 @@ module.exports = [
           }
 
           if (event.message) {
+            console.log('theres a message so sending to apiai');
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
-            console.log(event.postback.payload);
+            console.log('postback is ', event.postback.payload);
             if (event.postback.payload === 'About this bot') {
               const messageData = {
                 recipient: {
