@@ -22,6 +22,14 @@ function construct(partyVotesObj, firstName) {
       ],
     },
 
+    About_this_bot: {
+      text: 'This bot has been created as a study project by students at Founders & Coders. Find us on github!: https://github.com/FAC10/MPBots'
+    },
+
+    report_problem: {
+      text: 'We are sorry to hear that you have encoutered a problem! You can contact us at GenieInTheBot@outlook.com - we try to answer all queries and address all problems. We welcome your feedback! '
+    },
+
     Election_Info :{
       text: 'The United Kingdom general election of 2017 is scheduled to take place on 8 June 2017.\
  Each of the 650 parliamentary constituencies will elect one Member of Parliament (MP) to the House of Commons, the lower house of Parliament.\
