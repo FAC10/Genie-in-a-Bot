@@ -51,11 +51,11 @@ module.exports = [
                 },
               };
               sendToFB(messageData);
+            } else if (event.postback.payload === 'FACEBOOK_WELCOME') {
+              getFacebookName(event.sender.id, () => {
+                findLocalReply.findLocalReply(event.sender.id, event.postback.payload);
+              });
             }
-
-            getFacebookName(event.sender.id, () => {
-              findLocalReply.findLocalReply(event.sender.id, event.postback.payload);
-            });
           } else {
             console.log('Webhook received unknown event: ', event);
           }
