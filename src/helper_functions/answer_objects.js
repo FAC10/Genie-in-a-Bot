@@ -4,7 +4,6 @@ const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
 
 function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, callback) {
-  console.log('getting into construct');
   if (candidatesObj != null){
   }
   if (firstName === null) {
@@ -233,7 +232,6 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
 
   };
 
-  console.log('#######answer_objects are ', answer_objects);
   callback(answer_objects, intent, senderID);
 }
 

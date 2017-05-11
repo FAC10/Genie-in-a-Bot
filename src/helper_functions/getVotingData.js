@@ -1,7 +1,6 @@
 const get = require('../database/get_data');
 const construct = require('./answer_objects');
-const sendToFB = require('./sendToFB');
-const constructLocal = require('./constructLocal');
+const searchAnsObjects = require('./searchAnsObjects');
 
 function getVotingData(senderID, intent, partyKey) {
   get.partyVotes(partyKey, (err, res) => {
@@ -10,14 +9,7 @@ function getVotingData(senderID, intent, partyKey) {
     }
     const partyVotesObj = res.rows[0];
 
-    const answerObjects = construct(partyVotesObj, null, null);
-    for (const key in answerObjects) {
-      if (key === intent) {
-        const messageData = constructLocal(senderID, key, answerObjects);
-        sendToFB(messageData);
-      // boolean = true;
-      }
-    }
+    construct(partyVotesObj, null, null, senderID, intent, searchAnsObjects);
   });
 }
 
