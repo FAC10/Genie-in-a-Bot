@@ -99,8 +99,8 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           }
-          // console.log(result);
         });
+        findLocalReply.findLocalReply(senderID, intent);
       }
 
       if (!intent) {
