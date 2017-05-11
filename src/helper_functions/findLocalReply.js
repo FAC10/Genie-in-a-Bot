@@ -24,7 +24,7 @@ function findLocalReply(senderID, intent) {
   if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
     extractContexts(senderID, intent, getVotingData);
   }
-  if (intent === 'Compare') {
+  if (intent === 'partyCompare') {
     get.issue(senderID, (err, res) => {
       if (err) {
         console.log(err);
