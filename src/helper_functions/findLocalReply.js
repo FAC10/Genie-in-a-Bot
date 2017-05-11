@@ -7,6 +7,7 @@ const constructLocal = require('./constructLocal');
 
 
 function findLocalReply(senderID, intent) {
+  console.log('intent is ', intent);
   if (intent === 'runningCandidates') {
     get.constituency(senderID, (err, res) => {
       if (err) {
