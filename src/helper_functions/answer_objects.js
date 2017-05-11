@@ -123,6 +123,11 @@ function construct(partyVotesObj, firstName) {
           title: 'Tuition fees',
           payload: 'Tuition fees',
         },
+        {
+          content_type: 'text',
+          title: 'Airstrikes in Syria',
+          payload: 'syria',
+        },
       ],
     },
 
