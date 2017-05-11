@@ -135,7 +135,7 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
       quick_replies: [
         {
           content_type: 'text',
-          title: 'How do other parties compare?',
+          title: 'Compare',
           payload: 'partyBrexitCompare',
         },
         {
@@ -206,8 +206,8 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
       quick_replies: [
         {
           content_type: 'text',
-          title: 'How do other parties compare?',
-          payload: 'partyBrexitCompare',
+          title: 'Compare',
+          payload: 'partyTuitionCompare',
         },
         {
           content_type: 'text',
@@ -228,8 +228,8 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
       quick_replies: [
         {
           content_type: 'text',
-          title: 'How do other parties compare?',
-          payload: 'partyBrexitCompare',
+          title: 'Compare',
+          payload: 'partySyriaCompare',
         },
         {
           content_type: 'text',
@@ -240,6 +240,27 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
           content_type: 'text',
           title: 'Choose another party',
           payload: 'Parties',
+        },
+      ],
+    },
+    partyCompare: {
+
+      text: `99.7% of Conservative MPs voted in favour of Brexit, 78% of Labour MPs voted in favour, 100% of Liberal Democrat MPs voted against, 100% of Green Party MPs voted against and 100% of SNP MPs voted against.`,
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'Back to votes',
+          payload: 'party_votes',
+        },
+        {
+          content_type: 'text',
+          title: 'Back to parties',
+          payload: 'Parties',
+        },
+        {
+          content_type: 'text',
+          title: 'More',
+          payload: 'fallbackGeneral',
         },
       ],
     },

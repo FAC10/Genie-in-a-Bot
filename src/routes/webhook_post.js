@@ -25,6 +25,12 @@ module.exports = [
         // Iterate over each messaging event
         entry.messaging.forEach((event) => {
           console.log(event);
+          if (event.message) {
+            console.log('theres an event.message');
+            if (event.message.attachments) {
+              if (event.message.attachments[0].payload.coordinates) {
+                const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
+                const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
 
                 getPostcode(lat, long, (postCode, constituency) => {
                   const userConstituency = { constituency, facebook_id: event.sender.id };
@@ -46,9 +52,10 @@ module.exports = [
           }
 
           if (event.message) {
+            console.log('theres a message so sending to apiai');
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
-            console.log(event.postback.payload);
+            console.log('postback is ', event.postback.payload);
             if (event.postback.payload === 'About this bot') {
               const messageData = {
                 recipient: {
@@ -70,12 +77,11 @@ module.exports = [
               };
               sendToFB(messageData);
             } else {
+              console.log('getting into the generic send');
               getFacebookName(event.sender.id, () => {
                 findLocalReply.findLocalReply(event.sender.id, event.postback.payload);
               });
             }
-          } else {
-            console.log('Webhook received unknown event: ', event);
           }
         });
       });
