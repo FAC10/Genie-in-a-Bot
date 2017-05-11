@@ -52,11 +52,11 @@ The man says, “You go and give him a telling off. I’ll hold your monkey for 
 
 INSERT INTO partyVotes (partyKey, party, issue, inFavour, against, turnout, swing, majority)
 VALUES
-('Conservativebrexit', 'the Conservative Party', 'Brexit', '319 Conservative MPs (99.7%)', '1 MP (0.3%)', '97.9%', 'in favour', '99.7%'),
-('Labourbrexit', 'the Labour Party', 'Brexit', '168 Labour MPs (78%)', '47 MPs (22%)', '93.5%', 'in favour', '78%'),
-('Lib Dembrexit', 'the Liberal Democrats', 'Brexit', '0 Lib Dem MPs (0%)', '7 MPs (100%)', '77.8%', 'against', '100%'),
-('Greenbrexit', 'the Green Party', 'Brexit', '0 Green MPs (0%)', '1 MP (100%)', '100%', 'against', '100%'),
-('SNPbrexit', 'the SNP', 'Brexit', '0 SNP MPs (0%)', '50 MPs (100%)', '96.3%', 'against', '100%'),
+('Conservativebrexit', 'the Conservative Party', 'brexit', '319 Conservative MPs (99.7%)', '1 MP (0.3%)', '97.9%', 'in favour', '99.7%'),
+('Labourbrexit', 'the Labour Party', 'brexit', '168 Labour MPs (78%)', '47 MPs (22%)', '93.5%', 'in favour', '78%'),
+('Lib Dembrexit', 'the Liberal Democrats', 'brexit', '0 Lib Dem MPs (0%)', '7 MPs (100%)', '77.8%', 'against', '100%'),
+('Greenbrexit', 'the Green Party', 'brexit', '0 Green MPs (0%)', '1 MP (100%)', '100%', 'against', '100%'),
+('SNPbrexit', 'the SNP', 'brexit', '0 SNP MPs (0%)', '50 MPs (100%)', '96.3%', 'against', '100%'),
 ('ConservativetuitionFees', 'the Conservative Party', 'Tuition Fees', '296 Conservative MPs (98%)', '6 MPs (2%)', '99.0%', 'in favour', '98%'),
 ('LabourtuitionFees', 'the Labour Party', 'Tuition Fees', '0 Labour MPs (0%)', '253 MPs (100%)', '99.2%', 'against', '100%'),
 ('Lib DemtuitionFees', 'the Liberal Democrats', 'Tution Fees', '27 Lib Dem MPs (56%)', '21 MPs (44%)', '86%', 'in favour', '56%'),

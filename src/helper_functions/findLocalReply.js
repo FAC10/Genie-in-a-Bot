@@ -29,12 +29,12 @@ function findLocalReply(senderID, intent) {
       if (err) {
         console.log(err);
       } else {
-        console.log('res in if intent is compare is ', res);
-        get.compare(res, (err, res) => {
-          if (err) {
+        console.log('res in if intent is partyCompare is ', res);
+        get.compare(res[0], (error, result) => {
+          if (error) {
             console.log(err);
           } else {
-            console.log('compare data is ', res);
+            console.log('compare data is ', result);
           }
         });
       }
