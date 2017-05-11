@@ -5,7 +5,7 @@ const get = require('../database/get_data');
 
 function construct(partyVotesObj, firstName, candidatesObj) {
   console.log('candidates in construct are', typeof candidates);
-  if (candidates != null){
+  if (candidatesObj != null){
       console.log('type of candidates zero', typeof candidates[0]);
   }
   if (firstName === null) {
