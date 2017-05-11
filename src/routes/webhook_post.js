@@ -76,6 +76,7 @@ module.exports = [
             };
             sendToFB(messageData);
           } else {
+            console.log('getting into the generic send');
             getFacebookName(event.sender.id, () => {
               findLocalReply.findLocalReply(event.sender.id, event.postback.payload);
             });
