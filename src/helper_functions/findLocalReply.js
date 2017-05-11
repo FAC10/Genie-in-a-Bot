@@ -6,7 +6,6 @@ const getVotingData = require('./getVotingData');
 const constructLocal = require('./constructLocal');
 const constructCandidates = require('./constructCandidates');
 
-
 function findLocalReply(senderID, intent) {
   if (intent === 'runningCandidates') {
     get.constituency(senderID, (err, res) => {
