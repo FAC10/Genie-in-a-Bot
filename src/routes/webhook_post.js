@@ -30,7 +30,8 @@ module.exports = [
           if (event.message) {
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
-            if (event.postback.payload = 'About this bot') {
+            console.log(event.postback.payload);
+            if (event.postback.payload === 'About this bot') {
               const messageData = {
                 recipient: {
                   id: event.sender.id,
@@ -40,7 +41,7 @@ module.exports = [
                 },
               };
               sendToFB(messageData);
-            } else if (event.postback.payload = 'Report the problem') {
+            } else if (event.postback.payload === 'Report the problem') {
               const messageData = {
                 recipient: {
                   id: event.sender.id,
