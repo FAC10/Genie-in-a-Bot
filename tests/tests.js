@@ -16,7 +16,7 @@ test('Passing test for travis', (t) => {
 test('constructLocal function returns expected result for Parties intent', (t) => {
   t.plan(2);
   const answer_objects = constructAnswers('Maja');
-  const testObject = constructLocal.constructLocal(1, 'Parties', answer_objects);
+  const testObject = constructLocal(1, 'Parties', answer_objects);
   const expectedId = 1;
   const actualId = testObject.recipient.id;
 
@@ -63,7 +63,7 @@ test('constructLocal function returns expected result for FACEBOOK_WELCOME inten
   t.plan(3);
   const dummy = {};
   const answer_objects = constructAnswers(dummy, 'Maja');
-  const testObject = constructLocal.constructLocal(2, 'FACEBOOK_WELCOME', answer_objects);
+  const testObject = constructLocal(2, 'FACEBOOK_WELCOME', answer_objects);
   const expectedGreeting = 'Hey Maja, I\'m your personal assistant in the run up to the General Elections! I can help you find out about the candidates standing in your area, what the parties are offering and more!';
   const actualGreeting = testObject.message.attachment.payload.text;
   const expectedId = 2;
