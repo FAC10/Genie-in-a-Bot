@@ -3,11 +3,12 @@
 const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
 
-function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, callback) {
+function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID, intent, callback) {
+  console.log('compareObj is ', compareObj);
   if (candidatesObj != null){
   }
   if (firstName === null) {
-    firstName = 'placeholder'
+    firstName = 'placeholder';
   }
   if (partyVotesObj === { party: null, issue: null, inFavour: null, against: null, turnout: null }) {
     partyVotesObj.party = 'placeholder';
@@ -15,6 +16,19 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
     partyVotesObj.inFavour = 'placeholder';
     partyVotesObj.against = 'placeholder';
     partyVotesObj.turnout = 'placeholder';
+  }
+  if (compareObj === null) {
+    compareObj = {};
+    compareObj[0].swing = 'placeholder';
+    compareObj[1].swing = 'placeholder';
+    compareObj[2].swing = 'placeholder';
+    compareObj[3].swing = 'placeholder';
+    compareObj[4].swing = 'placeholder';
+    compareObj[0].majority = 'placeholder';
+    compareObj[1].majority = 'placeholder';
+    compareObj[2].majority = 'placeholder';
+    compareObj[3].majority = 'placeholder';
+    compareObj[4].majority = 'placeholder';
   }
   // if (candidates === null)  {
   //   candidates = 'placeholder';
@@ -245,7 +259,7 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
     },
     partyCompare: {
 
-      text: `99.7% of Conservative MPs voted in favour of Brexit, 78% of Labour MPs voted in favour, 100% of Liberal Democrat MPs voted against, 100% of Green Party MPs voted against and 100% of SNP MPs voted against.`,
+      text: `${compareObj[0].swing} of Conservative MPs voted ${compareObj[0].majority} of Brexit, ${compareObj[1].swing} of Labour MPs voted ${compareObj[1].majority}, ${compareObj[2].swing} of Liberal Democrat MPs voted ${compareObj[2].majority}, ${compareObj[3].swing} of Green Party MPs voted ${compareObj[3].majority} and ${compareObj[4].swing} of SNP MPs voted ${compareObj[4].majority}.`,
       quick_replies: [
         {
           content_type: 'text',
@@ -266,7 +280,6 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
     },
 
   };
-
   callback(answer_objects, intent, senderID);
 }
 

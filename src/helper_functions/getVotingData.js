@@ -9,7 +9,7 @@ function getVotingData(senderID, intent, partyKey) {
     }
     const partyVotesObj = res.rows[0];
 
-    construct(partyVotesObj, null, null, senderID, intent, searchAnsObjects);
+    construct(partyVotesObj, null, null, null, senderID, intent, searchAnsObjects);
   });
 }
 

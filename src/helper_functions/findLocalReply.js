@@ -34,19 +34,20 @@ function findLocalReply(senderID, intent) {
           if (error) {
             console.log(err);
           } else {
-            console.log('compare data is ', result);
+            console.log('result is ', result);
+            const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
+            construct(placeholderVotingObj, null, null, result.rows, senderID, intent, searchAnsObjects);
           }
         });
       }
     });
-    // extractContexts(senderID, intent, getVotingData);
   } else if (intent !== 'runningCandidates') {
     get.firstName(senderID, (err, firstName) => {
       if (err) {
         return err;
       }
       const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
-      construct(placeholderVotingObj, firstName, null, senderID, intent, searchAnsObjects);
+      construct(placeholderVotingObj, firstName, null, null, senderID, intent, searchAnsObjects);
     });
   }
 }
