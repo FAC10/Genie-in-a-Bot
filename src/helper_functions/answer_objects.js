@@ -136,7 +136,7 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
         {
           content_type: 'text',
           title: 'Compare',
-          payload: 'partyBrexitCompare',
+          payload: 'partyCompare',
         },
         {
           content_type: 'text',
@@ -207,7 +207,7 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
         {
           content_type: 'text',
           title: 'Compare',
-          payload: 'partyTuitionCompare',
+          payload: 'partyCompare',
         },
         {
           content_type: 'text',
@@ -229,7 +229,7 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
         {
           content_type: 'text',
           title: 'Compare',
-          payload: 'partySyriaCompare',
+          payload: 'partyCompare',
         },
         {
           content_type: 'text',
