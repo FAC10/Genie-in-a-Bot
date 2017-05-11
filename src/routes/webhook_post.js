@@ -43,7 +43,7 @@ module.exports = [
                       return err;
                     }
                   });
-                  findLocalReply.findLocalReply(event.sender.id, 'Local_MPs');
+                  findLocalReply.findLocalReply(event.sender.id, 'runningCandidates');
                 });
               }
             }
