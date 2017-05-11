@@ -3,11 +3,10 @@
 const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
 
-function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, callback) {
-  if (candidatesObj != null){
-  }
+function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID, intent, callback) {
+  console.log('compareObj is ', compareObj);
   if (firstName === null) {
-    firstName = 'placeholder'
+    firstName = 'placeholder';
   }
   if (partyVotesObj === { party: null, issue: null, inFavour: null, against: null, turnout: null }) {
     partyVotesObj.party = 'placeholder';
@@ -15,6 +14,9 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
     partyVotesObj.inFavour = 'placeholder';
     partyVotesObj.against = 'placeholder';
     partyVotesObj.turnout = 'placeholder';
+  }
+  if (compareObj === null) {
+    compareObj = [{swing: 'placeholder', majority: 'placeholder'},{swing: 'placeholder', majority: 'placeholder'},{swing: 'placeholder', majority: 'placeholder'},{swing: 'placeholder', majority: 'placeholder'},{swing: 'placeholder', majority: 'placeholder'}];
   }
   // if (candidates === null)  {
   //   candidates = 'placeholder';
@@ -136,7 +138,7 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
         {
           content_type: 'text',
           title: 'Compare',
-          payload: 'partyBrexitCompare',
+          payload: 'partyCompare',
         },
         {
           content_type: 'text',
@@ -207,7 +209,7 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
         {
           content_type: 'text',
           title: 'Compare',
-          payload: 'partyTuitionCompare',
+          payload: 'partyCompare',
         },
         {
           content_type: 'text',
@@ -229,7 +231,7 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
         {
           content_type: 'text',
           title: 'Compare',
-          payload: 'partySyriaCompare',
+          payload: 'partyCompare',
         },
         {
           content_type: 'text',
@@ -245,7 +247,7 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
     },
     partyCompare: {
 
-      text: `99.7% of Conservative MPs voted in favour of Brexit, 78% of Labour MPs voted in favour, 100% of Liberal Democrat MPs voted against, 100% of Green Party MPs voted against and 100% of SNP MPs voted against.`,
+      text: `${compareObj[0].majority} of Conservative MPs voted ${compareObj[0].swing} of Brexit, ${compareObj[1].majority} of Labour MPs voted ${compareObj[1].swing}, ${compareObj[2].majority} of Liberal Democrat MPs voted ${compareObj[2].swing}, ${compareObj[3].majority} of Green Party MPs voted ${compareObj[3].swing} and ${compareObj[4].majority} of SNP MPs voted ${compareObj[4].swing}.`,
       quick_replies: [
         {
           content_type: 'text',
@@ -266,7 +268,6 @@ function construct(partyVotesObj, firstName, candidatesObj, senderID, intent, ca
     },
 
   };
-
   callback(answer_objects, intent, senderID);
 }
 

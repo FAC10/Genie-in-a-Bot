@@ -23,14 +23,33 @@ function findLocalReply(senderID, intent) {
     });
   }
   if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
+    console.log('I am one of the intents we want');
     extractContexts(senderID, intent, getVotingData);
-  } else if (intent !== 'runningCandidates') {
+  }
+  if (intent === 'partyCompare') {
+    get.issue(senderID, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('res in if intent is partyCompare is ', res);
+        get.compare(res[0], (error, result) => {
+          if (error) {
+            console.log(err);
+          } else {
+            console.log('result is ', result);
+            const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
+            construct(placeholderVotingObj, null, null, result.rows, senderID, intent, searchAnsObjects);
+          }
+        });
+      }
+    });
+  } else if (intent !== 'runningCandidates' && intent !== 'partyCompare' && intent !== 'brexit' && intent !== 'tuitionFees' && intent !== 'syria') {
     get.firstName(senderID, (err, firstName) => {
       if (err) {
         return err;
       }
       const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
-      construct(placeholderVotingObj, firstName, null, senderID, intent, searchAnsObjects);
+      construct(placeholderVotingObj, firstName, null, null, senderID, intent, searchAnsObjects);
     });
   }
 }

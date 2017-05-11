@@ -26,7 +26,7 @@ function constructCandidates(candidates, senderID, intent, callback, callback2) 
   });
   const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
   // console.log(allCandidates);
-  callback(placeholderVotingObj, null, allCandidates, senderID, intent, callback2);
+  callback(placeholderVotingObj, null, allCandidates, null, senderID, intent, callback2);
 }
 
 module.exports = constructCandidates;
