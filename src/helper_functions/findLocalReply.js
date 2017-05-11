@@ -20,13 +20,20 @@ function findLocalReply(senderID, intent) {
         }
         const candidates = res.rows;
         console.log('candidates are ', candidates);
-        constructCandidates(candidates, construct);
+        const answerObjects = constructCandidates(candidates, construct);
+        console.log('answer_objects in get candidates is ', answerObjects);
+        for (const key in answerObjects) {
+          if (key === intent) {
+            const messageData = constructLocal(senderID, key, answerObjects);
+            sendToFB(messageData);
+          }
+        }
       });
     });
   }
   if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
     extractContexts(senderID, intent, getVotingData);
-  } else {
+  } else if (intent !== 'runningCandidates') {
     get.firstName(senderID, (err, firstName) => {
       if (err) {
         return err;
