@@ -4,6 +4,7 @@ const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
 
 function construct(partyVotesObj, firstName, candidates) {
+  console.log('candidates in construct are', candidates);
   if (firstName === null) {
     firstName = 'placeholder'
   }
