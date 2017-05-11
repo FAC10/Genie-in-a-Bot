@@ -92,12 +92,13 @@ module.exports = (event) => {
         const userConstituency = { constituency: constit, facebook_id: senderID };
         post.userConstituency(userConstituency, (err) => {
           if (err) {
-            console.log(err);
+            return err;
           }
+          findLocalReply.findLocalReply(senderID, intent);
         });
         post.userPostcode(userPostcode, (err, result) => {
           if (err) {
-            console.log(err);
+            return err;
           }
         });
       }
@@ -118,7 +119,7 @@ module.exports = (event) => {
 
       if (responseText) {
         constructRemoteReply(senderID, responseText);
-      } else {
+      } else if (!responseText && intent !== 'runningCandidates') {
         findLocalReply.findLocalReply(senderID, intent);
       }
     });
