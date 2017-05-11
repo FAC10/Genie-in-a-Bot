@@ -119,8 +119,9 @@ module.exports = (event) => {
             console.log(err);
           }
 
-          console.log(result.rows[0].joke);
-          sendToFB(result.rows[0].joke);
+          console.log(typeof result.rows[0].joke);
+
+          sendToFB({ text: result.rows[0].joke });
         });
       }
 
