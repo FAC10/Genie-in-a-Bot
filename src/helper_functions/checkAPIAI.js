@@ -86,7 +86,7 @@ module.exports = (event) => {
         });
       }
 
-      if (intent === 'Candidates') {
+      if (intent === 'runningCandidates') {
         const userPostcode = { postcode: messageText, facebook_id: senderID };
         const constit = getConstituency(messageText);
         const userConstituency = { constituency: constit, facebook_id: senderID };

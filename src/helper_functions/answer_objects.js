@@ -22,7 +22,7 @@ function construct(partyVotesObj, firstName) {
       ],
     },
 
-    Candidates: {
+    runningCandidates: {
       attachment: {
         type: 'template',
         payload: {
