@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users, partyVotes CASCADE;
+DROP TABLE IF EXISTS users, partyVotes, jokes CASCADE;
 
 CREATE TABLE users (
   id          SERIAL        PRIMARY KEY,
@@ -24,9 +24,37 @@ CREATE TABLE partyVotes (
   turnout     VARCHAR(10)   NOT NULL
 );
 
+CREATE TABLE jokes (
+  id         SERIAL        PRIMARY KEY,
+  joke       VARCHAR(10000),
+  image_url  VARCHAR(500)
+);
+
 INSERT INTO users (firstname, lastname, facebook_id, postcode)
 VALUES
 ('Maja', 'Kudlicka', 517916098, 'E2 0ET');
+
+INSERT INTO jokes (joke, image_url)
+VALUES
+('I''m am not a big fan of political jokes. I have seen too many of them get elected...', ''),
+('Because it would be hilarious is not a good reason to elect someone.', ''),
+('Have you seen the dog?', ''),
+('I asked my North Korean friend how it was there, he said he couldn''t complain.', ''),
+('A woman gets on a bus with her baby. The driver says, “Ugh! That’s the ugliest baby I’ve ever seen.”
+The woman stalks off to the rear of the bus and sits down. She turns to the man sitting next to her and says, “The driver just insulted me!”
+The man says, “You go and give him a telling off. I’ll hold your monkey for you.”', ''),
+('”Dyslexic man walks into a bra”', ''),
+('”I went to the zoo the other day, there was only one dog in it, it was a shitzu.”, ''),
+('I'’m on a whiskey diet. I’ve lost three days already.',''),
+('A guy meets a sex worker in a bar. She says, ‘This is your lucky night. I’ve got a special
+   game for you. I’ll do absolutely anything you want for £300 as long as you can say it in
+ three words.’ The guy replies, ‘Hey, why not?’ He pulls his wallet out of his pocket and lays
+  £300 on the bar, and says slowly. ‘Paint…my….house.', ''),
+  ('I tried water polo but my horse drowned.', ''),
+  ('A sandwich walks into a bar. The barman says: "Sorry, we don''t serve food in here."', '')
+
+
+
 
 INSERT INTO partyVotes (partyKey, party, issue, inFavour, against, turnout)
 VALUES

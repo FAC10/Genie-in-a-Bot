@@ -20,6 +20,16 @@ connect.query('SELECT party, issue, inFavour, against, turnout FROM partyVotes W
   return callback(null, res);
 });
 
+
+get.randomJoke = callback =>
+connect.query('SELECT joke FROM jokes ORDER BY RANDOM() LIMIT 1 ', (err, res) => {
+  if (err) {
+    return callback(err);
+  }
+  return callback(null, res);
+});
+
+
 get.persistingCtxts = (facebookId, callback) => connect.query('SELECT persistingCtxts FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
   if (err) {
     return callback(err);

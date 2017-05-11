@@ -22,6 +22,12 @@ function construct(partyVotesObj, firstName) {
       ],
     },
 
+    Election_Info :{
+      text: 'The United Kingdom general election of 2017 is scheduled to take place on 8 June 2017.\
+ Each of the 650 parliamentary constituencies will elect one Member of Parliament (MP) to the House of Commons, the lower house of Parliament.\
+ In line with the Fixed-term Parliaments Act 2011, an election had not been due until 7 May 2020, but a call for a snap election by Prime Minister Theresa May received the necessary two-thirds majority in a 522 to 13 vote in the House of Commons on 19 April 2017.'
+    },
+
     Local_MPs: {
       attachment: {
         type: 'template',
@@ -176,8 +182,8 @@ function construct(partyVotesObj, firstName) {
       quick_replies: [
         {
           content_type: 'text',
-          title: 'General Election info',
-          payload: 'General Election info',
+          title: 'Election info',
+          payload: 'Election info',
         },
         {
           content_type: 'text',

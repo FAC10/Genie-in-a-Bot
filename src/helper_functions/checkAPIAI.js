@@ -2,11 +2,12 @@ const apiai = require('apiai');
 require('env2')('./config.env');
 const post = require('../database/db_post.js');
 const getPostcode = require('../helper_functions/getPostcode.js');
+const get = require('../database/get_data.js');
 const apiai_app = apiai(process.env.APIAI_CLIENT);
 const constructRemoteReply = require('./constructRemoteReply');
 const findLocalReply = require('./findLocalReply');
-const get = require('../database/get_data');
 const getConstituency = require('./getConstituency');
+const sendToFB = require('./sendToFB.js');
 
 
 module.exports = (event) => {
@@ -111,6 +112,25 @@ module.exports = (event) => {
         });
       }
 
+
+      if (intent === 'Joke') {
+        get.randomJoke((err, result) => {
+          if (err) {
+            console.log(err);
+          }
+          const messageData = {
+            recipient: {
+              id: senderID,
+            },
+            message: { text: result.rows[0].joke },
+          };
+          console.log(typeof result.rows[0].joke);
+
+          sendToFB(messageData);
+        });
+      }
+
+
       if (!intent) {
         console.log('no intent');
         get.persistingCtxts(senderID, (err, res) => {
@@ -126,6 +146,7 @@ module.exports = (event) => {
           }
         });
       }
+
 
       if (responseText) {
         console.log('getting into responseText if statement');
