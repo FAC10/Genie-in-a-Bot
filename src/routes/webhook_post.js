@@ -30,7 +30,18 @@ module.exports = [
           if (event.message) {
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
-            console.log('in the elseif loop');
+            if (event.postback.payload = 'About this bot') {
+              const messageData = {
+                recipient: {
+                  id: senderID,
+                },
+                message: {
+                  text: 'This bot has been created as a study project by students at Founders & Coders. Find us on github!: https://github.com/FAC10/MPBots',
+                },
+              };
+              sendToFB(messageData);
+            }
+
             getFacebookName(event.sender.id, () => {
               findLocalReply.findLocalReply(event.sender.id, event.postback.payload);
             });
