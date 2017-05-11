@@ -30,6 +30,7 @@ module.exports = [
           if (event.message) {
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
+            console.log('in the elseif loop');
             getFacebookName(event.sender.id, () => {
               findLocalReply.findLocalReply(event.sender.id, event.postback.payload);
             });
