@@ -3,7 +3,7 @@
 const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
 
-function construct(partyVotesObj, firstName, candidates) {
+function construct(partyVotesObj, firstName, candidatesObj) {
   console.log('candidates in construct are', typeof candidates);
   if (candidates != null){
       console.log('type of candidates zero', typeof candidates[0]);
@@ -35,7 +35,7 @@ function construct(partyVotesObj, firstName, candidates) {
         type: 'template',
         payload: {
           template_type: 'generic',
-          elements: candidates,
+          elements: candidatesObj,
         },
       },
     },
