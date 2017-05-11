@@ -26,6 +26,7 @@ module.exports = [
         entry.messaging.forEach((event) => {
           console.log(event);
           if (event.message) {
+            console.log('theres an event.message');
             if (event.message.attachments) {
               if (event.message.attachments[0].payload.coordinates) {
                 const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
@@ -65,22 +66,22 @@ module.exports = [
                 },
               };
               sendToFB(messageData);
+            } else if (event.postback.payload === 'Report the problem') {
+              const messageData = {
+                recipient: {
+                  id: event.sender.id,
+                },
+                message: {
+                  text: 'We are sorry to hear that you have encoutered a problem! You can contact us at GenieInTheBot@outlook.com - we try to answer all queries and address all problems. We welcome your feedback! ',
+                },
+              };
+              sendToFB(messageData);
+            } else {
+              console.log('getting into the generic send');
+              getFacebookName(event.sender.id, () => {
+                findLocalReply.findLocalReply(event.sender.id, event.postback.payload);
+              });
             }
-          } else if (event.postback.payload === 'Report the problem') {
-            const messageData = {
-              recipient: {
-                id: event.sender.id,
-              },
-              message: {
-                text: 'We are sorry to hear that you have encoutered a problem! You can contact us at GenieInTheBot@outlook.com - we try to answer all queries and address all problems. We welcome your feedback! ',
-              },
-            };
-            sendToFB(messageData);
-          } else {
-            console.log('getting into the generic send');
-            getFacebookName(event.sender.id, () => {
-              findLocalReply.findLocalReply(event.sender.id, event.postback.payload);
-            });
           }
         });
       });
