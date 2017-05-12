@@ -3,6 +3,10 @@
 # MPBots
 An app to help people learn about the UK General Elections
 
+Hosted on Heroku [here](https://mp-chatbot.herokuapp.com/)
+
+Talk to us on facebook [here](https://m.me/politicalgenie)
+
 ### Aims
 
 ### User Stories
