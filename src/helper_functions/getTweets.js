@@ -36,13 +36,18 @@ function getMentions(senderID, username) {
     const time2 = (tweets.statuses[1].created_at).split(' ', 3).join(' ');
     const time3 = (tweets.statuses[2].created_at).split(' ', 3).join(' ');
     console.log('users are ', tweets.statuses[0].user);
-    const messageOne = `${username} tweeted this on ${time}: ${tweets.statuses[0].text}`;
+    const messageOne = `@${tweets.statuses[0].user.screen_name} (${tweets.statuses[0].user.description}) tweeted this on ${time}: ${tweets.statuses[0].text}`;
     constructRemoteReply(senderID, messageOne);
-    const messageTwo = `${username} tweeted this on ${time2}: ${tweets.statuses[1].text}`;
+    const messageTwo = `@${tweets.statuses[1].user.screen_name} (${tweets.statuses[1].user.description}) tweeted this on ${time}: ${tweets.statuses[1].text}`;
     constructRemoteReply(senderID, messageTwo);
-    const messageThree = `${username} tweeted this on ${time3}: ${tweets.statuses[2].text}`;
+    const messageThree = `@${tweets.statuses[2].user.screen_name} (${tweets.statuses[2].user.description}) tweeted this on ${time}: ${tweets.statuses[2].text}`;
     constructRemoteReply(senderID, messageThree);
   });
 }
+
+// screen_name
+// location
+// description
+// profile_image_url
 
 module.exports = { getTweets, getMentions };
