@@ -34,8 +34,13 @@ module.exports = (event) => {
       let intent = response.result.metadata.intentName;
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
-      if (intent === 'tweets') {
-        getTweets.getMentions(senderID, '@jeremycorbyn');
+      if (intent === 'recent-tweets') {
+        console.log('payload is ', event.message.attachments[0].payload);
+        getTweets.getTweets(senderID, event.message.attachments[0].payload);
+      }
+      if (intent === 'recent-mentions') {
+        console.log('payload is ', event.message.attachments[0].payload);
+        getTweets.getMentions(senderID, event.message.attachments[0].payload);
       }
       if (intent === 'register' || intent === 'registerDone') {
         post.persistingCtxts('registerDone', senderID, (err, result) => {
