@@ -8,7 +8,7 @@ function getTweets() {
     bearer_token: process.env.TWITTER_BEARER_TOKEN,
   });
 
-  client.get('search/tweets', { q: '@jeremycorbyn' }, (error, tweets, response) => {
+  client.get('search/tweets', { q: 'from:jeremycorbyn' }, (error, tweets, response) => {
     console.log(tweets);
   });
 }
