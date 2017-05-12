@@ -76,12 +76,20 @@ module.exports = (event) => {
         });
       }
       if (intent === 'recent-tweets') {
-        console.log('payload is ', event.message.attachments[0].payload);
-        getTweets.getTweets(senderID, event.message.attachments[0].payload);
+        if (event.message.attachments[0].payload) {
+          console.log('payload is ', event.message.attachments[0].payload);
+          getTweets.getTweets(senderID, `@${event.message.attachments[0].payload}`);
+        } else {
+          constructRemoteReply(senderID, 'This candidate has no Twitter account :(');
+        }
       }
       if (intent === 'recent-mentions') {
-        console.log('payload is ', event.message.attachments[0].payload);
-        getTweets.getMentions(senderID, event.message.attachments[0].payload);
+        if (event.message.attachments[0].payload) {
+          console.log('payload is ', event.message.attachments[0].payload);
+          getTweets.getMentions(senderID, `@${event.message.attachments[0].payload}`);
+        } else {
+          constructRemoteReply(senderID, 'This candidate has no Twitter account :(');
+        }
       }
 
       if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
