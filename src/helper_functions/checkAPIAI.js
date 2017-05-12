@@ -96,11 +96,11 @@ module.exports = (event) => {
           }
           const userConstituency = { constituency: result, facebook_id: senderID };
           console.log(userConstituency);
-          post.userConstituency(userConstituency, (err) => {
-            console.log('inside userConstituency if statament');
+          post.userConstituency(userConstituency, (error, res) => {
             if (err) {
               console.log(err);
             }
+            console.log('posting to database');
             findLocalReply.findLocalReply(senderID, intent);
           });
         });

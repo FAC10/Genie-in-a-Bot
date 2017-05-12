@@ -7,6 +7,7 @@ const searchAnsObjects = require('./searchAnsObjects');
 
 function findLocalReply(senderID, intent) {
   if (intent === 'runningCandidates') {
+    console.log('in local reply about to check database');
     get.constituency(senderID, (err, res) => {
       if (err) {
         return err;
