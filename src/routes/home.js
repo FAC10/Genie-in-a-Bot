@@ -17,7 +17,8 @@ module.exports = [
     //     console.log('twitter access token is ', res.body.access_token);
     //   }
     // });
-    res.send('I should be working');
+    const url = 'https://m.me/politicalgenie';
+    res.send(`Visit me <a href=${url}>on facebook</a> to start talking to me`);
     res.status(200);
   }),
 ];
