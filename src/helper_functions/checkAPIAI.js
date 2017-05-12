@@ -15,7 +15,6 @@ module.exports = (event) => {
   const recipientID = event.recipient.id;
   const timeOfMessage = event.timestamp;
   const message = event.message;
-  getTweets(senderID, '@jeremycorbyn');
 
   console.log('Received message for user %d and page %d at %d with message:',
       senderID, recipientID, timeOfMessage);
@@ -35,6 +34,9 @@ module.exports = (event) => {
       let intent = response.result.metadata.intentName;
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
+      if (intent === 'tweets') {
+        getTweets.getUserTweets(senderID, '@jeremycorbyn');
+      }
       if (intent === 'register' || intent === 'registerDone') {
         post.persistingCtxts('registerDone', senderID, (err, result) => {
           if (err) {
