@@ -13,6 +13,8 @@ function getTweets(senderID, username) {
     console.log(tweets);
     const messageOne = tweets.statuses[0].text;
     constructRemoteReply(senderID, messageOne);
+    const messageTwo = tweets.statuses[1].text;
+    constructRemoteReply(senderID, messageTwo);
   });
 }
 
