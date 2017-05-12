@@ -8,7 +8,7 @@ const constructRemoteReply = require('./constructRemoteReply');
 const findLocalReply = require('./findLocalReply');
 const getConstituency = require('./getConstituency');
 const sendToFB = require('./sendToFB.js');
-
+const getTweets = require('./getTweets.js');
 
 module.exports = (event) => {
   const senderID = event.sender.id;
@@ -32,6 +32,7 @@ module.exports = (event) => {
     apiai_request.on('response', (response) => {
       const responseText = response.result.fulfillment.speech;
       let intent = response.result.metadata.intentName;
+      console.log('intent is ', intent);
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
       if (intent === 'register' || intent === 'registerDone') {

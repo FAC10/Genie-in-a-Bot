@@ -6,6 +6,8 @@ const findLocalReply = require('../helper_functions/findLocalReply.js');
 const getFacebookName = require('./../helper_functions/getFacebookName');
 const getPostcode = require('../helper_functions/getPostcode.js');
 const post = require('../database/db_post.js');
+const getTweets = require('../helper_functions/getTweets.js');
+const constructRemoteReply = require('../helper_functions/constructRemoteReply');
 
 
 const app = express.Router();
@@ -56,6 +58,30 @@ module.exports = [
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
             console.log('postback is ', event.postback.payload);
+            if (event.postback.payload.includes('Recent tweets')) {
+              console.log('includes recent tweets');
+              const splitted = (event.postback.payload).split(' ', 3);
+              const username = splitted[2];
+              console.log('username is ', username);
+              if (username === 'noTwitter') {
+                console.log('user has no twitter');
+                constructRemoteReply(event.sender.id, 'This candidate has no Twitter account :(');
+              } else {
+                getTweets.getTweets(event.sender.id, `@${username}`);
+              }
+            }
+            if (event.postback.payload.includes('Recent mentions')) {
+              console.log('includes recent mentions');
+              const splitted = (event.postback.payload).split(' ', 3);
+              const username = splitted[2];
+              console.log('username is ', username);
+              if (username === 'noTwitter') {
+                console.log('user has no twitter');
+                constructRemoteReply(event.sender.id, 'This candidate has no Twitter account :(');
+              } else {
+                getTweets.getMentions(event.sender.id, `@${username}`);
+              }
+            }
             if (event.postback.payload === 'About this bot') {
               const messageData = {
                 recipient: {

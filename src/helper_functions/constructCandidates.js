@@ -4,7 +4,11 @@ function constructCandidates(candidates, senderID, intent, callback, callback2) 
     const name = candidate.name;
     const image = candidate.image_url;
     const party = candidate.party_name;
-    const twitter = candidate.twitter_username;
+    let twitter = candidate.twitter_username;
+
+    if (twitter === null) {
+      twitter = 'noTwitter';
+    }
 
     const candidateTemplate = {
       title: name,
@@ -14,18 +18,18 @@ function constructCandidates(candidates, senderID, intent, callback, callback2) 
         {
           type: 'postback',
           title: 'Recent tweets',
-          payload: 'Recent tweets',
+          payload: `Recent tweets ${twitter}`,
         }, {
           type: 'postback',
           title: 'Recent mentions',
-          payload: 'Recent mentions',
+          payload: `Recent mentions ${twitter}`,
         },
       ],
     };
     allCandidates.push(candidateTemplate);
   });
   const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
-  // console.log(allCandidates);
+  console.log('allCandidates in constructCandidates are ', allCandidates);
   callback(placeholderVotingObj, null, allCandidates, null, senderID, intent, callback2);
 }
 
