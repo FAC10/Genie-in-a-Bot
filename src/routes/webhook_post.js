@@ -59,7 +59,7 @@ module.exports = [
             if (event.postback.payload.includes('Recent tweets')) {
               console.log('includes recent tweets');
               const username = (event.postback.payload).split(' ', 2);
-              console.log('username is ', name);
+              console.log('username is ', username);
               getTweets.getTweets(senderID, `@${username}`);
             }
             // if (event.postback.payload === ) {
