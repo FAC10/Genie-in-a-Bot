@@ -33,7 +33,7 @@ connect.query('SELECT constituency FROM users WHERE facebook_id = $1;', [faceboo
 });
 
 
-get.candidates = (constituency, callback) => candidateConnect.query('SELECT name, party_name, twitter_username, image_url FROM candidates4 WHERE post_label = $1;', [constituency], (err, res) => {
+get.candidates = (constituency, callback) => candidateConnect.query('SELECT name, party_name, twitter_username, image_url FROM temps2 WHERE post_label = $1;', [constituency], (err, res) => {
   if (err) {
     return callback(err);
   }
