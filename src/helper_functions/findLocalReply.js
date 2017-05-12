@@ -13,12 +13,13 @@ function findLocalReply(senderID, intent) {
         return err;
       }
       const constituency = res;
-      console.log(constituency);
+      console.log('constituency passed into get.candidates is', constituency);
       get.candidates(constituency, (err, res) => {
         if (err) {
           return err;
         }
         const candidates = res.rows;
+        console.log('candidates from get.candidates are ', candidates);
         constructCandidates(candidates, senderID, intent, construct, searchAnsObjects);
       });
     });
