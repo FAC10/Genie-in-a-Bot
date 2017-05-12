@@ -57,6 +57,9 @@ post.userConstituency = (userConstituency, callback) => {
   connect.query(`UPDATE users SET constituency = '${userConstituency.constituency}' WHERE facebook_id = ${userConstituency.facebook_id}`, (err) => {
     if (err) return callback(err);
   });
+  else {
+    callback();
+  }
 };
 
 module.exports = post;
