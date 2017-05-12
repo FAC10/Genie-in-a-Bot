@@ -18,11 +18,11 @@ function constructCandidates(candidates, senderID, intent, callback, callback2) 
         {
           type: 'postback',
           title: 'Recent tweets',
-          payload: twitter,
+          payload: `Recent tweets ${twitter}`,
         }, {
           type: 'postback',
           title: 'Recent mentions',
-          payload: twitter,
+          payload: `Recent tweets ${twitter}`,
         },
       ],
     };

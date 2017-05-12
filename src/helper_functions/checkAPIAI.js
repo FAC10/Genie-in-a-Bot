@@ -80,8 +80,10 @@ module.exports = (event) => {
         console.log('recent tweets if statement');
         console.log(event.message);
         if (event.message.attachments[0].payload) {
+          const name = (event.message.attachments[0].payload).split(' ', 2);
+          console.log('username is ', username);
           console.log('payload is ', event.message.attachments[0].payload);
-          getTweets.getTweets(senderID, `@${event.message.attachments[0].payload}`);
+          getTweets.getTweets(senderID, `@${username}`);
         } else {
           constructRemoteReply(senderID, 'This candidate has no Twitter account :(');
         }
