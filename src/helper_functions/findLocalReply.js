@@ -14,11 +14,11 @@ function findLocalReply(senderID, intent) {
       }
       const constituency = res;
       console.log(constituency);
-      get.candidates(constituency, (error, result) => {
-        if (error) {
-          return error;
+      get.candidates(constituency, (err, res) => {
+        if (err) {
+          return err;
         }
-        const candidates = result.rows;
+        const candidates = res.rows;
         constructCandidates(candidates, senderID, intent, construct, searchAnsObjects);
       });
     });
