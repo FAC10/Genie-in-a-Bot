@@ -43,7 +43,9 @@ Talk to us on facebook [here](https://m.me/politicalgenie)
 ```
 2. Set enconding:
 
-  ```SET client_encoding = 'ISO_8859_5';
+  ```
+  
+  SET client_encoding = 'ISO_8859_5';
   ```
 
 3. import CVS to local table:
