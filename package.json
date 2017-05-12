@@ -27,7 +27,8 @@
     "get-twitter-bearer-token": "^1.0.0",
     "pg": "^6.1.5",
     "request": "^2.81.0",
-    "tape": "^4.6.3"
+    "tape": "^4.6.3",
+    "twitter": "^1.7.0"
   },
   "devDependencies": {
     "codecov": "^2.1.0",

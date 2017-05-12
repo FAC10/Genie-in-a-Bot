@@ -8,13 +8,14 @@ const constructRemoteReply = require('./constructRemoteReply');
 const findLocalReply = require('./findLocalReply');
 const getConstituency = require('./getConstituency');
 const sendToFB = require('./sendToFB.js');
-
+const getTweets = require('./getTweets.js');
 
 module.exports = (event) => {
   const senderID = event.sender.id;
   const recipientID = event.recipient.id;
   const timeOfMessage = event.timestamp;
   const message = event.message;
+  getTweets();
 
   console.log('Received message for user %d and page %d at %d with message:',
       senderID, recipientID, timeOfMessage);
