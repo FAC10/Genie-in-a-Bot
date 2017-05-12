@@ -11,6 +11,7 @@ module.exports = (senderID, responseText, image) => {
         text: responseText,
       },
     };
+    sendToFB(messageData);
   } else {
     const messageData = {
       recipient: {
@@ -26,6 +27,6 @@ module.exports = (senderID, responseText, image) => {
         },
       },
     };
+    sendToFB(messageData);
   }
-  sendToFB(messageData);
 };
