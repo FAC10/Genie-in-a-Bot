@@ -56,6 +56,15 @@ module.exports = [
             checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
             console.log('postback is ', event.postback.payload);
+            if (event.postback.payload.includes('Recent tweets')) {
+              console.log('includes recent tweets');
+              const username = (event.postback.payload).split(' ', 2);
+              console.log('username is ', name);
+              getTweets.getTweets(senderID, `@${username}`);
+            }
+            // if (event.postback.payload === ) {
+            //
+            // }
             if (event.postback.payload === 'About this bot') {
               const messageData = {
                 recipient: {
