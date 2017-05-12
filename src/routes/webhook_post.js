@@ -32,7 +32,7 @@ module.exports = [
                 const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
                 const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
 
-                getPostcode(lat, long, (postCode, constituency) => {
+                getPostcode(lat, long, event.sender.id, sendToFB, (postCode, constituency) => {
                   const userConstituency = { constituency, facebook_id: event.sender.id };
                   const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
                   post.userPostcode(userPostcode, (err, result) => {
