@@ -11,9 +11,12 @@ function getTweets(senderID, username) {
 
   client.get('search/tweets', { q: `from:${username}` }, (error, tweets, response) => {
     console.log(tweets);
-    const messageOne = tweets.statuses[0].text;
+    const time = (tweets.statuses[0].created_at).split(' ', 3).join(' ');
+    const time2 = (tweets.statuses[1].created_at).split(' ', 3).join(' ');
+    console.log(time);
+    const messageOne = `${username} tweeted this on ${time}: ${tweets.statuses[0].text}`;
     constructRemoteReply(senderID, messageOne);
-    const messageTwo = tweets.statuses[1].text;
+    const messageTwo = `${username} tweeted this on ${time2}: ${tweets.statuses[1].text}`;
     constructRemoteReply(senderID, messageTwo);
   });
 }
