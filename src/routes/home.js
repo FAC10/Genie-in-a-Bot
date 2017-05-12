@@ -5,7 +5,8 @@ const app = express.Router();
 /* Home */
 module.exports = [
   app.get('/', (req, res) => {
-    res.send('I should be working');
+    const url = 'https://m.me/politicalgenie';
+    res.send(`Visit me <a href=${url}>on facebook</a> to start talking to me`);
     res.status(200);
   }),
 ];
