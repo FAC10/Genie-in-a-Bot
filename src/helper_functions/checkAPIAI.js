@@ -43,28 +43,24 @@ module.exports = (event) => {
         });
       }
 
-      if (event.message) {
-        if (event.message.attachments) {
-          if (event.message.attachments[0].payload.coordinates) {
-            const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
-            const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
+      if (event.message && event.message.attachments && event.message.attachments[0].payload.coordinates) {
+        const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
+        const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
 
-            getPostcode(lat, long, senderID, sendToFB, (postCode, constituency) => {
-              const userPostcode = { postcode: postCode, facebook_id: senderID };
-              const userConstituency = { constituency, facebook_id: senderID };
-              post.userPostcode(userPostcode, (err, result) => {
-                if (err) {
-                  console.log(err);
-                }
-              });
-              post.userConstituency(userConstituency, (err) => {
-                if (err) {
-                  console.log(err);
-                }
-              });
-            });
-          }
-        }
+        getPostcode(lat, long, senderID, sendToFB, (postCode, constituency) => {
+          const userPostcode = { postcode: postCode, facebook_id: senderID };
+          const userConstituency = { constituency, facebook_id: senderID };
+          post.userPostcode(userPostcode, (err, result) => {
+            if (err) {
+              return err;
+            }
+          });
+          post.userConstituency(userConstituency, (err) => {
+            if (err) {
+              return err;
+            }
+          });
+        });
       }
 
       if (intent === 'party_votes') {
