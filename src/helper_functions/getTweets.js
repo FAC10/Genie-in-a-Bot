@@ -36,11 +36,16 @@ function getMentions(senderID, username) {
     const time2 = (tweets.statuses[1].created_at).split(' ', 3).join(' ');
     const time3 = (tweets.statuses[2].created_at).split(' ', 3).join(' ');
     console.log('users are ', tweets.statuses[0].user);
-    const messageOne = `@${tweets.statuses[0].user.screen_name} (${tweets.statuses[0].user.description}) tweeted this on ${time}: ${tweets.statuses[0].text}`;
+    const messageOne = `@${tweets.statuses[0].user.screen_name} tweeted this on ${time}: ${tweets.statuses[0].text}, attachment:{
+      type:"image",
+      payload:{
+        url:"${tweets.statuses[0].user.profile_image_url}"
+      }
+    }`;
     constructRemoteReply(senderID, messageOne);
-    const messageTwo = `@${tweets.statuses[1].user.screen_name} (${tweets.statuses[1].user.description}) tweeted this on ${time}: ${tweets.statuses[1].text}`;
+    const messageTwo = `@${tweets.statuses[1].user.screen_name} tweeted this on ${time}: ${tweets.statuses[1].text}`;
     constructRemoteReply(senderID, messageTwo);
-    const messageThree = `@${tweets.statuses[2].user.screen_name} (${tweets.statuses[2].user.description}) tweeted this on ${time}: ${tweets.statuses[2].text}`;
+    const messageThree = `@${tweets.statuses[2].user.screen_name} tweeted this on ${time}: ${tweets.statuses[2].text}`;
     constructRemoteReply(senderID, messageThree);
   });
 }
