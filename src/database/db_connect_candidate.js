@@ -5,11 +5,11 @@ const environment = require('env2');
 environment('./config.env');
 
 
-if (!process.env.HEROKU_POSTGRESQL_TEAL_URL) {
+if (!process.env.HEROKU_POSTGRESQL_BLUE_URL) {
   throw new Error('DATABASE_URL missing from .env');
 }
 
-const params = url.parse(process.env.HEROKU_POSTGRESQL_TEAL_URL);
+const params = url.parse(process.env.HEROKU_POSTGRESQL_BLUE_URL);
 const [username, password] = params.auth.split(':');
 
 const options = {
