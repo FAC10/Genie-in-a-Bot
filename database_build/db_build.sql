@@ -62,10 +62,10 @@ VALUES
 ('Lib DemtuitionFees', 'the Liberal Democrats', 'Tution Fees', '27 Lib Dem MPs (56%)', '21 MPs (44%)', '86%', 'in favour', '56%'),
 ('GreentuitionFees', 'the Green Party', 'Tuition Fees', '0 Green MPs (0%)', '1 MP (100%)', '100%', 'against', '100%'),
 ('SNPtuitionFees', 'the SNP', 'Tuition Fees', '0 SNP MPs (0%)', '6 MPs (100%)', '96.3%', 'against', '100%'),
-('Conservativesyria', 'the Conservative Party', 'Syrian Air Strikes', '313 Conservative MPs (98%)', '7 MPs (2%)', '97.6%', 'in favour', '98%'),
-('Laboursyria', 'the Labour Party', 'Syrian Air Strikes', '66 Labour MPs (30%)', '153 MPs (70%)', '94.8%', 'against', '70%'),
-('Lib Demsyria', 'the Liberal Democrats', 'Syrian Air Strikes', '6 Lib Dem MPs (75%)', '2 MPs (25%)', '100%', 'in favour', '75%'),
-('Greensyria', 'the Green Party', 'Syrian Air Strikes', '0 Green MPs (0%)', '1 MP (100%)', '100%', 'against', '100%'),
-('SNPsyria', 'the SNP', 'Syrian Air Strikes', '0 SNP MPs (0%)', '53 MPs (100%)', '100%', 'against', '100%');
+('Conservativesyria', 'the Conservative Party', 'Syria', '313 Conservative MPs (98%)', '7 MPs (2%)', '97.6%', 'in favour', '98%'),
+('Laboursyria', 'the Labour Party', 'Syria', '66 Labour MPs (30%)', '153 MPs (70%)', '94.8%', 'against', '70%'),
+('Lib Demsyria', 'the Liberal Democrats', 'Syria', '6 Lib Dem MPs (75%)', '2 MPs (25%)', '100%', 'in favour', '75%'),
+('Greensyria', 'the Green Party', 'Syria', '0 Green MPs (0%)', '1 MP (100%)', '100%', 'against', '100%'),
+('SNPsyria', 'the SNP', 'Syria', '0 SNP MPs (0%)', '53 MPs (100%)', '100%', 'against', '100%');
 
 COMMIT;
