@@ -76,6 +76,8 @@ module.exports = (event) => {
         });
       }
       if (intent === 'recent-tweets') {
+        console.log('recent tweets if statement');
+        console.log(event.message);
         if (event.message.attachments[0].payload) {
           console.log('payload is ', event.message.attachments[0].payload);
           getTweets.getTweets(senderID, `@${event.message.attachments[0].payload}`);
