@@ -62,7 +62,7 @@ module.exports = [
               const splitted = (event.postback.payload).split(' ', 3);
               const username = splitted[2];
               console.log('username is ', username);
-              getTweets.getTweets(senderID, `@${username}`);
+              getTweets.getTweets(event.sender.id, `@${username}`);
             }
             // if (event.postback.payload === ) {
             //
