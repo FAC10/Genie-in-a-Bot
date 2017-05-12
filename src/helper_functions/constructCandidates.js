@@ -22,7 +22,7 @@ function constructCandidates(candidates, senderID, intent, callback, callback2) 
         }, {
           type: 'postback',
           title: 'Recent mentions',
-          payload: `Recent tweets ${twitter}`,
+          payload: `Recent mentions ${twitter}`,
         },
       ],
     };
