@@ -35,7 +35,7 @@ module.exports = (event) => {
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
       if (intent === 'tweets') {
-        getTweets(senderID, '@jeremycorbyn');
+        getTweets.getMentions(senderID, '@jeremycorbyn');
       }
       if (intent === 'register' || intent === 'registerDone') {
         post.persistingCtxts('registerDone', senderID, (err, result) => {
