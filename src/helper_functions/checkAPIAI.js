@@ -15,7 +15,7 @@ module.exports = (event) => {
   const recipientID = event.recipient.id;
   const timeOfMessage = event.timestamp;
   const message = event.message;
-  getTweets();
+  getTweets(senderID, '@jeremycorbyn');
 
   console.log('Received message for user %d and page %d at %d with message:',
       senderID, recipientID, timeOfMessage);

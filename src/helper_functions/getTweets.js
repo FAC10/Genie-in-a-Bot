@@ -1,5 +1,6 @@
 const Twitter = require('twitter');
 require('env2')('./config.env');
+const constructRemoteReply = require('./constructRemoteReply.js');
 
 function getTweets() {
   const client = new Twitter({
@@ -8,9 +9,13 @@ function getTweets() {
     bearer_token: process.env.TWITTER_BEARER_TOKEN,
   });
 
-  client.get('search/tweets', { q: 'from:jeremycorbyn' }, (error, tweets, response) => {
-    console.log(tweets);
-  });
+  function getUserTweets(senderID, username) {
+    client.get('search/tweets', { q: `from:${username}` }, (error, tweets, response) => {
+      console.log(tweets);
+      const messageOne = tweets.statuses[0].text;
+      constructRemoteReply(senderID, messageOne);
+    });
+  }
 }
 
 module.exports = getTweets;
