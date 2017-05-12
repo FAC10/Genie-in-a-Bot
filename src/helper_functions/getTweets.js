@@ -35,7 +35,7 @@ function getMentions(senderID, username) {
     const time = (tweets.statuses[0].created_at).split(' ', 3).join(' ');
     const time2 = (tweets.statuses[1].created_at).split(' ', 3).join(' ');
     const time3 = (tweets.statuses[2].created_at).split(' ', 3).join(' ');
-    console.log('users are ', tweets.user);
+    console.log('users are ', tweets.statuses[0].user);
     const messageOne = `${username} tweeted this on ${time}: ${tweets.statuses[0].text}`;
     constructRemoteReply(senderID, messageOne);
     const messageTwo = `${username} tweeted this on ${time2}: ${tweets.statuses[1].text}`;
