@@ -7,6 +7,7 @@ const getFacebookName = require('./../helper_functions/getFacebookName');
 const getPostcode = require('../helper_functions/getPostcode.js');
 const post = require('../database/db_post.js');
 const getTweets = require('../helper_functions/getTweets.js');
+const constructRemoteReply = require('../helper_functions/constructRemoteReply');
 
 
 const app = express.Router();
