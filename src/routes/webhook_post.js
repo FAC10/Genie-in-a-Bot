@@ -63,6 +63,7 @@ module.exports = [
               const username = splitted[2];
               console.log('username is ', username);
               if (username === 'noTwitter') {
+                console.log('user has no twitter');
                 constructRemoteReply(event.sender.id, 'This candidate has no Twitter account :(');
               } else {
                 getTweets.getTweets(event.sender.id, `@${username}`);
@@ -74,6 +75,7 @@ module.exports = [
               const username = splitted[2];
               console.log('username is ', username);
               if (username === 'noTwitter') {
+                console.log('user has no twitter');
                 constructRemoteReply(event.sender.id, 'This candidate has no Twitter account :(');
               } else {
                 getTweets.getMentions(event.sender.id, `@${username}`);
