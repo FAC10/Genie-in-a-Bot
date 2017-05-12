@@ -1,6 +1,8 @@
 const request = require('request');
 
 function getPostcode(latitude, longtitude, cb) {
+  console.log('latitude is', latitude);
+  console.log('longtitude is', longtitude);
   const url = `https://api.postcodes.io/postcodes?lon=${longtitude}&lat=${latitude}`;
   request(url, (err, res, body) => {
     if (err) {
