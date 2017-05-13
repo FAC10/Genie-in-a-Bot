@@ -18,30 +18,25 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
   if (compareObj === null) {
     compareObj = [{swing: 'placeholder', majority: 'placeholder'},{swing: 'placeholder', majority: 'placeholder'},{swing: 'placeholder', majority: 'placeholder'},{swing: 'placeholder', majority: 'placeholder'},{swing: 'placeholder', majority: 'placeholder'}];
   }
-  // if (candidates === null)  {
-  //   candidates = 'placeholder';
-  // }
 
   const answer_objects = {
     Candidates: {
-      text: 'Type your postcode or send me your location to get started :)',
+      text: 'Type your postcode or send me your location and I guess you\'ll have someone to talk to for a little longer.',
       quick_replies: [
       { content_type: 'location' },
       ],
     },
 
     About_this_bot: {
-      text: 'This bot has been created as a study project by students at Founders & Coders. Find us on github!: https://github.com/FAC10/MPBots'
+      text: 'This bot captured by students at Founders & Coders with support from Filament (http://filament.uk.com/). Find us on github: https://github.com/FAC10/MPBots. No genies were harmed in the making.'
     },
 
     report_problem: {
-      text: 'We are sorry to hear that you have encoutered a problem! You can contact us at GenieInTheBot@outlook.com - we try to answer all queries and address all problems. We welcome your feedback! '
+      text: 'Sometimes our genie gets a little lazy. Let us know what he\'s done this time: HelpAGenieOut@gmail.com'
     },
 
     Election_Info :{
-      text: 'The United Kingdom general election of 2017 is scheduled to take place on 8 June 2017.\
- Each of the 650 parliamentary constituencies will elect one Member of Parliament (MP) to the House of Commons, the lower house of Parliament.\
- In line with the Fixed-term Parliaments Act 2011, an election had not been due until 7 May 2020, but a call for a snap election by Prime Minister Theresa May received the necessary two-thirds majority in a 522 to 13 vote in the House of Commons on 19 April 2017.'
+      text: 'The General Election this year will take place on 8th June. The deadline to register to vote is on 22nd May (https://www.gov.uk/register-to-vote). This will be the 57th UK General Election, and the third time the UK population has been asked to vote on an issue in the last three years. It\'s been tough for a genie in a bot. Each of the 650 parliamentary constituencies will elect one Member of Parliament (MP) to the House of Commons.'
     },
 
     runningCandidates: {
@@ -59,7 +54,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
         type: 'template',
         payload: {
           template_type: 'button',
-          text: `You summoned me, ${firstName}? I\'m your personal assistant in the run up to the General Election. I can tell you about the candidates standing in your area, what the parties are offering etc etc.`,
+          text: `You summoned me, ${firstName}? I\'m your personal assistant in the run up to the General Election. I can tell you about the candidates standing, how parties have voted on key issues and how a genie came to be stuck in a bot.`,
           buttons: [
             {
               type: 'postback',
@@ -79,12 +74,13 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
 
     Parties: {
 
-      text: 'Pick a party you\'re interested in.',
+      text: 'Which party do you want to know more about?',
       quick_replies: [
         {
           content_type: 'text',
           title: 'Conservative',
           payload: 'party_votes',
+          img_url:'https://upload.wikimedia.org/wikipedia/en/thumb/b/b6/Conservative_logo_2006.svg/1280px-Conservative_logo_2006.svg.png',
         },
         {
           content_type: 'text',
