@@ -15,9 +15,9 @@ function getTweets(senderID, username) {
     const time2 = (tweets.statuses[1].created_at).split(' ', 3).join(' ');
     const time3 = (tweets.statuses[2].created_at).split(' ', 3).join(' ');
     const messageOne = `${username} tweeted this on ${time}: ${tweets.statuses[0].text}`;
-    constructRemoteReply(senderID, messageOne);
+    constructRemoteReply(senderID, messageOne, 'yes');
     const messageTwo = `${username} tweeted this on ${time2}: ${tweets.statuses[1].text}`;
-    constructRemoteReply(senderID, messageTwo);
+    constructRemoteReply(senderID, messageTwo, 'yes');
     const messageThree = `${username} tweeted this on ${time3}: ${tweets.statuses[2].text}`;
     constructRemoteReply(senderID, messageThree, 'yes');
   });
@@ -37,10 +37,10 @@ function getMentions(senderID, username) {
     const time3 = (tweets.statuses[2].created_at).split(' ', 3).join(' ');
     console.log('users are ', tweets.statuses[0].user);
     const messageOne = `@${tweets.statuses[0].user.screen_name} tweeted this on ${time}: ${tweets.statuses[0].text}`;
-    constructRemoteReply(senderID, messageOne);
-    const messageTwo = `@${tweets.statuses[1].user.screen_name} tweeted this on ${time}: ${tweets.statuses[1].text}`;
-    constructRemoteReply(senderID, messageTwo);
-    const messageThree = `@${tweets.statuses[2].user.screen_name} tweeted this on ${time}: ${tweets.statuses[2].text}`;
+    constructRemoteReply(senderID, messageOne 'yes');
+    const messageTwo = `@${tweets.statuses[1].user.screen_name} tweeted this on ${time2}: ${tweets.statuses[1].text}`;
+    constructRemoteReply(senderID, messageTwo, 'yes');
+    const messageThree = `@${tweets.statuses[2].user.screen_name} tweeted this on ${time3}: ${tweets.statuses[2].text}`;
     constructRemoteReply(senderID, messageThree, 'yes');
   });
 }
