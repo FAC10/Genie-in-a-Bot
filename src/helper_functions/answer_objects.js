@@ -80,7 +80,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
           content_type: 'text',
           title: 'Conservative',
           payload: 'party_votes',
-          img_url:'https://upload.wikimedia.org/wikipedia/en/thumb/b/b6/Conservative_logo_2006.svg/1280px-Conservative_logo_2006.svg.png',
+          image_url:'https://upload.wikimedia.org/wikipedia/en/thumb/b/b6/Conservative_logo_2006.svg/1280px-Conservative_logo_2006.svg.png',
         },
         {
           content_type: 'text',
