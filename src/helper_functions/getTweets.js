@@ -19,7 +19,7 @@ function getTweets(senderID, username) {
     const messageTwo = `${username} tweeted this on ${time2}: ${tweets.statuses[1].text}`;
     constructRemoteReply(senderID, messageTwo);
     const messageThree = `${username} tweeted this on ${time3}: ${tweets.statuses[2].text}`;
-    constructRemoteReply(senderID, messageThree);
+    constructRemoteReply(senderID, messageThree, 'yes');
   });
 }
 
@@ -41,7 +41,7 @@ function getMentions(senderID, username) {
     const messageTwo = `@${tweets.statuses[1].user.screen_name} tweeted this on ${time}: ${tweets.statuses[1].text}`;
     constructRemoteReply(senderID, messageTwo);
     const messageThree = `@${tweets.statuses[2].user.screen_name} tweeted this on ${time}: ${tweets.statuses[2].text}`;
-    constructRemoteReply(senderID, messageThree);
+    constructRemoteReply(senderID, messageThree, 'yes');
   });
 }
 
