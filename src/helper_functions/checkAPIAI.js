@@ -131,7 +131,7 @@ module.exports = (event) => {
             message: { attachment: {
               type: 'image',
               payload: {
-                url: 'https://static1.squarespace.com/static/551f3665e4b0bf9fbff0752d/t/58541c079f7456e64f2ba1df/1481907207624/snp.png' },
+                url: result.rows[0].image_url },
             } },
 
           };
