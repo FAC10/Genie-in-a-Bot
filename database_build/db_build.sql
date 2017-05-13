@@ -34,7 +34,9 @@ CREATE TABLE jokes (
 
 INSERT INTO jokes (joke, image_url)
 VALUES
-('I''m not a big fan of political jokes. I have seen too many of them get elected...', 'http://imgur.com/t1rpEdG');
+('I''m not a big fan of political jokes. I have seen too many of them get elected...', 'https://image.ibb.co/g2Q7kk/smug.png'),
+('Why did the cat fall into the well?
+It couldn''t see that well.', 'https://media.giphy.com/media/l4FGqEoFhVLlmWsXm/giphy.gif')
 
 
 INSERT INTO partyVotes (partyKey, party, issue, inFavour, against, turnout, swing, majority)
