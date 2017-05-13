@@ -88,7 +88,7 @@ module.exports = [
               construct(placeholderVotingObj, null, null, null, event.sender.id, 'About_this_bot', searchAnsObjects);
             } else if (event.postback.payload === 'Report the problem') {
               const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
-              construct(placeholderVotingObj, null, null, null, event.sender.id, 'Report_problem', searchAnsObjects);
+              construct(placeholderVotingObj, null, null, null, event.sender.id, 'report_problem', searchAnsObjects);
             } else {
               console.log('getting into the generic send');
               getFacebookName(event.sender.id, () => {
