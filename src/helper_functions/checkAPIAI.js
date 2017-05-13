@@ -60,6 +60,7 @@ module.exports = (event) => {
             if (err) {
               return err;
             }
+            findLocalReply.findLocalReply(senderID, 'runningCandidates');
           });
         });
       }
@@ -103,12 +104,12 @@ module.exports = (event) => {
         });
 
 
-        post.userPostcode(userPostcode, (err, result) => {
-          if (err) {
-            return err;
-          }
-        });
-      }
+      //   post.userPostcode(userPostcode, (err, result) => {
+      //     if (err) {
+      //       return err;
+      //     }
+      //   });
+      // }
 
 
       if (intent === 'Joke') {
