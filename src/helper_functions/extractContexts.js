@@ -1,5 +1,6 @@
 const get = require('../database/get_data');
 const construct = require('./answer_objects');
+const searchAnsObjects = require('./searchAnsObjects');
 
 function extractContexts(senderID, intent, cb) {
   console.log('I am in extractContexts');
