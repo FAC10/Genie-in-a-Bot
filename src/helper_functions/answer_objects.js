@@ -28,7 +28,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
     },
 
     About_this_bot: {
-      text: 'This bot captured by students at Founders & Coders with support from Filament (http://filament.uk.com/). Find us on github: https://github.com/FAC10/MPBots. No genies were harmed in the making.'
+      text: 'This bot was captured by students at Founders & Coders and tamed with support from Filament (http://filament.uk.com/). Find us on github: https://github.com/FAC10/MPBots. No genies were harmed in the making.'
     },
 
     report_problem: {
@@ -160,6 +160,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
         {
           content_type: 'text',
           title: 'I already have!',
+          image_url: 'http://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/57/2016/04/mian_2.jpg',
           payload: 'registerDone',
         },
         {
@@ -197,6 +198,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
         {
           content_type: 'text',
           title: 'New postcode',
+          image_url: 'https://www.google.co.uk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwjBpfipu-3TAhVJcRQKHd6fDZMQjBwIBA&url=https%3A%2F%2Ffreeiconshop.com%2Fwp-content%2Fuploads%2Fedd%2Flocation-pin-curvy-flat.png&psig=AFQjCNG5vB7Pjd-3Dwc5OOpdcIXiZzidqw&ust=1494785269177506',
           payload: 'Candidates',
         },
         ]
