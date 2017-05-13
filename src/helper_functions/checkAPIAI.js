@@ -125,7 +125,7 @@ module.exports = (event) => {
             attachment: {
               type: 'image',
               payload: {
-                url: result.rows[0].image_url },
+                url: `${result.rows[0].image_url}` },
             },
           };
           sendToFB(messageData);
