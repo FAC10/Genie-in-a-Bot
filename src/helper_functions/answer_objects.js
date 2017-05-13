@@ -54,7 +54,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
         type: 'template',
         payload: {
           template_type: 'button',
-          text: `You summoned me, ${firstName}? I\'m your personal assistant in the run up to the General Election. I can tell you about the candidates standing, how parties have voted on key issues and how a genie came to be stuck in a bot.`,
+          text: `You summoned me, ${firstName}? I\'m your personal assistant in the run up to the General Election. I can tell you about the candidates standing, how parties have voted on key issues and how a genie came to be stuck in a bot. What first?`,
           buttons: [
             {
               type: 'postback',
