@@ -1,8 +1,8 @@
 const sendToFB = require('./sendToFB');
-const welcome_message = require('./answer_objects.js');
 
 module.exports = (senderID, responseText, quickReply) => {
   if (quickReply) {
+    console.log('quick reply');
     const reply = {
       recipient: {
         id: senderID,
