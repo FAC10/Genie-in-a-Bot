@@ -171,3 +171,6 @@ module.exports = (event) => {
 };
 
 console.log('adding a pointless log');
+
+console.log('adding a pointless log');
+console.log('adding a pointless log');
