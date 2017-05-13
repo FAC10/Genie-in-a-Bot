@@ -34,7 +34,7 @@ CREATE TABLE jokes (
 
 INSERT INTO jokes (joke, image_url)
 VALUES
-('I''m not a big fan of political jokes. I have seen too many of them get elected...', 'http://imgur.com/a/I2Wel');
+('I''m not a big fan of political jokes. I have seen too many of them get elected...', 'http://imgur.com/t1rpEdG');
 
 
 INSERT INTO partyVotes (partyKey, party, issue, inFavour, against, turnout, swing, majority)
