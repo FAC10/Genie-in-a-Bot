@@ -116,7 +116,7 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           }
-          console.log(result.rows[0].image_url);
+          console.log('joke message is ', result.rows[0]);
           const messageData = {
             recipient: {
               id: senderID,
