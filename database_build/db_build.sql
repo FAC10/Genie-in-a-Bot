@@ -38,16 +38,7 @@ VALUES
 
 INSERT INTO jokes (joke, image_url)
 VALUES
-('I''m am not a big fan of political jokes. I have seen too many of them get elected...', ''),
-('Because it would be hilarious is not a good reason to elect someone.', ''),
-('Have you seen the dog?', ''),
-('I asked my North Korean friend how it was there, he said he couldn''t complain.', ''),
-('A woman gets on a bus with her baby. The driver says, “Ugh! That’s the ugliest baby I’ve ever seen.”
-The woman stalks off to the rear of the bus and sits down. She turns to the man sitting next to her and says, “The driver just insulted me!”
-The man says, “You go and give him a telling off. I’ll hold your monkey for you.”', ''),
-('”Dyslexic man walks into a bra”', '');
-
-
+('I''m not a big fan of political jokes. I have seen too many of them get elected...', '../public/assets/smug.png'),
 
 
 INSERT INTO partyVotes (partyKey, party, issue, inFavour, against, turnout, swing, majority)
