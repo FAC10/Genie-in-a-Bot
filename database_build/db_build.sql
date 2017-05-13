@@ -6,7 +6,7 @@ CREATE TABLE users (
   id          SERIAL        PRIMARY KEY,
   firstname   VARCHAR(30)   NOT NULL,
   lastname    VARCHAR(50),
-  facebook_id BIGINT        UNIQUE,
+  facebook_id BIGINT       UNIQUE,
   postcode    VARCHAR(10),
   constituency VARCHAR(100),
   persistingCtxts    TEXT[],
@@ -32,13 +32,9 @@ CREATE TABLE jokes (
   image_url  VARCHAR(500)
 );
 
-INSERT INTO users (firstname, lastname, facebook_id, postcode)
-VALUES
-('Maja', 'Kudlicka', 517916098, 'E2 0ET');
-
 INSERT INTO jokes (joke, image_url)
 VALUES
-('I''m not a big fan of political jokes. I have seen too many of them get elected...', '../public/assets/smug.png'),
+('I''m not a big fan of political jokes. I have seen too many of them get elected...', '../public/assets/smug.png');
 
 
 INSERT INTO partyVotes (partyKey, party, issue, inFavour, against, turnout, swing, majority)

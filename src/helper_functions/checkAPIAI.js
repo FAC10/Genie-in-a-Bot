@@ -121,9 +121,12 @@ module.exports = (event) => {
               id: senderID,
             },
             message: { text: result.rows[0].joke },
+            attachment: {
+              type: 'image',
+              payload: {
+                url: result.rows[0].image_url },
+            },
           };
-          console.log(typeof result.rows[0].joke);
-
           sendToFB(messageData);
         });
       }
