@@ -160,7 +160,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
         {
           content_type: 'text',
           title: 'I already have!',
-          image_url: 'http://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/57/2016/04/mian_2.jpg',
+          image_url: 'http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=100180979',
           payload: 'registerDone',
         },
         {
@@ -198,7 +198,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
         {
           content_type: 'text',
           title: 'New postcode',
-          image_url: 'https://www.google.co.uk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwjBpfipu-3TAhVJcRQKHd6fDZMQjBwIBA&url=https%3A%2F%2Ffreeiconshop.com%2Fwp-content%2Fuploads%2Fedd%2Flocation-pin-curvy-flat.png&psig=AFQjCNG5vB7Pjd-3Dwc5OOpdcIXiZzidqw&ust=1494785269177506',
+          image_url: 'http://anbgroup.com/images/cloudlocater/AssetLocater.png',
           payload: 'Candidates',
         },
         ]
