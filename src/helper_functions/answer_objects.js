@@ -166,6 +166,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
         {
           content_type: 'text',
           title: 'How do I register?',
+          image_url: 'https://cdn0.iconfinder.com/data/icons/web-development-2/512/clipboard_report_form_checklist_business_plan_sheet_file_note_pad_paper_page_document_planning_check_list_survey_questionnaire_flat_design_icon-512.png',
           payload: 'register',
         },
       ],

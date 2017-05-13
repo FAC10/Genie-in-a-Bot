@@ -10,7 +10,7 @@ function getTweets(senderID, username) {
   });
 
   client.get('search/tweets', { q: `from:${username}` }, (error, tweets, response) => {
-    constructRemoteReply(senderID, `The last three tweets from ${username}:`);
+    constructRemoteReply(senderID, `The last three things ${username} tweeted🗣:`);
     const time = (tweets.statuses[0].created_at).split(' ', 3).join(' ');
     const time2 = (tweets.statuses[1].created_at).split(' ', 3).join(' ');
     const time3 = (tweets.statuses[2].created_at).split(' ', 3).join(' ');
@@ -31,7 +31,7 @@ function getMentions(senderID, username) {
   });
 
   client.get('search/tweets', { q: `${username} -RT` }, (error, tweets, response) => {
-    constructRemoteReply(senderID, `The last three tweets about ${username}:`);
+    constructRemoteReply(senderID, `The last three tweets about ${username}👥:`);
     const time = (tweets.statuses[0].created_at).split(' ', 3).join(' ');
     const time2 = (tweets.statuses[1].created_at).split(' ', 3).join(' ');
     const time3 = (tweets.statuses[2].created_at).split(' ', 3).join(' ');
