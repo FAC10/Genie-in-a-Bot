@@ -1,7 +1,6 @@
 const Twitter = require('twitter');
 require('env2')('./config.env');
 const constructRemoteReply = require('./constructRemoteReply.js');
-const findLocalReply = require('./findLocalReply');
 
 function getTweets(senderID, username) {
   const client = new Twitter({
@@ -21,7 +20,6 @@ function getTweets(senderID, username) {
     constructRemoteReply(senderID, messageTwo);
     const messageThree = `${username} tweeted this on ${time3}: ${tweets.statuses[2].text}`;
     constructRemoteReply(senderID, messageThree);
-    findLocalReply(senderID, 'fallbackGeneral');
   });
 }
 
@@ -44,7 +42,6 @@ function getMentions(senderID, username) {
     constructRemoteReply(senderID, messageTwo);
     const messageThree = `@${tweets.statuses[2].user.screen_name} tweeted this on ${time}: ${tweets.statuses[2].text}`;
     constructRemoteReply(senderID, messageThree);
-    findLocalReply(senderID, 'fallbackGeneral');
   });
 }
 

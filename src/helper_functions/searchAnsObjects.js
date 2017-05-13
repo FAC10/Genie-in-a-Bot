@@ -8,9 +8,9 @@ function searchAnsObjects(answerObjects, intent, senderID) {
       sendToFB(messageData);
     }
   }
-  if (intent === 'partyCompare') {
-    const messageData = constructLocal(senderID, 'fallbackGeneral', answerObjects);
-    sendToFB(messageData);
-  }
+  // if (intent === 'partyCompare') {
+  //   const messageData = constructLocal(senderID, 'fallbackGeneral', answerObjects);
+  //   sendToFB(messageData);
+  // }
 }
 module.exports = searchAnsObjects;
