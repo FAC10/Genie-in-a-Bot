@@ -1,6 +1,6 @@
 const checkAPIAI = require('../helper_functions/checkAPIAI');
 const sendToFB = require('../helper_functions/sendToFB');
-const answer_objects = require('../helper_functions/answer_objects.js');
+const construct = require('../helper_functions/answer_objects.js');
 const express = require('express');
 const findLocalReply = require('../helper_functions/findLocalReply.js');
 const getFacebookName = require('./../helper_functions/getFacebookName');
@@ -8,6 +8,7 @@ const getPostcode = require('../helper_functions/getPostcode.js');
 const post = require('../database/db_post.js');
 const getTweets = require('../helper_functions/getTweets.js');
 const constructRemoteReply = require('../helper_functions/constructRemoteReply');
+const searchAnsObjects = require('../helper_functions/searchAnsObjects');
 
 
 const app = express.Router();
@@ -83,25 +84,11 @@ module.exports = [
               }
             }
             if (event.postback.payload === 'About this bot') {
-              const messageData = {
-                recipient: {
-                  id: event.sender.id,
-                },
-                message: {
-                  text: 'This bot has been created as a study project by students at Founders & Coders. Find us on github!: https://github.com/FAC10/MPBots',
-                },
-              };
-              sendToFB(messageData);
+              const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
+              construct(placeholderVotingObj, null, null, null, event.sender.id, 'About_this_bot', searchAnsObjects);
             } else if (event.postback.payload === 'Report the problem') {
-              const messageData = {
-                recipient: {
-                  id: event.sender.id,
-                },
-                message: {
-                  text: 'We are sorry to hear that you have encoutered a problem! You can contact us at GenieInTheBot@outlook.com - we try to answer all queries and address all problems. We welcome your feedback! ',
-                },
-              };
-              sendToFB(messageData);
+              const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
+              construct(placeholderVotingObj, null, null, null, event.sender.id, 'report_problem', searchAnsObjects);
             } else {
               console.log('getting into the generic send');
               getFacebookName(event.sender.id, () => {

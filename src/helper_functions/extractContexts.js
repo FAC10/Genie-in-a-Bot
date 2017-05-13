@@ -6,9 +6,13 @@ function extractContexts(senderID, intent, cb) {
     if (err) {
       return err;
     }
-    const partyKey = res + intent;
-    console.log('I am sending partyKey of ', partyKey);
-    cb(senderID, intent, partyKey);
+    if (!res) {
+      cb(senderID, intent, 'noContext');
+    } else {
+      const partyKey = res + intent;
+      console.log('I am sending partyKey of ', partyKey);
+      cb(senderID, intent, partyKey);
+    }
   });
 }
 

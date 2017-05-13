@@ -41,7 +41,7 @@ get.candidates = (constituency, callback) => candidateConnect.query('SELECT name
 });
 
 get.randomJoke = callback =>
-connect.query('SELECT joke FROM jokes ORDER BY RANDOM() LIMIT 1 ', (err, res) => {
+connect.query('SELECT joke, image_url FROM jokes ORDER BY RANDOM() LIMIT 1 ', (err, res) => {
   if (err) {
     return callback(err);
   }
