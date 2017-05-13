@@ -83,9 +83,8 @@ module.exports = [
               }
             }
             if (event.postback.payload === 'About this bot') {
-              const messageData = {
-                event.message = 'About this bot';
-                checkAPIAI(event);
+              event.message = 'About this bot';
+              checkAPIAI(event);
             } else if (event.postback.payload === 'Report the problem') {
               const messageData = {
                 recipient: {
