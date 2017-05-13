@@ -184,6 +184,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
           content_type: 'text',
           title: 'Joke',
           payload: 'Joke',
+          image_url: 'https://image.ibb.co/g2Q7kk/smug.png',
         },
         {
           content_type: 'text',
