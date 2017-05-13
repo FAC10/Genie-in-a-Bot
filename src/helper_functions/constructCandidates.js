@@ -19,10 +19,12 @@ function constructCandidates(candidates, senderID, intent, callback, callback2) 
           type: 'postback',
           title: 'Recent tweets',
           payload: `Recent tweets ${twitter}`,
+          image_url: 'https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png',
         }, {
           type: 'postback',
           title: 'Recent mentions',
           payload: `Recent mentions ${twitter}`,
+          image_url: 'https://pbs.twimg.com/profile_images/464815105255804928/5ZkJjdko.png',
         },
       ],
     };
