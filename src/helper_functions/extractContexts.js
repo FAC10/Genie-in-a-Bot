@@ -1,6 +1,4 @@
 const get = require('../database/get_data');
-const construct = require('./answer_objects');
-const searchAnsObjects = require('./searchAnsObjects');
 
 function extractContexts(senderID, intent, cb) {
   console.log('I am in extractContexts');
@@ -9,12 +7,12 @@ function extractContexts(senderID, intent, cb) {
       return err;
     }
     if (!res) {
-      const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
-      construct(placeholderVotingObj, null, null, null, senderID, 'Parties', searchAnsObjects);
+      cb(senderID, intent, 'noContext');
+    } else {
+      const partyKey = res + intent;
+      console.log('I am sending partyKey of ', partyKey);
+      cb(senderID, intent, partyKey);
     }
-    const partyKey = res + intent;
-    console.log('I am sending partyKey of ', partyKey);
-    cb(senderID, intent, partyKey);
   });
 }
 
