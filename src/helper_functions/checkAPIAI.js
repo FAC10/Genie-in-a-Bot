@@ -102,7 +102,7 @@ module.exports = (event) => {
             findLocalReply.findLocalReply(senderID, intent);
           });
         });
-
+      }
 
       //   post.userPostcode(userPostcode, (err, result) => {
       //     if (err) {
