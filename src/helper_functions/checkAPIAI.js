@@ -102,7 +102,7 @@ module.exports = (event) => {
             findLocalReply.findLocalReply(senderID, intent);
           });
         });
-
+      }
 
       //   post.userPostcode(userPostcode, (err, result) => {
       //     if (err) {
@@ -170,8 +170,3 @@ module.exports = (event) => {
     apiai_request.end();
   }
 };
-
-console.log('adding a pointless log');
-
-console.log('adding a pointless log');
-console.log('adding a pointless log');
