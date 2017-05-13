@@ -169,3 +169,5 @@ module.exports = (event) => {
     apiai_request.end();
   }
 };
+
+console.log('adding a pointless log');
