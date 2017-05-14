@@ -8,6 +8,8 @@ Problem? Suggestion? Raise an issue/pull request or email us at HelpAGenieOut@gm
 
 Hosted on Heroku [here](https://genie-in-a-bot.herokuapp.com/)
 
+Built by [Philippa](https://github.com/pbywater), [Alice](https://github.com/ConchobarMacNessa) and [Maja](https://github.com/majakudlicka).
+
 Thanks to [Founders & Coders](foundersandcoders.com), [Filament](http://filament.uk.com/) and [Clear Honest Design](http://clearhonestdesign.com/) for their support in getting this ready in 2 weeks!
 
 ### Aims
