@@ -18,7 +18,7 @@ We felt that there weren't many bots out there that were both educational *and* 
 ### Summary of interview findings
 After prototyping an initial version of the app, we interviewed some students at Queen Mary's university to get their thoughts on the product. Findings can be seen [here](https://github.com/FAC10/Genie-in-a-Bot/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aclosed%20user%20test) but some general takeaways were that:
 
-- Facebook's persistant menu is not particularly clear so important info should not only be present here
+- Facebook's persistent menu is not particularly clear so important info should not only be present here
 - It was not always clear that users can type rather than press buttons so we should let them know explicitly
 - Several students mentioned that they would be embarrassed to ask their friends about politics and would use a bot like this if it worked well
 - None of the students had heard of Facebook bots
