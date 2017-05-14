@@ -8,11 +8,12 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
   if (firstName === null) {
     firstName = 'placeholder';
   }
-  if (partyVotesObj === { party: null, issue: null, inFavour: null, against: null, turnout: null }) {
+  if (partyVotesObj === { party: null, issue: null, inFavour: null, against: null, extra: null, turnout: null }) {
     partyVotesObj.party = 'placeholder';
     partyVotesObj.issue = 'placeholder';
     partyVotesObj.inFavour = 'placeholder';
     partyVotesObj.against = 'placeholder';
+    partyVotesObj.extra = 'placeholder';
     partyVotesObj.turnout = 'placeholder';
   }
   if (compareObj === null) {
@@ -133,7 +134,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
 
     brexit: {
 
-      text: `On 1st February 2017, ${partyVotesObj.infavour} voted in favour of leaving the EU. ${partyVotesObj.against} voted against.`,
+      text: `On 1st February 2017, ${partyVotesObj.infavour} voted in favour of leaving the EU. ${partyVotesObj.against} voted against. ${partyVotesObj.extra}`,
       quick_replies: [
         {
           content_type: 'text',
