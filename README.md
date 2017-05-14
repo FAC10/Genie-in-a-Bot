@@ -12,15 +12,15 @@ Built by [Philippa](https://github.com/pbywater), [Alice](https://github.com/Con
 
 Thanks to [Founders & Coders](foundersandcoders.com) and [Filament](http://filament.uk.com/) for their support in getting this ready in 2 weeks!
 
-####Parties
+#### Parties
 
 ![parties](https://cloud.githubusercontent.com/assets/20152018/26038188/572f2024-38fa-11e7-9ac7-8c0ce78f0d7e.gif)
 
-####Candidates
+#### Candidates
 
 ![candidates](https://media.giphy.com/media/xUA7b9XsLZbL7atBT2/giphy.gif)
 
-####Sass
+#### Character
 
 ![rubme](https://cloud.githubusercontent.com/assets/20152018/26038201/999df2aa-38fa-11e7-99f2-6ee22b8fa89c.gif)
 ![justin bieber](https://cloud.githubusercontent.com/assets/20152018/26038223/359ff1b2-38fb-11e7-9703-9f2c98e5cd00.gif)
