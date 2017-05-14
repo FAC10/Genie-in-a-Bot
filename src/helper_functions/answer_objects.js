@@ -261,7 +261,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
         },
         {
           content_type: 'text',
-          title: 'Back to parties',
+          title: 'Choose another party',
           payload: 'Parties',
         },
         {
