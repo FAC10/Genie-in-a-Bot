@@ -1,5 +1,3 @@
-![codecov](https://codecov.io/gh/FAC10/MPBots/branch/master/graph/badge.svg)
-![travis](https://travis-ci.org/FAC10/MPBots.svg?branch=master)
 # MPBots
 *An app to help people learn about the UK General Elections*
 ![cover3](https://cloud.githubusercontent.com/assets/20152018/26032082/2a61cbe6-3882-11e7-88f3-656e6e6f48c7.png)
@@ -81,3 +79,6 @@ Other APIs we are using include:
 5. push local database to heroku (get colour from heroku config variables)
 
   ```heroku pg:push candidates HEROKU_POSTGRESQL_BLUE --app mp-chatbot```
+  
+  ![codecov](https://codecov.io/gh/FAC10/MPBots/branch/master/graph/badge.svg)
+![travis](https://travis-ci.org/FAC10/MPBots.svg?branch=master)
