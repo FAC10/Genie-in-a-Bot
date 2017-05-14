@@ -11,7 +11,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const server = app.listen(process.env.PORT || 4000, () => {
   setInterval(() => {
-    http.get('https://genie-in-a-bot.herokuapp.com');
+    http.get('http://genie-in-a-bot.herokuapp.com');
+    console.log('pinging');
   }, 300000); // every 5 minutes (300000)
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
