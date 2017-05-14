@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/gh/FAC10/MPBots/branch/master/graph/badge.svg)](https://codecov.io/gh/FAC10/MPBots)
+[![codecov](https://codecov.io/gh/FAC10/MPBots/branch/master/graph/badge.svg)(https://codecov.io/gh/FAC10/MPBots)
 [![travis](https://travis-ci.org/FAC10/MPBots.svg?branch=master)
 # MPBots
 *An app to help people learn about the UK General Elections*
