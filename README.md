@@ -1,12 +1,12 @@
 # MPBots
-*An app to help people learn about the UK General Elections*
+*A chatbot for information on the UK General Elections*
 ![cover3](https://cloud.githubusercontent.com/assets/20152018/26032082/2a61cbe6-3882-11e7-88f3-656e6e6f48c7.png)
 
 **We captured this politics genie and put him in a bot so he can answer all your UK General Election questions. Message him on Facebook [here](https://www.facebook.com/politicalgenie/)**
 
 Problem? Suggestion? Raise an issue/pull request or email us at HelpAGenieOut@gmail.com
 
-Hosted on Heroku [here](https://mp-chatbot.herokuapp.com/)
+Hosted on Heroku [here](https://genie-in-a-bot.herokuapp.com/)
 
 Thanks to [Founders & Coders](foundersandcoders.com), [Filament](http://filament.uk.com/) and [Clear Honest Design](http://clearhonestdesign.com/) for their support in getting this ready in 2 weeks!
 
