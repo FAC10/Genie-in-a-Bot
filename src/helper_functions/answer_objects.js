@@ -29,15 +29,36 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
     },
 
     About_this_bot: {
-      text: 'This bot was captured by students at Founders & Coders and tamed with support from Filament (http://filament.uk.com/). Find us on github: https://github.com/FAC10/MPBots. No genies were harmed in the making.'
+      text: 'This bot was captured by students at Founders & Coders and tamed with support from Filament (http://filament.uk.com/). Find us on github: https://github.com/FAC10/MPBots. No genies were harmed in the making. Tap more or type a question.',
+      quick_replies: [
+      {
+        content_type: 'text',
+        title: 'More',
+        payload: 'fallbackGeneral',
+      },
+    ],
     },
 
     report_problem: {
-      text: 'Sometimes our genie gets a little lazy. Let us know what he\'s done this time: HelpAGenieOut@gmail.com'
+      text: 'Sometimes our genie gets a little lazy. Let us know what he\'s done this time: HelpAGenieOut@gmail.com then tap more or type a question.',
+      quick_replies: [
+      {
+        content_type: 'text',
+        title: 'More',
+        payload: 'fallbackGeneral',
+      },
+    ],
     },
 
     Election_Info :{
-      text: 'The General Election this year will take place on 8th June. The deadline to register to vote is on 22nd May (https://www.gov.uk/register-to-vote). This will be the 57th UK General Election, and the third time the UK population has been asked to vote on an issue in the last three years. It\'s been tough for a genie in a bot. Each of the 650 parliamentary constituencies will elect one Member of Parliament (MP) to the House of Commons.'
+      text: 'The General Election this year will take place on 8th June. The deadline to register to vote is on 22nd May (https://www.gov.uk/register-to-vote). This will be the 57th UK General Election, and the third time the UK population has been asked to vote on an issue in the last three years. It\'s been tough for a genie in a bot. Each of the 650 parliamentary constituencies will elect one Member of Parliament (MP) to the House of Commons. Tap more or type a question.',
+      quick_replies: [
+      {
+        content_type: 'text',
+        title: 'More',
+        payload: 'fallbackGeneral',
+      },
+    ],
     },
 
     runningCandidates: {
@@ -129,6 +150,11 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
           title: 'Airstrikes in Syria',
           payload: 'syria',
         },
+        {
+          content_type: 'text',
+          title: 'More options',
+          payload: 'fallbackGeneral',
+        },
       ],
     },
 
@@ -151,6 +177,11 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
           title: 'Choose another party',
           payload: 'Parties',
         },
+        {
+          content_type: 'text',
+          title: 'Other options',
+          payload: 'fallbackGeneral',
+        },
       ],
     },
 
@@ -169,6 +200,11 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
           title: 'How do I register?',
           image_url: 'https://cdn0.iconfinder.com/data/icons/web-development-2/512/clipboard_report_form_checklist_business_plan_sheet_file_note_pad_paper_page_document_planning_check_list_survey_questionnaire_flat_design_icon-512.png',
           payload: 'register',
+        },
+        {
+          content_type: 'text',
+          title: 'Other options',
+          payload: 'fallbackGeneral',
         },
       ],
     },
@@ -226,6 +262,11 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
           title: 'Choose another party',
           payload: 'Parties',
         },
+        {
+          content_type: 'text',
+          title: 'More',
+          payload: 'fallbackGeneral',
+        },
       ],
     },
 
@@ -247,6 +288,11 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
           content_type: 'text',
           title: 'Choose another party',
           payload: 'Parties',
+        },
+        {
+          content_type: 'text',
+          title: 'More',
+          payload: 'fallbackGeneral',
         },
       ],
     },
