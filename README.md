@@ -18,7 +18,7 @@ Thanks to [Founders & Coders](foundersandcoders.com) and [Filament](http://filam
 
 #### Candidates
 
-![candidates](https://giphy.com/gifs/xUA7b9XsLZbL7atBT2/html5)
+![giphy-downsized-large](https://cloud.githubusercontent.com/assets/20152018/26038242/b72eb66e-38fb-11e7-8302-87fafa3707d9.gif)
 
 #### Character
 
