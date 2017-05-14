@@ -10,7 +10,7 @@ Hosted on Heroku [here](https://genie-in-a-bot.herokuapp.com/)
 
 Built by [Philippa](https://github.com/pbywater), [Alice](https://github.com/ConchobarMacNessa) and [Maja](https://github.com/majakudlicka).
 
-Thanks to [Founders & Coders](foundersandcoders.com), [Filament](http://filament.uk.com/) and [Clear Honest Design](http://clearhonestdesign.com/) for their support in getting this ready in 2 weeks!
+Thanks to [Founders & Coders](foundersandcoders.com) and [Filament](http://filament.uk.com/) for their support in getting this ready in 2 weeks!
 
 ### Aims
 In the 2015 General Election, only 43% of 18-24 year olds voted. The idea behind this project was to help inform young people, in particular, and inspire them to vote. The bot is accessible in Facebook Messenger and currently provides information on the candidates standing (including their recent tweets, tweets about them and the party they represent), as well as how parties have voted on key issues in the past. We hope to build this out with more natural language processing and information on the manifestos, key events and more. Our genie also prompts users to register to vote.
