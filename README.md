@@ -1,5 +1,5 @@
-[![codecov](https://codecov.io/gh/FAC10/MPBots/branch/master/graph/badge.svg)(https://codecov.io/gh/FAC10/MPBots)
-[![travis](https://travis-ci.org/FAC10/MPBots.svg?branch=master)
+[![codecov]](https://codecov.io/gh/FAC10/MPBots/branch/master/graph/badge.svg)(https://codecov.io/gh/FAC10/MPBots)
+[![travis]](https://travis-ci.org/FAC10/MPBots.svg?branch=master)
 # MPBots
 *An app to help people learn about the UK General Elections*
 ![cover3](https://cloud.githubusercontent.com/assets/20152018/26032082/2a61cbe6-3882-11e7-88f3-656e6e6f48c7.png)
