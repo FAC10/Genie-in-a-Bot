@@ -174,7 +174,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
 
     fallbackGeneral: {
 
-      text: 'Here are some of the things you can ask me about. Click a button or type another question:',
+      text: 'Here are some of the things you can ask me about. Tap a button or type a question:',
       quick_replies: [
         {
           content_type: 'text',
