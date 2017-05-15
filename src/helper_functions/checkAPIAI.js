@@ -88,7 +88,7 @@ module.exports = (event) => {
         const userPostcode = { postcode: messageText, facebook_id: senderID };
         // const constit = getConstituency(messageText);
         // const constit = 'Poplar and Limehouse';
-        getConstituency(messageText, (err, result) => {
+        getConstituency(messageText, senderID, (err, result) => {
           if (err) {
             console.log(err);
           }
