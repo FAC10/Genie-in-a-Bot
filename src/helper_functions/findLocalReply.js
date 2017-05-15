@@ -38,7 +38,7 @@ function findLocalReply(senderID, intent) {
         construct(placeholderVotingObj, null, null, null, senderID, 'Parties', searchAnsObjects);
       } else {
         console.log('res in if intent is partyCompare is ', res);
-        get.compare(res[0], (error, result) => {
+        get.compare(res, (error, result) => {
           if (error) {
             console.log(err);
           } else {
