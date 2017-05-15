@@ -8,10 +8,10 @@ function getConstituency(postCode, senderID, cb) {
       console.log(err);
     }
     const parsedBody = JSON.parse(body);
-    console.log(body);
-    // if (parsedBody.result.error) {
-    //   constructRemoteReply(senderID, 'Oops that doesn\'t seem like a UK postcode. Please try again!');
-    // }
+    if (parsedBody.error) {
+      console.log('error is ', parsedBody.error);
+      constructRemoteReply(senderID, 'Oops that doesn\'t seem like a UK postcode. Please try again!');
+    }
     const constituency = parsedBody.result.parliamentary_constituency;
     cb(null, constituency);
   });
