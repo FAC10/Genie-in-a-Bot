@@ -9,8 +9,11 @@ get.firstName = (facebookId, callback) => connect.query('SELECT firstname FROM u
   }
   const rows = res.rows;
   const rowsZero = rows[0];
-  const rowsName = rowsZero.firstname;
-  return callback(null, rowsName);
+  if (rowsZero) {
+    const rowsName = rowsZero.firstname;
+    return callback(null, rowsName);
+  }
+  return callback(null, null);
 });
 
 get.partyVotes = (partyKey, callback) =>
@@ -28,8 +31,11 @@ connect.query('SELECT constituency FROM users WHERE facebook_id = $1;', [faceboo
   }
   const rows = res.rows;
   const rowsZero = rows[0];
-  const constituency = rowsZero.constituency;
-  return callback(null, constituency);
+  if (rowsZero) {
+    const constituency = rowsZero.constituency;
+    return callback(null, constituency);
+  }
+  return callback(null, null);
 });
 
 
@@ -69,12 +75,12 @@ get.party = (facebookId, callback) => connect.query('SELECT party FROM users WHE
   const rows = res.rows;
   const rowsZero = rows[0];
   // console.log('rowsZero is ', rowsZero);
-  const party = rowsZero.party;
-  if (party !== null) {
+  if (rowsZero) {
+    const party = rowsZero.party;
     return callback(null, party[0]);
   }
 
-  return callback(null, party);
+  return callback(null, null);
 });
 
 get.issue = (facebookId, callback) => connect.query('SELECT issue FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
@@ -83,12 +89,11 @@ get.issue = (facebookId, callback) => connect.query('SELECT issue FROM users WHE
   }
   const rows = res.rows;
   const rowsZero = rows[0];
-  const issue = rowsZero.issue;
-  if (issue !== null) {
+  if (rowsZero) {
+    const issue = rowsZero.issue;
     return callback(null, issue[0]);
   }
-
-  return callback(null, issue);
+  return callback(null, null);
 });
 
 get.compare = (issue, callback) => connect.query('SELECT swing, majority FROM partyVotes WHERE issue = $1', [issue], (err, res) => {
