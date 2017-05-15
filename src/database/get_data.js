@@ -55,12 +55,11 @@ get.persistingCtxts = (facebookId, callback) => connect.query('SELECT persisting
   }
   const rows = res.rows;
   const rowsZero = rows[0];
-  const persistingCtxts = rowsZero.persistingctxts;
-  if (!persistingCtxts === null) {
+  if (rowsZero) {
+    const persistingCtxts = rowsZero.persistingctxts;
     return callback(null, persistingCtxts[0]);
   }
-
-  return callback(null, persistingCtxts);
+  return callback(null, null);
 });
 
 get.party = (facebookId, callback) => connect.query('SELECT party FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
@@ -71,7 +70,7 @@ get.party = (facebookId, callback) => connect.query('SELECT party FROM users WHE
   const rowsZero = rows[0];
   // console.log('rowsZero is ', rowsZero);
   const party = rowsZero.party;
-  if (!party === null) {
+  if (party !== null) {
     return callback(null, party[0]);
   }
 
@@ -85,7 +84,7 @@ get.issue = (facebookId, callback) => connect.query('SELECT issue FROM users WHE
   const rows = res.rows;
   const rowsZero = rows[0];
   const issue = rowsZero.issue;
-  if (!issue === null) {
+  if (issue !== null) {
     return callback(null, issue[0]);
   }
 
@@ -98,9 +97,6 @@ get.compare = (issue, callback) => connect.query('SELECT swing, majority FROM pa
   }
   const rows = res.rows;
   console.log('res.rows is ', rows);
-  if (!issue === null) {
-    return callback(null, res);
-  }
 
   return callback(null, res);
 });
