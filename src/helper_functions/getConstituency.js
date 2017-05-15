@@ -1,7 +1,7 @@
 const request = require('request');
 const constructRemoteReply = require('./constructRemoteReply');
 
-function getConstituency(postCode, senderID cb) {
+function getConstituency(postCode, senderID, cb) {
   const url = `http://api.postcodes.io/postcodes/${postCode}`;
   request(url, (err, res, body) => {
     if (err) {
