@@ -11,9 +11,10 @@ function getConstituency(postCode, senderID, cb) {
     if (parsedBody.error) {
       console.log('error is ', parsedBody.error);
       constructRemoteReply(senderID, 'Oops that doesn\'t seem like a UK postcode. Please try again!');
+    } else {
+      const constituency = parsedBody.result.parliamentary_constituency;
+      cb(null, constituency);
     }
-    const constituency = parsedBody.result.parliamentary_constituency;
-    cb(null, constituency);
   });
 }
 
