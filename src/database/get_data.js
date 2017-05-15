@@ -63,7 +63,10 @@ get.persistingCtxts = (facebookId, callback) => connect.query('SELECT persisting
   const rowsZero = rows[0];
   if (rowsZero) {
     const persistingCtxts = rowsZero.persistingctxts;
-    return callback(null, persistingCtxts[0]);
+    if (persistingCtxts !== null) {
+      return callback(null, persistingCtxts[0]);
+    }
+    return callback(null, null);
   }
   return callback(null, null);
 });
@@ -77,7 +80,10 @@ get.party = (facebookId, callback) => connect.query('SELECT party FROM users WHE
   // console.log('rowsZero is ', rowsZero);
   if (rowsZero) {
     const party = rowsZero.party;
-    return callback(null, party[0]);
+    if (party !== null) {
+      return callback(null, party[0]);
+    }
+    return callback(null, null);
   }
 
   return callback(null, null);
@@ -91,7 +97,10 @@ get.issue = (facebookId, callback) => connect.query('SELECT issue FROM users WHE
   const rowsZero = rows[0];
   if (rowsZero) {
     const issue = rowsZero.issue;
-    return callback(null, issue[0]);
+    if (issue !== null) {
+      return callback(null, issue[0]);
+    }
+    return callback(null, null);
   }
   return callback(null, null);
 });
