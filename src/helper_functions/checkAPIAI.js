@@ -66,68 +66,52 @@ module.exports = (event) => {
       }
 
       if (intent === 'party_votes') {
-        if (resolvedQuery.includes('Conservative') || resolvedQuery.includes('conservative') || resolvedQuery.includes('tories') || resolvedQuery.includes('Tories')) {
-          const key = 'Conservative';
-          post.party(key, senderID, (err, res) => {
+        console.log('resolvedQuery going into party is ', resolvedQuery);
+        if (resolvedQuery.toLowerCase() === 'conservative') {
+          console.log('adding Conservative to database');
+          post.party('Conservative', senderID, (err, res) => {
             if (err) {
               console.log(err);
             } else {
             }
           });
         }
-        if (resolvedQuery.includes('Green') || resolvedQuery.includes('green')) {
-          const key = 'Green';
-          post.party(key, senderID, (err, res) => {
+        if (resolvedQuery.toLowerCase() === 'labour') {
+          console.log('adding Labour to database');
+          post.party('Labour', senderID, (err, res) => {
             if (err) {
               console.log(err);
             } else {
             }
           });
         }
-        if ((resolvedQuery.includes('Lib') && resolvedQuery.includes('Dem')) || (resolvedQuery.includes('lib') && resolvedQuery.includes('dem'))) {
-          const key = 'Lib Dem';
-          post.party(key, senderID, (err, res) => {
+        if (resolvedQuery.toLowerCase() === 'lib dem' || resolvedQuery.toLowerCase() === 'liberal democrats' || resolvedQuery.toLowerCase() === 'lib dems') {
+          console.log('adding Lib Dem to database');
+          post.party('Lib Dem', senderID, (err, res) => {
             if (err) {
               console.log(err);
             } else {
             }
           });
         }
-        if ((resolvedQuery.includes('SNP') || resolvedQuery.includes('snp'))) {
-          const key = 'SNP';
-          post.party(key, senderID, (err, res) => {
+        if (resolvedQuery.toLowerCase().includes('snp') || resolvedQuery.toLowerCase().includes('scottish national party')) {
+          console.log('adding SNP to database');
+          post.party('SNP', senderID, (err, res) => {
             if (err) {
               console.log(err);
             } else {
             }
           });
         }
-        if ((resolvedQuery.includes('Labour') || resolvedQuery.includes('labour'))) {
-          const key = 'Labour';
-          post.party(key, senderID, (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-        } else {
-          const key = 'Conservative';
-          post.party(key, senderID, (err, res) => {
+        if (resolvedQuery.toLowerCase().includes('green') || resolvedQuery.toLowerCase().includes('green party')) {
+          console.log('adding Green to database');
+          post.party('Green', senderID, (err, res) => {
             if (err) {
               console.log(err);
             } else {
             }
           });
         }
-      }
-
-      if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
-        post.issue(intent, senderID, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
       }
 
       if (intent === 'runningCandidates') {
