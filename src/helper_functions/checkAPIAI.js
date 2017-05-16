@@ -66,7 +66,7 @@ module.exports = (event) => {
       }
 
       if (intent === 'party_votes') {
-        if (resolvedQuery.includes('Conservative') || resolvedQuery.includes('conservative') || resolvedQuery.includes('tories') || resolvedQuery.contains('Tories')) {
+        if (resolvedQuery.includes('Conservative') || resolvedQuery.includes('conservative') || resolvedQuery.includes('tories') || resolvedQuery.includes('Tories')) {
           const key = 'Conservative';
           post.party(key, senderID, (err, res) => {
             if (err) {
