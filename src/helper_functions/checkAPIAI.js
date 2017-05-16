@@ -66,12 +66,59 @@ module.exports = (event) => {
       }
 
       if (intent === 'party_votes') {
-        post.party(resolvedQuery, senderID, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
+        if (resolvedQuery.includes('Conservative') || resolvedQuery.includes('conservative') || resolvedQuery.includes('tories') || resolvedQuery.contains('Tories')) {
+          const key = 'Conservative';
+          post.party(key, senderID, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
+          });
+        }
+        if (resolvedQuery.includes('Green') || resolvedQuery.includes('green')) {
+          const key = 'Green';
+          post.party(key, senderID, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
+          });
+        }
+        if ((resolvedQuery.includes('Lib') && resolvedQuery.includes('Dem')) || (resolvedQuery.includes('lib') && resolvedQuery.includes('dem'))) {
+          const key = 'Lib Dem';
+          post.party(key, senderID, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
+          });
+        }
+        if ((resolvedQuery.includes('SNP') || resolvedQuery.includes('snp'))) {
+          const key = 'SNP';
+          post.party(key, senderID, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
+          });
+        }
+        if ((resolvedQuery.includes('Labour') || resolvedQuery.includes('labour'))) {
+          const key = 'Labour';
+          post.party(key, senderID, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
+          });
+        } else {
+          const key = 'Conservative';
+          post.party(key, senderID, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
+          });
+        }
       }
 
       if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
