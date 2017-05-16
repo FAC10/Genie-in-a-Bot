@@ -114,15 +114,6 @@ module.exports = (event) => {
         }
       }
 
-      if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
-        post.issue(intent, senderID, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
-      }
-
       if (intent === 'runningCandidates') {
         console.log('inside running candidates');
         const userPostcode = { postcode: messageText, facebook_id: senderID };
