@@ -66,12 +66,52 @@ module.exports = (event) => {
       }
 
       if (intent === 'party_votes') {
-        post.party(resolvedQuery, senderID, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
+        console.log('resolvedQuery going into party is ', resolvedQuery);
+        if (resolvedQuery.toLowerCase() === 'conservative') {
+          console.log('adding Conservative to database');
+          post.party('Conservative', senderID, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
+          });
+        }
+        if (resolvedQuery.toLowerCase() === 'labour') {
+          console.log('adding Labour to database');
+          post.party('Labour', senderID, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
+          });
+        }
+        if (resolvedQuery.toLowerCase() === 'lib dem' || resolvedQuery.toLowerCase() === 'liberal democrats' || resolvedQuery.toLowerCase() === 'lib dems') {
+          console.log('adding Lib Dem to database');
+          post.party('Lib Dem', senderID, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
+          });
+        }
+        if (resolvedQuery.toLowerCase().includes('snp') || resolvedQuery.toLowerCase().includes('scottish national party')) {
+          console.log('adding SNP to database');
+          post.party('SNP', senderID, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
+          });
+        }
+        if (resolvedQuery.toLowerCase().includes('green') || resolvedQuery.toLowerCase().includes('green party')) {
+          console.log('adding Green to database');
+          post.party('Green', senderID, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
+          });
+        }
       }
 
       if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
