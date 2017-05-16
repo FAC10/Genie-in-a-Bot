@@ -8,6 +8,8 @@ function extractContexts(senderID, intent, cb) {
     }
     if (!res) {
       cb(senderID, intent, 'noContext');
+    } else if (res !== 'Conservative' && res !== 'Labour' && res !== 'Lib Dem' && res !== 'Green' && res !== 'SNP') {
+      cb(senderID, intent, 'noContext');
     } else {
       const partyKey = res + intent;
       console.log('I am sending partyKey of ', partyKey);

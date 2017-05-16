@@ -67,7 +67,7 @@ module.exports = (event) => {
 
       if (intent === 'party_votes') {
         console.log('resolvedQuery going into party is ', resolvedQuery);
-        if (resolvedQuery.toLowerCase() === 'conservative') {
+        if (resolvedQuery.toLowerCase().includes('conservative') || resolvedQuery.toLowerCase().includes('tory') || resolvedQuery.toLowerCase().includes('tories')) {
           console.log('adding Conservative to database');
           post.party('Conservative', senderID, (err, res) => {
             if (err) {
@@ -76,7 +76,7 @@ module.exports = (event) => {
             }
           });
         }
-        if (resolvedQuery.toLowerCase() === 'labour') {
+        if (resolvedQuery.toLowerCase().includes('labour')) {
           console.log('adding Labour to database');
           post.party('Labour', senderID, (err, res) => {
             if (err) {
@@ -85,7 +85,7 @@ module.exports = (event) => {
             }
           });
         }
-        if (resolvedQuery.toLowerCase() === 'lib dem' || resolvedQuery.toLowerCase() === 'liberal democrats' || resolvedQuery.toLowerCase() === 'lib dems') {
+        if (resolvedQuery.toLowerCase().includes('lib dem') || resolvedQuery.toLowerCase().includes('liberal democrats')) {
           console.log('adding Lib Dem to database');
           post.party('Lib Dem', senderID, (err, res) => {
             if (err) {
