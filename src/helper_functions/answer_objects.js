@@ -319,6 +319,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
     },
 
   };
+  console.log('testing');
   callback(answer_objects, intent, senderID);
 }
 
