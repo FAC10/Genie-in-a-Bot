@@ -77,7 +77,13 @@ get.startContext = (facebookId, callback) => connect.query('SELECT startContext 
     return callback(err);
   }
   console.log('res is ', res);
-  if (!res) {
+  const rows = res.rows;
+  const rowsZero = rows[0];
+  if (rowsZero) {
+    const startContext = rowsZero.startContext;
+    if (startContext !== null) {
+      return callback(null, startContext[0]);
+    }
     console.log('no res.rows');
     post.startContext(facebookId, 'startContext', (err, res) => {
       if (err) {
@@ -87,16 +93,6 @@ get.startContext = (facebookId, callback) => connect.query('SELECT startContext 
       }
     });
     return callback(null, 'newUser');
-  }
-
-  const rows = res.rows;
-  const rowsZero = rows[0];
-  if (rowsZero) {
-    const startContext = rowsZero.startContext;
-    if (startContext !== null) {
-      return callback(null, startContext[0]);
-    }
-    return callback(null, null);
   }
   return callback(null, null);
 });
