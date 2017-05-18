@@ -80,9 +80,9 @@ get.startContext = (facebookId, callback) => connect.query('SELECT startContext 
   const rows = res.rows;
   const rowsZero = rows[0];
   if (rowsZero) {
-    const startContext = rowsZero.startContext;
-    console.log('rowsZero.startContext is ', rowsZero.startContext);
-    if (!rowsZero.startContext) {
+    const startContext = rowsZero.startcontext;
+    console.log('rowsZero.startContext is ', rowsZero.startcontext);
+    if (!startContext) {
       return callback(null, startContext[0]);
     }
     console.log('no res.rows');
