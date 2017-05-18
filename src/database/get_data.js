@@ -79,15 +79,14 @@ get.startContext = (facebookId, callback) => connect.query('SELECT startContext 
   if (!res.rows) {
     post.startContext(facebookId, 'startContext', (err, res) => {
       if (err) {
-          console.log(err);
-      }
-      else {
+        console.log(err);
+      } else {
         console.log('adding start context to database');
       }
-    }
+    });
     return callback(null, 'newUser');
-}
-else {
+  }
+
   const rows = res.rows;
   const rowsZero = rows[0];
   if (rowsZero) {
@@ -98,7 +97,6 @@ else {
     return callback(null, null);
   }
   return callback(null, null);
-}
 });
 
 get.party = (facebookId, callback) => connect.query('SELECT party FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
