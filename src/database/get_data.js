@@ -91,7 +91,7 @@ get.startContext = (facebookId, callback) => connect.query('SELECT startContext 
   const rowsZero = rows[0];
   if (rowsZero) {
     const startContext = rowsZero.startContext;
-    if (persistingCtxts !== null) {
+    if (startContext !== null) {
       return callback(null, startContext[0]);
     }
     return callback(null, null);
