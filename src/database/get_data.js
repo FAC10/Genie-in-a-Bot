@@ -1,5 +1,6 @@
 const connect = require('./db_connect');
 const candidateConnect = require('./db_connect_candidate');
+const post = require('./db_post');
 
 const get = {};
 
@@ -69,6 +70,35 @@ get.persistingCtxts = (facebookId, callback) => connect.query('SELECT persisting
     return callback(null, null);
   }
   return callback(null, null);
+});
+
+get.startContext = (facebookId, callback) => connect.query('SELECT startContext FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
+  if (err) {
+    return callback(err);
+  }
+  if (!res.rows) {
+    post.startContext(facebookId, 'startContext', (err, res) => {
+      if (err) {
+          console.log(err);
+      }
+      else {
+        console.log('adding start context to database');
+      }
+    }
+    return callback(null, 'newUser');
+}
+else {
+  const rows = res.rows;
+  const rowsZero = rows[0];
+  if (rowsZero) {
+    const startContext = rowsZero.startContext;
+    if (persistingCtxts !== null) {
+      return callback(null, startContext[0]);
+    }
+    return callback(null, null);
+  }
+  return callback(null, null);
+}
 });
 
 get.party = (facebookId, callback) => connect.query('SELECT party FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {

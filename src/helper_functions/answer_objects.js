@@ -191,7 +191,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
           content_type: 'text',
           title: 'Transport',
           payload: 'party_votes',
-          image_url: 'https://www.google.co.uk/search?q=education+vector&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjXtfvuu_rTAhXrLsAKHTUcDnoQ_AUIBigB&biw=1419&bih=731#tbm=isch&q=transport+icon&imgdii=3_fZOpbpaDX5EM:&imgrc=thslNZamdsZyTM:',
+          image_url: 'https://cdn0.iconfinder.com/data/icons/transport-14/512/Train_Blue.png',
         },
         {
           content_type: 'text',

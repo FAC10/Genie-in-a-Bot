@@ -1,12 +1,14 @@
 BEGIN;
 
-DROP TABLE IF EXISTS partyVotes, jokes CASCADE;
+DROP TABLE IF EXISTS users, partyVotes, counts, education, health, economy, immigration, housing, environment, tax, brexit, transport, faffairs, defence, jokes CASCADE;
 
 CREATE TABLE users (
   id          SERIAL        PRIMARY KEY,
   firstname   VARCHAR(30)   NOT NULL,
   lastname    VARCHAR(50),
   facebook_id BIGINT       UNIQUE,
+  startContext VARCHAR(50),
+  flow      VARCHAR(50),
   postcode    VARCHAR(10),
   constituency VARCHAR(100),
   persistingCtxts    TEXT[],
@@ -27,10 +29,118 @@ CREATE TABLE partyVotes (
   majority    VARCHAR(100)   NOT NULL
 );
 
+CREATE TABLE counts (
+  id          SERIAL        PRIMARY KEY,
+  conservative  INTEGER,
+  labour        INTEGER,
+  green         INTEGER,
+  snp           INTEGER,
+  libdem        INTEGER
+);
+
 CREATE TABLE jokes (
   id         SERIAL        PRIMARY KEY,
   joke       VARCHAR(10000),
   image_url  VARCHAR(500)
+);
+
+CREATE TABLE education (
+  id         SERIAL        PRIMARY KEY,
+  conservative  VARCHAR(10000),
+  labour        VARCHAR(10000),
+  green         VARCHAR(10000),
+  snp           VARCHAR(10000),
+  libdem        VARCHAR(10000)
+);
+
+CREATE TABLE health (
+  id         SERIAL        PRIMARY KEY,
+  conservative  VARCHAR(10000),
+  labour        VARCHAR(10000),
+  green         VARCHAR(10000),
+  snp           VARCHAR(10000),
+  libdem        VARCHAR(10000)
+);
+
+CREATE TABLE economy (
+  id         SERIAL        PRIMARY KEY,
+  conservative  VARCHAR(10000),
+  labour        VARCHAR(10000),
+  green         VARCHAR(10000),
+  snp           VARCHAR(10000),
+  libdem        VARCHAR(10000)
+);
+
+CREATE TABLE immigration (
+  id         SERIAL        PRIMARY KEY,
+  conservative  VARCHAR(10000),
+  labour        VARCHAR(10000),
+  green         VARCHAR(10000),
+  snp           VARCHAR(10000),
+  libdem        VARCHAR(10000)
+);
+
+CREATE TABLE housing (
+  id         SERIAL        PRIMARY KEY,
+  conservative  VARCHAR(10000),
+  labour        VARCHAR(10000),
+  green         VARCHAR(10000),
+  snp           VARCHAR(10000),
+  libdem        VARCHAR(10000)
+);
+
+CREATE TABLE environment (
+  id         SERIAL        PRIMARY KEY,
+  conservative  VARCHAR(10000),
+  labour        VARCHAR(10000),
+  green         VARCHAR(10000),
+  snp           VARCHAR(10000),
+  libdem        VARCHAR(10000)
+);
+
+CREATE TABLE tax (
+  id         SERIAL        PRIMARY KEY,
+  conservative  VARCHAR(10000),
+  labour        VARCHAR(10000),
+  green         VARCHAR(10000),
+  snp           VARCHAR(10000),
+  libdem        VARCHAR(10000)
+);
+
+CREATE TABLE brexit (
+  id         SERIAL        PRIMARY KEY,
+  conservative  VARCHAR(10000),
+  labour        VARCHAR(10000),
+  green         VARCHAR(10000),
+  snp           VARCHAR(10000),
+  libdem        VARCHAR(10000)
+);
+
+CREATE TABLE transport (
+  id         SERIAL        PRIMARY KEY,
+  conservative  VARCHAR(10000),
+  labour        VARCHAR(10000),
+  green         VARCHAR(10000),
+  snp           VARCHAR(10000),
+  libdem        VARCHAR(10000)
+);
+
+CREATE TABLE defence (
+  id         SERIAL        PRIMARY KEY,
+  conservative  VARCHAR(10000),
+  labour        VARCHAR(10000),
+  green         VARCHAR(10000),
+  snp           VARCHAR(10000),
+  libdem        VARCHAR(10000)
+);
+
+CREATE TABLE faffairs (
+  id         SERIAL        PRIMARY KEY,
+  conservative  VARCHAR(10000),
+  labour        VARCHAR(10000),
+  green         VARCHAR(10000),
+  snp           VARCHAR(10000),
+  libdem        VARCHAR(10000)
 );
 
 INSERT INTO jokes (joke, image_url)
