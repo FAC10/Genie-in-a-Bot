@@ -35,6 +35,7 @@ module.exports = [
                 console.log('newUser');
                 findLocalReply.findLocalReply(event.sender.id, 'FACEBOOK_WELCOME');
               } else {
+                console.log('user exists');
                 getFacebookName(event.sender.id, () => {
                   console.log('theres an event.message');
                   if (event.message.attachments) {
