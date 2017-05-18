@@ -85,8 +85,13 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
             },
             {
               type: 'postback',
+              title: 'Manifestos',
+              payload: 'Manifestos',
+            },
+            {
+              type: 'postback',
               title: 'Parties',
-              payload: 'Parties',
+              payload: 'Parties'
             },
           ],
         },
@@ -127,6 +132,78 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
           title: 'SNP',
           payload: 'party_votes',
           image_url: 'https://static1.squarespace.com/static/551f3665e4b0bf9fbff0752d/t/58541c079f7456e64f2ba1df/1481907207624/snp.png',
+        },
+      ],
+    },
+    Manifestos: {
+
+      text: 'Pick an issue you\'d like to know more about:',
+      quick_replies: [
+        {
+          content_type: 'text',
+          title: 'Education',
+          payload: 'party_votes',
+          image_url:'http://www.steveschuh.com/sites/all/themes/schuh/images/education-icon.png',
+        },
+        {
+          content_type: 'text',
+          title: 'Health',
+          payload: 'party_votes',
+          image_url: 'https://cdn3.iconfinder.com/data/icons/medical-icons-4/100/first-aid-512.png',
+        },
+        {
+          content_type: 'text',
+          title: 'Economy',
+          payload: 'party_votes',
+          image_url: 'https://cdn2.iconfinder.com/data/icons/hicons/600/receber.png',
+        },
+        {
+          content_type: 'text',
+          title: 'Immigration',
+          payload: 'party_votes',
+          image_url: 'https://cdn4.iconfinder.com/data/icons/tourism-and-travel-objects/512/passport_document_identification_citizen_travel_tourism_flat_icon_symbol-256.png',
+        },
+        {
+          content_type: 'text',
+          title: 'Housing',
+          payload: 'party_votes',
+          image_url: 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/house-icon.png',
+        },
+        {
+          content_type: 'text',
+          title: 'Environment',
+          payload: 'party_votes',
+          image_url: 'http://aci-na.org/sites/default/files/2016airportswork-environmenticon.png',
+        },
+        {
+          content_type: 'text',
+          title: 'Tax',
+          payload: 'party_votes',
+          image_url: 'https://www.theaccountingroom.co.nz/assets/frameworks/wf/images/tax-icon.png',
+        },
+        {
+          content_type: 'text',
+          title: 'Brexit',
+          payload: 'party_votes',
+          image_url: 'https://www.plesner.com/~/media/plesnerbilleder/test/brexit-icon-3.ashx',
+        },
+        {
+          content_type: 'text',
+          title: 'Transport',
+          payload: 'party_votes',
+          image_url: 'https://www.google.co.uk/search?q=education+vector&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjXtfvuu_rTAhXrLsAKHTUcDnoQ_AUIBigB&biw=1419&bih=731#tbm=isch&q=transport+icon&imgdii=3_fZOpbpaDX5EM:&imgrc=thslNZamdsZyTM:',
+        },
+        {
+          content_type: 'text',
+          title: 'Foreign',
+          payload: 'party_votes',
+          image_url: 'https://openclipart.org/image/2400px/svg_to_png/211386/globe-eurafrica.png',
+        },
+        {
+          content_type: 'text',
+          title: 'Defence',
+          payload: 'party_votes',
+          image_url: 'http://ti-defence.org/wp-content/themes/tids/img/logos/defence-integrity-icon.png',
         },
       ],
     },

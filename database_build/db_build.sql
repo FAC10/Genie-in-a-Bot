@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users, partyVotes, jokes CASCADE;
+DROP TABLE IF EXISTS partyVotes, jokes CASCADE;
 
 CREATE TABLE users (
   id          SERIAL        PRIMARY KEY,
