@@ -86,7 +86,7 @@ get.startContext = (facebookId, callback) => connect.query('SELECT startContext 
       return callback(null, 'startContext');
     }
     console.log('no res.rows');
-    post.startContext(facebookId, 'startContext', (err, res) => {
+    post.startContext('startContext', facebookId, (err, res) => {
       if (err) {
         console.log(err);
       } else {
