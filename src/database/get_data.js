@@ -181,30 +181,30 @@ get.compare = (issue, callback) => connect.query('SELECT swing, majority, issueT
 
 get.manifestoData = (index, issue, party, callback) => connect.query(`SELECT ${party} FROM ${issue} WHERE id = ${index}`, (err, res) => {
   if (err) {
-    return err;
+    return callback(err);
   }
   const rows = res.rows;
   if (rows) {
     const answer = rows[0];
     if (party.toLowerCase() === 'conservative') {
       console.log('ans in manifestoData is ', answer.conservative);
-      return answer.conservative;
+      return callback(answer.conservative);
     }
     if (party.toLowerCase() === 'labour') {
       console.log('ans in manifestoData is ', answer.labour);
-      return answer.conservative;
+      return callback(answer.labour);
     }
     if (party.toLowerCase() === 'libdem') {
       console.log('ans in manifestoData is ', answer.libdem);
-      return answer.conservative;
+      return callback(answer.libdem);
     }
     if (party.toLowerCase() === 'snp') {
       console.log('ans in manifestoData is ', answer.snp);
-      return answer.conservative;
+      return callback(answer.snp);
     }
     if (party.toLowerCase() === 'green') {
       console.log('ans in manifestoData is ', answer.green);
-      return answer.conservative;
+      return callback(answer.green);
     }
   }
 });
