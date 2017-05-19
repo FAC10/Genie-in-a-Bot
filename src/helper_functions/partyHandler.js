@@ -3,87 +3,44 @@ const issueHandler = require('./issueHandler');
 const findLocalReply = require('./findLocalReply');
 const post = require('../database/db_post.js');
 
+function posting(party, senderID) {
+  console.log(`posting ${party} to database`);
+  post.party(party, senderID, (err, res) => {
+    if (err) {
+      console.log(err);
+    } else {
+    }
+  });
+  const countName = party.toLowerCase();
+  post.counts(countName, (err, res) => {
+    if (err) {
+      console.log(err);
+    } else {
+    }
+  });
+}
+
 function partyHandler(senderID, resolvedQuery) {
   get.flow(senderID, (err, res) => {
     console.log('flow is ', res);
     if (res === 'Manifestos') {
-      issueHandler(senderID, resolvedQuery);
+      issueHandler(senderID, resolvedQuery, 'party');
     } else if (res === 'Parties') {
       console.log('resolvedQuery going into party is ', resolvedQuery);
       if (resolvedQuery.toLowerCase().includes('conservative') || resolvedQuery.toLowerCase().includes('tory') || resolvedQuery.toLowerCase().includes('tories')) {
-        console.log('adding Conservative to database');
-        post.party('Conservative', senderID, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
-        post.counts('conservative', (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
+        posting('Conservative', senderID);
       }
       if (resolvedQuery.toLowerCase().includes('labour')) {
-        console.log('adding Labour to database');
-        post.party('Labour', senderID, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
-        post.counts('labour', (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
+        posting('Labour', senderID);
       }
       if (resolvedQuery.toLowerCase().includes('lib dem') || resolvedQuery.toLowerCase().includes('liberal democrats')) {
-        console.log('adding Lib Dem to database');
-        post.party('Lib Dem', senderID, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
-        post.counts('libdem', (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
+        posting('Lib Dem', senderID);
       }
       if (resolvedQuery.toLowerCase().includes('snp') || resolvedQuery.toLowerCase().includes('scottish national party')) {
-        console.log('adding SNP to database');
-        post.party('SNP', senderID, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
-        post.counts('snp', (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
+        posting('SNP', senderID);
       }
       if (resolvedQuery.toLowerCase().includes('green') || resolvedQuery.toLowerCase().includes('green party')) {
-        console.log('adding Green to database');
-        post.party('Green', senderID, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
-        post.counts('green', (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
+        posting('Green', senderID);
       }
       findLocalReply.findLocalReply(senderID, 'party_votes');
     }

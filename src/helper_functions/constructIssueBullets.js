@@ -1,16 +1,17 @@
 const get = require('../database/get_data.js');
 let lastIntent = null;
-const count = 0;
+const count = 1;
 const constructRemoteReply = require('./constructRemoteReply');
 
-function constructIssueBullets(facebookId, intent) {
+function constructIssueBullets(facebookId, intent, party) {
   console.log('inside construct bullets');
   if (lastIntent === null) {
     console.log('lastIntent is null so party options');
     console.log('lastIntent is ', lastIntent);
     console.log('count is ', count);
     lastIntent = intent;
-    const responseText = { text: `Which party's manifesto should I check for points on ${intent}?`,
+    const capitalisedIntent = intent.charAt(0).toUpperCase() + intent.slice(1);
+    const responseText = { text: `Which party's manifesto should I check for points on ${capitalisedIntent}?`,
       quick_replies: [
         {
           content_type: 'text',
@@ -44,6 +45,30 @@ function constructIssueBullets(facebookId, intent) {
         },
       ] };
     constructRemoteReply(facebookId, responseText);
+  } else if (party) {
+    get.manifestoData(count, intent, party, (err, maniData) => {
+      if (err) return err;
+
+      const responseText = { text: `${maniData}`,
+        quick_replies: [
+          {
+            content_type: 'text',
+            title: 'Another point',
+            payload: 'Another point',
+          },
+          {
+            content_type: 'text',
+            title: 'Different issue',
+            payload: 'Different issue',
+          },
+          {
+            content_type: 'text',
+            title: 'Compare',
+            payload: 'Compare',
+          },
+        ] };
+      constructRemoteReply(facebookId, responseText);
+    });
   } else if (lastIntent === intent) {
     console.log('lastIntent = intent so info');
   }

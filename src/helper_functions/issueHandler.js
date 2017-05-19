@@ -17,18 +17,46 @@ function trackIssue(issue, facebookId) {
   });
 }
 
-function issueConstructor(issue, facebookId) {
+function issueConstructor(issue, facebookId, party) {
   console.log(`inside ${issue}`);
-  constructIssueBullets(facebookId, issue);
-  trackIssue(issue, facebookId);
+  if (party) {
+    constructIssueBullets(facebookId, issue, party);
+    trackIssue(issue, facebookId);
+    trackIssue(party, facebookId);
+  } else {
+    constructIssueBullets(facebookId, issue);
+    trackIssue(issue, facebookId);
+  }
 }
 
-function issueHandler(facebookId, resolvedQuery) {
+function findParty(resolvedQuery) {
+  if (resolvedQuery.toLowerCase().includes('conservative') || resolvedQuery.toLowerCase().includes('tory') || resolvedQuery.toLowerCase().includes('tories')) {
+    return 'Conservative';
+  } else if (resolvedQuery.toLowerCase().includes('labour')) {
+    return 'Labour';
+  } else if (resolvedQuery.toLowerCase().includes('lib dem') || resolvedQuery.toLowerCase().includes('liberal democrats')) {
+    return 'Lib Dem';
+  } else if (resolvedQuery.toLowerCase().includes('snp') || resolvedQuery.toLowerCase().includes('scottish national party')) {
+    return 'SNP';
+  } else if (resolvedQuery.toLowerCase().includes('green') || resolvedQuery.toLowerCase().includes('green party')) {
+    return 'Green';
+  }
+}
+
+function issueHandler(facebookId, resolvedQuery, partyTag) {
   const rawIntent = resolvedQuery.toLowerCase();
-  get.flow(facebookId, (err, res) => {
+  if (partyTag) {
+    get.issue(facebookId, (err, issue) => {
+      if (err) return err;
+      const party = findParty(resolvedQuery);
+      console.log('party is ', party);
+      issueConstructor(issue, facebookId, party);
+    });
+  }
+  get.flow(facebookId, (err, flow) => {
     if (err) return err;
-    console.log('flow is ', res);
-    if (res === 'Manifestos') {
+    console.log('flow is ', flow);
+    if (flow === 'Manifestos') {
       console.log('inside manifestos');
       console.log('rawIntent is ', rawIntent);
       if (rawIntent.includes('education') || rawIntent.includes('tuition') || rawIntent.includes('school') || rawIntent.includes('universit')) {
@@ -55,7 +83,7 @@ function issueHandler(facebookId, resolvedQuery) {
         issueConstructor('defence', facebookId);
       }
     }
-    if (res === 'Parties') {
+    if (flow === 'Parties') {
       console.log('parties flow');
       console.log('rawIntent is ', rawIntent);
       if (rawIntent.includes('education') || rawIntent.includes('tuition') || rawIntent.includes('school') || rawIntent.includes('universit')) {

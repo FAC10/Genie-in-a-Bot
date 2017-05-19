@@ -179,5 +179,14 @@ get.compare = (issue, callback) => connect.query('SELECT swing, majority, issueT
   return callback(null, res);
 });
 
+get.manifestoData = (index, issue, party, callback) => connect.query(`SELECT ${party} FROM ${issue} WHERE id = ${index}`), (err, res) => {
+  if (err) {
+    return callback(err);
+  }
+  const rows = res.rows;
+  console.log('res.rows of manifestoData is ', rows);
+
+  return callback(null, res);
+};
 
 module.exports = get;
