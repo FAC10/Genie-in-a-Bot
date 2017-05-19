@@ -5,7 +5,7 @@ const constructRemoteReply = require('./constructRemoteReply');
 
 function constructIssueBullets(facebookId, intent, party) {
   console.log('inside construct bullets');
-  if (lastIntent === null) {
+  if (lastIntent === null || !party) {
     console.log('lastIntent is null so party options');
     console.log('lastIntent is ', lastIntent);
     console.log('count is ', count);
