@@ -23,7 +23,11 @@ function issueConstructor(issue, facebookId, party) {
   if (party) {
     constructIssueBullets(facebookId, issue, party);
     trackIssue(issue, facebookId);
-    trackIssue(party, facebookId);
+    post.counts(party, (err, res) => {
+      if (err) console.log(err);
+      else {
+      }
+    });
   } else {
     constructIssueBullets(facebookId, issue);
     trackIssue(issue, facebookId);
