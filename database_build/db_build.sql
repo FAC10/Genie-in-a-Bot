@@ -26,7 +26,8 @@ CREATE TABLE partyVotes (
   extra       VARCHAR(500),
   turnout     VARCHAR(500)   NOT NULL,
   swing       VARCHAR(100)   NOT NULL,
-  majority    VARCHAR(100)   NOT NULL
+  majority    VARCHAR(100)   NOT NULL,
+  issueTitle  VARCHAR(100)   NOT NULL
 );
 
 CREATE TABLE counts (
@@ -179,22 +180,22 @@ It couldn''t see that well.', 'https://media.giphy.com/media/l4FGqEoFhVLlmWsXm/g
 ('What''s the difference between a good joke and a bad joke timing.', 'https://media.giphy.com/media/26tPoyDhjiJ2g7rEs/giphy.gif'),
 ('I''ve been told I''m condescending. (that means I talk down to people)', 'https://media.giphy.com/media/3o6ZtkCn4Wp5lPEX04/giphy.gif');
 
-INSERT INTO partyVotes (partyKey, party, issue, inFavour, against, extra, turnout, swing, majority)
+INSERT INTO partyVotes (partyKey, party, issue, inFavour, against, extra, turnout, swing, majority, issueTitle)
 VALUES
-('Conservativebrexit_votes', 'the Conservative Party', 'Brexit', '319 Conservative MPs (99.7%)', '1 MP (0.3%)', 'and Conservative leader Theresa May has said the UK "cannot possibly" remain part of the single market as it would mean "not leaving the EU at all"', '97.9%', 'in favour', '99.7%'),
-('Labourbrexit_votes', 'the Labour Party', 'Brexit', '168 Labour MPs (78%)', '47 MPs (22%)', 'Labour''s shadow Brexit Secretary Sir Keir Starmer has ruled out a second referendum, but said there would have to be transitional arrangements at the end of the two-year Article 50 process.', '93.5%', 'in favour', '78%'),
-('Lib Dembrexit_votes', 'the Liberal Democrats', 'Brexit', '0 Lib Dem MPs (0%)', '7 MPs (100%)', 'The Lib Dem manifesto will include a commitment to another EU referendum on the final Brexit deal, in which the party would campaign for Remain.', '77.8%', 'against', '100%'),
-('Greenbrexit_votes', 'the Green Party', 'Brexit', '0 Green MPs (0%)', '1 MP (100%)', 'and the Green Party would offer a second referendum on the details of any Brexit deal, with 16 and 17-year-olds given a vote.', '100%', 'against', '100%'),
-('SNPbrexit_votes', 'the SNP', 'Brexit', '0 SNP MPs (0%)', '50 MPs (100%)', 'and SNP leader Nicola Sturgeon has been pushing for Scotland - which voted to remain in the EU - to have a special status after Brexit, including remaining in the single market.', '96.3%', 'against', '100%'),
-('Conservativetuition_fees', 'the Conservative Party', 'Tuition Fees', '296 Conservative MPs (98%)', '6 MPs (2%)', '', '99.0%', 'in favour', '98%'),
-('Labourtuition_fees', 'the Labour Party', 'Tuition Fees', '0 Labour MPs (0%)', '253 MPs (100%)', '', '99.2%', 'against', '100%'),
-('Lib Demtuition_fees', 'the Liberal Democrats', 'Tuition Fees', '27 Lib Dem MPs (56%)', '21 MPs (44%)', '', '86%', 'in favour', '56%'),
-('Greentuition_fees', 'the Green Party', 'Tuition Fees', '0 Green MPs (0%)', '1 MP (100%)', '', '100%', 'against', '100%'),
-('SNPtuition_fees', 'the SNP', 'Tuition Fees', '0 SNP MPs (0%)', '6 MPs (100%)', '', '96.3%', 'against', '100%'),
-('Conservativesyria', 'the Conservative Party', 'Syria', '313 Conservative MPs (98%)', '7 MPs (2%)', '', '97.6%', 'in favour', '98%'),
-('Laboursyria', 'the Labour Party', 'Syria', '66 Labour MPs (30%)', '153 MPs (70%)', '', '94.8%', 'against', '70%'),
-('Lib Demsyria', 'the Liberal Democrats', 'Syria', '6 Lib Dem MPs (75%)', '2 MPs (25%)', '', '100%', 'in favour', '75%'),
-('Greensyria', 'the Green Party', 'Syria', '0 Green MPs (0%)', '1 MP (100%)', '', '100%', 'against', '100%'),
-('SNPsyria', 'the SNP', 'Syria', '0 SNP MPs (0%)', '53 MPs (100%)', '', '100%', 'against', '100%');
+('Conservativebrexit_votes', 'the Conservative Party', 'brexit_votes', '319 Conservative MPs (99.7%)', '1 MP (0.3%)', 'and Conservative leader Theresa May has said the UK "cannot possibly" remain part of the single market as it would mean "not leaving the EU at all"', '97.9%', 'in favour', '99.7%', 'Brexit'),
+('Labourbrexit_votes', 'the Labour Party', 'brexit_votes', '168 Labour MPs (78%)', '47 MPs (22%)', 'Labour''s shadow Brexit Secretary Sir Keir Starmer has ruled out a second referendum, but said there would have to be transitional arrangements at the end of the two-year Article 50 process.', '93.5%', 'in favour', '78%', 'Brexit'),
+('Lib Dembrexit_votes', 'the Liberal Democrats', 'brexit_votes', '0 Lib Dem MPs (0%)', '7 MPs (100%)', 'The Lib Dem manifesto will include a commitment to another EU referendum on the final Brexit deal, in which the party would campaign for Remain.', '77.8%', 'against', '100%', 'Brexit'),
+('Greenbrexit_votes', 'the Green Party', 'brexit_votes', '0 Green MPs (0%)', '1 MP (100%)', 'and the Green Party would offer a second referendum on the details of any Brexit deal, with 16 and 17-year-olds given a vote.', '100%', 'against', '100%', 'Brexit'),
+('SNPbrexit_votes', 'the SNP', 'brexit_votes', '0 SNP MPs (0%)', '50 MPs (100%)', 'and SNP leader Nicola Sturgeon has been pushing for Scotland - which voted to remain in the EU - to have a special status after Brexit, including remaining in the single market.', '96.3%', 'against', '100%', 'Brexit'),
+('Conservativetuition_fees', 'the Conservative Party', 'tuition_fees', '296 Conservative MPs (98%)', '6 MPs (2%)', '', '99.0%', 'in favour', '98%', 'Tuition Fees'),
+('Labourtuition_fees', 'the Labour Party', 'tuition_fees', '0 Labour MPs (0%)', '253 MPs (100%)', '', '99.2%', 'against', '100%', 'Tuition Fees'),
+('Lib Demtuition_fees', 'the Liberal Democrats', 'tuition_fees', '27 Lib Dem MPs (56%)', '21 MPs (44%)', '', '86%', 'in favour', '56%', 'Tuition Fees'),
+('Greentuition_fees', 'the Green Party', 'tuition_fees', '0 Green MPs (0%)', '1 MP (100%)', '', '100%', 'against', '100%', 'Tuition Fees'),
+('SNPtuition_fees', 'the SNP', 'tuition_fees', '0 SNP MPs (0%)', '6 MPs (100%)', '', '96.3%', 'against', '100%', 'Tuition Fees'),
+('Conservativesyria', 'the Conservative Party', 'syria', '313 Conservative MPs (98%)', '7 MPs (2%)', '', '97.6%', 'in favour', '98%', 'Air strikes on Syria'),
+('Laboursyria', 'the Labour Party', 'syria', '66 Labour MPs (30%)', '153 MPs (70%)', '', '94.8%', 'against', '70%', 'Air strikes on Syria'),
+('Lib Demsyria', 'the Liberal Democrats', 'syria', '6 Lib Dem MPs (75%)', '2 MPs (25%)', '', '100%', 'in favour', '75%', 'Air strikes on Syria'),
+('Greensyria', 'the Green Party', 'syria', '0 Green MPs (0%)', '1 MP (100%)', '', '100%', 'against', '100%', 'Air strikes on Syria'),
+('SNPsyria', 'the SNP', 'syria', '0 SNP MPs (0%)', '53 MPs (100%)', '', '100%', 'against', '100%', 'Air strikes on Syria');
 
 COMMIT;
