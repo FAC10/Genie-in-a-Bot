@@ -239,7 +239,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
       ],
     },
 
-    brexit: {
+    brexit_votes: {
 
       text: `On 1st February 2017, ${partyVotesObj.infavour} voted in favour of leaving the EU. ${partyVotesObj.against} voted against. ${partyVotesObj.extra}`,
       quick_replies: [
@@ -324,7 +324,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
         ]
     },
 
-    tuitionFees: {
+    tuition_fees: {
 
       text: `On 9th December 2010, ${partyVotesObj.infavour} voted in favour of raising the UK tuition fee cap to £9,000 a year. ${partyVotesObj.against} voted against.`,
       quick_replies: [

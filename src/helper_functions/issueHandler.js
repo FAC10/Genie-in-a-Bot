@@ -59,14 +59,14 @@ function issueHandler(facebookId, resolvedQuery) {
       console.log('parties flow');
       console.log('rawIntent is ', rawIntent);
       if (rawIntent.includes('education') || rawIntent.includes('tuition') || rawIntent.includes('school') || rawIntent.includes('universit')) {
-        trackIssue('tuitionFees', facebookId);
+        trackIssue('tuition_fees', facebookId);
         extractContexts(facebookId, 'tuition_fees', getVotingData);
       } else if (rawIntent.includes('syria') || rawIntent.includes('strike') || rawIntent.includes('isis') || rawIntent.includes('daesh') || rawIntent.includes('islamic state')) {
         trackIssue('syria', facebookId);
         extractContexts(facebookId, 'syria', getVotingData);
       } else if (rawIntent.includes('brexit') || rawIntent.includes('eu') || rawIntent.includes('europe')) {
         trackIssue('brexit_votes', facebookId);
-        extractContexts(facebookId, 'brexit', getVotingData);
+        extractContexts(facebookId, 'brexit_votes', getVotingData);
       }
     }
   });
