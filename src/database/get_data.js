@@ -184,8 +184,11 @@ get.manifestoData = (index, issue, party, callback) => connect.query(`SELECT ${p
     return err;
   }
   const rows = res.rows;
-  console.log('res.rows of manifestoData is ', rows);
-  return (null, res);
+  if (rows) {
+    const answer = rows[0];
+    console.log('ans in manifestoData is ', answer);
+    return (null, answer);
+  }
 });
 
 module.exports = get;
