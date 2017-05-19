@@ -307,6 +307,11 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
         },
         {
           content_type: 'text',
+          title: 'Manifestos',
+          payload: 'Manifestos',
+        },
+        {
+          content_type: 'text',
           title: 'Candidates',
           payload: 'Candidates',
         },
