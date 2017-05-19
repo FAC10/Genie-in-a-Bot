@@ -52,7 +52,7 @@ function constructIssueBullets(facebookId, intent, party) {
       if (err) console.log(err);
       else {
         console.log('maniData is ', maniData);
-        const responseText = { text: `${maniData}`,
+        const responseText2 = { text: `${maniData}`,
           quick_replies: [
             {
               content_type: 'text',
@@ -70,7 +70,8 @@ function constructIssueBullets(facebookId, intent, party) {
               payload: 'Compare',
             },
           ] };
-        constructRemoteReply(facebookId, responseText);
+        console.log('responseText2 is ', responseText2);
+        constructRemoteReply(facebookId, responseText2);
       }
     });
   } else if (lastIntent === intent) {
