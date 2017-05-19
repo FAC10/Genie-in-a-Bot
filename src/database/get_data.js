@@ -169,7 +169,7 @@ get.flow = (facebookId, callback) => connect.query('SELECT flow FROM users WHERE
   return callback(null, null);
 });
 
-get.compare = (issue, callback) => connect.query('SELECT issue, swing, majority FROM partyVotes WHERE issue = $1', [issue], (err, res) => {
+get.compare = (issue, callback) => connect.query('SELECT swing, majority, issueTitle FROM partyVotes WHERE issue = $1', [issue], (err, res) => {
   if (err) {
     return callback(err);
   }
