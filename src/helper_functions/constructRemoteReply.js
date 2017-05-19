@@ -9,6 +9,7 @@ module.exports = (senderID, responseText, quickReply) => {
       },
       message: {
         text: responseText.text,
+        quick_replies: responseText.quick_replies,
       },
     };
     sendToFB(messageData);
