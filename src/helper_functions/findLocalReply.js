@@ -52,10 +52,7 @@ function findLocalReply(senderID, intent) {
         get.issue(senderID, (err, issue) => {
           if (err) return err;
           console.log('issue in findLocalReply is ', issue);
-          post.party(null, senderID, (err, res) => {
-            if (err) return err;
-            sendToIssueHandler(senderID, issue);
-          });
+          sendToIssueHandler(senderID, issue);
         });
       } else if (flow === 'Parties') {
         get.issue(senderID, (err, res) => {
