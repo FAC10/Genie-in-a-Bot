@@ -1,6 +1,17 @@
 const sendToFB = require('./sendToFB');
 
 module.exports = (senderID, responseText, quickReply) => {
+  if (typeof (responseText) === 'object') {
+    const messageData = {
+      recipient: {
+        id: senderID,
+      },
+      message: {
+        responseText,
+      },
+    };
+    sendToFB(messageData);
+  }
   if (quickReply) {
     console.log('quick reply');
     const reply = {
