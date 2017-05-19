@@ -79,19 +79,20 @@ get.startContext = (facebookId, callback) => connect.query('SELECT startContext 
   console.log('res is ', res);
   const rows = res.rows;
   const rowsZero = rows[0];
+  if (!rowsZero || rowsZero.startContext === null) {
+    console.log('startContext dont exist');
+    post.startContext('existingUser', facebookId, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('adding start context to database first clause');
+      }
+    });
+    return callback(null, 'newUser');
+  }
   if (rowsZero) {
     const startContext = rowsZero.startcontext;
-    if (!startContext || startContext[0] === null) {
-      console.log('startContext dont exist');
-      post.startContext('existingUser', facebookId, (err, res) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log('adding start context to database first clause');
-        }
-      });
-      return callback(null, 'newUser');
-    } else if (startContext) {
+    if (startContext) {
       return callback(null, startContext[0]);
     }
     // if (startContext !== 'startContext') {
@@ -105,17 +106,18 @@ get.startContext = (facebookId, callback) => connect.query('SELECT startContext 
     //   });
     //   return callback(null, 'newUser');
     // }
-  } else {
-    console.log('startContext dont exist');
-    post.startContext('existingUser', facebookId, (err, res) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('adding start context to database second clause');
-      }
-    });
-    return callback(null, 'newUser');
   }
+  // else {
+  //   console.log('startContext dont exist');
+  //   post.startContext('existingUser', facebookId, (err, res) => {
+  //     if (err) {
+  //       console.log(err);
+  //     } else {
+  //       console.log('adding start context to database second clause');
+  //     }
+  //   });
+  //   return callback(null, 'newUser');
+  // }
 });
 
 get.party = (facebookId, callback) => connect.query('SELECT party FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
