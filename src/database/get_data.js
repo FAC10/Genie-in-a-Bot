@@ -100,7 +100,7 @@ get.startContext = (facebookId, callback) => connect.query('SELECT startContext 
           console.log('adding start context to database first clause');
         }
       });
-      return callback(null, 'newUser');
+      return callback(null, 'existingUser');
     } else if (startContext) {
       return callback(null, startContext[0]);
     }
