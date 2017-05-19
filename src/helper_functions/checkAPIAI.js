@@ -140,7 +140,8 @@ module.exports = (event) => {
               console.log(err);
             } else {
             }
-        });
+          });
+        }
       }
 
       if (intent === 'runningCandidates') {
@@ -222,7 +223,6 @@ module.exports = (event) => {
         findLocalReply.findLocalReply(senderID, intent);
       }
     });
-
     apiai_request.on('error', (error) => {
       console.log(error);
     });
