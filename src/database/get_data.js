@@ -85,17 +85,17 @@ get.startContext = (facebookId, callback) => connect.query('SELECT startContext 
     if (startContext === 'startContext') {
       return callback(null, 'startContext');
     }
-    if (startContext !== 'startContext') {
-      console.log('no res.rows');
-      post.startContext('startContext', facebookId, (err, res) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log('adding start context to database');
-        }
-      });
-      return callback(null, 'newUser');
-    }
+    // if (startContext !== 'startContext') {
+    //   console.log('no res.rows');
+    //   post.startContext('startContext', facebookId, (err, res) => {
+    //     if (err) {
+    //       console.log(err);
+    //     } else {
+    //       console.log('adding start context to database');
+    //     }
+    //   });
+    //   return callback(null, 'newUser');
+    // }
   }
   if (!rowsZero) {
     console.log('rows dont exist');

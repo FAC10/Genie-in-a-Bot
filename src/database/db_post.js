@@ -38,7 +38,7 @@ post.persistingCtxts = (contexts, facebook_id, callback) => {
 };
 
 post.startContext = (context, facebook_id, callback) => {
-  connect.query(`UPDATE users SET startContext = '{${context}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
+  connect.query(`UPDATE users SET startContext = '${context}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
     if (err) return callback(err);
     callback(null, res);
   });
