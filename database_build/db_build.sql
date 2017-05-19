@@ -168,7 +168,91 @@ VALUES
 
 INSERT INTO education (conservative, labour, green, snp, libdem)
 VALUES
-('placeholder for conservative', 'placeholder for labour', 'placeholder for green', 'placeholder for snp', 'placeholder for libdem');
+('placeholder for conservative', 'Cut University tuition fees and reintroduce maintenance grants', 'placeholder for green', 'placeholder for snp', 'Increase budgets by £7 billion – Reverse cuts to front-line budgets and protect pupil premium'),
+('placeholder for conservative', 'Create a unified National Education Service (NES) for England to move towards cradle-to-grave learning that is free at the point of use', 'placeholder for green', 'placeholder for snp', 'Guarantee teachers in state-funded schools will be qualified/working towards QTS from Jan 2019'),
+('placeholder for conservative', 'Re-introduce bursaries and funding for health-related degrees.', 'placeholder for green', 'placeholder for snp', 'Scrap expansion of grammar schools, allow Ofsted to inspect local authorities and academies'),
+('placeholder for conservative', 'Extend the 30 free hours to all two-year-olds, and move towards making some childcare available for one-year-olds and extending maternity pay to 12 months', 'placeholder for green', 'placeholder for snp', 'Reinstate maintenance grants for the poorest students'),
+('placeholder for conservative', 'Transition to a qualified, graduate-led workforce, by increasing staff wages and enhancing training opportunities', 'placeholder for green', 'placeholder for snp', 'Aim to double the number of firms hiring apprentices including new sectors of the economy');
+
+INSERT INTO health (conservative, labour, green, snp, libdem)
+VALUES
+('placeholder for conservative', 'Invest in the future of the NHS with over £30 billion through the next Parliament', 'placeholder for green', 'placeholder for snp', 'End public pay freeze for workers, reinstate student nurse bursaries, introduce Patient Premiums'),
+('placeholder for conservative', 'Treatment guaranteed within 18 weeks', 'placeholder for green', 'placeholder for snp', 'Guarantee no longer than six weeks for depression/anxiety treatment, two weeks for psychosis'),
+('placeholder for conservative', 'Patients in A&E will be guaranteed to be seen within 4 hours', 'placeholder for green', 'placeholder for snp', 'Provide more choice at end of life care, cap cost of social care, raise Carer’s Allowance to £150pw'),
+('placeholder for conservative', 'Free parking in NHS England for staff, patients and visitors', 'placeholder for green', 'placeholder for snp', 'Expand access to GPs through online, phone and Skype appointments'),
+('placeholder for conservative', 'Reverse privatisation of the NHS', 'placeholder for green', 'placeholder for snp', 'Restrict marketing of junk food pre-9pm watershed, introduce minimum unit pricing of Alcohol');
+
+INSERT INTO health (conservative, labour, green, snp, libdem)
+VALUES
+('placeholder for conservative', 'Tackle the gender pay gap', 'placeholder for green', 'placeholder for snp', 'Nation-wide programme of fibre-optic broadband, continued investment in HS2, Crossrail 2 etc.'),
+('placeholder for conservative', 'Put small businesses at the centre of economic strategy', 'placeholder for green', 'placeholder for snp', 'Eliminating the deficit on day-to-day spending by 2020'),
+('placeholder for conservative', 'Unpaid internships banned.', 'placeholder for green', 'placeholder for snp', 'Introduce network of incubators for technology start-ups, FTTP as standard with >2Gbps speeds'),
+('placeholder for conservative', 'Bring minimum wage in line with living wage - at least £10 by 2020', 'placeholder for green', 'placeholder for snp', 'Binding board-member votes on executive pay, right for ZHC-holders to request fixed contract'),
+('placeholder for conservative', 'Zero hours contracts outlawed.', 'placeholder for green', 'placeholder for snp', 'Champion Northern Powerhouse/Midlands Engine, devolve decisions, revenue-raising powers');
+
+INSERT INTO immigration (conservative, labour, green, snp, libdem)
+VALUES
+('placeholder for conservative', 'Fair rules and reasonable management of migration, not resorting to ‘bogus’ targets', 'placeholder for green', 'placeholder for snp', 'Hold an annual debate on skill and labour market shortfalls to identify necessary migration'),
+('placeholder for conservative', 'End indefinite detentions', 'placeholder for green', 'placeholder for snp', 'Remove international students from migration statistics, recognising them as largely temporary'),
+('placeholder for conservative', 'Protect those already working here, whatever their ethnicity', 'placeholder for green', 'placeholder for snp', 'Expand Syrian Resettlement scheme to 50,000, including 3,000 unaccompanied refugee children'),
+('placeholder for conservative', 'For areas where immigration has placed a strain on public services Labour will reinstate the Migrant Impact Fund and boost it with a contributory element from the investments required for High Net Worth Individual Visas', 'placeholder for green', 'placeholder for snp', 'Migration Impact fund to meet unexpected pressures on public services, housing'),
+('placeholder for conservative', 'Uphold the proud British tradition of honouring the spirit of international law and our moral obligations by taking our fair share of refugees', 'placeholder for green', 'placeholder for snp', 'Allow high-skilled immigration and reinstate post-study work visas for STEM graduates');
+
+INSERT INTO housing (conservative, labour, green, snp, libdem)
+VALUES
+('placeholder for conservative', 'Invest to build one million new homes, including 100,000 council and housing association homes by the end of next parliament.', 'placeholder for green', 'placeholder for snp', 'Direct spending to build 300,000 homes a year by 2022, creation of 10 Garden Cities'),
+('placeholder for conservative', 'Rent rises capped to inflation and legal minimum standards in properties for rent.', 'placeholder for green', 'placeholder for snp', 'New Rent-to-Own model, rent payments giving increasing stake, ownership after 30 years'),
+('placeholder for conservative', '4,000 homes for people with history of rough sleeping.', 'placeholder for green', 'placeholder for snp', 'Help-to-Rent scheme providing government-backed tenancy deposit loans for FTBs under 30'),
+('placeholder for conservative', 'Will be building at least 100,000 council and housing association homes a year for genuinely affordable rent or sale by the end of next Parliament', 'placeholder for green', 'placeholder for snp', 'Tenants have first refusal to buy the home they are renting from a landlord'),
+('placeholder for conservative', 'Invest to build one million new homes, including 100,000 council and housing association homes by the end of next parliament.', 'placeholder for green', 'placeholder for snp', 'Disallow advertising homes abroad before the UK, create rogue landlord/agent database');
+
+INSERT INTO environment (conservative, labour, green, snp, libdem)
+VALUES
+('placeholder for conservative', 'Ensure that 60 per cent of the UK’s energy comes from zero-carbon or renewable sources by 2030', 'placeholder for green', 'placeholder for snp', 'Legally binding targets to reduce net greenhouse gas emissions by 80% by 2040, 100% by 2050'),
+('placeholder for conservative', 'Remove carbon from electricity generation by 2030', 'placeholder for green', 'placeholder for snp', 'Aim for 60% of electricity from renewables by 2030, restore solar PV and onshore wind funding'),
+('placeholder for conservative', 'Keep forests in public ownership', 'placeholder for green', 'placeholder for snp', 'Invest in energy storage, smart grid technology, hydrogen, offshore wind and tidal power'),
+('placeholder for conservative', 'Create an Energy Security Board to plan and deliver the energy mix we need, including renewables, nuclear, green gas, carbon capture and storage, and clean coal', 'placeholder for green', 'placeholder for snp', 'Ensure at least four million homes made Band C efficient by 2022, all homes in England by 2035'),
+('placeholder for conservative', 'Ban fracking', 'placeholder for green', 'placeholder for snp', 'Extend 5p charge on plastic bags to disposable coffee cups');
+
+INSERT INTO tax (conservative, labour, green, snp, libdem)
+VALUES
+('placeholder for conservative', 'Rises in income tax for those earning over £80,000', 'placeholder for green', 'placeholder for snp', 'Fund spending on NHS and social care through 1p rise in income and dividend taxes'),
+('placeholder for conservative', 'Raising £19.4billion by raising corporation tax 26 per cent', 'placeholder for green', 'placeholder for snp', 'Reverse Corporation Tax and CGT cuts, reverse Marriage Allowance, IHT threshold increases'),
+('placeholder for conservative', 'Extra powers for HMRC to chase individuals and companies who avoid tax', 'placeholder for green', 'placeholder for snp', 'Review business rates to reduce burdens on small firms, prioritised for future business tax cuts'),
+('placeholder for conservative', 'Rises in income tax for those earning over £80,000', 'placeholder for green', 'placeholder for snp', 'Consider moving from a profit-based Corporation Tax to one accounting for sales, turnover'),
+('placeholder for conservative', 'Raising £19.4billion by raising corporation tax 26 per cent', 'placeholder for green', 'placeholder for snp', 'Encourage sales of electric and low-emission vehicles by adjusting vehicle taxation');
+
+INSERT INTO brexit (conservative, labour, green, snp, libdem)
+VALUES
+('placeholder for conservative', 'Labour accepts referendum result', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will hold a Second Referendum on any negotiated deal with the European Union'),
+('placeholder for conservative', 'Labour will reject ‘no deal’ as a viable option', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats propose a Unilateral guarantee of rights for EU citizens and acceptance of Freedom of Movement'),
+('placeholder for conservative', 'Labour will drop the Conservatives’ Great Repeal Bill, replacing it with an EU Rights and Protections Bill', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats: Membership of the Single Market and Customs Union, access to EU-funded schemes (Erasmus+)'),
+('placeholder for conservative', 'Labour will will secure continued EU market access', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats: Joint co-operation on environmental standards, law enforcement and scientific research funding'),
+('placeholder for conservative', 'Labour will immediately guarantee existing rights for all EU nationals living in Britain and secure reciprocal rights for UK citizens who have chosen to make their lives in EU countries', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will Campaign to protect the rights of the citizens of Gibraltar during negotiations');
+
+INSERT INTO transport (conservative, labour, green, snp, libdem)
+VALUES
+('placeholder for conservative', 'Labour: Fares will be capped and free WiFi introduced across the network', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats: Diesel scrappage scheme, bans on sale of diesel cars and small vans by 2025'),
+('placeholder for conservative', 'Labour: Railways brought back into public ownership', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will extend ULE zones to 10 towns, all private hire vehicles/diesel buses licensed on low emission fuel'),
+('placeholder for conservative', 'Labour: HS2 will be completed and will link with a "Crossrail of the North"', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will establish government-run companies to take over running of Southern Rail and Thameslink'),
+('placeholder for conservative', 'Labour: Railways brought back into public ownership', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats oppose expansion of Heathrow, Stansted, Gatwick, allow expansion of Birmingham, Manchester'),
+('placeholder for conservative', 'Labour: HS2 will be completed and will link with a "Crossrail of the North"', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will introduce a 66% discount card for 16-21 year olds on bus travel');
+
+INSERT INTO faffairs (conservative, labour, green, snp, libdem)
+VALUES
+('placeholder for conservative', 'Labour: When the current Trump administration chooses to ignore shared values, whether by discriminating on the basis of religion or breaking its climate change commitments, we will not be afraid to disagree', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats are committed to working on a two-state solution to the Israel-Palestine conflict'),
+('placeholder for conservative', 'Labour: Labour will work tirelessly to end the conflict in Syria and get the diplomatic process back on track, while fully supporting international efforts to investigate, prosecute and convict the perpetrators of war crimes', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats want to suspend UK arms sales to Saudi Arabia owing to perceived humanitarian law breaches in Yemen'),
+('placeholder for conservative', 'Labour: Publish a strategy for protecting civilians in conflict, setting out detailed plans for work on conflict prevention and resolution, post-conflict peace-building, and justice for the victims of war crimes', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will work to exert maximum pressure on Russia to stop interference in Eastern Europe'),
+('placeholder for conservative', 'Labour will appoint dedicated global ambassadors for women’s rights, LGBT rights and religious freedom', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will work with others to tackle violent extremism manifested by Daesh and Boko Haram'),
+('placeholder for conservative', 'Labour will continue to spend 0.7 per cent of gross national income on overseas development assistance', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will demand humanitarian access in Syria and work to deter use of Chemical/Biological weapons');
+
+INSERT INTO defence (conservative, labour, green, snp, libdem)
+VALUES
+('placeholder for conservative', 'Labour is committed to a responsive, high tech armed forces', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will commit to meeting NATO guidelines by spending 2% of GDP on defence'),
+('placeholder for conservative', 'Labour is committed to effective UN peacekeeping, including support for a UN Emergency Peace Service', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will recruit STEM graduates as armed-forces engineers through golden handshake of up to £10000'),
+('placeholder for conservative', 'Labour wants at least 2% GDP to be spent on defence', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats would recognise of cyber-warfare through security/intelligence services, develop countering abilities'),
+('placeholder for conservative', 'Labour supports renewal of Trident', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats: Maintenance of Dreadnought nuclear deterrent, but procuring three submarines instead of four'),
+('placeholder for conservative', 'Labour: Personnel who are injured while serving should have prompt access to support and compensation and Labour will resist proposals to abolish the right to seek legal redress against the MoD where compensation claims cannot be otherwise settled', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will work to lead international multi-lateral nuclear disarmament efforts');
 
 INSERT INTO jokes (joke, image_url)
 VALUES
