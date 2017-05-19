@@ -145,7 +145,7 @@ module.exports = (event) => {
         }
       }
 
-      if (intent === issue) {
+      if (intent === 'issues') {
         issueHandler(senderID, resolvedQuery);
       }
 
