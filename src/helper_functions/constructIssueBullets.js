@@ -1,6 +1,7 @@
 const get = require('../database/get_data.js');
 let lastIntent = null;
 const count = 0;
+const constructRemoteReply = require('./constructRemoteReply');
 
 function constructIssueBullets(facebookId, intent) {
   console.log('inside construct bullets');
