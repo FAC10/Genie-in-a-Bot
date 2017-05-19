@@ -87,7 +87,7 @@ get.startContext = (facebookId, callback) => connect.query('SELECT startContext 
         if (err) {
           console.log(err);
         } else {
-          console.log('adding start context to database');
+          console.log('adding start context to database first clause');
         }
       });
       return callback(null, 'newUser');
@@ -111,7 +111,7 @@ get.startContext = (facebookId, callback) => connect.query('SELECT startContext 
       if (err) {
         console.log(err);
       } else {
-        console.log('adding start context to database');
+        console.log('adding start context to database second clause');
       }
     });
     return callback(null, 'newUser');
