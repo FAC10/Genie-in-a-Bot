@@ -50,26 +50,28 @@ function constructIssueBullets(facebookId, intent, party) {
     get.manifestoData(count, intent, party, (err, maniData) => {
       console.log('inside get manifestoData');
       if (err) console.log(err);
-      console.log('maniData is ', maniData);
-      const responseText = { text: `${maniData}`,
-        quick_replies: [
-          {
-            content_type: 'text',
-            title: 'Another point',
-            payload: 'Another point',
-          },
-          {
-            content_type: 'text',
-            title: 'Different issue',
-            payload: 'Different issue',
-          },
-          {
-            content_type: 'text',
-            title: 'Compare',
-            payload: 'Compare',
-          },
-        ] };
-      constructRemoteReply(facebookId, responseText);
+      else {
+        console.log('maniData is ', maniData);
+        const responseText = { text: `${maniData}`,
+          quick_replies: [
+            {
+              content_type: 'text',
+              title: 'Another point',
+              payload: 'Another point',
+            },
+            {
+              content_type: 'text',
+              title: 'Different issue',
+              payload: 'Different issue',
+            },
+            {
+              content_type: 'text',
+              title: 'Compare',
+              payload: 'Compare',
+            },
+          ] };
+        constructRemoteReply(facebookId, responseText);
+      }
     });
   } else if (lastIntent === intent) {
     console.log('lastIntent = intent so info');
