@@ -95,7 +95,7 @@ module.exports = (event) => {
               console.log(err);
             } else {
             }
-          }
+          });
         }
         if (resolvedQuery.toLowerCase().includes('lib dem') || resolvedQuery.toLowerCase().includes('liberal democrats')) {
           console.log('adding Lib Dem to database');
