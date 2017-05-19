@@ -88,6 +88,12 @@ module.exports = (event) => {
         });
       }
 
+      if (intent === 'Manifesto') {
+        post.issue(null, senderID, (err, res) => {
+          if (err) return err;
+        });
+      }
+
       if (intent === 'runningCandidates') {
         console.log('inside running candidates');
         const userPostcode = { postcode: messageText, facebook_id: senderID };

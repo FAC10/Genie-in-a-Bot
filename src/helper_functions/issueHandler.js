@@ -74,14 +74,14 @@ function issueHandler(facebookId, resolvedQuery, partyTag) {
         } else if (rawIntent.includes('tax') || rawIntent.includes('entrepreneur') || rawIntent.includes('rich') || rawIntent.includes('wealth')) {
           issueConstructor('tax', facebookId);
         } else if (rawIntent.includes('brexit') || rawIntent.includes('eu') || rawIntent.includes('europe')) {
-        issueConstructor('brexit_mani', facebookId);
-      } else if (rawIntent.includes('transport') || rawIntent.includes('bus') || rawIntent.includes('train') || rawIntent.includes('taxi')) {
-        issueConstructor('transport', facebookId);
-      } else if (rawIntent.includes('foreign') || rawIntent.includes('affairs') || rawIntent.includes('abroad') || rawIntent.includes('trump') || rawIntent.includes('syria')) {
-        issueConstructor('faffairs', facebookId);
-      } else if (rawIntent.includes('defence') || rawIntent.includes('weapon') || rawIntent.includes('trident') || rawIntent.includes('army') || rawIntent.includes('navy') || rawIntent.includes('marines')) {
-        issueConstructor('defence', facebookId);
-      }
+          issueConstructor('brexit_mani', facebookId);
+        } else if (rawIntent.includes('transport') || rawIntent.includes('bus') || rawIntent.includes('train') || rawIntent.includes('taxi')) {
+          issueConstructor('transport', facebookId);
+        } else if (rawIntent.includes('foreign') || rawIntent.includes('affairs') || rawIntent.includes('abroad') || rawIntent.includes('trump') || rawIntent.includes('syria')) {
+          issueConstructor('faffairs', facebookId);
+        } else if (rawIntent.includes('defence') || rawIntent.includes('weapon') || rawIntent.includes('trident') || rawIntent.includes('army') || rawIntent.includes('navy') || rawIntent.includes('marines')) {
+          issueConstructor('defence', facebookId);
+        }
       }
       if (flow === 'Parties') {
         console.log('parties flow');
