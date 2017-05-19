@@ -34,8 +34,8 @@ module.exports = [
               if (user === 'newUser') {
                 getFacebookName(event.sender.id, () => {
                   console.log('newUser');
+                  findLocalReply.findLocalReply(event.sender.id, 'FACEBOOK_WELCOME');
                 });
-                findLocalReply.findLocalReply(event.sender.id, 'FACEBOOK_WELCOME');
               } else {
                 console.log('user exists');
                 getFacebookName(event.sender.id, () => {
