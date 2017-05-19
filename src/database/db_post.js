@@ -38,8 +38,10 @@ post.persistingCtxts = (contexts, facebook_id, callback) => {
 };
 
 post.startContext = (context, facebook_id, callback) => {
+  console.log('in posting context function');
   connect.query(`UPDATE users SET startContext = '${context}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
     if (err) return callback(err);
+    console.log('res in post.startContext is ', res);
     callback(null, res);
   });
 };
