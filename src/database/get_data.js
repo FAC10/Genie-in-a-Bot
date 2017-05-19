@@ -106,7 +106,15 @@ get.startContext = (facebookId, callback) => connect.query('SELECT startContext 
     //   return callback(null, 'newUser');
     // }
   } else {
-    console.log('no rows');
+    console.log('startContext dont exist');
+    post.startContext('existingUser', facebookId, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('adding start context to database');
+      }
+    });
+    return callback(null, 'newUser');
   }
 });
 
