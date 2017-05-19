@@ -48,6 +48,7 @@ function constructIssueBullets(facebookId, intent, party) {
   } else if (party) {
     console.log('inside party in construct bullets');
     get.manifestoData(count, intent, party, (err, maniData) => {
+      console.log('inside get manifestoData');
       if (err) console.log(err);
       console.log('maniData is ', maniData);
       const responseText = { text: `${maniData}`,
