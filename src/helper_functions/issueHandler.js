@@ -1,7 +1,6 @@
 const constructIssueBullets = require('./constructIssueBullets.js');
 const get = require('../database/get_data.js');
 const post = require('../database/db_post.js');
-const findLocalReply = require('./findLocalReply');
 
 function issueHandler(facebookId, resolvedQuery, cb) {
   get.flow(facebookId, (err, res) => {
@@ -12,8 +11,8 @@ function issueHandler(facebookId, resolvedQuery, cb) {
       console.log('inside manifestos');
       const rawIntent = resolvedQuery.toLowerCase();
       if (rawIntent.includes('education') || rawIntent.includes('tuition') || rawIntent.includes('school') || rawIntent.includes('universit')) {
-        findLocalReply(facebookId, 'mani_parties');
-        post.issue('education', (error, result) => {
+        constructIssueBullets(facebookId, 'mani_parties');
+        post.issue('education', facebookId, (error, result) => {
           if (error) console.log(error);
           else {
           }
