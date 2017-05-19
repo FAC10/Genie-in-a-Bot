@@ -4,6 +4,7 @@ let lastIntent;
 const count = 0;
 
 function constructIssueBullets(facebookId, intent) {
+  console.log('inside construct bullets');
   if (lastIntent === null) {
     console.log('lastIntent is null so party options');
     console.log('lastIntent is ', lastIntent);

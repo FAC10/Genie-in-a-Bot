@@ -10,7 +10,9 @@ function issueHandler(facebookId, resolvedQuery, cb) {
     if (res === 'Manifestos') {
       console.log('inside manifestos');
       const rawIntent = resolvedQuery.toLowerCase();
+      console.log('rawIntent is ', rawIntent);
       if (rawIntent.includes('education') || rawIntent.includes('tuition') || rawIntent.includes('school') || rawIntent.includes('universit')) {
+        console.log('inside education');
         constructIssueBullets(facebookId, 'mani_parties');
         post.issue('education', facebookId, (error, result) => {
           if (error) console.log(error);
