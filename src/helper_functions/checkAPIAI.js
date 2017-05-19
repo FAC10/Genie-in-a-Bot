@@ -10,6 +10,7 @@ const getConstituency = require('./getConstituency');
 const sendToFB = require('./sendToFB.js');
 const getTweets = require('./getTweets.js');
 const issueHandler = require('./issueHandler.js');
+const partyHandler = require('./partyHandler');
 
 module.exports = (event) => {
   const senderID = event.sender.id;
