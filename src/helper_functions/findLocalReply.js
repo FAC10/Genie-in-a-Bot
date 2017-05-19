@@ -40,10 +40,10 @@ function findLocalReply(senderID, intent) {
       });
     });
   }
-  if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
-    console.log('I am one of the intents we want');
-    extractContexts(senderID, intent, getVotingData);
-  }
+  // if (intent === 'brexit' || intent === 'tuitionFees' || intent === 'syria') {
+  //   console.log('I am one of the intents we want');
+  //   extractContexts(senderID, intent, getVotingData);
+  // }
   if (intent === 'partyCompare') {
     get.issue(senderID, (err, res) => {
       if (err) {
