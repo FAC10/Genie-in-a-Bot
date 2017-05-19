@@ -67,82 +67,7 @@ module.exports = (event) => {
       }
 
       if (intent === 'party_votes') {
-        console.log('resolvedQuery going into party is ', resolvedQuery);
-        if (resolvedQuery.toLowerCase().includes('conservative') || resolvedQuery.toLowerCase().includes('tory') || resolvedQuery.toLowerCase().includes('tories')) {
-          console.log('adding Conservative to database');
-          post.party('Conservative', senderID, (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-          post.counts('conservative', (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-        }
-        if (resolvedQuery.toLowerCase().includes('labour')) {
-          console.log('adding Labour to database');
-          post.party('Labour', senderID, (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-          post.counts('labour', (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-        }
-        if (resolvedQuery.toLowerCase().includes('lib dem') || resolvedQuery.toLowerCase().includes('liberal democrats')) {
-          console.log('adding Lib Dem to database');
-          post.party('Lib Dem', senderID, (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-          post.counts('libdem', (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-        }
-        if (resolvedQuery.toLowerCase().includes('snp') || resolvedQuery.toLowerCase().includes('scottish national party')) {
-          console.log('adding SNP to database');
-          post.party('SNP', senderID, (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-          post.counts('snp', (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-        }
-        if (resolvedQuery.toLowerCase().includes('green') || resolvedQuery.toLowerCase().includes('green party')) {
-          console.log('adding Green to database');
-          post.party('Green', senderID, (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-          post.counts('green', (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-        }
+        partyHandler(senderID, resolvedQuery);
       }
 
       if (intent === 'issues') {
@@ -224,7 +149,7 @@ module.exports = (event) => {
 
       if (responseText) {
         constructRemoteReply(senderID, responseText);
-      } else if (!responseText && intent !== 'runningCandidates') {
+      } else if (!responseText && intent !== 'runningCandidates' && intent !== 'party_votes') {
         findLocalReply.findLocalReply(senderID, intent);
       }
     });

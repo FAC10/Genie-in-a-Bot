@@ -13,7 +13,7 @@ function issueHandler(facebookId, resolvedQuery, cb) {
       console.log('rawIntent is ', rawIntent);
       if (rawIntent.includes('education') || rawIntent.includes('tuition') || rawIntent.includes('school') || rawIntent.includes('universit')) {
         console.log('inside education');
-        constructIssueBullets(facebookId, 'mani_parties');
+        constructIssueBullets(facebookId, 'education');
         post.issue('education', facebookId, (error, result) => {
           if (error) console.log(error);
           else {
@@ -25,6 +25,9 @@ function issueHandler(facebookId, resolvedQuery, cb) {
           }
         });
       }
+    }
+    if (res === Parties) {
+      console.log('parties flow');
     }
   });
 }
