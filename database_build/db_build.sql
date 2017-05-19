@@ -35,7 +35,21 @@ CREATE TABLE counts (
   labour        INTEGER,
   green         INTEGER,
   snp           INTEGER,
-  libdem        INTEGER
+  libdem        INTEGER,
+  education        INTEGER,
+  health        INTEGER,
+  economy        INTEGER,
+  immigration        INTEGER,
+  housing        INTEGER,
+  environment        INTEGER,
+  tax        INTEGER,
+  brexit_mani        INTEGER,
+  brexit_votes        INTEGER,
+  transport        INTEGER,
+  faffairs        INTEGER,
+  defence        INTEGER,
+  syria        INTEGER,
+  tuition_fees        INTEGER
 );
 
 CREATE TABLE jokes (
@@ -143,9 +157,9 @@ CREATE TABLE faffairs (
   libdem        VARCHAR(10000)
 );
 
-INSERT INTO counts (conservative, labour, green, snp, libdem)
+INSERT INTO counts (conservative, labour, green, snp, libdem, education, health, economy, immigration, housing, environment, tax, brexit_mani, brexit_votes, transport, faffairs, defence, syria, tuition_fees)
 VALUES
-(0, 0, 0, 0, 0);
+(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 INSERT INTO users (firstName)
 VALUES

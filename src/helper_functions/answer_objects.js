@@ -208,6 +208,10 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
       ],
     },
 
+    mani_education : {
+      text: 'in mani_education',
+    },
+
     party_votes: {
 
       text: 'Let\'s see how they voted on:',

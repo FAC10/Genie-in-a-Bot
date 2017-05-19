@@ -12,6 +12,16 @@ function findLocalReply(senderID, intent) {
       if (err) return err;
     });
   }
+  if (intent === 'Parties') {
+    post.flow('Parties', senderID, (err, res) => {
+      if (err) return err;
+    });
+  }
+  if (intent === 'Manifestos') {
+    post.flow('Manifestos', senderID, (err, res) => {
+      if (err) return err;
+    });
+  }
   if (intent === 'runningCandidates') {
     console.log('in local reply about to check database');
     get.constituency(senderID, (err, res) => {

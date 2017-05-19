@@ -9,6 +9,7 @@ const findLocalReply = require('./findLocalReply');
 const getConstituency = require('./getConstituency');
 const sendToFB = require('./sendToFB.js');
 const getTweets = require('./getTweets.js');
+const issueHandler = require('./issueHandler.js');
 
 module.exports = (event) => {
   const senderID = event.sender.id;
@@ -142,6 +143,10 @@ module.exports = (event) => {
             }
           });
         }
+      }
+
+      if (intent === issue) {
+        issueHandler(senderID, resolvedQuery);
       }
 
       if (intent === 'runningCandidates') {

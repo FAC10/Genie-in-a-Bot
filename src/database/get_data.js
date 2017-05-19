@@ -160,9 +160,9 @@ get.flow = (facebookId, callback) => connect.query('SELECT flow FROM users WHERE
   const rows = res.rows;
   const rowsZero = rows[0];
   if (rowsZero) {
-    const issue = rowsZero.issue;
-    if (issue !== null) {
-      return callback(null, issue[0]);
+    const flow = rowsZero.flow;
+    if (flow !== null) {
+      return callback(null, flow[0]);
     }
     return callback(null, null);
   }
