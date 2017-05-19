@@ -182,12 +182,12 @@ VALUES
 ('placeholder for conservative', 'Free parking in NHS England for staff, patients and visitors', 'placeholder for green', 'placeholder for snp', 'Expand access to GPs through online, phone and Skype appointments'),
 ('placeholder for conservative', 'Reverse privatisation of the NHS', 'placeholder for green', 'placeholder for snp', 'Restrict marketing of junk food pre-9pm watershed, introduce minimum unit pricing of Alcohol');
 
-INSERT INTO health (conservative, labour, green, snp, libdem)
+INSERT INTO economy (conservative, labour, green, snp, libdem)
 VALUES
-('placeholder for conservative', 'Tackle the gender pay gap', 'placeholder for green', 'placeholder for snp', 'Nation-wide programme of fibre-optic broadband, continued investment in HS2, Crossrail 2 etc.'),
-('placeholder for conservative', 'Put small businesses at the centre of economic strategy', 'placeholder for green', 'placeholder for snp', 'Eliminating the deficit on day-to-day spending by 2020'),
-('placeholder for conservative', 'Unpaid internships banned.', 'placeholder for green', 'placeholder for snp', 'Introduce network of incubators for technology start-ups, FTTP as standard with >2Gbps speeds'),
-('placeholder for conservative', 'Bring minimum wage in line with living wage - at least £10 by 2020', 'placeholder for green', 'placeholder for snp', 'Binding board-member votes on executive pay, right for ZHC-holders to request fixed contract'),
+('Conservatives will continue to restore public finances and have a balanced budget by middle of next decade', 'Tackle the gender pay gap', 'placeholder for green', 'placeholder for snp', 'Nation-wide programme of fibre-optic broadband, continued investment in HS2, Crossrail 2 etc.'),
+('Conservatives plan to meet OECD average for investments in R&D - 2.4% of GDP within 10 years. Launch a new £23bn national productivity investment fund', 'Put small businesses at the centre of economic strategy', 'placeholder for green', 'placeholder for snp', 'Eliminating the deficit on day-to-day spending by 2020'),
+('Conservatives will introduce energy tariff cap to extend price protection for vulnerable customers, but maintain competitive element of the retail energy market', 'Unpaid internships banned.', 'placeholder for green', 'placeholder for snp', 'Introduce network of incubators for technology start-ups, FTTP as standard with >2Gbps speeds'),
+('Conservatives will increase national living wage to 60% of median earnings by 2020', 'Bring minimum wage in line with living wage - at least £10 by 2020', 'placeholder for green', 'placeholder for snp', 'Binding board-member votes on executive pay, right for ZHC-holders to request fixed contract'),
 ('placeholder for conservative', 'Zero hours contracts outlawed.', 'placeholder for green', 'placeholder for snp', 'Champion Northern Powerhouse/Midlands Engine, devolve decisions, revenue-raising powers');
 
 INSERT INTO immigration (conservative, labour, green, snp, libdem)
@@ -224,11 +224,11 @@ VALUES
 
 INSERT INTO brexit (conservative, labour, green, snp, libdem)
 VALUES
-('placeholder for conservative', 'Labour accepts referendum result', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will hold a Second Referendum on any negotiated deal with the European Union'),
-('placeholder for conservative', 'Labour will reject ‘no deal’ as a viable option', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats propose a Unilateral guarantee of rights for EU citizens and acceptance of Freedom of Movement'),
-('placeholder for conservative', 'Labour will drop the Conservatives’ Great Repeal Bill, replacing it with an EU Rights and Protections Bill', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats: Membership of the Single Market and Customs Union, access to EU-funded schemes (Erasmus+)'),
-('placeholder for conservative', 'Labour will will secure continued EU market access', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats: Joint co-operation on environmental standards, law enforcement and scientific research funding'),
-('placeholder for conservative', 'Labour will immediately guarantee existing rights for all EU nationals living in Britain and secure reciprocal rights for UK citizens who have chosen to make their lives in EU countries', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will Campaign to protect the rights of the citizens of Gibraltar during negotiations');
+('Conservatives seek a new “deep and special partnership with the EU”', 'Labour accepts referendum result', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will hold a Second Referendum on any negotiated deal with the European Union'),
+('Conservatives will leave the single market and customs union', 'Labour will reject ‘no deal’ as a viable option', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats propose a Unilateral guarantee of rights for EU citizens and acceptance of Freedom of Movement'),
+('Conservatives believe no deal is better than a bad deal for the UK', 'Labour will drop the Conservatives’ Great Repeal Bill, replacing it with an EU Rights and Protections Bill', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats: Membership of the Single Market and Customs Union, access to EU-funded schemes (Erasmus+)'),
+('Conservatives will control immigration and secure the rights of EU nationals in the UK and Britons in the EU', 'Labour will will secure continued EU market access', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats: Joint co-operation on environmental standards, law enforcement and scientific research funding'),
+('Conservatives will maintain a common travel area with a “frictionless” border with Ireland', 'Labour will immediately guarantee existing rights for all EU nationals living in Britain and secure reciprocal rights for UK citizens who have chosen to make their lives in EU countries', 'placeholder for green', 'placeholder for snp', 'Liberal Democrats will Campaign to protect the rights of the citizens of Gibraltar during negotiations');
 
 INSERT INTO transport (conservative, labour, green, snp, libdem)
 VALUES

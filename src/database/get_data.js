@@ -180,6 +180,9 @@ get.compare = (issue, callback) => connect.query('SELECT swing, majority, issueT
 });
 
 get.manifestoData = (index, issue, party, callback) => connect.query(`SELECT ${party} FROM ${issue} WHERE id = $1`, [index], (err, res) => {
+  console.log('index is ', index);
+  console.log('issue is ', issue);
+  console.log('party is ', party);
   if (err) {
     return callback(err);
   }
