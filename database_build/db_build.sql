@@ -143,6 +143,10 @@ CREATE TABLE faffairs (
   libdem        VARCHAR(10000)
 );
 
+INSERT INTO users (firstName)
+VALUES
+('test');
+
 INSERT INTO jokes (joke, image_url)
 VALUES
 ('I''m not a big fan of political jokes. I have seen too many of them get elected...', 'https://image.ibb.co/g2Q7kk/smug.png'),

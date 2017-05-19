@@ -32,7 +32,9 @@ module.exports = [
           if (event.message) {
             get.startContext(event.sender.id, (error, user) => {
               if (user === 'newUser') {
-                console.log('newUser');
+                getFacebookName(event.sender.id, () => {
+                  console.log('newUser');
+                });
                 findLocalReply.findLocalReply(event.sender.id, 'FACEBOOK_WELCOME');
               } else {
                 console.log('user exists');
