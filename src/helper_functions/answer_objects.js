@@ -379,7 +379,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
     },
     partyCompare: {
 
-      text: `${compareObj[0].majority} of Conservative MPs voted ${compareObj[0].swing} of Brexit, ${compareObj[1].majority} of Labour MPs voted ${compareObj[1].swing}, ${compareObj[2].majority} of Liberal Democrat MPs voted ${compareObj[2].swing}, ${compareObj[3].majority} of Green Party MPs voted ${compareObj[3].swing} and ${compareObj[4].majority} of SNP MPs voted ${compareObj[4].swing}.`,
+      text: `${compareObj[0].majority} of Conservative MPs voted ${compareObj[0].swing} of ${compareObj[0].issue}, ${compareObj[1].majority} of Labour MPs voted ${compareObj[1].swing}, ${compareObj[2].majority} of Liberal Democrat MPs voted ${compareObj[2].swing}, ${compareObj[3].majority} of Green Party MPs voted ${compareObj[3].swing} and ${compareObj[4].majority} of SNP MPs voted ${compareObj[4].swing}.`,
       quick_replies: [
         {
           content_type: 'text',
