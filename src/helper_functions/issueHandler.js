@@ -57,6 +57,9 @@ function issueHandler(facebookId, resolvedQuery, partyTag) {
     get.flow(facebookId, (err, flow) => {
       if (err) return err;
       console.log('flow is ', flow);
+      if (!flow) {
+        findLocalReply.findLocalReply(facebookId, 'fallbackGeneral');
+      }
       if (flow === 'Manifestos') {
         console.log('inside manifestos');
         console.log('rawIntent is ', rawIntent);
@@ -97,8 +100,6 @@ function issueHandler(facebookId, resolvedQuery, partyTag) {
           trackIssue('brexit_votes', facebookId);
           extractContexts(facebookId, 'brexit_votes', getVotingData);
         }
-      } else {
-        findLocalReply.findLocalReply(facebookId, 'fallbackGeneral');
       }
     });
   }
