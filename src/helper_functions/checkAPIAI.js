@@ -11,6 +11,7 @@ const sendToFB = require('./sendToFB.js');
 const getTweets = require('./getTweets.js');
 const issueHandler = require('./issueHandler.js');
 const partyHandler = require('./partyHandler');
+const constructIssueBullets = require('./constructIssueBullets');
 
 module.exports = (event) => {
   const senderID = event.sender.id;
@@ -73,6 +74,18 @@ module.exports = (event) => {
 
       if (intent === 'issues') {
         issueHandler(senderID, resolvedQuery);
+      }
+
+      if (intent === 'anotherPoint') {
+        get.issue(senderID, (err, issue) => {
+          if (err) return err;
+
+          get.party(senderID, (error, party) => {
+            if (error) return err;
+
+            constructIssueBullets(senderID, issue, party);
+          });
+        });
       }
 
       if (intent === 'runningCandidates') {
@@ -150,7 +163,7 @@ module.exports = (event) => {
 
       if (responseText) {
         constructRemoteReply(senderID, responseText);
-      } else if (!responseText && intent !== 'runningCandidates' && intent !== 'party_votes') {
+      } else if (!responseText && intent !== 'runningCandidates' && intent !== 'party_votes' && intent !== 'anotherPoint') {
         findLocalReply.findLocalReply(senderID, intent);
       }
     });
