@@ -1,6 +1,6 @@
 const get = require('../database/get_data.js');
 let lastIntent = null;
-const count = 1;
+let count = 1;
 const constructRemoteReply = require('./constructRemoteReply');
 
 function constructIssueBullets(facebookId, intent, party) {
@@ -100,7 +100,13 @@ function constructIssueBullets(facebookId, intent, party) {
             },
           ] };
         console.log('responseText3 is ', responseText3);
+        count++;
+        if (count > 4) {
+          count = 0;
+        }
         constructRemoteReply(facebookId, responseText3);
+      }
+    });
   }
 }
 
