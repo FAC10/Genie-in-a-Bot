@@ -2,6 +2,7 @@ const get = require('../database/get_data');
 const issueHandler = require('./issueHandler');
 const findLocalReply = require('./findLocalReply');
 const post = require('../database/db_post.js');
+const constructRemoteReply = require('./constructRemoteReply');
 
 function posting(party, senderID) {
   console.log(`posting ${party} to database`);
@@ -43,6 +44,22 @@ function partyHandler(senderID, resolvedQuery) {
         posting('Green', senderID);
       }
       findLocalReply.findLocalReply(senderID, 'party_votes');
+    } else {
+      const responseText = { text: 'Would you like to know about party manifestos or parties more generally?',
+        quick_replies: [
+          {
+            content_type: 'text',
+            title: 'Manifestos',
+            payload: 'Manifestos',
+          },
+          {
+            content_type: 'text',
+            title: 'Parties',
+            payload: 'Parties',
+          },
+        ] };
+      console.log('responseText2 is ', responseText);
+      constructRemoteReply(senderID, responseText);
     }
   });
 }

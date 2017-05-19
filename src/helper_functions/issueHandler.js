@@ -3,6 +3,7 @@ const get = require('../database/get_data.js');
 const post = require('../database/db_post.js');
 const extractContexts = require('./extractContexts');
 const getVotingData = require('./getVotingData');
+const findLocalReply = require('./findLocalReply');
 
 function trackIssue(issue, facebookId) {
   post.issue(issue, facebookId, (error, result) => {
@@ -96,6 +97,8 @@ function issueHandler(facebookId, resolvedQuery, partyTag) {
           trackIssue('brexit_votes', facebookId);
           extractContexts(facebookId, 'brexit_votes', getVotingData);
         }
+      } else {
+        findLocalReply.findLocalReply(facebookId, 'fallbackGeneral');
       }
     });
   }
