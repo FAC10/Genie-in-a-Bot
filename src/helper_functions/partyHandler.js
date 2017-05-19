@@ -5,9 +5,10 @@ const post = require('../database/db_post.js');
 
 function partyHandler(senderID, resolvedQuery) {
   get.flow(senderID, (err, res) => {
-    if (res === 'manifestos') {
+    console.log('flow is ', res);
+    if (res === 'Manifestos') {
       issueHandler(senderID, resolvedQuery);
-    } else {
+    } else if (res === 'Parties') {
       console.log('resolvedQuery going into party is ', resolvedQuery);
       if (resolvedQuery.toLowerCase().includes('conservative') || resolvedQuery.toLowerCase().includes('tory') || resolvedQuery.toLowerCase().includes('tories')) {
         console.log('adding Conservative to database');
