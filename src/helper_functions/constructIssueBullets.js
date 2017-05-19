@@ -1,6 +1,6 @@
 const get = require('../database/get_data.js');
 
-let lastIntent;
+let lastIntent = null;
 const count = 0;
 
 function constructIssueBullets(facebookId, intent) {
