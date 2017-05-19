@@ -31,7 +31,7 @@ module.exports = [
           console.log(event);
           if (event.message) {
             get.startContext(event.sender.id, (error, user) => {
-              if (user === 'new user') {
+              if (user === 'newUser') {
                 console.log('newUser');
                 findLocalReply.findLocalReply(event.sender.id, 'FACEBOOK_WELCOME');
               } else {
