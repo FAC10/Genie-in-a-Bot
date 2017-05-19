@@ -1,10 +1,10 @@
 /* eslint-disable */
 
-const extractContexts = require('./extractContexts');
+// const extractContexts = require('./extractContexts');
 const get = require('../database/get_data');
 
 function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID, intent, callback) {
-  console.log('compareObj is ', compareObj);
+  console.log('partyVotes is ', partyVotesObj);
   if (firstName === null) {
     firstName = 'placeholder';
   }

@@ -2,7 +2,7 @@ const constructIssueBullets = require('./constructIssueBullets.js');
 const get = require('../database/get_data.js');
 const post = require('../database/db_post.js');
 const extractContexts = require('./extractContexts');
-const answerObjects = require('./answer_objects.js');
+const getVotingData = require('./getVotingData');
 
 function trackIssue(issue, facebookId) {
   post.issue(issue, facebookId, (error, result) => {
@@ -60,13 +60,13 @@ function issueHandler(facebookId, resolvedQuery) {
       console.log('rawIntent is ', rawIntent);
       if (rawIntent.includes('education') || rawIntent.includes('tuition') || rawIntent.includes('school') || rawIntent.includes('universit')) {
         trackIssue('tuitionFees', facebookId);
-        extractContexts(facebookId, 'tuition_fees', answerObjects);
+        extractContexts(facebookId, 'tuition_fees', getVotingData);
       } else if (rawIntent.includes('syria') || rawIntent.includes('strike') || rawIntent.includes('isis') || rawIntent.includes('daesh') || rawIntent.includes('islamic state')) {
         trackIssue('syria', facebookId);
-        extractContexts(facebookId, 'syria', answerObjects);
+        extractContexts(facebookId, 'syria', getVotingData);
       } else if (rawIntent.includes('brexit') || rawIntent.includes('eu') || rawIntent.includes('europe')) {
         trackIssue('brexit_votes', facebookId);
-        extractContexts(facebookId, 'brexit', answerObjects);
+        extractContexts(facebookId, 'brexit', getVotingData);
       }
     }
   });
