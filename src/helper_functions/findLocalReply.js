@@ -51,7 +51,7 @@ function findLocalReply(senderID, intent) {
       if (flow === 'Manifestos') {
         get.issue(senderID, (err, issue) => {
           if (err) return err;
-          post.party(null, senderID, (err, issue) => {
+          post.party(null, senderID, (err, res) => {
             if (err) return err;
             sendToIssueHandler(senderID, issue);
           });

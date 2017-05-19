@@ -45,6 +45,7 @@ function findParty(resolvedQuery) {
 }
 
 function issueHandler(facebookId, resolvedQuery, partyTag) {
+  console.log('resolvedQuery is ', resolvedQuery);
   const rawIntent = resolvedQuery.toLowerCase();
   if (partyTag) {
     get.issue(facebookId, (err, issue) => {

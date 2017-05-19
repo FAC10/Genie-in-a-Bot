@@ -197,7 +197,7 @@ get.manifestoData = (index, issue, party, callback) => connect.query(`SELECT ${p
       console.log('ans in manifestoData is ', answer.labour);
       return callback(null, answer.labour);
     }
-    if (party.toLowerCase() === 'libdem') {
+    if (party.toLowerCase().split(' ').join('') === 'libdem') {
       console.log('ans in manifestoData is ', answer.libdem);
       return callback(null, answer.libdem);
     }
