@@ -46,6 +46,7 @@ function constructIssueBullets(facebookId, intent, party) {
       ] };
     constructRemoteReply(facebookId, responseText);
   } else if (party) {
+    console.log('inside party in construct bullets');
     get.manifestoData(count, intent, party, (err, maniData) => {
       if (err) return err;
 
