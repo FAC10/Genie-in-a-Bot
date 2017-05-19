@@ -186,8 +186,8 @@ get.manifestoData = (index, issue, party, callback) => connect.query(`SELECT ${p
   const rows = res.rows;
   if (rows) {
     const answer = rows[0];
-    console.log('ans in manifestoData is ', answer);
-    return (null, answer);
+    console.log('ans in manifestoData is ', answer[party]);
+    return (null, answer[party]);
   }
 });
 
