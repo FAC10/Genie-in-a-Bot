@@ -21,3 +21,5 @@ function issueHandler(facebookId, resolvedQuery, cb) {
     }
   });
 }
+
+module.exports = issueHandler;
