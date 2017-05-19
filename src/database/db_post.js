@@ -58,8 +58,8 @@ post.party = (contexts, facebook_id, callback) => {
 
 post.issue = (contexts, facebook_id, callback) => {
   connect.query(`UPDATE users SET issue = '{${contexts}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
-    if (err) return callback(err);
-    callback(null, res);
+    if (err) return err;
+    return (null, res);
   });
 };
 
