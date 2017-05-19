@@ -75,6 +75,12 @@ module.exports = (event) => {
             } else {
             }
           });
+          post.counts('conservative', (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
+          });
         }
         if (resolvedQuery.toLowerCase().includes('labour')) {
           console.log('adding Labour to database');
@@ -84,6 +90,11 @@ module.exports = (event) => {
             } else {
             }
           });
+          post.counts('labour', (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
         }
         if (resolvedQuery.toLowerCase().includes('lib dem') || resolvedQuery.toLowerCase().includes('liberal democrats')) {
           console.log('adding Lib Dem to database');
@@ -93,6 +104,11 @@ module.exports = (event) => {
             } else {
             }
           });
+          post.counts('libdem', (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
         }
         if (resolvedQuery.toLowerCase().includes('snp') || resolvedQuery.toLowerCase().includes('scottish national party')) {
           console.log('adding SNP to database');
@@ -102,6 +118,11 @@ module.exports = (event) => {
             } else {
             }
           });
+          post.counts('snp', (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
         }
         if (resolvedQuery.toLowerCase().includes('green') || resolvedQuery.toLowerCase().includes('green party')) {
           console.log('adding Green to database');
@@ -111,6 +132,11 @@ module.exports = (event) => {
             } else {
             }
           });
+          post.counts('green', (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
         }
       }
 

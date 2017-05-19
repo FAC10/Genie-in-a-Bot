@@ -143,6 +143,14 @@ CREATE TABLE faffairs (
   libdem        VARCHAR(10000)
 );
 
+INSERT INTO counts (conservative, labour, green, snp, libdem)
+VALUES
+(0),
+(0),
+(0),
+(0),
+(0);
+
 INSERT INTO users (firstName)
 VALUES
 ('test');

@@ -70,4 +70,11 @@ post.userConstituency = (userConstituency, callback) => {
   });
 };
 
+post.counts = (party, callback) => {
+  connect.query(`UPDATE counts SET ${party} = ${party} + 1 WHERE id = 1`, (err) => {
+    if (err) return callback(err);
+    return callback();
+  });
+};
+
 module.exports = post;
