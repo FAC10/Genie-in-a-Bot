@@ -153,6 +153,22 @@ get.issue = (facebookId, callback) => connect.query('SELECT issue FROM users WHE
   return callback(null, null);
 });
 
+get.flow = (facebookId, callback) => connect.query('SELECT flow FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
+  if (err) {
+    return callback(err);
+  }
+  const rows = res.rows;
+  const rowsZero = rows[0];
+  if (rowsZero) {
+    const issue = rowsZero.issue;
+    if (issue !== null) {
+      return callback(null, issue[0]);
+    }
+    return callback(null, null);
+  }
+  return callback(null, null);
+});
+
 get.compare = (issue, callback) => connect.query('SELECT swing, majority FROM partyVotes WHERE issue = $1', [issue], (err, res) => {
   if (err) {
     return callback(err);

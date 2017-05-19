@@ -77,4 +77,11 @@ post.counts = (party, callback) => {
   });
 };
 
+post.flow = (contexts, facebook_id, callback) => {
+  connect.query(`UPDATE users SET flow = '{${contexts}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
+    if (err) return callback(err);
+    callback(null, res);
+  });
+};
+
 module.exports = post;

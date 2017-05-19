@@ -4,8 +4,14 @@ const extractContexts = require('./extractContexts');
 const getVotingData = require('./getVotingData');
 const constructCandidates = require('./constructCandidates');
 const searchAnsObjects = require('./searchAnsObjects');
+const post = require('../database/db_post.js');
 
 function findLocalReply(senderID, intent) {
+  if (intent === 'Candidates') {
+    post.flow('Candidates', senderID, (err, res) => {
+      if (err) return err;
+    });
+  }
   if (intent === 'runningCandidates') {
     console.log('in local reply about to check database');
     get.constituency(senderID, (err, res) => {
