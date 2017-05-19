@@ -188,7 +188,23 @@ get.manifestoData = (index, issue, party, callback) => connect.query(`SELECT ${p
     const answer = rows[0];
     if (party.toLowerCase() === 'conservative') {
       console.log('ans in manifestoData is ', answer.conservative);
-      return (null, answer.conservative);
+      return answer.conservative;
+    }
+    if (party.toLowerCase() === 'labour') {
+      console.log('ans in manifestoData is ', answer.labour);
+      return answer.conservative;
+    }
+    if (party.toLowerCase() === 'libdem') {
+      console.log('ans in manifestoData is ', answer.libdem);
+      return answer.conservative;
+    }
+    if (party.toLowerCase() === 'snp') {
+      console.log('ans in manifestoData is ', answer.snp);
+      return answer.conservative;
+    }
+    if (party.toLowerCase() === 'green') {
+      console.log('ans in manifestoData is ', answer.green);
+      return answer.conservative;
     }
   }
 });
