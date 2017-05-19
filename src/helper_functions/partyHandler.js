@@ -84,7 +84,7 @@ function partyHandler(senderID, resolvedQuery) {
           }
         });
       }
-      findLocalReply(senderID, 'party_votes');
+      findLocalReply.findLocalReply(senderID, 'party_votes');
     }
   });
 }
