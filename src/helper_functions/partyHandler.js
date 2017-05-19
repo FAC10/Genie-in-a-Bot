@@ -23,7 +23,7 @@ function posting(party, senderID) {
 
 function partyHandler(senderID, resolvedQuery) {
   get.flow(senderID, (err, res) => {
-    console.log('flow is ', res);
+    console.log('flow in partyHandler is ', res);
     if (res === 'Manifestos') {
       issueHandler(senderID, resolvedQuery, 'party');
     } else if (res === 'Parties') {
