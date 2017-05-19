@@ -12,10 +12,10 @@ function issueHandler(facebookId, resolvedQuery, cb) {
       console.log('inside manifestos');
       const rawIntent = resolvedQuery.toLowerCase();
       if (rawIntent.includes('education') || rawIntent.includes('tuition') || rawIntent.includes('school') || rawIntent.includes('universit')) {
+        findLocalReply(facebookId, 'mani_parties');
         post.issue('education', (error, result) => {
           if (error) console.log(error);
           else {
-            findLocalReply(facebookId, 'mani_parties');
           }
         });
         post.counts('education', (err, res) => {
