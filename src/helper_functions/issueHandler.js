@@ -1,6 +1,7 @@
-const constructRemoteReply = require('./constructRemoteReply.js');
+const constructIssueBullets = require('./constructIssueBullets.js');
 const get = require('../database/get_data.js');
 const post = require('../database/db_post.js');
+const findLocalReply = require('./findLocalReply');
 
 function issueHandler(facebookId, resolvedQuery, cb) {
   get.flow(facebookId, (err, res) => {
@@ -11,7 +12,12 @@ function issueHandler(facebookId, resolvedQuery, cb) {
       console.log('inside manifestos');
       const rawIntent = resolvedQuery.toLowerCase();
       if (rawIntent.includes('education') || rawIntent.includes('tuition') || rawIntent.includes('school') || rawIntent.includes('universit')) {
-        constructRemoteReply(facebookId, 'mani_education');
+        post.issue('education', (error, result) => {
+          if (error) console.log(error);
+          else {
+            findLocalReply(facebookId, 'mani_parties');
+          }
+        });
         post.counts('education', (err, res) => {
           if (err) console.log(err);
           else {
