@@ -1,5 +1,6 @@
 const connect = require('./db_connect');
 const candidateConnect = require('./db_connect_candidate');
+const post = require('./db_post');
 
 const get = {};
 
@@ -71,6 +72,53 @@ get.persistingCtxts = (facebookId, callback) => connect.query('SELECT persisting
   return callback(null, null);
 });
 
+get.startContext = (facebookId, callback) => connect.query('SELECT startContext FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
+  if (err) {
+    return callback(err);
+  }
+  console.log('res is ', res);
+  const rows = res.rows;
+  const rowsZero = rows[0];
+  if (!rowsZero) {
+    console.log('rowszero dont exist');
+    post.startContext('existingUser', facebookId, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('adding start context to database second clause');
+      }
+    });
+    return callback(null, 'newUser');
+  } else if (rowsZero) {
+    const startContext = rowsZero.startcontext;
+    if (!startContext || startContext[0] === null) {
+      console.log('startContext dont exist');
+      post.startContext('existingUser', facebookId, (err, res) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('adding start context to database first clause');
+        }
+      });
+      return callback(null, 'existingUser');
+    } else if (startContext) {
+      return callback(null, startContext[0]);
+    }
+  }
+    // if (startContext !== 'startContext') {
+    //   console.log('no res.rows');
+    //   post.startContext('startContext', facebookId, (err, res) => {
+    //     if (err) {
+    //       console.log(err);
+    //     } else {
+    //       console.log('adding start context to database');
+    //     }
+    //   });
+    //   return callback(null, 'newUser');
+    // }
+  // }
+});
+
 get.party = (facebookId, callback) => connect.query('SELECT party FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
   if (err) {
     return callback(err);
@@ -105,7 +153,23 @@ get.issue = (facebookId, callback) => connect.query('SELECT issue FROM users WHE
   return callback(null, null);
 });
 
-get.compare = (issue, callback) => connect.query('SELECT swing, majority FROM partyVotes WHERE issue = $1', [issue], (err, res) => {
+get.flow = (facebookId, callback) => connect.query('SELECT flow FROM users WHERE facebook_id = $1', [facebookId], (err, res) => {
+  if (err) {
+    return callback(err);
+  }
+  const rows = res.rows;
+  const rowsZero = rows[0];
+  if (rowsZero) {
+    const flow = rowsZero.flow;
+    if (flow !== null) {
+      return callback(null, flow[0]);
+    }
+    return callback(null, null);
+  }
+  return callback(null, null);
+});
+
+get.compare = (issue, callback) => connect.query('SELECT swing, majority, issueTitle FROM partyVotes WHERE issue = $1', [issue], (err, res) => {
   if (err) {
     return callback(err);
   }
@@ -115,5 +179,37 @@ get.compare = (issue, callback) => connect.query('SELECT swing, majority FROM pa
   return callback(null, res);
 });
 
+get.manifestoData = (index, issue, party, callback) => connect.query(`SELECT ${party} FROM ${issue} WHERE id = $1`, [index], (err, res) => {
+  console.log('index is ', index);
+  console.log('issue is ', issue);
+  console.log('party is ', party);
+  if (err) {
+    return callback(err);
+  }
+  const rows = res.rows;
+  if (rows) {
+    const answer = rows[0];
+    if (party.toLowerCase() === 'conservative') {
+      console.log('ans in manifestoData is ', answer.conservative);
+      return callback(null, answer.conservative);
+    }
+    if (party.toLowerCase() === 'labour') {
+      console.log('ans in manifestoData is ', answer.labour);
+      return callback(null, answer.labour);
+    }
+    if ((party.toLowerCase().split(' ').join('')) === 'libdem') {
+      console.log('ans in manifestoData is ', answer.libdem);
+      return callback(null, answer.libdem);
+    }
+    if (party.toLowerCase() === 'snp') {
+      console.log('ans in manifestoData is ', answer.snp);
+      return callback(null, answer.snp);
+    }
+    if (party.toLowerCase() === 'green') {
+      console.log('ans in manifestoData is ', answer.green);
+      return callback(null, answer.green);
+    }
+  }
+});
 
 module.exports = get;

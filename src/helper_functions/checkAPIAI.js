@@ -9,6 +9,9 @@ const findLocalReply = require('./findLocalReply');
 const getConstituency = require('./getConstituency');
 const sendToFB = require('./sendToFB.js');
 const getTweets = require('./getTweets.js');
+const issueHandler = require('./issueHandler.js');
+const partyHandler = require('./partyHandler');
+const constructIssueBullets = require('./constructIssueBullets');
 
 module.exports = (event) => {
   const senderID = event.sender.id;
@@ -66,56 +69,32 @@ module.exports = (event) => {
       }
 
       if (intent === 'party_votes') {
-        console.log('resolvedQuery going into party is ', resolvedQuery);
-        if (resolvedQuery.toLowerCase().includes('conservative') || resolvedQuery.toLowerCase().includes('tory') || resolvedQuery.toLowerCase().includes('tories')) {
-          console.log('adding Conservative to database');
-          post.party('Conservative', senderID, (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
+        partyHandler(senderID, resolvedQuery);
+      }
+
+      if (intent === 'issues') {
+        issueHandler(senderID, resolvedQuery);
+      }
+
+      if (intent === 'anotherPoint') {
+        get.issue(senderID, (err, issue) => {
+          if (err) return err;
+
+          get.party(senderID, (error, party) => {
+            if (error) return err;
+
+            constructIssueBullets(senderID, issue, party);
           });
-        }
-        if (resolvedQuery.toLowerCase().includes('labour')) {
-          console.log('adding Labour to database');
-          post.party('Labour', senderID, (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-        }
-        if (resolvedQuery.toLowerCase().includes('lib dem') || resolvedQuery.toLowerCase().includes('liberal democrats')) {
-          console.log('adding Lib Dem to database');
-          post.party('Lib Dem', senderID, (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-        }
-        if (resolvedQuery.toLowerCase().includes('snp') || resolvedQuery.toLowerCase().includes('scottish national party')) {
-          console.log('adding SNP to database');
-          post.party('SNP', senderID, (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-        }
-        if (resolvedQuery.toLowerCase().includes('green') || resolvedQuery.toLowerCase().includes('green party')) {
-          console.log('adding Green to database');
-          post.party('Green', senderID, (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-        }
+        });
+      }
+
+      if (intent === 'Manifesto') {
+        post.issue(null, senderID, (err, res) => {
+          if (err) return err;
+        });
       }
 
       if (intent === 'runningCandidates') {
-        console.log('inside running candidates');
         const userPostcode = { postcode: messageText, facebook_id: senderID };
         // const constit = getConstituency(messageText);
         // const constit = 'Poplar and Limehouse';
@@ -148,7 +127,6 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           }
-          console.log('image url is ', result.rows[0].image_url);
           const messageData = {
             recipient: {
               id: senderID,
@@ -189,11 +167,10 @@ module.exports = (event) => {
 
       if (responseText) {
         constructRemoteReply(senderID, responseText);
-      } else if (!responseText && intent !== 'runningCandidates') {
+      } else if (!responseText && intent !== 'runningCandidates' && intent !== 'party_votes' && intent !== 'anotherPoint') {
         findLocalReply.findLocalReply(senderID, intent);
       }
     });
-
     apiai_request.on('error', (error) => {
       console.log(error);
     });

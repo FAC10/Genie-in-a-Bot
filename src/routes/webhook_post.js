@@ -9,6 +9,7 @@ const post = require('../database/db_post.js');
 const getTweets = require('../helper_functions/getTweets.js');
 const constructRemoteReply = require('../helper_functions/constructRemoteReply');
 const searchAnsObjects = require('../helper_functions/searchAnsObjects');
+const get = require('../database/get_data.js');
 
 
 const app = express.Router();
@@ -29,32 +30,42 @@ module.exports = [
         entry.messaging.forEach((event) => {
           console.log(event);
           if (event.message) {
-            getFacebookName(event.sender.id, () => {
-              console.log('theres an event.message');
-              if (event.message.attachments) {
-                if (event.message.attachments[0].payload.coordinates) {
-                  const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
-                  const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
+            get.startContext(event.sender.id, (error, user) => {
+              if (user === 'newUser') {
+                getFacebookName(event.sender.id, () => {
+                  console.log('newUser');
+                  findLocalReply.findLocalReply(event.sender.id, 'FACEBOOK_WELCOME');
+                });
+              } else {
+                console.log('user exists');
+                getFacebookName(event.sender.id, () => {
+                  console.log('theres an event.message');
+                  if (event.message.attachments) {
+                    if (event.message.attachments[0].payload.coordinates) {
+                      const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
+                      const long = JSON.stringify(event.message.attachments[0].payload.coordinates.long);
 
-                  getPostcode(lat, long, event.sender.id, sendToFB, (postCode, constituency) => {
-                    const userConstituency = { constituency, facebook_id: event.sender.id };
-                    const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
-                    post.userPostcode(userPostcode, (err, result) => {
-                      if (err) {
-                        console.log(err);
-                      }
-                    });
-                    post.userConstituency(userConstituency, (err, result) => {
-                      if (err) {
-                        return err;
-                      }
-                    });
-                    findLocalReply.findLocalReply(event.sender.id, 'runningCandidates');
-                  });
-                }
+                      getPostcode(lat, long, event.sender.id, sendToFB, (postCode, constituency) => {
+                        const userConstituency = { constituency, facebook_id: event.sender.id };
+                        const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
+                        post.userPostcode(userPostcode, (err, result) => {
+                          if (err) {
+                            console.log(err);
+                          }
+                        });
+                        post.userConstituency(userConstituency, (err, result) => {
+                          if (err) {
+                            return err;
+                          }
+                        });
+                        findLocalReply.findLocalReply(event.sender.id, 'runningCandidates');
+                      });
+                    }
+                  }
+                });
+                checkAPIAI(event);
               }
             });
-            checkAPIAI(event);
           } else if (event.postback && event.postback.payload) {
             console.log('postback is ', event.postback.payload);
             if (event.postback.payload.includes('Recent tweets')) {

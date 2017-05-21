@@ -29,7 +29,6 @@ function constructCandidates(candidates, senderID, intent, callback, callback2) 
     allCandidates.push(candidateTemplate);
   });
   const placeholderVotingObj = { party: null, issue: null, inFavour: null, against: null, turnout: null };
-  console.log('allCandidates in constructCandidates are ', allCandidates);
   callback(placeholderVotingObj, null, allCandidates, null, senderID, intent, callback2);
 }
 
