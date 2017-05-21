@@ -12,7 +12,10 @@ function constructIssueBullets(facebookId, intent, party) {
     console.log('lastIntent is ', lastIntent);
     console.log('count is ', count);
     lastIntent = intent;
-    const capitalisedIntent = intent.charAt(0).toUpperCase() + intent.slice(1);
+    let capitalisedIntent = intent.charAt(0).toUpperCase() + intent.slice(1);
+    if (capitalisedIntent === 'Brexit_mani') {
+      capitalisedIntent = 'Brexit';
+    }
     const responseText = { text: `Which party's manifesto should I check for points on ${capitalisedIntent}?`,
       quick_replies: [
         {
