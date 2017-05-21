@@ -112,7 +112,7 @@ function constructIssueBullets(facebookId, intent, party) {
         console.log('responseText3 is ', responseText3);
         count++;
         console.log('count is now ', count);
-        if (count > 4) {
+        if (count > 5) {
           count = 1;
         }
         constructRemoteReply(facebookId, responseText3);
