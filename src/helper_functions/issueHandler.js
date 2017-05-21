@@ -57,7 +57,7 @@ function issueHandler(facebookId, resolvedQuery, partyTag) {
       if (err) return err;
       const party = findParty(resolvedQuery);
       console.log('party is ', party);
-      party.post(party, (err, res) => {
+      post.party(party, (err, res) => {
         if (err) {
           return err;
         }
