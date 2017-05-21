@@ -21,7 +21,6 @@ function trackIssue(issue, facebookId) {
 function issueConstructor(issue, facebookId, party) {
   console.log(`inside ${issue}`);
   if (party) {
-    constructIssueBullets(facebookId, issue, party);
     trackIssue(issue, facebookId);
     post.counts(party, (err, res) => {
       if (err) console.log(err);
@@ -63,6 +62,7 @@ function issueHandler(facebookId, resolvedQuery, partyTag) {
         }
       });
       issueConstructor(issue, facebookId, party);
+      constructIssueBullets(facebookId, issue, party);
     });
   } else {
     get.flow(facebookId, (err, flow) => {
