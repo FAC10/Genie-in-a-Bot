@@ -83,6 +83,9 @@ function constructIssueBullets(facebookId, intent, party) {
   // }
   else if (lastIntent === intent) {
     console.log('lastIntent = intent so info');
+    if (party.toLowerCase() === 'lib dem') {
+      party = party.toLowerCase().split(' ').join('');
+    }
     get.manifestoData(count, intent, party, (err, maniData) => {
       console.log('inside get manifestoData');
       if (err) console.log(err);
