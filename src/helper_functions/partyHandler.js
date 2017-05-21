@@ -28,10 +28,10 @@ function partyHandler(senderID, resolvedQuery) {
       issueHandler(senderID, resolvedQuery, 'party');
     } else if (res === 'Parties') {
       console.log('resolvedQuery going into party is ', resolvedQuery);
-      if (resolvedQuery.toLowerCase().includes('conservative') || resolvedQuery.toLowerCase().includes('tory') || resolvedQuery.toLowerCase().includes('tories')) {
+      if (resolvedQuery.toLowerCase().includes('conservative') || resolvedQuery.toLowerCase().includes('tory') || resolvedQuery.toLowerCase().includes('tories') || resolvedQuery.toLowerCase().includes('may') || resolvedQuery.toLowerCase().includes('theresa')) {
         posting('Conservative', senderID);
       }
-      if (resolvedQuery.toLowerCase().includes('labour')) {
+      if (resolvedQuery.toLowerCase().includes('labour') || resolvedQuery.toLowerCase().includes('jeremy') || resolvedQuery.toLowerCase().includes('corbyn')) {
         posting('Labour', senderID);
       }
       if (resolvedQuery.toLowerCase().includes('lib dem') || resolvedQuery.toLowerCase().includes('liberal democrats')) {
