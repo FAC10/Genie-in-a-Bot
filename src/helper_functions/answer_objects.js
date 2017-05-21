@@ -267,7 +267,7 @@ function construct(partyVotesObj, firstName, candidatesObj, compareObj, senderID
 
     fallbackRegister: {
 
-      text: 'Register to vote?',
+      text: 'Register to vote? 1 day left (click a button or I\'ll probably keep reminding you).',
       quick_replies: [
         {
           content_type: 'text',
