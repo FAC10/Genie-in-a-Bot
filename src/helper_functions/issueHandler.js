@@ -57,6 +57,11 @@ function issueHandler(facebookId, resolvedQuery, partyTag) {
       if (err) return err;
       const party = findParty(resolvedQuery);
       console.log('party is ', party);
+      party.post(party, (err, res) => {
+        if (err) {
+          return err;
+        }
+      });
       issueConstructor(issue, facebookId, party);
     });
   } else {
