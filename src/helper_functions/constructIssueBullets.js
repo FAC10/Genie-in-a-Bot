@@ -4,6 +4,8 @@ let count = 1;
 const constructRemoteReply = require('./constructRemoteReply');
 
 function constructIssueBullets(facebookId, intent, party) {
+  console.log('lastintent is ', lastIntent);
+  console.log('intent is ', intent);
   console.log('party is ', party);
   console.log('inside construct bullets');
   if (lastIntent === null || !party) {
@@ -77,7 +79,7 @@ function constructIssueBullets(facebookId, intent, party) {
         constructRemoteReply(facebookId, responseText2);
       }
     });
-  } else if (lastIntent === intent) {
+  } else if (lastIntent = intent) {
     console.log('lastIntent = intent so info');
     get.manifestoData(count, intent, party, (err, maniData) => {
       console.log('inside get manifestoData');
@@ -104,6 +106,7 @@ function constructIssueBullets(facebookId, intent, party) {
           ] };
         console.log('responseText3 is ', responseText3);
         count++;
+        console.log('count is now ', count);
         if (count > 4) {
           count = 0;
         }
