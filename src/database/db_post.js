@@ -49,9 +49,10 @@ post.startContext = (context, facebook_id, callback) => {
 
 post.party = (contexts, facebook_id, callback) => {
   if (contexts !== 'Back to votes' && contexts !== 'Back to parties') {
+    console.log('party in post party is ', party);
     connect.query(`UPDATE users SET party = '{${contexts}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
       if (err) return callback(err);
-      callback(null, res);
+      return callback(null, res);
     });
   }
 };
