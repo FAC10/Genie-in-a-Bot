@@ -47,39 +47,41 @@ function constructIssueBullets(facebookId, intent, party) {
         },
       ] };
     constructRemoteReply(facebookId, responseText);
-  } else if (party && lastIntent !== intent) {
-    console.log('inside party in construct bullets');
-    if (party.toLowerCase() === 'lib dem') {
-      party = party.toLowerCase().split(' ').join('');
-    }
-    get.manifestoData(count, intent, party, (err, maniData) => {
-      console.log('inside get manifestoData');
-      if (err) console.log(err);
-      else {
-        console.log('maniData is ', maniData);
-        const responseText2 = { text: `${maniData}`,
-          quick_replies: [
-            {
-              content_type: 'text',
-              title: 'Another point',
-              payload: 'Another point',
-            },
-            {
-              content_type: 'text',
-              title: 'Different issue',
-              payload: 'Different issue',
-            },
-            {
-              content_type: 'text',
-              title: 'Compare',
-              payload: 'Compare',
-            },
-          ] };
-        console.log('responseText2 is ', responseText2);
-        constructRemoteReply(facebookId, responseText2);
-      }
-    });
-  } else if (lastIntent === intent) {
+  }
+  // else if (party && lastIntent !== intent) {
+  //   console.log('inside party in construct bullets');
+  //   if (party.toLowerCase() === 'lib dem') {
+  //     party = party.toLowerCase().split(' ').join('');
+  //   }
+  //   get.manifestoData(count, intent, party, (err, maniData) => {
+  //     console.log('inside get manifestoData');
+  //     if (err) console.log(err);
+  //     else {
+  //       console.log('maniData is ', maniData);
+  //       const responseText2 = { text: `${maniData}`,
+  //         quick_replies: [
+  //           {
+  //             content_type: 'text',
+  //             title: 'Another point',
+  //             payload: 'Another point',
+  //           },
+  //           {
+  //             content_type: 'text',
+  //             title: 'Different issue',
+  //             payload: 'Different issue',
+  //           },
+  //           {
+  //             content_type: 'text',
+  //             title: 'Compare',
+  //             payload: 'Compare',
+  //           },
+  //         ] };
+  //       console.log('responseText2 is ', responseText2);
+  //       constructRemoteReply(facebookId, responseText2);
+  //     }
+  //   });
+  // }
+  else if (lastIntent === intent) {
     console.log('lastIntent = intent so info');
     get.manifestoData(count, intent, party, (err, maniData) => {
       console.log('inside get manifestoData');
@@ -108,7 +110,7 @@ function constructIssueBullets(facebookId, intent, party) {
         count++;
         console.log('count is now ', count);
         if (count > 4) {
-          count = 0;
+          count = 1;
         }
         constructRemoteReply(facebookId, responseText3);
       }
