@@ -52,7 +52,7 @@ post.party = (contexts, facebook_id, callback) => {
     console.log('party in post party is ', contexts);
     connect.query(`UPDATE users SET party = '{${contexts}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
       if (err) return err;
-      return res;
+      return (null, res);
     });
   }
 };
