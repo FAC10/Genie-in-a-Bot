@@ -47,7 +47,7 @@ function constructIssueBullets(facebookId, intent, party) {
         },
       ] };
     constructRemoteReply(facebookId, responseText);
-  } else if (party) {
+  } else if (party && lastIntent !== intent) {
     console.log('inside party in construct bullets');
     if (party.toLowerCase() === 'lib dem') {
       party = party.toLowerCase().split(' ').join('');
@@ -79,7 +79,7 @@ function constructIssueBullets(facebookId, intent, party) {
         constructRemoteReply(facebookId, responseText2);
       }
     });
-  } else if (lastIntent = intent) {
+  } else if (lastIntent === intent) {
     console.log('lastIntent = intent so info');
     get.manifestoData(count, intent, party, (err, maniData) => {
       console.log('inside get manifestoData');
