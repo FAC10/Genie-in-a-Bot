@@ -36,6 +36,7 @@ function issueConstructor(issue, facebookId, party) {
 
 function findParty(resolvedQuery) {
   if (resolvedQuery.toLowerCase().includes('conservative') || resolvedQuery.toLowerCase().includes('tory') || resolvedQuery.toLowerCase().includes('tories')) {
+    console.log('finding conservative party');
     return 'Conservative';
   } else if (resolvedQuery.toLowerCase().includes('labour')) {
     return 'Labour';

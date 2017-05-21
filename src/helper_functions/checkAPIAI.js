@@ -95,7 +95,6 @@ module.exports = (event) => {
       }
 
       if (intent === 'runningCandidates') {
-        console.log('inside running candidates');
         const userPostcode = { postcode: messageText, facebook_id: senderID };
         // const constit = getConstituency(messageText);
         // const constit = 'Poplar and Limehouse';
@@ -128,7 +127,6 @@ module.exports = (event) => {
           if (err) {
             console.log(err);
           }
-          console.log('image url is ', result.rows[0].image_url);
           const messageData = {
             recipient: {
               id: senderID,
