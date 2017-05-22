@@ -28,7 +28,7 @@ function constructIssueBullets(facebookId, intent, party) {
           content_type: 'text',
           title: 'Labour',
           payload: 'manifestoQuery',
-          image_url: 'https://pbs.twimg.com/profile_images/683632825434771456/n4NaU8Ku.png',
+          image_url: 'http://www.conservativehome.com/wp-content/uploads/2013/09/Labour-Party-Red-Rose-logo.png',
         },
         {
           content_type: 'text',
