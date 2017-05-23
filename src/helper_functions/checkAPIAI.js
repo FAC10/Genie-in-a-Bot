@@ -151,9 +151,8 @@ module.exports = (event) => {
 
 
       if (!intent) {
-            intent = 'fallbackGeneral';
-            findLocalReply.findLocalReply(senderID, intent);
-          }
+        intent = 'fallbackGeneral';
+        findLocalReply.findLocalReply(senderID, intent);
       }
 
 
