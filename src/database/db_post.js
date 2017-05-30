@@ -38,19 +38,14 @@ post.persistingCtxts = (contexts, facebook_id, callback) => {
 };
 
 post.startContext = (context, facebook_id, callback) => {
-  console.log('facebook_id is ', facebook_id);
-  console.log('in posting context function');
   connect.query(`UPDATE users SET startContext = '{${context}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
-    if (err) console.log('error is ', err);
-    console.log('res in post.startContext is ', res);
+    if (err) console.log('error in startContext is ', err);
     callback(null, res);
   });
 };
 
 post.party = (contexts, facebook_id, callback) => {
   if (contexts !== 'Back to votes' && contexts !== 'Back to parties') {
-    console.log('party in post party is ', contexts);
-    console.log('facebookid is ', facebook_id);
     connect.query(`UPDATE users SET party = '{${contexts}}' WHERE facebook_id = ${facebook_id}`, (err, res) => {
       if (err) return err;
       return (null, res);

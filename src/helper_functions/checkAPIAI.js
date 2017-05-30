@@ -142,12 +142,6 @@ module.exports = (event) => {
       }
 
 
-      // if (!intent) {
-      //   intent = 'fallbackGeneral';
-      //   findLocalReply.findLocalReply(senderID, intent);
-      // }
-
-
       if (responseText) {
         constructRemoteReply(senderID, responseText);
       } else if (!responseText && intent !== 'runningCandidates' && intent !== 'party_votes' && intent !== 'anotherPoint') {
