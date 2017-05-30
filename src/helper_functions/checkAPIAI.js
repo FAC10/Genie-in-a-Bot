@@ -16,11 +16,10 @@ const constructIssueBullets = require('./constructIssueBullets');
 module.exports = (event) => {
   const senderID = event.sender.id;
   const recipientID = event.recipient.id;
-  const timeOfMessage = event.timestamp;
   const message = event.message;
 
   console.log('Received message for user %d and page %d at %d with message:',
-      senderID, recipientID, timeOfMessage);
+      senderID, recipientID, message);
 
   const messageId = message.mid;
 
