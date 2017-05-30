@@ -66,6 +66,7 @@ function issueHandler(facebookId, resolvedQuery, partyTag) {
       if (err) return err;
       console.log('flow is ', flow);
       if (!flow) {
+        console.log('no flow so sending fallbackGeneral');
         findLocalReply.findLocalReply(facebookId, 'fallbackGeneral');
       }
       if (flow === 'Manifestos') {
