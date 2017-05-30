@@ -33,7 +33,7 @@ module.exports = (event) => {
 
     apiai_request.on('response', (response) => {
       const responseText = response.result.fulfillment.speech;
-      let intent = response.result.metadata.intentName;
+      const intent = response.result.metadata.intentName;
       console.log('intent is ', intent);
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
@@ -142,10 +142,10 @@ module.exports = (event) => {
       }
 
 
-      if (!intent) {
-        intent = 'fallbackGeneral';
-        findLocalReply.findLocalReply(senderID, intent);
-      }
+      // if (!intent) {
+      //   intent = 'fallbackGeneral';
+      //   findLocalReply.findLocalReply(senderID, intent);
+      // }
 
 
       if (responseText) {
