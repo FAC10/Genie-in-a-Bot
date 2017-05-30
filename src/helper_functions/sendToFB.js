@@ -14,10 +14,10 @@ module.exports = (messageData) => {
 
       console.log('Successfully sent message with id %s to recipient %s',
         messageId, recipientId);
-    } else {
+    } else if (error) {
       console.error('Unable to send message.');
       // console.error(response);
-      console.error(error);
+      console.error('error sending is ', error);
     }
   });
 };
