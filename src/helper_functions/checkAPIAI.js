@@ -18,7 +18,7 @@ module.exports = (event) => {
   const recipientID = event.recipient.id;
   const message = event.message;
 
-  console.log('Received message for user %d and page %d at %d with message:',
+  console.log('Received message for user %d and page %d at with message: %d',
       senderID, recipientID, message);
 
   const messageId = message.mid;
