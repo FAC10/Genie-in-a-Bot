@@ -144,17 +144,8 @@ module.exports = (event) => {
 
 
       if (!intent) {
-        get.persistingCtxts(senderID, (err, res) => {
-          if (err) {
-            console.log('error getting persistingCtxts');
-          } if (res === null) {
-            intent = 'fallbackRegister';
-            findLocalReply.findLocalReply(senderID, intent);
-          } else {
-            intent = 'fallbackGeneral';
-            findLocalReply.findLocalReply(senderID, intent);
-          }
-        });
+        intent = 'fallbackGeneral';
+        findLocalReply.findLocalReply(senderID, intent);
       }
 
 
