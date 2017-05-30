@@ -23,9 +23,7 @@ function issueConstructor(issue, facebookId, party) {
   if (party) {
     trackIssue(issue, facebookId);
     post.counts(party, (err, res) => {
-      if (err) console.log(err);
-      else {
-      }
+      if (err) return err;
     });
   } else {
     constructIssueBullets(facebookId, issue);
@@ -35,7 +33,6 @@ function issueConstructor(issue, facebookId, party) {
 
 function findParty(resolvedQuery) {
   if (resolvedQuery.toLowerCase().includes('conservative') || resolvedQuery.toLowerCase().includes('tory') || resolvedQuery.toLowerCase().includes('tories') || resolvedQuery.toLowerCase().includes('may') || resolvedQuery.toLowerCase().includes('theresa')) {
-    console.log('finding conservative party');
     return 'Conservative';
   } else if (resolvedQuery.toLowerCase().includes('labour') || resolvedQuery.toLowerCase().includes('jeremy') || resolvedQuery.toLowerCase().includes('corbyn')) {
     return 'Labour';
@@ -69,6 +66,7 @@ function issueHandler(facebookId, resolvedQuery, partyTag) {
       if (err) return err;
       console.log('flow is ', flow);
       if (!flow) {
+        console.log('no flow so sending fallbackGeneral');
         findLocalReply.findLocalReply(facebookId, 'fallbackGeneral');
       }
       if (flow === 'Manifestos') {
