@@ -141,7 +141,6 @@ module.exports = (event) => {
         });
       }
 
-
       if (responseText) {
         constructRemoteReply(senderID, responseText);
       } else if (!responseText && intent !== 'runningCandidates' && intent !== 'party_votes' && intent !== 'anotherPoint') {
