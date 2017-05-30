@@ -28,7 +28,6 @@ module.exports = [
 
         // Iterate over each messaging event
         entry.messaging.forEach((event) => {
-          console.log(event);
           if (event.message) {
             get.startContext(event.sender.id, (error, user) => {
               if (user === 'newUser') {
@@ -39,7 +38,6 @@ module.exports = [
               } else {
                 console.log('user exists');
                 getFacebookName(event.sender.id, () => {
-                  console.log('theres an event.message');
                   if (event.message.attachments) {
                     if (event.message.attachments[0].payload.coordinates) {
                       const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
@@ -50,7 +48,7 @@ module.exports = [
                         const userPostcode = { postcode: postCode, facebook_id: event.sender.id };
                         post.userPostcode(userPostcode, (err, result) => {
                           if (err) {
-                            console.log(err);
+                            console.log('error saving postcode');
                           }
                         });
                         post.userConstituency(userConstituency, (err, result) => {
@@ -69,24 +67,18 @@ module.exports = [
           } else if (event.postback && event.postback.payload) {
             console.log('postback is ', event.postback.payload);
             if (event.postback.payload.includes('Recent tweets')) {
-              console.log('includes recent tweets');
               const splitted = (event.postback.payload).split(' ', 3);
               const username = splitted[2];
-              console.log('username is ', username);
               if (username === 'noTwitter') {
-                console.log('user has no twitter');
                 constructRemoteReply(event.sender.id, 'This candidate has no Twitter account :(');
               } else {
                 getTweets.getTweets(event.sender.id, `@${username}`);
               }
             }
             if (event.postback.payload.includes('Recent mentions')) {
-              console.log('includes recent mentions');
               const splitted = (event.postback.payload).split(' ', 3);
               const username = splitted[2];
-              console.log('username is ', username);
               if (username === 'noTwitter') {
-                console.log('user has no twitter');
                 constructRemoteReply(event.sender.id, 'This candidate has no Twitter account :(');
               } else {
                 getTweets.getMentions(event.sender.id, `@${username}`);

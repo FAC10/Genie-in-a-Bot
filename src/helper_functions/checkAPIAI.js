@@ -38,14 +38,16 @@ module.exports = (event) => {
       console.log('intent is ', intent);
       const contexts = response.result.contexts;
       const resolvedQuery = response.result.resolvedQuery;
-      if (intent === 'register' || intent === 'registerDone') {
-        post.persistingCtxts('registerDone', senderID, (err, result) => {
-          if (err) {
-            console.log(err);
-          } else {
-          }
-        });
-      }
+
+      // NO LONGER RELEVANT - DEADLINE HAS PASSED
+      // if (intent === 'register' || intent === 'registerDone') {
+      //   post.persistingCtxts('registerDone', senderID, (err, result) => {
+      //     if (err) {
+      //       console.log('error adding registerDone to database');
+      //     } else {
+      //     }
+      //   });
+      // }
 
       if (event.message && event.message.attachments && event.message.attachments[0].payload.coordinates) {
         const lat = JSON.stringify(event.message.attachments[0].payload.coordinates.lat);
@@ -100,32 +102,23 @@ module.exports = (event) => {
         // const constit = 'Poplar and Limehouse';
         getConstituency(messageText, senderID, (err, result) => {
           if (err) {
-            console.log(err);
+            console.log('error getting constituency in checkAPIAI');
           }
           const userConstituency = { constituency: result, facebook_id: senderID };
-          console.log(userConstituency);
           post.userConstituency(userConstituency, (error, res) => {
             if (err) {
-              console.log(err);
+              console.log('error posting constituency in checkAPIAI');
             }
-            console.log('posting to database');
             findLocalReply.findLocalReply(senderID, intent);
           });
         });
       }
 
-      //   post.userPostcode(userPostcode, (err, result) => {
-      //     if (err) {
-      //       return err;
-      //     }
-      //   });
-      // }
-
 
       if (intent === 'Joke') {
         get.randomJoke((err, result) => {
           if (err) {
-            console.log(err);
+            console.log('error getting joke');
           }
           const messageData = {
             recipient: {
@@ -153,7 +146,7 @@ module.exports = (event) => {
       if (!intent) {
         get.persistingCtxts(senderID, (err, res) => {
           if (err) {
-            console.log(err);
+            console.log('error getting persistingCtxts');
           } if (res === null) {
             intent = 'fallbackRegister';
             findLocalReply.findLocalReply(senderID, intent);
@@ -172,7 +165,7 @@ module.exports = (event) => {
       }
     });
     apiai_request.on('error', (error) => {
-      console.log(error);
+      console.log('api ai error');
     });
 
     apiai_request.end();
